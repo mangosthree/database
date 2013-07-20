@@ -8,6 +8,6 @@ The file (`LICENSE.md`) **must** be a part of any redistributable packages
 made from this software.  No licenses should be removed from this software if
 you are making redistributable copies.
 
-How to Install
+How to Install (basic, details to come)
 -------
-Coming Soon!
+mysql -u root -p mangos < MaNGOS3_Cata_Rev_3.sql
