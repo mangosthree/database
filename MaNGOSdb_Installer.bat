@@ -1,4 +1,6 @@
 @echo off
+@title = "Mangos database import tool"
+rem Credits to: Factionwars, Nemok, BrainDedd, Antz, sanctum32
 :quick
 rem Quick install section
 rem This will automatically use the variables below to install the world databases without prompting then optimize them and exit
@@ -17,9 +19,9 @@ set yesno=y
 goto install
 
 :standard
+color 1b
 rem Standard install section
-color 3B
-echo .
+echo.
 echo MM   MM         MM   MM  MMMMM   MMMM   MMMMM
 echo MM   MM         MM   MM MMM MMM MM  MM MMM MMM
 echo MMM MMM         MMM  MM MMM MMM MM  MM MMM
@@ -31,20 +33,19 @@ echo MM   MM MMMMMMM MM   MM MMM MMM MM  MM MMM MMM
 echo MM   MM MM  MMM MM   MM  MMMMMM  MMMM   MMMMM
 echo         MM  MMM http://getmangos.com
 echo         MMMMMM
-echo .
+echo.
 
-echo Credits to: Factionwars, Nemok, BrainDedd and Antz
-color 02
 echo ==================================================
-echo .
-set /p svr=MySQL host address?           [localhost]   : 
+echo.
+
+set /p svr=MySQL host address?        [localhost]   : 
 if %svr%. == . set svr=localhost
-set /p user=MySQL username?           [mangos]      : 
+set /p port=MySQL port?                [3306]        : 
+if %port%. == . set port=3306
+set /p user=MySQL username?            [mangos]      : 
 if %user%. == . set user=mangos
 set /p pass=MySQL password?            [ ]           : 
 if %pass%. == . set pass=
-set /p port=MySQL port?                [3306]        : 
-if %port%. == . set port=3306
 set /p wdb=World database name?       [mangos]      : 
 if %wdb%. == . set wdb=mangos
 
@@ -69,6 +70,8 @@ if %quick% == off set /p yesno=Do you wish to continue? (y/n)
 
 echo.
 echo Importing World database
+%mysql%\mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% -e "drop database if exists %wdb%"
+%mysql%\mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% -e "create database if not exists %wdb%"
 for %%i in (%dbpath%\*.sql) do echo %%i & %mysql%\mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% %wdb% < %%i
 
 :done
