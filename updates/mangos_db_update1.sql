@@ -1,8 +1,6 @@
-ALTER TABLE db_version CHANGE COLUMN required_c12729_01_mangos_playercreateinfo_spell 12738_01_mangos_spell_template bit;
+ALTER TABLE db_version CHANGE COLUMN required_c12729_01_mangos_playercreateinfo_spell required_12738_01_mangos_spell_template bit;
 
 UPDATE `command` SET help = 'Syntax: .account create $account $password [$expansion]\r\n\r\nCreate account and set password to it. Optionally, you may also set another expansion for this account than the defined default value.' WHERE name = 'account create';
-
-ALTER TABLE db_version CHANGE COLUMN required_c12739_01_mangos_command required_c12763_01_mangos_playercreateinfo_action bit;
 
 ALTER TABLE playercreateinfo_action DROP INDEX playercreateinfo_race_class_index;
 
