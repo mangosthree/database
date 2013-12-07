@@ -1,7 +1,11 @@
 mangos_ytdb
 ===========
 
-Initial port of ytdb over to mangos
+This is a port of the YTDB Cata database.  It will be maintained to work with mangos by the mangos devs.  Fixes are welcome and will be shared with YTDB.
+
+See the YTDB homepage for their license and copyright information.
+
+The YTDB homepage: ytdb.ru
 
 Installation Instructions
 -------------------------
