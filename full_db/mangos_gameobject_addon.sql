@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `mangos` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `mangos`;
+
+
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: localhost    Database: mangos
@@ -31,7 +31,7 @@ CREATE TABLE `gameobject_addon` (
   `path_rotation2` float NOT NULL DEFAULT '0',
   `path_rotation3` float NOT NULL DEFAULT '1',
   PRIMARY KEY (`guid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Gameobject System';
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-28 14:56:57
+-- Dump completed on 2013-12-28 15:25:02

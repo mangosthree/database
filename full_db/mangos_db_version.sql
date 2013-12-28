@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `mangos` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `mangos`;
+
+
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: localhost    Database: mangos
@@ -28,8 +28,8 @@ CREATE TABLE `db_version` (
   `version` varchar(120) NOT NULL,
   `creature_ai_version` varchar(120) DEFAULT NULL,
   `cache_id` int(10) DEFAULT '0',
-  `required_c12729_01_mangos_playercreateinfo_spell` bit(1) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Used DB version notes';
+  `required_12738_01_mangos_spell_template` bit(1) DEFAULT NULL
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `db_version` (
 
 LOCK TABLES `db_version` WRITE;
 /*!40000 ALTER TABLE `db_version` DISABLE KEYS */;
-INSERT INTO `db_version` VALUES ('YTDB_0.16.9_R720_cMaNGOS4_R12731_SD2_R2911_ACID_R310_RuDB_R63','ACID 3.1.0 \'Another Wild Adventure\' - Full Release for CMaNGOS-WOTLK (3.3.5a Client)',720,'\0');
+INSERT INTO `db_version` VALUES ('YTDB_0.16.9_R722_cMaNGOS4_R12773_SD2_R2928_ACID_R310_RuDB_R63','ACID 3.1.0 \'Another Wild Adventure\' - Full Release for CMaNGOS-WOTLK (3.3.5a Client)',722,'\0');
 /*!40000 ALTER TABLE `db_version` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-28 14:57:05
+-- Dump completed on 2013-12-28 15:25:10
