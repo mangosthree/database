@@ -1,5 +1,4 @@
 
-
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: localhost    Database: mangos
@@ -29,7 +28,7 @@ CREATE TABLE `hotfix_data` (
   `type` int(10) unsigned NOT NULL DEFAULT '0',
   `hotfixDate` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`entry`,`type`,`hotfixDate`)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-28 15:24:56
+-- Dump completed on 2013-12-28 16:27:50

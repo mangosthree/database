@@ -1,5 +1,4 @@
 
-
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: localhost    Database: mangos
@@ -27,7 +26,7 @@ DROP TABLE IF EXISTS `db_version_ytdb`;
 CREATE TABLE `db_version_ytdb` (
   `version` varchar(120) NOT NULL,
   `722_FIX_12773` bit(1) DEFAULT NULL
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Used YTDB version notes';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-28 15:25:01
+-- Dump completed on 2013-12-28 16:27:54

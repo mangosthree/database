@@ -1,5 +1,4 @@
 
-
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: localhost    Database: mangos
@@ -30,7 +29,7 @@ CREATE TABLE `playercreateinfo_spell` (
   `Spell` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `Note` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`race`,`class`,`Spell`)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-28 15:25:10
+-- Dump completed on 2013-12-28 16:28:05
