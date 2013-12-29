@@ -15,7 +15,6 @@ wdb=mangos;
 yesno=y;
 dbpath=full_db;
 updates_path=updates;
-mysql=bin;
 
 standart()
 {
