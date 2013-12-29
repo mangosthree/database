@@ -550,7 +550,7 @@ REPLACE INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `posit
 UPDATE `creature_loot_template` SET `ChanceOrQuestChance` = '0', `groupid` = '1' WHERE `entry` =8236 AND `item` =537;
 UPDATE `creature_loot_template` SET `ChanceOrQuestChance` = '0', `groupid` = '1' WHERE `entry` =8236 AND `item` =5468;
 
-# Вовка
+# пїЅпїЅпїЅпїЅпїЅ
 SET @GUID := 149000;
 DELETE FROM `creature` WHERE `guid` BETWEEN @GUID+0 AND @GUID+269;
 INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `MovementType`) VALUES
@@ -3656,7 +3656,7 @@ UPDATE `creature_template` SET `npcflag`=`npcflag`|2 WHERE `entry`=28160;
 UPDATE `quest_template` SET `QuestFlags` = 32768, `SpecialFlags` = 1 WHERE `entry` = 29464;
 UPDATE `creature_template` SET `unit_flags` = 33280 WHERE `entry` = 17678;
 
-# Вовка
+# пїЅпїЅпїЅпїЅпїЅ
 SET @GUID := 149400;
 DELETE FROM `creature` WHERE `guid` BETWEEN @GUID+0 AND @GUID+80;
 INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `MovementType`) VALUES

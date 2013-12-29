@@ -1283,7 +1283,7 @@ UPDATE `gameobject_template` SET `faction` = 0, `data3` = 0 WHERE `entry` = 3524
 UPDATE `creature` SET `spawndist` = 0, `MovementType` = 0 WHERE `id` IN (21045,16229,48705,6547,42014,50526,61,2551);
 UPDATE `creature_template_addon` SET auras=NULL WHERE entry IN (38240,38239,38238);
 
-# Вовка
+# пїЅпїЅпїЅпїЅпїЅ
 SET @NPC := 371867;
 SET @PATH := @NPC;
 UPDATE `creature` SET `spawndist`=0,`MovementType`=2,`position_x`=1748.396,`position_y`=2968.534,`position_z`=105.6546 WHERE `guid`=@NPC;
@@ -2506,7 +2506,7 @@ UPDATE `quest_template` SET `QuestFlags` = 32768, `SpecialFlags` = 1 WHERE `entr
 UPDATE `quest_template` SET `QuestFlags` = 32768, `SpecialFlags` = 1 WHERE `entry` = 29445;
 UPDATE `item_template` SET `spellid_2` = 6417, `spelltrigger_2` = 6 WHERE `entry` = 78342;
 
-# Вовка
+# пїЅпїЅпїЅпїЅпїЅ
 # Voregen_zone
 
 UPDATE `gameobject_template` SET `faction` = 114 WHERE `entry` = 195581;
@@ -2961,7 +2961,7 @@ REPLACE INTO `spell_area` (`spell`, `area`, `quest_start`, `quest_end`, `aura_sp
 ('49416', '4756', '14078', '14099', '0', '0', '2', '1');
 UPDATE creature SET phasemask=4 WHERE id=35753;
 
-# Вовка
+# пїЅпїЅпїЅпїЅпїЅ
 # Goblin_zone
 
 UPDATE `gameobject` SET `state` = 0, `phaseMask` = 65535 WHERE `id` = 188215;
