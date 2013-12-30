@@ -36,15 +36,15 @@ echo ""
 echo "Credits to: Factionwars, Nemok, BrainDedd and Antz"
 echo "=================================================="
 echo ""
-read -s "What is your MySQL host name? [localhost] :"   svr 
+read -p "What is your MySQL host name? [localhost] :"   svr 
 if ["$svr" = ""]; then svr="localhost"; fi
-read -s "What is your MySQL port? [3306] : "            port
+read -p "What is your MySQL port? [3306] : "            port
 if ["$port" = ""]; then port="3306"; fi
-read -s "What is your MySQL user name? [mangos] : "     user
+read -p "What is your MySQL user name? [mangos] : "     user
 if ["$user" = ""]; then user="mangos"; fi
-read -s "What is your MySQL password? [mangos] : "      pass
+read -p "What is your MySQL password? [mangos] : "      pass
 if ["$pass" = ""]; then pass="mangos"; fi
-read -s "What is your World database name? [mangos] : " wdb
+read -p "What is your World database name? [mangos] : " wdb
 if ["$wdb" = ""]; then wdb="mangos"; fi
 }
 
