@@ -1,4 +1,5 @@
 
+-- phase definitions
 insert into `phase_definitions` (`zoneId`, `entry`, `phasemask`, `phaseId`, `terrainswapmap`, `flags`, `comment`) values
 ('1519','1','129','0','0','0','Stormwind: [A] Heros Call: Vashj\'ir'),
 ('1519','2','257','0','0','0','Stormwind: [A] Heros Call: Hyjal'),
@@ -11,6 +12,10 @@ insert into `phase_definitions` (`zoneId`, `entry`, `phasemask`, `phaseId`, `ter
 ('1637','4','1025','0','0','0','Orgrimmar: [H] Warchiefs Command: Uldum'),
 ('1637','5','2049','0','0','0','Orgrimmar: [H] Warchiefs Command: Twilight Highlands'),
 ('616','1','0','165','719','0','Mount Hyjal: Default Terrainswap');
+
+-- cata zone portals (alliance)
+UPDATE `gameobject_template` SET `data0` = '85040' , `data5` = '0' WHERE `entry` = '207691'; -- teleport to vashj'ir
+
 
 
 UPDATE `db_version` SET `version` = 'YTDB_0.16.9_R722_MaNGOS3_R12751_SD2_R2928_ACID_R310_RuDB_R63_+_mangosdb_update_5';
