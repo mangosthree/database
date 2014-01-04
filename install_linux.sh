@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Quick install section
 # This will automatically use the variables below to install the world databases without prompting then optimize them and exit
