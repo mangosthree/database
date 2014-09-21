@@ -51,7 +51,7 @@ if %wdb%. == . set wdb=mangos
 
 :install
 set dbpath=full_db
-set updates_path=updates
+set updates_path=under_dev
 set mysql=bin
 
 :checkpaths

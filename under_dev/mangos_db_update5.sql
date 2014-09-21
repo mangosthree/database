@@ -1,5 +1,11 @@
 
 -- phase definitions
+-- removing the primary keys because the phase definitions have duplicate values in the zoneId and entry columns.
+-- might want to relook at a real primary key column that would be unique
+
+alter table phase_definitions modify column entry smallint(5);
+alter table phase_definitions drop primary key;
+
 insert into `phase_definitions` (`zoneId`, `entry`, `phasemask`, `phaseId`, `terrainswapmap`, `flags`, `comment`) values
 ('1519','1','129','0','0','0','Stormwind: [A] Heros Call: Vashj\'ir'),
 ('1519','2','257','0','0','0','Stormwind: [A] Heros Call: Hyjal'),
