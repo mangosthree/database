@@ -28,6 +28,6 @@ insert into creature_ai_scripts values (4454801,44548,8,0,100,0,20271,-1,0,0,33,
 (4454805,44548,8,0,100,0,5143,-1,0,0,33,44175,1,0,0,0,0,0,0,0,0,0,'Training Dummy - On Arcane Missiles Spellhit (Quest 26916 Credit)'),
 (4454806,44548,8,0,100,0,2098,-1,0,0,33,44175,1,0,0,0,0,0,0,0,0,0,'Training Dummy - On Eviscerate Spellhit (Quest 26915 Credit)');
 
-update creature_template set ainame = 'EventAI', minhealth = 1, maxhealth = 1 where entry = 44548;
+update creature_template set ainame = 'EventAI', minhealth = 70, maxhealth = 70 where entry = 44548;
 
 UPDATE `db_version` SET `version` = 'YTDB_0.16.9_R722_MaNGOS3_R12751_SD2_R2928_ACID_R310_RuDB_R63_+_mangosdb_update_6';
