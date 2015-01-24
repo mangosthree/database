@@ -8934,15 +8934,15 @@ UPDATE creature_template SET ScriptName='boss_razorscale' WHERE entry=33186;
 UPDATE creature_template SET ScriptName='npc_expedition_commander' WHERE entry=33210;
 UPDATE creature_template SET ScriptName='npc_razorscale_spawner' WHERE entry=33245;
 UPDATE creature_template SET ScriptName='npc_harpoon_fire_state' WHERE entry=33282;
-DELETE FROM scripted_event_id WHERE id IN (20964);
-INSERT INTO scripted_event_id VALUES
+DELETE FROM scripted_event WHERE id IN (20964);
+INSERT INTO scripted_event VALUES
 (20964,'event_spell_harpoon_shot');
 UPDATE creature_template SET ScriptName='boss_flame_leviathan' WHERE entry=33113;
 UPDATE gameobject_template SET ScriptName='go_ulduar_teleporter' WHERE entry=194569;
 UPDATE creature_template SET ScriptName='npc_keeper_norgannon' WHERE entry=33686;
 UPDATE creature_template SET ScriptName='npc_brann_ulduar' WHERE entry=33579;
-DELETE FROM scripted_event_id WHERE id IN (21030,21031,21032,21033);
-INSERT INTO scripted_event_id VALUES
+DELETE FROM scripted_event WHERE id IN (21030,21031,21032,21033);
+INSERT INTO scripted_event VALUES
 (21030,'event_go_ulduar_tower'),        -- Tower of Life destroyed event
 (21031,'event_go_ulduar_tower'),        -- Tower of Storms destroyed event
 (21032,'event_go_ulduar_tower'),        -- Tower of Frost destroyed event
@@ -8951,12 +8951,12 @@ UPDATE creature_template SET ScriptName='npc_hodir_fury_reticle' WHERE entry=331
 UPDATE creature_template SET ScriptName='npc_hodir_fury' WHERE entry=33212;
 UPDATE creature_template SET ScriptName='npc_freya_ward' WHERE entry=33367;
 UPDATE creature_template SET ScriptName='npc_mimiron_inferno' WHERE entry=33370;
-DELETE FROM scripted_event_id WHERE id IN (21605);
-INSERT INTO scripted_event_id VALUES
+DELETE FROM scripted_event WHERE id IN (21605);
+INSERT INTO scripted_event VALUES
 (21605,'event_ulduar');
 UPDATE creature_template SET ScriptName='npc_scrapbot' WHERE entry=33343;
-DELETE FROM scripted_event_id WHERE id IN (21606);
-INSERT INTO scripted_event_id VALUES
+DELETE FROM scripted_event WHERE id IN (21606);
+INSERT INTO scripted_event VALUES
 (21606,'event_ulduar');
 UPDATE creature_template SET ScriptName='boss_kologarn' WHERE entry=32930;
 UPDATE creature_template SET ScriptName='npc_focused_eyebeam' WHERE entry IN (33802,33632);
@@ -8972,8 +8972,8 @@ UPDATE creature_template SET ScriptName='npc_collapsing_star' WHERE entry=32955;
 UPDATE creature_template SET ScriptName='boss_hodir' WHERE entry=32845;
 UPDATE creature_template SET ScriptName='npc_flash_freeze' WHERE entry IN (32926,32938);
 UPDATE creature_template SET ScriptName='npc_icicle_target' WHERE entry=33174;
-DELETE FROM scripted_event_id WHERE id IN (20907,21045);
-INSERT INTO scripted_event_id VALUES
+DELETE FROM scripted_event WHERE id IN (20907,21045);
+INSERT INTO scripted_event VALUES
 (20907,'event_boss_hodir'),
 (21045,'event_boss_hodir');
 UPDATE creature_template SET ScriptName='boss_thorim' WHERE entry=32865;
