@@ -1,9 +1,8 @@
-
--- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos
+-- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.6.15
+-- Server version	5.5.37
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -36,7 +35,16 @@ CREATE TABLE `item_convert` (
 
 LOCK TABLES `item_convert` WRITE;
 /*!40000 ALTER TABLE `item_convert` DISABLE KEYS */;
-INSERT INTO `item_convert` VALUES (50338,44135),(50337,44136),(50335,44133),(50336,44134),(50370,44152),(50367,44149),(50368,44159),(50369,44150),(50372,44701),(50373,44702);
+INSERT INTO `item_convert` (`entry`, `item`) VALUES (50338,44135),
+(50337,44136),
+(50335,44133),
+(50336,44134),
+(50370,44152),
+(50367,44149),
+(50368,44159),
+(50369,44150),
+(50372,44701),
+(50373,44702);
 /*!40000 ALTER TABLE `item_convert` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-28 16:27:57
+-- Dump completed on 2015-01-24 21:53:58

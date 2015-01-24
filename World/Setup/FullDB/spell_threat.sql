@@ -1,9 +1,8 @@
-
--- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos
+-- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.6.15
+-- Server version	5.5.37
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -38,7 +37,32 @@ CREATE TABLE `spell_threat` (
 
 LOCK TABLES `spell_threat` WRITE;
 /*!40000 ALTER TABLE `spell_threat` DISABLE KEYS */;
-INSERT INTO `spell_threat` VALUES (78,20,1,0),(99,15,1,0),(676,104,1,0),(770,108,1,0),(779,0,1.5,0),(845,10,1,0),(1160,16,1,0),(1715,61,1,0),(2139,300,1,0),(5676,0,2,0),(6343,0,1.75,0),(6572,155,1,0),(6807,13,1,0),(7386,100,1,0),(16857,108,1,0),(17735,200,1,0),(20243,0,1,0.05),(20736,100,1,0),(20925,20,1,0),(23922,160,1,0),(24394,580,1,0),(33745,182,0.5,0),(33878,129,1,0),(52212,0,1.9,0),(56815,0,1.75,0),(57755,0,1.5,0);
+INSERT INTO `spell_threat` (`entry`, `Threat`, `multiplier`, `ap_bonus`) VALUES (78,20,1,0),
+(99,15,1,0),
+(676,104,1,0),
+(770,108,1,0),
+(779,0,1.5,0),
+(845,10,1,0),
+(1160,16,1,0),
+(1715,61,1,0),
+(2139,300,1,0),
+(5676,0,2,0),
+(6343,0,1.75,0),
+(6572,155,1,0),
+(6807,13,1,0),
+(7386,100,1,0),
+(16857,108,1,0),
+(17735,200,1,0),
+(20243,0,1,0.05),
+(20736,100,1,0),
+(20925,20,1,0),
+(23922,160,1,0),
+(24394,580,1,0),
+(33745,182,0.5,0),
+(33878,129,1,0),
+(52212,0,1.9,0),
+(56815,0,1.75,0),
+(57755,0,1.5,0);
 /*!40000 ALTER TABLE `spell_threat` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +75,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-28 16:27:53
+-- Dump completed on 2015-01-24 21:55:20

@@ -16,6 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `db_version`
+--
+
+DROP TABLE IF EXISTS `db_version`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_version` (
+  `version` varchar(120) DEFAULT NULL,
+  `creature_ai_version` varchar(120) DEFAULT NULL,
+  `cache_id` int(10) DEFAULT '0',
+  `required_12752_01_mangos_reputation_spillover_template` bit(1) default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Used DB version notes';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `db_version`
+--
+
+LOCK TABLES `db_version` WRITE;
+/*!40000 ALTER TABLE `db_version` DISABLE KEYS */;
+INSERT INTO `db_version` (`version`, `creature_ai_version`, `cache_id`, `required_12752_01_mangos_reputation_spillover_template`) VALUES
+('Mangos default database.','Creature EventAI not provided.',0,NULL);
+/*!40000 ALTER TABLE `db_version` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `achievement_criteria_requirement`
 --
 
@@ -261,8 +287,8 @@ CREATE TABLE `command` (
 
 LOCK TABLES `command` WRITE;
 /*!40000 ALTER TABLE `command` DISABLE KEYS */;
-INSERT INTO `command` (`name`, `security`, `help`) VALUES
-('account',0,'Syntax: .account\r\n\r\nDisplay the access level of your account.'),
+INSERT INTO `command` VALUES
+('account',0,'Syntax: .account\r\nDisplay the access level of your account.'),
 ('account characters',3,'Syntax: .account characters [#accountId|$accountName]\r\n\r\nShow list all characters for account selected by provided #accountId or $accountName, or for selected player in game.'),
 ('account create',4,'Syntax: .account create $account $password [$expansion]\r\n\r\nCreate account and set password to it. Optionally, you may also set another expansion for this account than the defined default value.'),
 ('account delete',4,'Syntax: .account delete $account\r\n\r\nDelete account with all characters.'),
@@ -1352,6 +1378,24 @@ CREATE TABLE `db_script_string` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+/*Table structure for table `dbdocsfields` */
+
+DROP TABLE IF EXISTS `dbdocsfields`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dbdocsfields` (
+  `fieldId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique Id for this field',
+  `languageId` int(11) NOT NULL DEFAULT '0' COMMENT 'dbdocsLanguageId to link to. (Normallu 0 = English)',
+  `tableName` varchar(80) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Name of the table to link to',
+  `fieldName` varchar(80) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Name of the field to link the note to',
+  `fieldComment` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Main field Note',
+  `fieldNotes` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'Additional Field Notes',
+  PRIMARY KEY (`fieldId`,`languageId`),
+  KEY `fieldId` (`fieldId`)
+) ENGINE=InnoDB AUTO_INCREMENT=1764 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
 --
 -- Table structure for table `dbdocsfields_localised`
 --
@@ -1534,32 +1578,6 @@ DROP TABLE IF EXISTS dbscripts_on_spell;
 CREATE TABLE dbscripts_on_spell LIKE dbscripts_on_creature_movement;
 DROP TABLE IF EXISTS dbscripts_on_creature_death;
 CREATE TABLE dbscripts_on_creature_death LIKE dbscripts_on_creature_movement;
-
---
--- Table structure for table `db_version`
---
-
-DROP TABLE IF EXISTS `db_version`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `db_version` (
-  `version` varchar(120) DEFAULT NULL,
-  `creature_ai_version` varchar(120) DEFAULT NULL,
-  `cache_id` int(10) DEFAULT '0',
-  `required_12752_01_mangos_reputation_spillover_template` bit(1) default NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Used DB version notes';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `db_version`
---
-
-LOCK TABLES `db_version` WRITE;
-/*!40000 ALTER TABLE `db_version` DISABLE KEYS */;
-INSERT INTO `db_version` (`version`, `creature_ai_version`, `cache_id`, `required_12752_01_mangos_reputation_spillover_template`) VALUES
-('Mangos default database.','Creature EventAI not provided.',0,NULL);
-/*!40000 ALTER TABLE `db_version` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `disenchant_loot_template`
@@ -3670,7 +3688,7 @@ INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `conten
 (267,'Object not found!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (268,'Creature not found!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (269,'Currency \'%i\' not found.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(270,'Creature Removed',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(270,'Creature removed',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (271,'Creature moved.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (272,'Creature (GUID:%u) must be on the same map as player!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (273,'Game Object (GUID: %u) not found',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -4024,9 +4042,9 @@ INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `conten
 (658,'$n has defended the %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (659,'$n has assaulted the %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (660,'$n claims the %s! If left unchallenged, the %s will control it in 1 minute!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(661,'The battle for Arathi Basin begins in 1 minute.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(662,'The battle for Arathi Basin begins in 30 seconds. Prepare yourselves!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(663,'The battle for Arathi Basin has begun!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(661,'The Battle for Arathi Basin begins in 1 minute.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(662,'The Battle for Arathi Basin begins in 30 seconds. Prepare yourselves!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(663,'The Battle for Arathi Basin has begun!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (664,'The Alliance has gathered $1776W resources, and is near victory!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (665,'The Horde has gathered $1777W resources, and is near victory!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (666,'After your recent battle in %s our best attempts to award you a Mark of Honor failed. Enclosed you will find the Mark of Honor we were not able to deliver to you at the time. Thanks for fighting in %s!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -4263,11 +4281,11 @@ INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `conten
 (1189,'Yellow',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (1190,'Amount of %s items is set to %u.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (1191,'Items ratio for %s is set to %u.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(1192,'  Effect movement',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(1192,'Effect movement',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (1193,'Gear Score of Player %s is %u.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (1194,'Current State Information: GOState %u, LootState %u. Collision %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (1195,'Current State Information: GOState %u, LootState %u. Collision %s, (door %s by default)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(1200,'You try to view cinemitic %u but it doesn\'t exist.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(1200,'You tried to view cinematic %u but it doesn\'t exist.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (1201,'You try to view movie %u but it doesn\'t exist.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (1202,'Spell %u %s = %f (*1.88 = %f) DB = %f AP = %f',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (1203,'direct heal',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -4385,13 +4403,13 @@ DROP TABLE IF EXISTS `npc_spellclick_spells`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `npc_spellclick_spells` (
-    `npc_entry`   int unsigned NOT NULL COMMENT 'reference to creature_template',
-    `spell_id`    int unsigned NOT NULL COMMENT 'spell which should be casted ',
-    `quest_start`        mediumint(8) unsigned NOT NULL COMMENT 'reference to quest_template',
-    `quest_start_active` tinyint(1) unsigned NOT NULL default '0',
-    `quest_end`          mediumint(8) unsigned NOT NULL default '0',
-    `cast_flags`         tinyint unsigned NOT NULL COMMENT 'first bit defines caster: 1=player, 0=creature; second bit defines target, same mapping as caster bit',
-    `condition_id`       mediumint(8) unsigned NOT NULL default '0'
+  `npc_entry` int(10) unsigned NOT NULL COMMENT 'reference to creature_template',
+  `spell_id` int(10) unsigned NOT NULL COMMENT 'spell which should be casted ',
+  `quest_start` mediumint(8) unsigned NOT NULL COMMENT 'reference to quest_template',
+  `quest_start_active` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `quest_end` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `cast_flags` tinyint(3) unsigned NOT NULL COMMENT 'first bit defines caster: 1=player, 0=creature; second bit defines target, same mapping as caster bit',
+  `condition_id` mediumint(8) unsigned NOT NULL DEFAULT '0'
 ) ENGINE = MYISAM DEFAULT CHARSET=utf8;
 
 --
@@ -4572,7 +4590,7 @@ CREATE TABLE `npc_vendor` (
   `maxcount` smallint(5) unsigned NOT NULL DEFAULT '0',
   `incrtime` int(10) unsigned NOT NULL DEFAULT '0',
   `ExtendedCost` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `condition_id` mediumint(8) unsigned NOT NULL default '0',
+  `condition_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`entry`,`item`,`ExtendedCost`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Npc System';
 /*!40101 SET character_set_client = @saved_cs_client */;

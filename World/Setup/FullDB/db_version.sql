@@ -1,9 +1,8 @@
-
--- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos
+-- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.6.15
+-- Server version	5.5.37
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +36,7 @@ CREATE TABLE `db_version` (
 
 LOCK TABLES `db_version` WRITE;
 /*!40000 ALTER TABLE `db_version` DISABLE KEYS */;
-INSERT INTO `db_version` VALUES ('YTDB_0.16.9_R722_cMaNGOS4_R12773_SD2_R2928_ACID_R310_RuDB_R63','ACID 3.1.0 \'Another Wild Adventure\' - Full Release for CMaNGOS-WOTLK (3.3.5a Client)',722,'\0');
+INSERT INTO `db_version` (`version`, `creature_ai_version`, `cache_id`, `required_12752_01_mangos_reputation_spillover_template`) VALUES ('YTDB_0.16.9_R722_cMaNGOS4_R12773_SD2_R2928_ACID_R310_RuDB_R63','ACID 3.1.0 \'Another Wild Adventure\' - Full Release for CMaNGOS-WOTLK (3.3.5a Client)',722,'\0');
 /*!40000 ALTER TABLE `db_version` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-28 16:28:04
+-- Dump completed on 2015-01-24 21:53:14

@@ -1,9 +1,8 @@
-
--- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos
+-- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.6.15
+-- Server version	5.5.37
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -41,7 +40,21 @@ CREATE TABLE `battleground_template` (
 
 LOCK TABLES `battleground_template` WRITE;
 /*!40000 ALTER TABLE `battleground_template` DISABLE KEYS */;
-INSERT INTO `battleground_template` VALUES (1,10,40,611,3.71492,610,1.16711),(2,10,10,769,3.14159,770,0.00391),(3,15,15,890,3.91992,889,0.88828),(4,5,5,929,0,936,3.14159),(5,5,5,939,0,940,3.14159),(6,5,5,0,0,0,0),(7,15,15,1103,3.22092,1104,0.01649),(8,5,5,1258,0,1259,3.14159),(9,8,15,1367,0,1368,0),(10,5,5,1362,0,1363,0),(11,5,5,1966,0,1967,0),(30,10,40,1485,0,1486,0),(32,5,40,0,0,0,0),(108,5,10,1726,2.55647,1727,6.18108),(120,5,10,1798,5.95725,1799,1.55116);
+INSERT INTO `battleground_template` (`id`, `MinPlayersPerTeam`, `MaxPlayersPerTeam`, `AllianceStartLoc`, `AllianceStartO`, `HordeStartLoc`, `HordeStartO`) VALUES (1,10,40,611,3.71492,610,1.16711),
+(2,10,10,769,3.14159,770,0.00391),
+(3,15,15,890,3.91992,889,0.88828),
+(4,5,5,929,0,936,3.14159),
+(5,5,5,939,0,940,3.14159),
+(6,5,5,0,0,0,0),
+(7,15,15,1103,3.22092,1104,0.01649),
+(8,5,5,1258,0,1259,3.14159),
+(9,8,15,1367,0,1368,0),
+(10,5,5,1362,0,1363,0),
+(11,5,5,1966,0,1967,0),
+(30,10,40,1485,0,1486,0),
+(32,5,40,0,0,0,0),
+(108,5,10,1726,2.55647,1727,6.18108),
+(120,5,10,1798,5.95725,1799,1.55116);
 /*!40000 ALTER TABLE `battleground_template` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +67,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-28 16:27:53
+-- Dump completed on 2015-01-24 21:52:43

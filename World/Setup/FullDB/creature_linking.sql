@@ -1,9 +1,8 @@
-
--- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos
+-- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.6.15
+-- Server version	5.5.37
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +36,11 @@ CREATE TABLE `creature_linking` (
 
 LOCK TABLES `creature_linking` WRITE;
 /*!40000 ALTER TABLE `creature_linking` DISABLE KEYS */;
-INSERT INTO `creature_linking` VALUES (92752,5402,515),(65782,92752,515),(59456,65782,515),(59457,58910,515),(59504,58355,515);
+INSERT INTO `creature_linking` (`guid`, `master_guid`, `flag`) VALUES (92752,5402,515),
+(65782,92752,515),
+(59456,65782,515),
+(59457,58910,515),
+(59504,58355,515);
 /*!40000 ALTER TABLE `creature_linking` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-28 16:27:52
+-- Dump completed on 2015-01-24 21:52:57

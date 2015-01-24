@@ -1,9 +1,8 @@
-
--- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos
+-- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.6.15
+-- Server version	5.5.37
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -36,7 +35,11 @@ CREATE TABLE `world_template` (
 
 LOCK TABLES `world_template` WRITE;
 /*!40000 ALTER TABLE `world_template` DISABLE KEYS */;
-INSERT INTO `world_template` VALUES (1,'world_map_kalimdor'),(0,'world_map_eastern_kingdoms'),(530,'world_map_outland'),(571,'world_map_northrend'),(609,'world_map_ebon_hold');
+INSERT INTO `world_template` (`map`, `ScriptName`) VALUES (571,'world_map_northrend'),
+(530,'world_map_outland'),
+(1,'world_map_kalimdor'),
+(0,'world_map_eastern_kingdoms'),
+(609,'world_map_ebon_hold');
 /*!40000 ALTER TABLE `world_template` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-28 16:27:39
+-- Dump completed on 2015-01-24 21:55:24
