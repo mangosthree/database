@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 # Quick install section
 # This will automatically use the variables below to install the world databases without prompting then optimize them and exit
 # To use: Set your environment variables below and change 'set quick=off' to 'set quick=on'
