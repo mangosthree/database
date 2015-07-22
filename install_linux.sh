@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 # Quick install section
 # This will automatically use the variables below to install the world databases without prompting then optimize them and exit
 # To use: Set your environment variables below and change 'set quick=off' to 'set quick=on'
@@ -13,7 +12,6 @@ port=3306;
 #ddb=dbc;
 admin=root;
 adminpass=yourpassword;
-serverrepo=/path/to/your/source/folder
 
 # -- Don't change after this point --
 wdb=mangos;
@@ -56,8 +54,6 @@ read -p "What is your MySQL user name? [mangos] : "     user
 if [ "$user" = "" ]; then user="mangos"; fi
 read -p "What is your MySQL password? [mangos] : "      pass
 if [ "$pass" = "" ]; then pass="mangos"; fi
-#read -p "What is your World database name? [mangos] : " wdb
-#if [ "$wdb" = "" ]; then wdb="mangos"; fi
 read -p "What is the name of a user that can create databases? [root] : " admin
 if [ "$admin" = "" ]; then admin="root"; fi
 read -p "What is the password of your user that can create databases? [root] : " adminpass
