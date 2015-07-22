@@ -14,7 +14,11 @@ cdb=characters;
 rdb=realmd;
 ddb=dbc;
 admin=root;
+<<<<<<< HEAD
 adminpass=yourpassword;
+=======
+adminpass=the_master;
+>>>>>>> 720f985096f5b93caf69078b4caef9b0e973efe6
 serverrepo=/media/Dati/mangos/server
 
 # -- Don't change past this point --
@@ -131,6 +135,7 @@ echo "";
 #read -p "Do you want to install additional DBC-files tables? (y/n, default: y) " yesno
 #yesno=${yesno:-$yesnoDefault}
 #if [ "$yesno" == "y" ]; then 
+<<<<<<< HEAD
 #	echo "Dropping DBC database"
 #	#mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port < drop_dbc.sql
 #	echo ""
@@ -147,6 +152,24 @@ echo "";
 #else
 #	echo "DBC installations has been ended"
 #	exit; 
+=======
+	#echo "Dropping DBC database"
+	#mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port < drop_dbc.sql
+	#echo ""
+	#echo "Creating DBC database"
+	#mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port < create_dbc.sql
+
+	#for sql in ./dbc/*.sql
+	#do
+	#	echo $sql
+	#	mysql -q -s -h $svr --user=$user --password=$pass --port=$port $ddb < $sql
+	#done
+
+	#echo "Done"
+#else
+	#echo "DBC installations has been ended"
+	#exit; 
+>>>>>>> 720f985096f5b93caf69078b4caef9b0e973efe6
 #fi
 
 echo "Press any key to continue"
