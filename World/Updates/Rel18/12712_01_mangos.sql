@@ -1,21 +1,23 @@
 ALTER TABLE db_version CHANGE COLUMN required_12662_01_mangos_hotfix_data required_12712_01_mangos bit;
 
-ALTER TABLE spell_template ADD COLUMN attr_ex3 int(11) unsigned NOT NULL DEFAULT '0' AFTER attr_ex2;
+-- ALTER TABLE spell_template ADD COLUMN attr_ex3 int(11) unsigned NOT NULL DEFAULT '0' AFTER attr_ex2;
 
 DELETE FROM spell_template WHERE id=23770;
 INSERT INTO spell_template VALUES
-(23770, 0x24800100, 0x10000088, 0x00000001, 0x00100000, 0x00000000, 101, 367,   6, 25,     0,   0,   4, 0,       0,    0,     'Sayge''s timer - Darkmoon Faire');
+(23770, 0x24800100, 0x10000088, 0x00000001, 0x00100000, 0, 101, 367,   6, 25,     0,   0,   4, 0,       0,    0,     'Sayge''s timer - Darkmoon Faire');
 
 DELETE FROM spell_proc_event WHERE entry IN (67712, 67758);
 INSERT INTO spell_proc_event VALUES
 (67712, 0x7F,  0, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000002, 0.000000, 0.000000, 2),
 (67758, 0x7F,  0, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000002, 0.000000, 0.000000, 2);
 
+/*
 ALTER TABLE db_script_string ADD COLUMN sound mediumint(8) unsigned NOT NULL DEFAULT '0' AFTER content_loc8;
 ALTER TABLE db_script_string ADD COLUMN type tinyint(3) unsigned NOT NULL DEFAULT '0' AFTER sound;
 ALTER TABLE db_script_string ADD COLUMN language tinyint(3) unsigned NOT NULL DEFAULT '0' AFTER type;
 ALTER TABLE db_script_string ADD COLUMN emote smallint(5) unsigned NOT NULL DEFAULT '0' AFTER language;
 ALTER TABLE db_script_string ADD COLUMN comment text AFTER emote;
+*/
 
 -- Update Dbscript_string with the type and language from Dbscripts_on_*
 CREATE TEMPORARY TABLE IF NOT EXISTS db_script_temp AS
@@ -207,5 +209,5 @@ INSERT INTO playercreateinfo_spell (race, class, Spell, Note) VALUES
 
 UPDATE `command` SET help = 'Syntax: .account create $account $password [$expansion]\r\n\r\nCreate account and set password to it. Optionally, you may also set another expansion for this account than the defined default value.' WHERE name = 'account create';
 
-ALTER TABLE playercreateinfo_action DROP INDEX playercreateinfo_race_class_index;
+-- ALTER TABLE playercreateinfo_action DROP INDEX playercreateinfo_race_class_index;
 
