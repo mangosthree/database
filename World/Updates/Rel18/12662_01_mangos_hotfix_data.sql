@@ -1,5 +1,6 @@
 ALTER TABLE db_version CHANGE COLUMN required_m12654_command required_12662_01_mangos_hotfix_data bit;
 
+/*
 CREATE TABLE `hotfix_data` (
   `entry` int(10) unsigned NOT NULL,
   `type` int(10) unsigned NOT NULL DEFAULT '0',
@@ -36,3 +37,4 @@ INSERT INTO `hotfix_data` VALUES ('69847', '1344507586', '2011-11-23 08:34:03');
 INSERT INTO `hotfix_data` VALUES ('69847', '1344507586', '2011-11-23 08:34:06');
 INSERT INTO `hotfix_data` VALUES ('72068', '1344507586', '2011-11-23 08:34:03');
 INSERT INTO `hotfix_data` VALUES ('72068', '1344507586', '2011-11-23 08:34:06');
+*/

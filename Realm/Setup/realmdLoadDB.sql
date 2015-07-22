@@ -18,12 +18,36 @@
 --
 -- Table structure for table `realmd_db_version`
 --
+/*
+DROP TABLE IF EXISTS `realmd_db_version`;
+/ *!40101 SET @saved_cs_client     = @@character_set_client * /;
+/ *!40101 SET character_set_client = utf8 * /;
+CREATE TABLE `realmd_db_version` (
+  `required_20140607_Realm_Resync` bit(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Last applied sql update to DB';
+/ *!40101 SET character_set_client = @saved_cs_client * /;
+*/
+--
+-- Dumping data for table `realmd_db_version`
+--
+/*
+LOCK TABLES `realmd_db_version` WRITE;
+/ *!40000 ALTER TABLE `realmd_db_version` DISABLE KEYS * /;
+INSERT INTO `realmd_db_version` VALUES
+(NULL);
+/ *!40000 ALTER TABLE `realmd_db_version` ENABLE KEYS * /;
+UNLOCK TABLES;
+*/
+
+--
+-- Table structure for table `realmd_db_version`
+--
 
 DROP TABLE IF EXISTS `realmd_db_version`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `realmd_db_version` (
-  `required_20140607_Realm_Resync` bit(1) DEFAULT NULL
+  `required_c12484_02_realmd_account_access` bit(1) default NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Last applied sql update to DB';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -33,10 +57,11 @@ CREATE TABLE `realmd_db_version` (
 
 LOCK TABLES `realmd_db_version` WRITE;
 /*!40000 ALTER TABLE `realmd_db_version` DISABLE KEYS */;
-INSERT INTO `realmd_db_version` VALUES
+INSERT INTO `realmd_db_version` (`required_c12484_02_realmd_account_access`) VALUES
 (NULL);
 /*!40000 ALTER TABLE `realmd_db_version` ENABLE KEYS */;
 UNLOCK TABLES;
+
 
 --
 -- Table structure for table `account`
@@ -76,10 +101,10 @@ CREATE TABLE `account` (
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
 INSERT INTO `account` VALUES
-(1,'ADMINISTRATOR','a34b29541b87b7e4823683ce6c7bf6ae68beaaac',3,'','0','0','','2005-09-01 00:00:00','127.0.0.1',0,0,'0000-00-00 00:00:00',0,0,0,0),
-(2,'GAMEMASTER','7841e21831d7c6bc0b57fbe7151eb82bd65ea1f9',2,'','0','0','','2005-09-01 00:00:00','127.0.0.1',0,0,'0000-00-00 00:00:00',0,0,0,0),
-(3,'MODERATOR','a7f5fbff0b4eec2d6b6e78e38e8312e64d700008',1,'','0','0','','2005-09-01 00:00:00','127.0.0.1',0,0,'0000-00-00 00:00:00',0,0,0,0),
-(4,'PLAYER','3ce8a96d17c5ae88a30681024e86279f1a38c041',0,'','0','0','','2005-09-01 00:00:00','127.0.0.1',0,0,'0000-00-00 00:00:00',0,0,0,0);
+(1,'ADMINISTRATOR','a34b29541b87b7e4823683ce6c7bf6ae68beaaac',3,'','0','0','','2005-09-01 00:00:00','127.0.0.1',0,0,'0000-00-00 00:00:00',1,3,0,0),
+(2,'GAMEMASTER','7841e21831d7c6bc0b57fbe7151eb82bd65ea1f9',2,'','0','0','','2005-09-01 00:00:00','127.0.0.1',0,0,'0000-00-00 00:00:00',1,3,0,0),
+(3,'MODERATOR','a7f5fbff0b4eec2d6b6e78e38e8312e64d700008',1,'','0','0','','2005-09-01 00:00:00','127.0.0.1',0,0,'0000-00-00 00:00:00',1,3,0,0),
+(4,'PLAYER','3ce8a96d17c5ae88a30681024e86279f1a38c041',0,'','0','0','','2005-09-01 00:00:00','127.0.0.1',0,0,'0000-00-00 00:00:00',1,3,0,0);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,7 +318,7 @@ CREATE TABLE `realmlist` (
 LOCK TABLES `realmlist` WRITE;
 /*!40000 ALTER TABLE `realmlist` DISABLE KEYS */;
 INSERT INTO `realmlist` VALUES
-(1,'mangos-zero','127.0.0.1',8085,0,2,0,0,0,'5875 6005');
+(1,'MaNGOS-Three','127.0.0.1',8085,0,2,0,0,0,'5875 6005');
 /*!40000 ALTER TABLE `realmlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
