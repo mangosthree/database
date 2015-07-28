@@ -71,16 +71,16 @@ DROP TABLE IF EXISTS `arena_team`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `arena_team` (
-  `arenateamid` int(10) unsigned NOT NULL default '0',
+  `arenateamid` int(10) unsigned NOT NULL DEFAULT '0',
   `name` char(255) NOT NULL,
-  `captainguid` int(10) unsigned NOT NULL default '0',
-  `type` tinyint(3) unsigned NOT NULL default '0',
-  `BackgroundColor` int(10) unsigned NOT NULL default '0',
-  `EmblemStyle` int(10) unsigned NOT NULL default '0',
-  `EmblemColor` int(10) unsigned NOT NULL default '0',
-  `BorderStyle` int(10) unsigned NOT NULL default '0',
-  `BorderColor` int(10) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`arenateamid`)
+  `captainguid` int(10) unsigned NOT NULL DEFAULT '0',
+  `type` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `BackgroundColor` int(10) unsigned NOT NULL DEFAULT '0',
+  `EmblemStyle` int(10) unsigned NOT NULL DEFAULT '0',
+  `EmblemColor` int(10) unsigned NOT NULL DEFAULT '0',
+  `BorderStyle` int(10) unsigned NOT NULL DEFAULT '0',
+  `BorderColor` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`arenateamid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -445,13 +445,13 @@ DROP TABLE IF EXISTS `character_declinedname`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `character_declinedname` (
-  `guid` int(11) unsigned NOT NULL default '0' COMMENT 'Global Unique Identifier',
-  `genitive` varchar(15) NOT NULL default '',
-  `dative` varchar(15) NOT NULL default '',
-  `accusative` varchar(15) NOT NULL default '',
-  `instrumental` varchar(15) NOT NULL default '',
-  `prepositional` varchar(15) NOT NULL default '',
-  PRIMARY KEY  (`guid`)
+  `guid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Global Unique Identifier',
+  `genitive` varchar(15) NOT NULL DEFAULT '',
+  `dative` varchar(15) NOT NULL DEFAULT '',
+  `accusative` varchar(15) NOT NULL DEFAULT '',
+  `instrumental` varchar(15) NOT NULL DEFAULT '',
+  `prepositional` varchar(15) NOT NULL DEFAULT '',
+  PRIMARY KEY (`guid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -690,13 +690,13 @@ DROP TABLE IF EXISTS `character_pet_declinedname`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `character_pet_declinedname` (
-  `id` int(11) unsigned NOT NULL default '0',
-  `owner` int(11) unsigned NOT NULL default '0',
-  `genitive` varchar(12) NOT NULL default '',
-  `dative` varchar(12) NOT NULL default '',
-  `accusative` varchar(12) NOT NULL default '',
-  `instrumental` varchar(12) NOT NULL default '',
-  `prepositional` varchar(12) NOT NULL default '',
+  `id` int(11) unsigned NOT NULL DEFAULT '0',
+  `owner` int(11) unsigned NOT NULL DEFAULT '0',
+  `genitive` varchar(12) NOT NULL DEFAULT '',
+  `dative` varchar(12) NOT NULL DEFAULT '',
+  `accusative` varchar(12) NOT NULL DEFAULT '',
+  `instrumental` varchar(12) NOT NULL DEFAULT '',
+  `prepositional` varchar(12) NOT NULL DEFAULT '',
   PRIMARY KEY  (`id`),
   KEY `owner_key` (`owner`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
@@ -1001,10 +1001,10 @@ CREATE TABLE `character_stats` (
   `parryPct` float unsigned NOT NULL DEFAULT '0',
   `critPct` float unsigned NOT NULL DEFAULT '0',
   `rangedCritPct` float unsigned NOT NULL DEFAULT '0',
-  `spellCritPct` float UNSIGNED NOT NULL default '0',
+  `spellCritPct` float UNSIGNED NOT NULL DEFAULT '0',
   `attackPower` int(10) unsigned NOT NULL DEFAULT '0',
   `rangedAttackPower` int(10) unsigned NOT NULL DEFAULT '0',
-  `spellPower` int(10) UNSIGNED NOT NULL default '0',
+  `spellPower` int(10) UNSIGNED NOT NULL DEFAULT '0',
   PRIMARY KEY (`guid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1149,10 +1149,10 @@ CREATE TABLE `characters` (
   `zone` int(11) unsigned NOT NULL DEFAULT '0',
   `death_expire_time` bigint(20) unsigned NOT NULL DEFAULT '0',
   `taxi_path` text,
-  `totalKills` int(10) UNSIGNED NOT NULL default '0',
-  `todayKills` smallint(5) UNSIGNED NOT NULL default '0',
-  `yesterdayKills` smallint(5) UNSIGNED NOT NULL default '0',
-  `chosenTitle` int(10) UNSIGNED NOT NULL default '0',
+  `totalKills` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `todayKills` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `yesterdayKills` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `chosenTitle` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `watchedFaction` int(10) unsigned NOT NULL DEFAULT '0',
   `drunk` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `health` int(10) unsigned NOT NULL DEFAULT '0',
@@ -2077,12 +2077,12 @@ DROP TABLE IF EXISTS `guild_bank_tab`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `guild_bank_tab` (
-  `guildid` int(11) unsigned NOT NULL default '0',
-  `TabId` tinyint(1) unsigned NOT NULL default '0',
-  `TabName` varchar(100) NOT NULL default '',
-  `TabIcon` varchar(100) NOT NULL default '',
+  `guildid` int(11) unsigned NOT NULL DEFAULT '0',
+  `TabId` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `TabName` varchar(100) NOT NULL DEFAULT '',
+  `TabIcon` varchar(100) NOT NULL DEFAULT '',
   `TabText` text,
-  PRIMARY KEY  (`guildid`,`TabId`),
+  PRIMARY KEY (`guildid`,`TabId`),
   KEY `guildid_key` (`guildid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -2140,20 +2140,20 @@ CREATE TABLE `guild_member` (
   `rank` tinyint(2) unsigned NOT NULL DEFAULT '0',
   `pnote` varchar(255) NOT NULL DEFAULT '',
   `offnote` varchar(255) NOT NULL DEFAULT '',
-  `BankResetTimeMoney` int(11) unsigned NOT NULL default '0',
-  `BankRemMoney` int(11) unsigned NOT NULL default '0',
-  `BankResetTimeTab0` int(11) unsigned NOT NULL default '0',
-  `BankRemSlotsTab0` int(11) unsigned NOT NULL default '0',
-  `BankResetTimeTab1` int(11) unsigned NOT NULL default '0',
-  `BankRemSlotsTab1` int(11) unsigned NOT NULL default '0',
-  `BankResetTimeTab2` int(11) unsigned NOT NULL default '0',
-  `BankRemSlotsTab2` int(11) unsigned NOT NULL default '0',
-  `BankResetTimeTab3` int(11) unsigned NOT NULL default '0',
-  `BankRemSlotsTab3` int(11) unsigned NOT NULL default '0',
-  `BankResetTimeTab4` int(11) unsigned NOT NULL default '0',
-  `BankRemSlotsTab4` int(11) unsigned NOT NULL default '0',
-  `BankResetTimeTab5` int(11) unsigned NOT NULL default '0',
-  `BankRemSlotsTab5` int(11) unsigned NOT NULL default '0',
+  `BankResetTimeMoney` int(11) unsigned NOT NULL DEFAULT '0',
+  `BankRemMoney` int(11) unsigned NOT NULL DEFAULT '0',
+  `BankResetTimeTab0` int(11) unsigned NOT NULL DEFAULT '0',
+  `BankRemSlotsTab0` int(11) unsigned NOT NULL DEFAULT '0',
+  `BankResetTimeTab1` int(11) unsigned NOT NULL DEFAULT '0',
+  `BankRemSlotsTab1` int(11) unsigned NOT NULL DEFAULT '0',
+  `BankResetTimeTab2` int(11) unsigned NOT NULL DEFAULT '0',
+  `BankRemSlotsTab2` int(11) unsigned NOT NULL DEFAULT '0',
+  `BankResetTimeTab3` int(11) unsigned NOT NULL DEFAULT '0',
+  `BankRemSlotsTab3` int(11) unsigned NOT NULL DEFAULT '0',
+  `BankResetTimeTab4` int(11) unsigned NOT NULL DEFAULT '0',
+  `BankRemSlotsTab4` int(11) unsigned NOT NULL DEFAULT '0',
+  `BankResetTimeTab5` int(11) unsigned NOT NULL DEFAULT '0',
+  `BankRemSlotsTab5` int(11) unsigned NOT NULL DEFAULT '0',
   UNIQUE KEY `guid_key` (`guid`),
   KEY `guildid_key` (`guildid`),
   KEY `guildid_rank_key` (`guildid`,`rank`)
@@ -2181,7 +2181,7 @@ CREATE TABLE `guild_rank` (
   `rid` int(11) unsigned NOT NULL,
   `rname` varchar(255) NOT NULL DEFAULT '',
   `rights` int(3) unsigned NOT NULL DEFAULT '0',
-  `BankMoneyPerDay` int(11) unsigned NOT NULL default '0',
+  `BankMoneyPerDay` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`guildid`,`rid`),
   KEY `Idx_rid` (`rid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Guild System';
@@ -2207,7 +2207,7 @@ CREATE TABLE `instance` (
   `id` int(11) unsigned NOT NULL DEFAULT '0',
   `map` int(11) unsigned NOT NULL DEFAULT '0',
   `resettime` bigint(40) unsigned NOT NULL DEFAULT '0',
-  `difficulty` tinyint(1) unsigned NOT NULL default '0',
+  `difficulty` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `encountersMask` int(10) unsigned NOT NULL DEFAULT '0',
   `data` longtext,
   PRIMARY KEY (`id`),
