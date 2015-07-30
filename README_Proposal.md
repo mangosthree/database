@@ -12,7 +12,7 @@ The YTDB homepage: ytdb.ru
 
 ### A World Database for WoW: Cataclysm
 ----
-A contend database for [**MangosThree**][10], and [**World of Warcraft**[50] Client Patch 4.3.4a - [_WoW 4.3.4a_][51]
+A content database for [**MangosThree**][10], and [**World of Warcraft**][50] Client Patch 4.3.4a - [_WoW 4.3.4a_][51]
 
 ### How to Install
 ---------------
