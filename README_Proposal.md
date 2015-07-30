@@ -25,8 +25,8 @@ A content database for [**MangosThree**][10], and [**World of Warcraft**][50] Cl
 1. Open File Explorer.
 2. Navigate to your database directory where you cloned the database.
 3. Right-click and go to Git Bash on the context menu.
-4: Run: **./make_full_WorldDB.sh**
-5. Apply created file to mangos database, eg.: **mysql -u root -p (the name of your mangos db) < fulld_db.sql**
+4. Run: **./make_full_WorldDB.sh**
+5. Apply created file to mangos database, eg.: **mysql -u root -p (the name of your mangos db) < full_db.sql**
 
 [10]: https://github.com/mangosthree/server "mangosThree"
 
