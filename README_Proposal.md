@@ -28,6 +28,9 @@ A content database for [**MangosThree**][10], and [**World of Warcraft**][50] Cl
 4. Run: **./make_full_WorldDB.sh**
 5. Apply created file to mangos database, eg.: **mysql -u root -p (the name of your mangos db) < full_db.sql**
 
+##### ***Wiki Stuff?***
+Alright. After we have installed the full_db.sql file, we need to go on with update c12729_01_mangos_playercreateinfo_spell.sql. This will be located in World/Updates/Rel21.
+
 [10]: https://github.com/mangosthree/server "mangosThree"
 
 [50]: http://blizzard.com/games/wow/ "World of Warcraft"
