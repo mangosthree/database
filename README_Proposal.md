@@ -12,7 +12,7 @@ The YTDB homepage: ytdb.ru
 
 ### A World Database for WoW: Cataclysm
 ----
-A contend database for [**MangosThree**][10], and [**World of Warcraft**[50] Client Patch 4.3.4a - [_WoW 4.3.4a_][51]
+A content database for [**MangosThree**][10], and [**World of Warcraft**][50] Client Patch 4.3.4a - [_WoW 4.3.4a_][51]
 
 ### How to Install
 ---------------
@@ -25,8 +25,11 @@ A contend database for [**MangosThree**][10], and [**World of Warcraft**[50] Cli
 1. Open File Explorer.
 2. Navigate to your database directory where you cloned the database.
 3. Right-click and go to Git Bash on the context menu.
-4: Run: **./make_full_WorldDB.sh**
-5. Apply created file to mangos database, eg.: **mysql -u root -p (the name of your mangos db) < fulld_db.sql**
+4. Run: **./make_full_WorldDB.sh**
+5. Apply created file to mangos database, eg.: **mysql -u root -p (the name of your mangos db) < full_db.sql**
+
+##### ***Wiki Stuff?***
+Alright. After we have installed the full_db.sql file, we need to go on with update c12729_01_mangos_playercreateinfo_spell.sql. This will be located in World/Updates/Rel21.
 
 [10]: https://github.com/mangosthree/server "mangosThree"
 
