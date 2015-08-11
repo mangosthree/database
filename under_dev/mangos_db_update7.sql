@@ -1,6 +1,6 @@
 # Y2kCat
-ALTER TABLE db_version_ytdb CHANGE COLUMN 722_FIX_12773 723_FIX_12773 bit;
-REPLACE INTO `db_version_ytdb` (`version`) VALUES ('723_FIX_12773');
+/*ALTER TABLE db_version_ytdb CHANGE COLUMN 722_FIX_12773 723_FIX_12773 bit;
+REPLACE INTO `db_version_ytdb` (`version`) VALUES ('723_FIX_12773');*/
 
 # Transport_Sniff
 # DELETE FROM transports WHERE entry=204423;
@@ -4814,8 +4814,8 @@ UPDATE db_version SET `version`= 'YTDB_0.16.9_R723_cMaNGOS4_R12773_SD2_R2928_ACI
 
 
 # Y2kCat
-ALTER TABLE db_version_ytdb CHANGE COLUMN 723_FIX_12773 724_FIX_12803 bit;
-REPLACE INTO `db_version_ytdb` (`version`) VALUES ('724_FIX_12803');
+/*ALTER TABLE db_version_ytdb CHANGE COLUMN 723_FIX_12773 724_FIX_12803 bit;
+REPLACE INTO `db_version_ytdb` (`version`) VALUES ('724_FIX_12803');*/
 
 # Transport_Sniff
 # DELETE FROM transports WHERE entry=204423;

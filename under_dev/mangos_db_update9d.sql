@@ -10,7 +10,7 @@ UPDATE creature_template SET ScriptName='rampaging_worgen' WHERE entry='34884';
 UPDATE creature_template SET unit_flags='32768', ScriptName='rampaging_worgen' WHERE entry='35660';
 UPDATE creature_template SET MovementType='2',  speed_walk='2', unit_flags2='2048', AIName='EventAI', flags_extra='2', ScriptName='frightened_citizen_quest' WHERE entry='34981';
 
-INSERT INTO mangos.creature_movement_template (entry, point, position_x, position_y, position_z, waittime, script_id, textid1, textid2, textid3, textid4, textid5, emote, spell, wpguid, orientation, model1, model2) VALUES 
+INSERT INTO creature_movement_template (entry, point, position_x, position_y, position_z, waittime, script_id, textid1, textid2, textid3, textid4, textid5, emote, spell, wpguid, orientation, model1, model2) VALUES 
 ('34981', '1', '-1498.11', '1411.46', '35.56', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 
 --  Gilneas GameObject dbscripts
