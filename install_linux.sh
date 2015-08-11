@@ -17,6 +17,7 @@ adminpass=yourpassword;
 wdb=mangos;
 cdb=characters;
 rdb=realmd;
+sdb=scriptdev2;
 
 yesno=y;
 yesnoDefault=y;
@@ -25,6 +26,7 @@ worldPath=World/Setup;
 charPath=Character/Setup;
 realmPath=Realm/Setup;
 updates_path=under_dev;
+sd2Path=../server/src/bindings/scripts/sql
 
 standart()
 {
@@ -101,12 +103,13 @@ if [ "$yesno" == "y" ]; then
 		echo $sql
 		mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $wdb < $sql
 	done
+	echo "Done"
 else
-	echo "World installations aborted."
+	echo "World installations has been skipped."
 	#exit; 
 fi
 
-echo "";
+#echo "";
 #read -p "Do you want to install additional DBC-files tables? (y/n, default: y) " yesno
 #yesno=${yesno:-$yesnoDefault}
 #if [ "$yesno" == "y" ]; then 
@@ -125,9 +128,6 @@ echo "";
 	#echo "DBC installations has been ended"
 	#exit; 
 #fi
-
-echo "Press any key to continue"
-read 
 
 }
 
@@ -164,6 +164,7 @@ if [ "$yesno" == "y" ]; then
 	echo "Importing Realm database from " $realmPath/realmdLoadDB.sql
 	mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $rdb < $realmPath/realmdLoadDB.sql
 
+
 	echo ""
 	echo "Importing dbdocs updates... "
 	for sql in Realm/Updates/Rel20/*.sql
@@ -180,6 +181,54 @@ fi
 
 }
 
+sd2()
+{
+
+echo "";
+echo "This will wipe out your current ScriptDev2 database and replace it."; 
+read -p "Do you wish to continue? (y/n, default: y) " yesno
+yesno=${yesno:-$yesnoDefault}
+if [ "$yesno" == "y" ]; then 
+	echo ""
+	echo "Creating database from " $sd2Path/scriptdev2_create_database.sql
+	mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port < $sd2Path/scriptdev2_create_database.sql
+	mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $sdb < $sd2Path/scriptdev2_create_structure_mysql.sql
+
+	echo ""
+	echo "Importing ScriptDev2 database from " $sd2Path/scriptdev2_script_full.sql
+	mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $sdb < $sd2Path/scriptdev2_script_full.sql
+	
+	echo ""
+	echo "Reset Mangos scriptName information from " $sd2Path/mangos_scriptname_full.sql
+	mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $wdb < $sd2Path/mangos_scriptname_clear.sql
+	mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $wdb < $sd2Path/mangos_scriptname_full.sql
+
+	echo ""
+	echo "Importing updates... "
+	for sql in $sd2Path/updates/*.sql
+	do
+		echo $sql
+		mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $wdb < $sql
+	done
+
+	echo ""
+	echo "Importing extra creature scripts... "
+	for sql in $sd2Path/optional/*.sql
+	
+	do
+		echo $sql
+		mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $wdb < $sql
+	done
+
+	echo "Done"
+else
+	echo "Character installations has been skipped"
+
+	#exit; 
+fi
+}
+
+
 echo ""
 echo "((--- Mangos World Database Quick Installer ---))"
 standart;
@@ -192,3 +241,6 @@ fi
 realm;
 character;
 world;
+sd2;
+echo "Press any key to continue"
+read 
