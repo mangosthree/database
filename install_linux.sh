@@ -173,6 +173,13 @@ if [ "$yesno" == "y" ]; then
 		mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $rdb < $sql
 	done
 	
+	echo ""
+	echo "Importing Rel21 updates... "
+	for sql in Realm/Updates/Rel21/*.sql
+	do
+		echo $sql
+		mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $rdb < $sql
+	done
 	echo "Done"
 else
 	echo "Realm installations has been skipped"
