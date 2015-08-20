@@ -9,7 +9,6 @@ svr=localhost;
 user=mangos;
 pass=mangos;
 port=3306;
-#ddb=dbc;
 admin=root;
 adminpass=yourpassword;
 
@@ -18,22 +17,29 @@ wdb=mangos;
 cdb=characters;
 rdb=realmd;
 sdb=scriptdev2;
+#ddb=dbc;
 
 yesno=y;
 yesnoDefault=y;
 dbpath=full_db;
 worldPath=World/Setup;
+worldUpdates=World/Updates;
 charPath=Character/Setup;
 realmPath=Realm/Setup;
+realmUpdates=Realm/Updates;
+dbcPath=DBC/Setup;
 updates_path=under_dev;
 sd2Path=../server/src/bindings/scripts/sql
+RED='\e[0;31m'
+GRE='\e[0;32m'
+NC='\e[0m' # No Color
 
 standart()
 {
 # Standard install section
 
 echo ""
-echo "MM   MM         MM   MM  MMMMM   MMMM   MMMMM"
+echo "MM   MM         MM   MM  MMMMM   MMMM   MMMMM" 
 echo "MM   MM         MM   MM MMM MMM MM  MM MMM MMM"
 echo "MMM MMM         MMM  MM MMM MMM MM  MM MMM"
 echo "MM M MM         MMMM MM MMM     MM  MM  MMM"
@@ -78,29 +84,39 @@ read -p "Do you wish to continue? (y/n, default: y) " yesno
 yesno=${yesno:-$yesnoDefault}
 if [ "$yesno" == "y" ]; then 
 	echo ""
-	echo "Importing World database... " $worldPath/mangosdLoadDB.sql
+	echo -e "Importing World database... " ${GRE} $worldPath/mangosdLoadDB.sql ${NC}
 
 	mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $wdb < $worldPath/mangosdLoadDB.sql
 	echo ""
 	for sql in $worldPath/FullDB/*.sql
 	do 
-		echo $sql
+		echo -e ${GRE}$sql ${NC}
+		mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $wdb < $sql
+	done
+	echo "Done"
+
+
+	echo "Importing Rel18 updates..."
+	for sql in $worldUpdates/Rel18/*.sql
+	do 
+		echo -e ${GRE}$sql ${NC}
 		mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $wdb < $sql
 	done
 	echo "Done"
 
 	echo ""
-	echo "Importing dbdocs updates... "
-	for sql in $worldPath/dbd*.sql
+	echo "Importing Rel19 updates... "
+	for sql in $worldUpdates/Rel19/*.sql
 	do
-		echo $sql
+		echo -e ${GRE}$sql ${NC}
 		mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $wdb < $sql
 	done
+	
 	echo ""
 	echo "Importing under_dev updates... "
 	for sql in $updates_path/*.sql
 	do
-		echo $sql
+		echo -e ${GRE}$sql ${NC}
 		mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $wdb < $sql
 	done
 	echo "Done"
@@ -109,27 +125,32 @@ else
 	#exit; 
 fi
 
+}
+
+#dbc()
+#{
 #echo "";
 #read -p "Do you want to install additional DBC-files tables? (y/n, default: y) " yesno
 #yesno=${yesno:-$yesnoDefault}
 #if [ "$yesno" == "y" ]; then 
-#	echo "Dropping DBC database"
-#	#mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port < drop_dbc.sql
-#	echo ""
+	#echo "Dropping DBC database"
+	#mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port < drop_dbc.sql
+	#echo ""
 #	echo "Creating DBC database"
-#	#mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port < create_dbc.sql
-
-#	for sql in ./dbc/*.sql
+#	mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port < $dbcPath/dbcCreateDB.sql
+	
+#	echo ""
+#	for sql in $dbcPath/DataFiles/*.sql
 #	do
-#		echo $sql
-#		mysql -q -s -h $svr --user=$user --password=$pass --port=$port $ddb < $sql
+#		echo -e ${GRE}$sql ${NC}
+#		mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $ddb < $sql
 #	done
+#	echo "Done"
 #else
-	#echo "DBC installations has been ended"
+#	echo "DBC installations has been skipped"
 	#exit; 
 #fi
-
-}
+#}
 
 character()
 {
@@ -140,7 +161,7 @@ read -p "Do you wish to continue? (y/n, default: y) " yesno
 yesno=${yesno:-$yesnoDefault}
 if [ "$yesno" == "y" ]; then 
 	echo ""
-	echo "Importing Character database from " $charPath/characterLoadDB.sql
+	echo -e "Importing Character database from " ${GRE} $charPath/characterLoadDB.sql ${NC}
 	mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $cdb < $charPath/characterLoadDB.sql
 	
 	echo "Done"
@@ -161,7 +182,7 @@ if [ "$yesno" == "y" ]; then
 	echo ""
 
 	echo ""
-	echo "Importing Realm database from " $realmPath/realmdLoadDB.sql
+	echo -e "Importing Realm database from " ${GRE} $realmPath/realmdLoadDB.sql ${NC}
 	mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $rdb < $realmPath/realmdLoadDB.sql
 
 
@@ -169,15 +190,15 @@ if [ "$yesno" == "y" ]; then
 	echo "Importing dbdocs updates... "
 	for sql in Realm/Updates/Rel20/*.sql
 	do
-		echo $sql
+		echo -e ${GRE}$sql ${NC}
 		mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $rdb < $sql
 	done
 	
 	echo ""
 	echo "Importing Rel21 updates... "
-	for sql in Realm/Updates/Rel21/*.sql
+	for sql in $realmUpdates/Rel21/*.sql
 	do
-		echo $sql
+		echo -e ${GRE}$sql ${NC}
 		mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $rdb < $sql
 	done
 	echo "Done"
@@ -197,16 +218,16 @@ read -p "Do you wish to continue? (y/n, default: y) " yesno
 yesno=${yesno:-$yesnoDefault}
 if [ "$yesno" == "y" ]; then 
 	echo ""
-	echo "Creating database from " $sd2Path/scriptdev2_create_database.sql
+	echo -e "Creating database from " ${GRE}$sd2Path/scriptdev2_create_database.sql${NC}
 	mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port < $sd2Path/scriptdev2_create_database.sql
 	mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $sdb < $sd2Path/scriptdev2_create_structure_mysql.sql
 
 	echo ""
-	echo "Importing ScriptDev2 database from " $sd2Path/scriptdev2_script_full.sql
+	echo -e "Importing ScriptDev2 database from " ${GRE}$sd2Path/scriptdev2_script_full.sql${NC}
 	mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $sdb < $sd2Path/scriptdev2_script_full.sql
 	
 	echo ""
-	echo "Reset Mangos scriptName information from " $sd2Path/mangos_scriptname_full.sql
+	echo -e "Reset Mangos scriptName information from " ${GRE}$sd2Path/mangos_scriptname_full.sql${NC}
 	mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $wdb < $sd2Path/mangos_scriptname_clear.sql
 	mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $wdb < $sd2Path/mangos_scriptname_full.sql
 
@@ -214,7 +235,7 @@ if [ "$yesno" == "y" ]; then
 	echo "Importing updates... "
 	for sql in $sd2Path/updates/*.sql
 	do
-		echo $sql
+		echo -e ${GRE}$sql ${NC}
 		mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $wdb < $sql
 	done
 
@@ -223,7 +244,7 @@ if [ "$yesno" == "y" ]; then
 	for sql in $sd2Path/optional/*.sql
 	
 	do
-		echo $sql
+		echo -e ${GRE}$sql ${NC}
 		mysql -q -s -h $svr --user=$admin --password=$adminpass --port=$port $wdb < $sql
 	done
 
@@ -237,7 +258,7 @@ fi
 
 
 echo ""
-echo "((--- Mangos World Database Quick Installer ---))"
+echo -e ${RED}"((--- Mangos World Database Quick Installer ---))" ${NC}
 standart;
 echo "";
 read -p "Is your first installation? (y/n, default: y) " yesno
@@ -249,5 +270,6 @@ realm;
 character;
 world;
 sd2;
+#dbc;
 echo "Press any key to continue"
 read 
