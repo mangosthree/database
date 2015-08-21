@@ -26,7 +26,7 @@ CREATE TABLE `db_version` (
   `version` varchar(120) NOT NULL,
   `creature_ai_version` varchar(120) DEFAULT NULL,
   `cache_id` int(10) DEFAULT '0',
-  `required_12752_01_mangos_reputation_spillover_template` bit(1) DEFAULT NULL
+  `required_12751_01_mangos_phase` bit(1) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Used DB version notes';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -36,7 +36,7 @@ CREATE TABLE `db_version` (
 
 LOCK TABLES `db_version` WRITE;
 /*!40000 ALTER TABLE `db_version` DISABLE KEYS */;
-INSERT INTO `db_version` (`version`, `creature_ai_version`, `cache_id`, `required_12752_01_mangos_reputation_spillover_template`) VALUES ('YTDB_0.16.9_R722_cMaNGOS4_R12773_SD2_R2928_ACID_R310_RuDB_R63','ACID 3.1.0 \'Another Wild Adventure\' - Full Release for CMaNGOS-WOTLK (3.3.5a Client)',722,'\0');
+INSERT INTO `db_version` (`version`, `creature_ai_version`, `cache_id`, `required_12751_01_mangos_phase`) VALUES ('YTDB_0.16.9_R722_cMaNGOS4_R12773_SD2_R2928_ACID_R310_RuDB_R63','ACID 3.1.0 \'Another Wild Adventure\' - Full Release for CMaNGOS-WOTLK (3.3.5a Client)',722,'\0');
 /*!40000 ALTER TABLE `db_version` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
