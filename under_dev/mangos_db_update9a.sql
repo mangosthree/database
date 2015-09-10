@@ -1,6 +1,6 @@
 # Y2kCat
-ALTER TABLE db_version_ytdb CHANGE COLUMN 724_FIX_12803 725_FIX_12849 bit;
-REPLACE INTO `db_version_ytdb` (`version`) VALUES ('725_FIX_12849');
+/*ALTER TABLE db_version_ytdb CHANGE COLUMN 724_FIX_12803 725_FIX_12849 bit;
+REPLACE INTO `db_version_ytdb` (`version`) VALUES ('725_FIX_12849');*/
 
 # Transport_Sniff
 # DELETE FROM transports WHERE entry=204423;
