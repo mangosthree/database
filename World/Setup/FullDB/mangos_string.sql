@@ -1,14 +1,27 @@
--- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos3
--- ------------------------------------------------------
--- Server version	5.5.37
+-- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+--
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -43,7 +56,8 @@ CREATE TABLE `mangos_string` (
 
 LOCK TABLES `mangos_string` WRITE;
 /*!40000 ALTER TABLE `mangos_string` DISABLE KEYS */;
-INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`) VALUES (1,'You should select a character or a creature.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Вы должны выбрать персонажа или существо.'),
+INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`) VALUES
+(1,'You should select a character or a creature.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Вы должны выбрать персонажа или существо.'),
 (2,'You should select a creature.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Вы должны выбрать существо.'),
 (3,'|cffff0000[System Message]: %s|r',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'|cffff0000[Системное сообщение]: %s|r'),
 (4,'|cffff0000[Event Message]: %s|r',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'|cffff0000[Сообщение ивента]: %s|r'),
@@ -101,7 +115,7 @@ INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `conten
 (55,'Your password can\'t be longer than 16 characters (client limit), password not changed!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Ваш пароль не может быть длиннее 16 символов (предел клиента), пароль не изменен!'),
 (56,'Current Message of the day: \r\n%s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Текущее сообщение дня: %s'),
 (57,'Using World DB: %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Используемая База Данных: %s'),
-(58,'Using script library: %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Используемая библиотека скриптов: %s'),
+(58,'Using script library',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (59,'Using creature EventAI: %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Название и версия EventAI: %s'),
 (61,'Username: ',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Имя пользователя:'),
 (62,'Password: ',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Пароль:'),
@@ -201,39 +215,39 @@ INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `conten
 (217,'Unknown case \'%s\' for .resetall command. Type full correct case name.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Неизвестное значение \'%s\' для команды .reset all Напечатайте полное правильное имя.'),
 (218,'Spells will reset for all players at login. Strongly recommend re-login!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Сброс заклинаний для всех игроков при входе. Настоятельно рекомендуем перезайти!'),
 (219,'Talents will reset for all players at login. Strongly recommend re-login!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Сброс талантов для всех игроков при входе. Настоятельно рекомендуем перезайти!'),
-(220,'Creature (GUID: %u) No waypoint found.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Существо (GUID: %u) Не найдено точек пути.'),
-(221,'Creature (GUID: %u) Last waypoint not found.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Существо (GUID: %u) Последняя точка пути не найдена.'),
-(222,'Creature (GUID: %u) No waypoint found - used \'wpguid\'. Now trying to find it by its position...',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Существо (GUID: %u) Не найдено точек пути - использовано \'wpguid\'. Поиск по его позиции...'),
-(223,'Creature (GUID: %u) No waypoints found - This is a MaNGOS db problem (single float).',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Существо (GUID: %u) Не найдено точек пути - Это проблема базы MaNGOS (одиночный float).'),
-(224,'Selected creature is ignored - provided GUID is used',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Выбранное существо проигнорировано -  использован предоставленный GUID'),
-(225,'Creature (GUID: %u) not found',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Существо (GUID: %u) не найдено'),
-(226,'You must select a visual waypoint.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Вы должны выбрать визуальную точку пути.'),
-(227,'No visual waypoints found',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Не найдено точек пути'),
-(228,'Could not create visual waypoint with creatureID: %d',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Невозможно создать визуальную точку пути с ID существа: %d'),
-(229,'All visual waypoints removed',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Все визуальные точки пути убраны'),
-(230,'Could not create waypoint-creature with ID: %d',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Невозможно создать точку пути с ID: %d'),
-(231,'No GUID provided.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Не предоставлено GUID.'),
-(232,'No waypoint number provided.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Не предоставлен номер точки пути.'),
-(233,'Argument required for \'%s\'.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Требуется аргумент для \'%s\'.'),
-(234,'Waypoint %i added to GUID: %d',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Точка пути %i добавлена к GUID: %d'),
-(235,'Waypoint %d added.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Точка пути %d добавлена.'),
-(236,'Waypoint changed.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Точка пути изменена.'),
-(237,'Waypoint %s modified.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Точка пути %s модифицирована.'),
-(238,'WP export successfull.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Экспорт ТП успешно завершен.'),
-(239,'No waypoints found inside the database.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Не найдено точек пути.'),
-(240,'File imported.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Файл импортирован.'),
-(241,'Waypoint removed.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Точка пути убрана.'),
-(242,'Warning: Could not delete WP from the world with ID: %d',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Предупреждение: Невозможно удалить точку пути из мира с ID: %d'),
-(243,'This happens if the waypoint is too far away from your char.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Это происходит, если точка пути слишком далеко от вашего персонажа.'),
-(244,'The WP is deleted from the database, but not from the world here.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'ТП удалена из базы, но не из мира.'),
-(245,'They will disappear after a server restart.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Они исчезнут после перезапуска сервера.'),
-(246,'Waypoint %d: Info for creature: %s, GUID: %d',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Точка пути %d: Информация для существа: %s, GUID: %d'),
-(247,'Waittime: %d',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Время ожидания: %d'),
-(248,'Model %d: %d',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Модель %d: %d'),
-(249,'Emote: %d',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Эмоция: %d'),
-(250,'Spell: %d',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Заклинание: %d'),
-(251,'Text%d (ID: %i): %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Текст%d (ID: %i): %s'),
-(252,'AIScript: %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Скрипт ИИ: %s'),
+(251,'UNUSED',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(252,'AIScriptName: %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(250,'ScriptID set to non-existing id %u, add it to DBScriptsEngine and reload the table.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(248,' Orientation: %f',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(249,' ScriptId: %u',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(247,' Waittime: %d',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(244,'UNUSED',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(245,'UNUSED',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(246,'Waypoint %u for %s (from pathId %i, stored by %s)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(242,'UNUSED',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(243,'UNUSED',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(241,'Waypoint removed.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(240,'File imported.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(238,'WP export successfull.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(239,'No waypoints found inside the database.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(236,'Waypoint changed.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(237,'Waypoint %s modified.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(235,'UNUSED',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(234,'Added Waypoint %u to %s (PathId %i, path stored by %s)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(231,'No GUID provided.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(232,'No waypoint number provided.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(233,'Argument required for \'%s\'.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(229,'All visual waypoints removed',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(230,'Could not add waypoint %u to %s (pathId %i stored by %s)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(227,'No visual waypoints found',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(228,'Could not create visual waypoint with creatureID: %d',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(225,'Creature (GUID: %u) not found',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(226,'You must select a visual waypoint.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(224,'Cannot access %s on map, maybe you are too far away from its spawn location',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(223,'Creature (GUID: %u) No waypoints found - This is a MaNGOS db problem (single float).',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(222,'%s has no path or path empty, path-id %i (loaded from %s)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(221,'Last Waypoint not found for %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(220,'Cannot find waypoint id %u for %s (in path %i, loaded from %s)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (253,'Forced rename for player %s will be requested at next login.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Персонаж %s будет принудительно переименован при следующем входе.'),
 (254,'Forced rename for player %s (GUID #%u) will be requested at next login.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Игрок %s (GUID #%u) будет принудительно переименован при следующем входе.'),
 (255,'Waypoint-Creature (GUID: %u) Not found',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Точка пути-существо (GUID: %u) не найдено'),
@@ -918,4 +932,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-24 21:54:18

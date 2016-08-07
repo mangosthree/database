@@ -10,11 +10,13 @@ DDUMPDIR=./mangos
 i=1
 
 
-do_dump_zero() {
+do_dump_three() {
 
 mkdir -p ${DUMPDIR}
 
 for TABLE in \
+achievement_criteria_requirement \
+achievement_reward \
 areatrigger_involvedrelation \
 areatrigger_tavern \
 areatrigger_teleport \
@@ -30,13 +32,12 @@ creature_ai_summons \
 creature_ai_texts \
 creature_battleground \
 creature_equip_template \
-creature_equip_template_raw \
 creature_involvedrelation \
-creature_item_template \
 creature_linking \
 creature_linking_template \
 creature_loot_template \
 creature_model_info \
+creature_model_race \
 creature_movement \
 creature_movement_template \
 creature_onkill_reputation \
@@ -51,8 +52,8 @@ db_version \
 dbscripts_on_creature_death \
 dbscripts_on_creature_movement \
 dbscripts_on_event \
-dbscripts_on_go_use \
 dbscripts_on_go_template_use \
+dbscripts_on_go_use \
 dbscripts_on_gossip \
 dbscripts_on_quest_end \
 dbscripts_on_quest_start \
@@ -70,6 +71,7 @@ game_graveyard_zone \
 game_tele \
 game_weather \
 gameobject \
+gameobject_addon \
 gameobject_battleground \
 gameobject_involvedrelation \
 gameobject_loot_template \
@@ -77,11 +79,17 @@ gameobject_questrelation \
 gameobject_template \
 gossip_menu \
 gossip_menu_option \
+gossip_texts \
+hotfix_data \
+instance_encounters \
 instance_template \
+item_convert \
 item_enchantment_template \
+item_expire_convert \
 item_loot_template \
 item_required_target \
 item_template \
+locales_achievement_reward \
 locales_creature \
 locales_gameobject \
 locales_gossip_menu_option \
@@ -90,9 +98,12 @@ locales_npc_text \
 locales_page_text \
 locales_points_of_interest \
 locales_quest \
+mail_level_reward \
 mail_loot_template \
 mangos_string \
+milling_loot_template \
 npc_gossip \
+npc_spellclick_spells \
 npc_text \
 npc_trainer \
 npc_trainer_template \
@@ -101,9 +112,7 @@ npc_vendor_template \
 page_text \
 pet_levelstats \
 pet_name_generation \
-petcreateinfo_spell \
 pickpocketing_loot_template \
-player_classlevelstats \
 player_levelstats \
 player_xp_for_level \
 playercreateinfo \
@@ -117,6 +126,10 @@ pool_gameobject \
 pool_gameobject_template \
 pool_pool \
 pool_template \
+prospecting_loot_template \
+quest_phase_maps \
+quest_poi \
+quest_poi_points \
 quest_template \
 reference_loot_template \
 reputation_reward_rate \
@@ -125,24 +138,26 @@ reserved_name \
 script_texts \
 script_waypoint \
 scripted_areatrigger \
-scripted_event \
-sd2_db_version \
+scripted_event_id \
+skill_discovery_template \
+skill_extra_item_template \
 skill_fishing_base_level \
 skinning_loot_template \
-spell_affect \
 spell_area \
 spell_bonus_data \
 spell_chain \
 spell_elixir \
-spell_facing \
 spell_learn_spell \
+spell_loot_template \
 spell_pet_auras \
 spell_proc_event \
 spell_proc_item_enchant \
 spell_script_target \
 spell_target_position \
+spell_template \
 spell_threat \
 transports \
+vehicle_accessory \
 world_template \
 ; do
 
@@ -210,4 +225,4 @@ fi
 
 DB=$1
 
-do_dump_zero
+do_dump_three

@@ -1,14 +1,27 @@
--- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos3
--- ------------------------------------------------------
--- Server version	5.5.37
+-- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+--
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -40,7 +53,8 @@ CREATE TABLE `game_tele` (
 
 LOCK TABLES `game_tele` WRITE;
 /*!40000 ALTER TABLE `game_tele` DISABLE KEYS */;
-INSERT INTO `game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES (314,-758.534,4401.98,79.563,2.88658,530,'DustquillRavine'),
+INSERT INTO `game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES
+(314,-758.534,4401.98,79.563,2.88658,530,'DustquillRavine'),
 (313,-6440.73,-1987.77,244.718,0.464476,0,'DustfireValley'),
 (312,-10898.3,-364.784,39.2681,3.04614,0,'Duskwood'),
 (311,9317.38,-7856.4,63.2953,5.35693,530,'DuskwitherSpire'),
@@ -1475,10 +1489,10 @@ INSERT INTO `game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orient
 (1434,-4184.38,-5650.3,27.3267,5.11639,0,'FirebeardsPatrol'),
 (1435,-4827.46,-6678.2,4.38096,0.945928,0,'Highbank'),
 (1436,-5123.42,450.15,396.584,0.222564,0,'NewTinkertown'),
-(1437,-7008.63,-2554.03,241.714,4.87685,0,'DragonsMouth'),
+(1437,5632.48,2016.71,798.27,4.73,0,'DragonsMouth'),
 (1438,-6603.82,-3407.45,279.287,2.74842,0,'DustwindDig'),
 (1439,-6628.2,-3895.36,378.73,4.7983,0,'Fuselight'),
-(1440,-9474.42,-2841.39,65.2866,3.3681,0,'CampEverstill'),
+(1440,-8755.84,-4454.57,-200.169,4.37,1,'CullingOfStratholme'),
 (1441,-9637.02,-3474.82,121.956,5.36301,0,'ShalewindCanyon'),
 (1442,-10150.1,-3782.54,17.3522,1.67169,0,'MarshtideWatch'),
 (1443,-12712.5,-2862.74,1.42455,4.55647,0,'Surwich'),
@@ -1591,4 +1605,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-24 21:53:43
