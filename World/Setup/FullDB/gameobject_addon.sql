@@ -1,14 +1,27 @@
--- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos3
--- ------------------------------------------------------
--- Server version	5.5.37
+-- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+--
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -38,7 +51,8 @@ CREATE TABLE `gameobject_addon` (
 
 LOCK TABLES `gameobject_addon` WRITE;
 /*!40000 ALTER TABLE `gameobject_addon` DISABLE KEYS */;
-INSERT INTO `gameobject_addon` (`guid`, `path_rotation0`, `path_rotation1`, `path_rotation2`, `path_rotation3`) VALUES (43835,0,0,-0.932008,0.362437),
+INSERT INTO `gameobject_addon` (`guid`, `path_rotation0`, `path_rotation1`, `path_rotation2`, `path_rotation3`) VALUES
+(43835,0,0,-0.932008,0.362437),
 (52137,0,0,0.99999,0.00436634),
 (52135,0,0,0.99999,0.00436634),
 (53535,0,0,0.99999,0.00436634),
@@ -57,9 +71,6 @@ INSERT INTO `gameobject_addon` (`guid`, `path_rotation0`, `path_rotation1`, `pat
 (5864,0,0,1,-0.0000000437114),
 (5865,0,0,1,-0.0000000437114),
 (5866,0,0,1,-0.0000000437114),
-(5870,0.00544418,-0.00290476,0.918772,0.394739),
-(5876,-0.00276125,-0.00551835,-0.370553,0.928791),
-(5878,0.00544418,-0.00290476,0.918772,0.394739),
 (5888,-0.00276125,-0.00551835,-0.370553,0.928791),
 (5891,0.00544418,-0.00290476,0.918772,0.394739),
 (5897,-0.00276125,-0.00551835,-0.370553,0.928791),
@@ -84,7 +95,6 @@ INSERT INTO `gameobject_addon` (`guid`, `path_rotation0`, `path_rotation1`, `pat
 (22012,0,0,0.45399,0.891007),
 (22013,0,0,-0.526214,0.850352),
 (22014,0,0,-0.526214,0.850352),
-(26004,-0.00276125,-0.00551835,-0.370553,0.928791),
 (42070,0,0,0.989651,0.143493),
 (42071,0,0,-0.426569,0.904455),
 (42072,0,0,-0.426569,0.904455),
@@ -126,9 +136,7 @@ INSERT INTO `gameobject_addon` (`guid`, `path_rotation0`, `path_rotation1`, `pat
 (52333,0,0,0.99999,-0.00436333),
 (52335,0,0,0.995805,0.0915015),
 (53540,0,0,0.915312,0.402747),
-(66241,0,0,-0.378575,0.92557),
 (66242,0,0,-0.378575,0.92557),
-(70491,0,0,1,-0.0000000437114),
 (70650,0,0,1,-0.0000000437114),
 (71089,0,0,1,-0.0000000437114),
 (72560,0,0,1,-0.0000000437114);
@@ -144,4 +152,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-24 21:53:46

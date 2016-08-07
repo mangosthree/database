@@ -1,14 +1,27 @@
--- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos3
--- ------------------------------------------------------
--- Server version	5.5.37
+-- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+--
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -40,7 +53,8 @@ CREATE TABLE `fishing_loot_template` (
 
 LOCK TABLES `fishing_loot_template` WRITE;
 /*!40000 ALTER TABLE `fishing_loot_template` DISABLE KEYS */;
-INSERT INTO `fishing_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `groupid`, `mincountOrRef`, `maxcount`, `condition_id`) VALUES (3805,13757,4,1,1,1,0),
+INSERT INTO `fishing_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `groupid`, `mincountOrRef`, `maxcount`, `condition_id`) VALUES
+(3805,13757,4,1,1,1,0),
 (3805,27422,0,1,1,1,0),
 (3805,33823,20,1,1,1,0),
 (3805,33824,20,1,1,1,0),
@@ -788,8 +802,6 @@ INSERT INTO `fishing_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `gr
 (4560,43571,0,1,1,1,0),
 (4560,40411,0.2,1,1,1,0),
 (4560,18256,0.2,1,1,1,0),
-(4560,8925,0.3,1,1,1,0),
-(4560,3372,2,1,1,1,0),
 (4560,3371,7,1,1,1,0),
 (4197,45909,4,1,1,1,0),
 (4197,45904,-25,0,1,1,0),
@@ -1592,9 +1604,9 @@ INSERT INTO `fishing_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `gr
 (8,13893,5.2131,0,1,1,0),
 (4,13893,0.8313,0,1,1,0),
 (8,13918,0.5787,0,1,1,0),
-(405,16968,17.6985,0,1,1,0),
-(5339,16969,0.2253,0,1,1,0),
-(8,16970,12.8171,0,1,1,0),
+(405,16968,-17.6985,0,1,1,0),
+(5339,16969,-0.2253,0,1,1,0),
+(8,16970,-12.8171,0,1,1,0),
 (130,20708,6.2454,0,1,1,0),
 (40,20708,3.6567,0,1,1,0),
 (44,20708,1.517,0,1,1,0),
@@ -2340,7 +2352,7 @@ INSERT INTO `fishing_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `gr
 (1519,58503,-25.1941,0,1,1,0),
 (1519,58787,-3.2887,0,1,1,0),
 (1519,58856,-7.0564,0,1,1,0),
-(12,58899,35.4636,0,1,1,0),
+(12,58899,-35.4636,0,1,1,0),
 (1637,58945,-17.314,0,1,1,0),
 (1637,58946,-2.9481,0,1,1,0),
 (14,58951,10.4709,0,1,1,0),
@@ -2367,13 +2379,13 @@ INSERT INTO `fishing_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `gr
 (85,69905,27.3676,0,1,1,0),
 (85,69909,3.2693,0,1,1,0),
 (141,69987,25.6432,0,1,1,0),
-(215,69964,3.3522,0,1,1,0),
-(215,69967,3.3622,0,1,1,0),
-(215,69977,7.1576,0,1,1,0),
+(215,69964,-3.3522,0,1,1,0),
+(215,69967,-3.3622,0,1,1,0),
+(215,69977,-7.1576,0,1,1,0),
 (1497,69901,-3.5406,0,1,1,0),
 (1497,69911,14.9515,0,1,1,0),
-(1537,69932,-0.1118,0,1,1,0),
-(1537,69933,-0.3404,0,1,1,0),
+(1537,69932,-0.5,0,1,1,0),
+(1537,69933,-1.5,0,1,1,0),
 (1638,69934,30.1476,0,1,1,0),
 (1638,69956,5.2459,0,1,1,0),
 (1657,69912,-15.4109,0,1,1,0),
@@ -2611,7 +2623,7 @@ INSERT INTO `fishing_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `gr
 (209,53070,8.6957,0,1,1,0),
 (209,53072,26.087,0,1,1,0),
 (457,159,0.0465,0,1,1,0),
-(457,22889,0.1396,0,1,1,0),
+(5861,78930,5,0,1,1,0),
 (457,22934,0.4188,0,1,1,0),
 (457,23329,0.0465,0,1,1,0),
 (457,23332,0.0465,0,1,1,0),
@@ -2772,7 +2784,7 @@ INSERT INTO `fishing_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `gr
 (5287,13878,0.0022,0,1,1,0),
 (5287,13879,0.0003,0,1,1,0),
 (5287,14048,0.0009,0,1,1,0),
-(5287,16969,0.1212,0,1,1,0),
+(5287,16969,-0.1212,0,1,1,0),
 (5287,19803,0.0498,0,1,1,0),
 (5287,19805,0.0711,0,1,1,0),
 (5287,19806,0.0615,0,1,1,0),
@@ -2900,7 +2912,6 @@ INSERT INTO `fishing_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `gr
 (1497,62328,0.001,0,1,1,0),
 (1519,55983,0.0002,0,1,1,0),
 (1519,58361,0.0023,0,1,1,0),
-(1537,49747,0.0001,0,1,1,0),
 (1537,49751,-0.0007,0,1,1,0),
 (1637,50222,0.0007,0,1,1,0),
 (1637,52080,-0.0004,0,1,1,0),
@@ -2919,9 +2930,8 @@ INSERT INTO `fishing_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `gr
 (3805,53062,24.1863,0,1,1,0),
 (3805,53066,8.2961,0,1,1,0),
 (3805,53067,14.0077,0,1,1,0),
-(5861,73269,20.8722,0,1,1,0),
+(5861,73269,-20.8722,0,1,1,0),
 (5861,73953,0.5761,0,1,1,0),
-(5861,78930,0.1,0,1,1,0),
 (490,3857,0.6145,0,1,1,0),
 (65,3857,0.0137,0,1,1,0),
 (1,3857,0.0055,0,1,1,0),
@@ -3049,4 +3059,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-24 21:53:34

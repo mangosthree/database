@@ -1,14 +1,27 @@
--- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos3
--- ------------------------------------------------------
--- Server version	5.5.37
+-- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+--
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -38,7 +51,8 @@ CREATE TABLE `instance_template` (
 
 LOCK TABLES `instance_template` WRITE;
 /*!40000 ALTER TABLE `instance_template` DISABLE KEYS */;
-INSERT INTO `instance_template` (`map`, `parent`, `levelMin`, `levelMax`, `ScriptName`) VALUES (269,0,66,0,'instance_dark_portal'),
+INSERT INTO `instance_template` (`map`, `parent`, `levelMin`, `levelMax`, `ScriptName`) VALUES
+(269,0,66,0,'instance_dark_portal'),
 (532,0,68,0,'instance_karazhan'),
 (534,0,70,0,'instance_hyjal'),
 (540,0,55,0,'instance_shattered_halls'),
@@ -76,7 +90,7 @@ INSERT INTO `instance_template` (`map`, `parent`, `levelMin`, `levelMax`, `Scrip
 (229,0,45,0,'instance_blackrock_spire'),
 (209,0,35,0,'instance_zulfarrak'),
 (189,0,20,0,'instance_scarlet_monastery'),
-(129,0,25,0,''),
+(129,0,25,0,'instance_razorfen_downs'),
 (109,0,35,0,'instance_sunken_temple'),
 (90,0,15,0,'instance_gnomeregan'),
 (70,0,30,0,'instance_uldaman'),
@@ -119,11 +133,11 @@ INSERT INTO `instance_template` (`map`, `parent`, `levelMin`, `levelMax`, `Scrip
 (603,0,80,0,'instance_ulduar'),
 (607,0,71,0,''),
 (616,0,80,0,'instance_eye_of_eternity'),
-(650,0,75,0,''),
+(650,0,75,0,'instance_trial_of_the_champion'),
 (649,0,80,0,'instance_trial_of_the_crusader'),
 (631,0,80,0,'instance_icecrown_citadel'),
 (658,0,75,0,'instance_pit_of_saron'),
-(668,0,75,0,''),
+(668,0,75,0,'instance_halls_of_reflection'),
 (632,0,75,0,'instance_forge_of_souls'),
 (643,0,77,0,''),
 (645,0,77,0,'instance_blackrock_caverns'),
@@ -139,7 +153,7 @@ INSERT INTO `instance_template` (`map`, `parent`, `levelMin`, `levelMax`, `Scrip
 (669,0,85,0,''),
 (671,0,85,0,''),
 (754,0,85,0,''),
-(757,0,85,0,''),
+(757,0,85,0,'instance_baradin_hold'),
 (938,0,85,0,''),
 (720,0,85,0,'');
 /*!40000 ALTER TABLE `instance_template` ENABLE KEYS */;
@@ -154,4 +168,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-24 21:53:57

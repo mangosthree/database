@@ -1,14 +1,27 @@
--- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos3
--- ------------------------------------------------------
--- Server version	5.5.37
+-- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+--
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -49,7 +62,8 @@ CREATE TABLE `dbscripts_on_spell` (
 
 LOCK TABLES `dbscripts_on_spell` WRITE;
 /*!40000 ALTER TABLE `dbscripts_on_spell` DISABLE KEYS */;
-INSERT INTO `dbscripts_on_spell` (`id`, `delay`, `command`, `datalong`, `datalong2`, `buddy_entry`, `search_radius`, `data_flags`, `dataint`, `dataint2`, `dataint3`, `dataint4`, `x`, `y`, `z`, `o`, `comments`) VALUES (25650,0,6,530,0,0,0,0,0,0,0,0,-589.976,4078.31,143.258,4.48305,''),
+INSERT INTO `dbscripts_on_spell` (`id`, `delay`, `command`, `datalong`, `datalong2`, `buddy_entry`, `search_radius`, `data_flags`, `dataint`, `dataint2`, `dataint3`, `dataint4`, `x`, `y`, `z`, `o`, `comments`) VALUES
+(25650,0,6,530,0,0,0,0,0,0,0,0,-589.976,4078.31,143.258,4.48305,''),
 (25652,0,6,530,0,0,0,0,0,0,0,0,-594,4079.26,93.85,5.28,''),
 (25652,0,6,530,0,0,0,0,0,0,0,0,-589.976,4078.31,143.258,4.48305,''),
 (25650,0,6,530,0,0,0,0,0,0,0,0,-593.429,4077.95,93.8245,5.32893,''),
@@ -61,7 +75,6 @@ INSERT INTO `dbscripts_on_spell` (`id`, `delay`, `command`, `datalong`, `datalon
 (41931,0,10,11876,180000,0,0,0,0,0,0,0,-348.231,1763.85,138.371,4.42728,''),
 (29395,0,10,17035,200000,0,0,0,0,0,0,0,0,0,0,0,'spawn Kaliri Matriarch'),
 (39291,0,10,22452,600000,0,0,0,0,0,0,0,-3361.74,5151.89,-9.00056,1.55138,''),
-(37834,2,8,21892,0,0,0,0,0,0,0,0,0,0,0,0,''),
 (54620,0,6,571,0,0,0,0,0,0,0,0,5807.75,588.063,660.939,1.64659,''),
 (48321,0,15,48330,0,0,0,0,0,0,0,0,0,0,0,0,''),
 (47958,0,10,27101,15000,0,0,0,0,0,0,0,268.592,-226.851,-9.10093,2.79136,''),
@@ -142,7 +155,7 @@ INSERT INTO `dbscripts_on_spell` (`id`, `delay`, `command`, `datalong`, `datalon
 (48769,3,14,48763,0,0,0,0,0,0,0,0,0,0,0,0,''),
 (43709,3,9,47391,25,0,0,0,0,0,0,0,0,0,0,0,''),
 (52361,0,14,52349,0,0,0,6,0,0,0,0,0,0,0,0,'remove Overtake aura'),
-(37834,0,14,37833,0,0,0,0,0,0,0,0,0,0,0,0,''),
+(31333,2,15,31334,0,17853,100,7,0,0,0,0,0,0,0,0,''),
 (48810,0,15,48809,0,0,0,0,0,0,0,0,0,0,0,0,''),
 (48772,0,14,48770,0,0,0,2,0,0,0,0,0,0,0,0,''),
 (48772,1,14,48750,0,0,0,2,0,0,0,0,0,0,0,0,''),
@@ -172,15 +185,15 @@ INSERT INTO `dbscripts_on_spell` (`id`, `delay`, `command`, `datalong`, `datalon
 (54640,0,15,54643,0,0,0,0,0,0,0,0,0,0,0,0,''),
 (52160,2,0,0,0,0,0,0,2000000060,0,0,0,0,0,0,0,''),
 (52163,2,0,0,0,0,0,0,2000000061,0,0,0,0,0,0,0,''),
-(43375,0,15,43377,0,0,0,4,0,0,0,0,0,0,0,0,''),
+(46574,2,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn target'),
 (50630,0,15,52203,0,0,0,4,0,0,0,0,0,0,0,0,''),
 (50630,1,15,52220,0,0,0,4,0,0,0,0,0,0,0,0,''),
 (50001,1,0,1,0,0,0,0,2000000344,2000000345,2000000346,0,0,0,0,0,'YTDB: q11989'),
 (23301,0,8,30220,1,0,0,0,0,0,0,0,0,0,0,0,''),
 (49466,1,15,47523,0,0,0,4,0,0,0,0,0,0,0,0,''),
 (46650,0,15,46652,0,0,0,8,0,0,0,0,0,0,0,0,'Cast Open Brutallus Back Door on Fire Barrier'),
-(32314,0,8,18393,0,0,0,0,0,0,0,0,0,0,0,0,'killcredit for quest 9931'),
-(32314,1,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn target'),
+(52264,6,15,52267,0,28654,20,3,0,0,0,0,0,0,0,0,''),
+(32314,1,18,3000,0,0,0,0,0,0,0,0,0,0,0,0,'despawn'),
 (47097,0,15,47324,0,0,0,0,0,0,0,0,0,0,0,0,''),
 (47097,0,15,47325,0,0,0,0,0,0,0,0,0,0,0,0,''),
 (47393,0,14,47391,0,0,0,0,0,0,0,0,0,0,0,0,''),
@@ -190,8 +203,8 @@ INSERT INTO `dbscripts_on_spell` (`id`, `delay`, `command`, `datalong`, `datalon
 (45958,1,20,2,0,25759,60,0,0,0,0,0,0,0,0,0,'start waypoint movement'),
 (45958,10,0,0,0,25759,60,0,2000000477,0,0,0,0,0,0,0,'npc say to player'),
 (45958,10,15,45981,0,0,0,8,0,0,0,0,0,0,0,0,'cast Escorting Alliance Deserter (as triggered)'),
-(32307,1,18,0,0,0,0,0,0,0,0,0,0,0,0,0,''),
-(48610,0,18,0,0,0,0,0,0,0,0,0,0,0,0,0,''),
+(32307,1,18,3000,0,0,0,0,0,0,0,0,0,0,0,0,'despawn'),
+(48610,1,14,62309,0,0,0,0,0,0,0,0,0,0,0,0,''),
 (53099,0,15,53098,0,0,0,0,0,0,0,0,0,0,0,0,''),
 (59910,0,15,59935,0,0,0,8,0,0,0,0,0,0,0,0,''),
 (59910,0,15,59938,0,0,0,8,0,0,0,0,0,0,0,0,''),
@@ -230,13 +243,13 @@ INSERT INTO `dbscripts_on_spell` (`id`, `delay`, `command`, `datalong`, `datalon
 (42564,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
 (8593,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
 (31225,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
-(31927,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
+(31927,1,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'q. credit'),
 (32042,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
 (32205,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
 (33531,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
-(32979,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
-(33067,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
-(33655,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
+(32979,1,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'credit'),
+(33067,1,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'credit'),
+(33655,0,9,0,180,182090,100,7,0,0,0,0,0,0,0,0,'respawn Vector Coil Fire 1'),
 (34646,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
 (35113,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
 (35246,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
@@ -253,7 +266,7 @@ INSERT INTO `dbscripts_on_spell` (`id`, `delay`, `command`, `datalong`, `datalon
 (43404,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
 (45323,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
 (45414,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
-(45536,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
+(52149,0,31,28576,50,0,0,0,0,0,0,0,0,0,0,0,''),
 (45583,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
 (45692,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
 (45834,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
@@ -261,7 +274,7 @@ INSERT INTO `dbscripts_on_spell` (`id`, `delay`, `command`, `datalong`, `datalon
 (45835,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
 (45990,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
 (46797,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
-(46574,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
+(46574,1,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'q. credit'),
 (47935,0,15,60080,0,0,0,0,0,0,0,0,0,0,0,0,'q12154 cast visual'),
 (48021,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
 (47978,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
@@ -274,7 +287,7 @@ INSERT INTO `dbscripts_on_spell` (`id`, `delay`, `command`, `datalong`, `datalon
 (53038,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
 (55083,1,0,0,0,29686,10,0,2000000300,2000000301,2000000660,2000000661,0,0,0,0,''),
 (56275,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
-(58641,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
+(58641,0,15,51195,0,0,0,2,0,0,0,0,0,0,0,0,'cast Cosmetic - Low Poly Fire'),
 (66390,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
 (33532,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
 (43990,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
@@ -325,12 +338,8 @@ INSERT INTO `dbscripts_on_spell` (`id`, `delay`, `command`, `datalong`, `datalon
 (38127,0,15,38128,0,0,0,0,0,0,0,0,0,0,0,0,''),
 (38129,0,15,38130,0,0,0,0,0,0,0,0,0,0,0,0,''),
 (38055,0,15,38054,0,0,0,0,0,0,0,0,0,0,0,0,''),
-(37097,0,15,48342,0,0,0,0,0,0,0,0,0,0,0,0,'stun'),
-(37097,4,10,21633,61000,0,0,0,0,0,0,0,-3312.04,2948.81,171.12,4.83,'summon - Deathbringer Jovaan'),
-(37097,57,8,21502,0,0,0,0,0,0,0,0,0,0,0,0,'q. completed'),
-(37097,60,14,48342,0,0,0,0,0,0,0,0,0,0,0,0,'stun'),
 (38223,0,8,22051,1,0,0,0,0,0,0,0,0,0,0,0,'Quest Credit: Crazed Colossus'),
-(46609,0,15,46610,0,0,0,8,0,0,0,0,0,0,0,0,'Cast Freeze on Ice Barrier'),
+(46609,0,15,46610,0,19871,50000,2,0,0,0,0,0,0,0,0,'Cast Freeze on Ice Barrier'),
 (45990,1,15,45991,0,0,0,0,0,0,0,0,0,0,0,0,'cast Summon Oil Collector'),
 (47530,1,15,47575,0,0,0,0,0,0,0,0,0,0,0,0,'cast Strengthen the Ancients: On Interact Dummy to Woodlands Walker'),
 (51333,1,15,51345,0,0,0,0,0,0,0,0,0,0,0,0,'cast Summon Ancient Drakkari Chest'),
@@ -382,7 +391,84 @@ INSERT INTO `dbscripts_on_spell` (`id`, `delay`, `command`, `datalong`, `datalon
 (64626,0,14,64561,0,0,0,6,0,0,0,0,0,0,0,0,'remove Flames aura on Explosion'),
 (65192,0,14,64561,0,0,0,6,0,0,0,0,0,0,0,0,'remove Flames aura on Flame Suppressant'),
 (65224,0,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn on Clear Fires'),
-(65354,0,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn on Clear Fires');
+(65354,0,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn on Clear Fires'),
+(42485,0,15,42486,0,0,0,4,0,0,0,0,0,0,0,0,'cast Ooze Channel Credit'),
+(42485,0,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn self'),
+(45651,0,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn captured beryl sorcerer'),
+(56765,1,8,30444,0,0,0,0,0,0,0,0,0,0,0,0,'killcredit'),
+(56765,2,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn self'),
+(56275,0,15,56274,0,0,0,2,0,0,0,0,0,0,0,0,'cast Cosmetic - Low Poly Fire'),
+(57852,0,15,64079,0,0,0,2,0,0,0,0,0,0,0,0,'cast Cosmetic - Explosion'),
+(58641,2,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'create from quest_template'),
+(58641,5,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn self'),
+(51770,0,15,51738,0,0,0,8,0,0,0,0,0,0,0,0,'cast Shadow Storm'),
+(99259,0,15,99260,0,0,0,10,0,0,0,0,0,0,0,0,'Summon Torment Shards.'),
+(99259,0,15,99260,0,0,0,10,0,0,0,0,0,0,0,0,'Summon Torment Shards.'),
+(46606,1,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn self'),
+(46606,0,15,43106,0,0,0,0,0,0,0,0,0,0,0,0,'Green Eggs and Whelps: Summon Plagued Proto-Whelp'),
+(19250,0,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn target'),
+(19250,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'kill credit'),
+(37277,2,23,17312,0,21419,30,8,0,0,0,0,0,0,0,0,'temp model'),
+(37277,1,22,90,209,21419,30,0,0,0,0,0,0,0,0,0,'temp faction'),
+(37277,0,31,21419,30,0,0,0,0,0,0,0,0,0,0,0,''),
+(4132,0,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn self'),
+(4131,0,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn self'),
+(4130,0,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn self'),
+(46702,1,15,46704,0,0,0,6,0,0,0,0,0,0,0,0,'cast Raelorasz Fireball'),
+(46702,1,0,0,0,0,0,2,2000001171,2000001172,2000001173,0,0,0,0,0,'say text'),
+(46702,5,0,0,0,0,0,2,2000001174,0,0,0,0,0,0,0,'say text'),
+(46693,0,14,46691,0,0,0,2,0,0,0,0,0,0,0,0,'remove Drake Hatchling Subdued aura'),
+(70117,1,15,70123,0,0,0,0,0,0,0,0,0,0,0,0,'Cast Chill Frost. Sindragosa Event.'),
+(70117,0,15,70122,0,0,0,2,0,0,0,0,0,0,0,0,'Force Cast Target Icy Grip. Sindragosa Event.'),
+(59728,1,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn self'),
+(53435,0,15,53436,0,0,0,6,0,0,0,0,0,0,0,0,'Cast Teleport to CoT Stratholme Phase 4'),
+(99253,0,15,99255,0,0,0,0,0,0,0,0,0,0,0,0,'Cast Torment.'),
+(109176,0,15,106374,0,0,0,8,0,0,0,0,0,0,0,0,'Cast Twilight Unstable(Has Aura Twilight Monstrosity)'),
+(106374,0,15,106375,0,0,0,8,0,0,0,0,0,0,0,0,'Cast Unstable Twilight Damage.'),
+(55896,0,8,0,0,0,0,2,0,0,0,0,0,0,0,0,'Dry Haystack - Kill Credit'),
+(55896,0,18,0,0,0,0,2,0,0,0,0,0,0,0,0,'Dry Haystack - Despawn'),
+(64063,0,28,7,0,0,0,2,0,0,0,0,0,0,0,0,'set stand state dead'),
+(54804,0,8,29595,0,0,0,0,0,0,0,0,0,0,0,0,'kill credit for quest 12851'),
+(54799,0,8,29597,0,0,0,0,0,0,0,0,0,0,0,0,'kill credit for quest 12851'),
+(32979,1,9,0,300,182817,30,0,0,0,0,0,0,0,0,0,'respawn gobject'),
+(33067,1,9,0,300,182817,30,0,0,0,0,0,0,0,0,0,'respawn gobject'),
+(33655,1,9,0,180,182090,100,7,0,0,0,0,0,0,0,0,'respawn Vector Coil Fire 2'),
+(33655,2,9,0,180,182090,100,7,0,0,0,0,0,0,0,0,'respawn Vector Coil Fire 3'),
+(33655,3,8,0,0,0,0,0,0,0,0,0,0,0,0,0,'q. credit'),
+(39810,2,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn'),
+(8913,2,10,24782,120000,1200,50,7,0,0,0,0,0,0,0,0,''),
+(8913,3,18,0,0,1200,50,7,0,0,0,0,0,0,0,0,''),
+(37277,2,20,1,5,21419,30,2,0,0,0,0,0,0,0,0,'movement chenged to 1:random'),
+(42436,0,15,42523,0,0,0,8,0,0,0,0,0,0,0,0,'Cast Weak Alcohol'),
+(42436,0,15,42536,0,0,0,10,0,0,0,0,0,0,0,0,'Cast Brewfest Request Chick Chuck Mug'),
+(42436,1,15,47173,0,0,0,10,0,0,0,0,0,0,0,0,'Cast Brewfest - Dark Iron Attack - Intro -  Assign Kill Credit'),
+(42436,1,15,43126,0,0,0,10,0,0,0,0,0,0,0,0,'Cast Mug Target Practice'),
+(42436,1,15,43073,0,0,0,10,0,0,0,0,0,0,0,0,'Cast Mug Target Practice'),
+(52149,1,15,52152,0,0,0,0,0,0,0,0,0,0,0,0,''),
+(52149,10,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn'),
+(52264,3,37,0,0,28654,20,0,0,0,0,0,0,0,0,0,''),
+(52264,2,15,52266,0,0,0,0,0,0,0,0,0,0,0,0,''),
+(52264,1,14,52263,0,0,0,0,0,0,0,0,0,0,0,0,''),
+(52264,1,22,2084,1,28653,20,5,0,0,0,0,0,0,0,0,'temp faction'),
+(52267,3,18,0,0,0,0,0,0,0,0,0,0,0,0,0,''),
+(39190,0,15,39206,0,0,0,0,0,0,0,0,0,0,0,0,'Cast - Summon Fel Spirit'),
+(66313,1,10,34854,30000,0,0,2,0,0,0,0,0,0,0,0,'spell Fire Bomb - summon Fire Bomb'),
+(53083,1,35,5,12,0,0,6,0,0,0,0,0,0,0,0,'Send event AI'),
+(53105,0,15,53097,0,0,0,0,0,0,0,0,0,0,0,0,''),
+(48610,1,18,5,0,0,0,4,0,0,0,0,0,0,0,0,'despawn'),
+(45877,1,15,48203,0,0,0,0,0,0,0,0,0,0,0,0,''),
+(45877,5,18,0,0,0,0,4,0,0,0,0,0,0,0,0,''),
+(48204,1,14,45875,0,0,0,0,0,0,0,0,0,0,0,0,''),
+(48204,1,0,0,0,0,0,4,2000001516,2000001517,2000001518,2000001519,0,0,0,0,''),
+(48204,4,0,0,0,25607,78910,16,2000001514,2000001515,0,0,0,0,0,0,''),
+(39238,1,15,39240,0,0,0,0,39241,0,0,0,0,0,0,0,'cast random spell'),
+(52264,8,0,0,0,28654,20,3,2000001418,0,0,0,0,0,0,0,''),
+(46574,15,40,0,0,188112,10,1,0,0,0,0,0,0,0,0,'despawn Farshire Grain'),
+(70700,0,15,69966,0,0,0,0,0,0,0,0,0,0,0,0,'cast Summon Evil Quel\'Delar'),
+(46281,3,18,0,0,0,0,0,0,0,0,0,0,0,0,0,'despawn self'),
+(31333,4,0,0,0,0,0,2,2000001907,2000001908,2000001909,0,0,0,0,0,''),
+(31333,8,35,5,100,0,0,2,0,0,0,0,0,0,0,0,''),
+(31333,8,28,7,0,0,0,2,0,0,0,0,0,0,0,0,'');
 /*!40000 ALTER TABLE `dbscripts_on_spell` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -395,4 +481,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-24 21:53:31

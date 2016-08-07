@@ -1,14 +1,27 @@
--- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos3
--- ------------------------------------------------------
--- Server version	5.5.37
+-- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+--
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -47,7 +60,8 @@ CREATE TABLE `areatrigger_teleport` (
 
 LOCK TABLES `areatrigger_teleport` WRITE;
 /*!40000 ALTER TABLE `areatrigger_teleport` DISABLE KEYS */;
-INSERT INTO `areatrigger_teleport` (`id`, `name`, `required_level`, `required_item`, `required_item2`, `heroic_key`, `heroic_key2`, `required_quest_done`, `required_quest_done_heroic`, `target_map`, `target_position_x`, `target_position_y`, `target_position_z`, `target_orientation`) VALUES (78,'Deadmines Entrance Target',10,0,0,0,0,0,0,36,-14.5732,-385.475,62.4561,1.5708),
+INSERT INTO `areatrigger_teleport` (`id`, `name`, `required_level`, `required_item`, `required_item2`, `heroic_key`, `heroic_key2`, `required_quest_done`, `required_quest_done_heroic`, `target_map`, `target_position_x`, `target_position_y`, `target_position_z`, `target_orientation`) VALUES
+(78,'Deadmines Entrance Target',10,0,0,0,0,0,0,36,-14.5732,-385.475,62.4561,1.5708),
 (101,'Stormwind Jail Entrance Target',15,0,0,0,0,0,0,34,48.9849,0.483882,-16.3942,6.28319),
 (107,'Stormwind Vault Entrance',0,0,0,0,0,0,0,35,-0.91,40.57,-24.23,0),
 (109,'Stormwind High Prison Exit Target',0,0,0,0,0,0,0,0,-8661.57,616.574,86.1877,5.49779),
@@ -74,19 +88,19 @@ INSERT INTO `areatrigger_teleport` (`id`, `name`, `required_level`, `required_it
 (525,'Gnomeregan Exit 02 Target',15,0,0,0,0,0,0,0,-4915.38,811.773,268.77,4.71239),
 (527,'Darnassus Exit Target',0,0,0,0,0,0,0,1,8380.56,998.536,29.1294,3.40339),
 (542,'Darnassus Entrance Target',0,0,0,0,0,0,0,1,9946.25,2612.97,1316.49,4.71239),
-(702,'Stormwind - Mage Exit Target',0,0,0,0,0,0,0,0,-9014.94,873.326,148.616,5.23599),
-(704,'Stormwind - Mage Entrance Target',0,0,0,0,0,0,0,0,-9016.97,885.436,29.6207,5.41052),
+(702,'Stormwind - Mage Exit Target',0,0,0,0,0,0,0,0,-9015.76,874.94,148.62,5.211),
+(704,'Stormwind - Mage Entrance Target',0,0,0,0,0,0,0,0,-9018.56,887.664,29.63,5.346),
 (882,'Uldaman Exit Target Rear',0,0,0,0,0,0,0,0,-6619.97,-3765.74,266.309,3.40339),
 (902,'Uldaman Exit',30,0,0,0,0,0,0,70,-214.02,383.607,-38.7687,0.5),
 (922,'Zul\'Farrak Exit Target',0,0,0,0,0,0,0,1,-6795.56,-2890.72,8.88742,3.14159),
 (924,'Zul\'Farrak Entrance Target',35,0,0,0,0,0,0,209,1212.67,842.04,8.93346,6.28319),
 (1064,'Onyxia\'s Lair Exit Target',0,0,0,0,0,0,0,1,-4750.38,-3754.44,49.0485,0.785398),
 (1466,'Blackrock Depths Entrance Target',40,0,0,0,0,0,0,230,456.929,34.0923,-68.0896,4.71239),
-(1468,'Blackrock Spire Entrance Target',45,0,0,0,0,0,0,229,78.3534,-226.841,49.7662,4.71239),
-(1470,'Blackrock Spire Exit Target',45,0,0,0,0,0,0,0,-7524.65,-1229.13,285.731,2.0944),
+(1468,'Blackrock Spire Entrance Target',45,0,0,0,0,0,0,229,78.3534,-226.841,49.7662,4.763),
+(1470,'Blackrock Spire Exit Target',45,0,0,0,0,0,0,0,-7524.65,-1229.13,285.731,2.073),
 (1472,'Blackrock Depths Exit Target',45,0,0,0,0,0,0,0,-7178.41,-922.152,166.092,2.00713),
 (4487,'CoT - Hyjal - Exit - Teleport Target',0,0,0,0,0,0,0,1,-8176.99,-4176.92,-166.463,3.92699),
-(4311,'CoT - Hyjal - Human Base - Teleport Target',70,0,0,0,0,0,0,534,5066.79,-1791.9,1321.65,2.35619),
+(4311,'CoT - Hyjal - Human Base - Teleport Target',70,0,0,0,0,0,0,534,4954,-1886.2,1326,2.35619),
 (4312,'CoT - Hyjal - Orc Base - Teleport Target',70,0,0,0,0,0,0,534,5499.96,-2756.8,1488.96,1.39626),
 (4313,'CoT - Hyjal - Night Elf Base - Teleport Target',70,0,0,0,0,0,0,534,5163.02,-3428.31,1627.61,0.785398),
 (4319,'CoT - Hyjal - Entrance - Teleport Target',70,0,0,0,0,0,0,534,4252.72,-4226.16,868.222,2.35619),
@@ -133,10 +147,10 @@ INSERT INTO `areatrigger_teleport` (`id`, `name`, `required_level`, `required_it
 (3726,'Blackwing Lair - Entrance Target',60,0,0,0,0,0,0,469,-7672.32,-1107.05,396.651,0.785398),
 (3728,'Blackrock Spire Exit Target',45,0,0,0,0,0,0,0,-7524.65,-1229.13,285.731,2.0944),
 (3930,'Zul\'Gurub Exit ',50,0,0,0,0,0,0,0,-11916.3,-1208.37,92.2868,1.61792),
-(4006,'Ahn\'Qiraj Ruins - Outbound Teleport Target',0,0,0,0,0,0,0,1,-8415.7,1502.44,30.6862,5.49779),
-(4008,'Ahn\'Qiraj Ruins - Inbound Teleport Target',50,0,0,0,0,0,0,509,-8436.53,1519.17,31.907,2.61799),
-(4010,'Ahn\'Qiraj Temple - Inbound Teleport Target',50,0,0,0,0,0,0,531,-8221.35,2014.34,129.071,0.872665),
-(4012,'Ahn\'Qiraj Temple - Outbound Target',0,0,0,0,0,0,0,1,-8239.01,1993.25,129.071,4.01426),
+(4006,'Ahn\'Qiraj Ruins - Outbound Teleport Target',0,0,0,0,0,0,0,1,-8415.7,1502.44,30.6862,5.796),
+(4008,'Ahn\'Qiraj Ruins - Inbound Teleport Target',50,0,0,0,0,0,0,509,-8436.53,1519.17,31.907,2.676),
+(4010,'Ahn\'Qiraj Temple - Inbound Teleport Target',50,0,0,0,0,0,0,531,-8221.35,2010.6,129.33,0.914),
+(4012,'Ahn\'Qiraj Temple - Outbound Target',0,0,0,0,0,0,0,1,-8239.01,1993.25,129.071,3.961),
 (4352,'Dark Portal - E. Kingdoms Target',58,0,0,0,0,0,0,0,-11896.8,-3206.77,-14.6724,0.174533),
 (4354,'Dark Portal - Outland Target',58,0,0,0,0,0,0,530,-248.113,922.9,84.3497,1.5708),
 (4386,'Eastern Plaguelands - From Ghostlands Target',1,0,0,0,0,0,0,0,3468.42,-4479.6,137.329,2.18166),
@@ -175,7 +189,7 @@ INSERT INTO `areatrigger_teleport` (`id`, `name`, `required_level`, `required_it
 (4399,'Auchindoun Arakkoa - Exit Target',0,0,0,0,0,0,0,530,-3362.1,4668.9,-101.048,1.5708),
 (4131,'Karazhan - Front Entrance Target',68,0,0,0,0,0,0,532,-11102,-1998.2,49.8921,6.28319),
 (4436,'Karazhan - Front Exit Target',0,0,0,0,0,0,0,0,-11113.5,-2006.63,49.3307,3.75246),
-(4320,'CoT - Black Morass - Entrance - Teleport Target',66,0,0,0,0,10285,0,269,-1491.61,7056.51,32.1011,1.74533),
+(4320,'CoT - Black Morass - Entrance - Teleport Target',66,0,0,0,0,0,0,269,-1491.61,7056.51,32.1011,1.74533),
 (4321,'CoT - Hillsbrad - Entrance - Teleport Target',66,0,0,0,0,10277,0,560,2741.68,1312.64,14.0413,2.79253),
 (4324,'CoT - Hillsbrad - Exit - Teleport Target',0,0,0,0,0,0,0,1,-8359.11,-4058.83,-208.186,3.49066),
 (2886,'Molten Core Entrance Target',50,0,0,0,0,0,0,409,1091.89,-466.985,-105.084,3.14159),
@@ -191,7 +205,7 @@ INSERT INTO `areatrigger_teleport` (`id`, `name`, `required_level`, `required_it
 (4739,'Zul\'Aman - Exit Target',0,0,0,0,0,0,0,530,6851.11,-7985.05,186.421,1.5708),
 (943,'Thousand Needles - Test of Faith (Target)',0,0,0,0,0,0,0,1,-5191.27,-2802.59,-7.21111,5.67232),
 (4885,'Magisters\' Terrace - Exit Target',70,0,0,0,0,0,0,530,12885.3,-7336.42,65.4882,1.0472),
-(4887,'Magisters\' Terrace - Entrance Target',70,0,0,0,0,0,11492,585,7.52409,0.545139,-2.79914,0),
+(4887,'Magisters\' Terrace - Entrance Target',70,0,0,0,0,0,0,585,7.52409,0.545139,-2.79914,0),
 (4889,'Sunwell Raid - Entrance Target',70,0,0,0,0,0,0,580,1792.53,925.929,15.076,3.14159),
 (4891,'Sunwell Raid - Exit Target',70,0,0,0,0,0,0,530,12556.5,-6774.95,15.0719,0),
 (4562,'Invasion Point, Cataclysm (return)',0,0,0,0,0,0,0,530,-3278.63,2831.31,123.01,1.56),
@@ -203,8 +217,8 @@ INSERT INTO `areatrigger_teleport` (`id`, `name`, `required_level`, `required_it
 (4561,'Invasion Point, Cataclysm (return)',0,0,0,0,0,0,0,530,-3278.63,2831.31,123.01,1.56),
 (3654,'Barrens - Mor\'shan Base Camp (Warsong Gulch - Horde Entrance)',0,0,0,0,0,0,0,489,1017.35,1294.46,343.308,0),
 (3650,'Ashenvale - Silverwing Grove (Warsong Gulch - Alliance Entrance)',0,0,0,0,0,0,0,489,1448.83,1606.72,350.593,0),
-(4614,'Tempest Keep - Factory Exit Target',0,0,0,0,0,0,0,530,2867.93,1550.95,252.159,0.785398),
-(4612,'Tempest Keep - Atrium Exit Target',0,0,0,0,0,0,0,530,3409.85,1486.26,182.837,2.53073),
+(4614,'The Mechanar (Boss Exit)',0,0,0,0,0,0,0,530,2862.41,1546.09,252.161,0.805457),
+(4612,'The Botanica (Atrium Exit)',0,0,0,0,0,0,0,530,3409.85,1486.26,182.837,2.53073),
 (2606,'Alterac Valley - Horde Exit Target',0,0,0,0,0,0,0,0,536.495,-1085.72,106.27,3.66519),
 (2608,'Alterac Valley - Alliance Exit Target',0,0,0,0,0,0,0,0,101.144,-184.934,127.344,4.88692),
 (2549,'Scholomance - Out',0,0,0,0,0,0,0,289,325.184,75.6181,93.8744,0),
@@ -408,4 +422,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-24 21:52:41

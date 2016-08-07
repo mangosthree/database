@@ -1,14 +1,27 @@
--- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos3
--- ------------------------------------------------------
--- Server version	5.5.37
+-- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+--
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -51,7 +64,8 @@ CREATE TABLE `locales_gossip_menu_option` (
 
 LOCK TABLES `locales_gossip_menu_option` WRITE;
 /*!40000 ALTER TABLE `locales_gossip_menu_option` DISABLE KEYS */;
-INSERT INTO `locales_gossip_menu_option` (`menu_id`, `id`, `option_text_loc1`, `option_text_loc2`, `option_text_loc3`, `option_text_loc4`, `option_text_loc5`, `option_text_loc6`, `option_text_loc7`, `option_text_loc8`, `box_text_loc1`, `box_text_loc2`, `box_text_loc3`, `box_text_loc4`, `box_text_loc5`, `box_text_loc6`, `box_text_loc7`, `box_text_loc8`) VALUES (3506,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Банк',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+INSERT INTO `locales_gossip_menu_option` (`menu_id`, `id`, `option_text_loc1`, `option_text_loc2`, `option_text_loc3`, `option_text_loc4`, `option_text_loc5`, `option_text_loc6`, `option_text_loc7`, `option_text_loc8`, `box_text_loc1`, `box_text_loc2`, `box_text_loc3`, `box_text_loc4`, `box_text_loc5`, `box_text_loc6`, `box_text_loc7`, `box_text_loc8`) VALUES
+(3506,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Банк',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (3506,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Укротитель грифонов',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (3506,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Регистратор гильдий',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (3506,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Таверна',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -395,7 +409,6 @@ INSERT INTO `locales_gossip_menu_option` (`menu_id`, `id`, `option_text_loc1`, `
 (7288,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу остановиться здесь.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (7948,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Конфета или Жизнь!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (7609,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Поделись со мной секретами рыболовного мастерства.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(6059,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Чем я могу заняться в таверне?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (349,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу остановиться здесь.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (345,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Конфета или Жизнь!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (7722,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Дай мне боевой штандарт. Я захвачу руины Двух Башен!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -460,7 +473,6 @@ INSERT INTO `locales_gossip_menu_option` (`menu_id`, `id`, `option_text_loc1`, `
 (9687,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Великая и могущественная Хар\'коа, пожалуйста, призови одного из своих детей, чтобы он мог тайно отнести меня к алтарю Кетц\'лун.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (9492,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Воспользоваться туалетом.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (9512,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Снять оковы с Огнедышащего и подчинить его себе.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(9512,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Снять оковы с Огнедышащего и подчинить его себе.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (10478,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я полечу туда',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (9741,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Мне нужно найти Дажика, у тебя есть его мел?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (9741,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Мне нужно найти Дажика, у тебя есть его мел?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -1891,7 +1903,6 @@ INSERT INTO `locales_gossip_menu_option` (`menu_id`, `id`, `option_text_loc1`, `
 (10769,12,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Учитель классовых навыков',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (10769,13,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Учитель профессий',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (10976,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Мне нужна новая маскировка.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(10976,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Мне нужна новая маскировка.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (10996,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу посмотреть на ваши товары.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (11031,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Вы можете убрать меч?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (11095,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу посмотреть на ваши товары.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -1924,7 +1935,7 @@ INSERT INTO `locales_gossip_menu_option` (`menu_id`, `id`, `option_text_loc1`, `
 (10644,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Что случилось с магами?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (6059,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу остановиться здесь.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (8035,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Посмотрим, что у тебя есть.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(6059,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу посмотреть на ваши товары.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(6059,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (2890,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу посмотреть на ваши товары.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (6525,4,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Конфета или Жизнь!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (6525,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу остановиться здесь.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -2896,9 +2907,9 @@ INSERT INTO `locales_gossip_menu_option` (`menu_id`, `id`, `option_text_loc1`, `
 (4510,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу забыть свои умения.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (4510,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу расспросить о двойной специализации.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (9459,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Обучите меня.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(12537,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу учиться.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(12537,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу забыть свои умения.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(12537,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу расспросить о двойной специализации.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(3643,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу учиться.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(3643,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу забыть свои умения.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(3643,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу расспросить о двойной специализации.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (3642,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу продолжить обучение на жреца.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (3642,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу забыть свои умения.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (3642,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Я хочу расспросить о двойной специализации.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -3949,4 +3960,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-24 21:54:09
