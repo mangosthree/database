@@ -1,27 +1,14 @@
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
---
--- This program is free software; you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation; either version 2 of the License, or
--- (at your option) any later version.
---
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY; without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--- GNU General Public License for more details.
---
--- You should have received a copy of the GNU General Public License
--- along with this program; if not, write to the Free Software
--- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
---
+-- Host: localhost    Database: mangos3
+-- ------------------------------------------------------
+-- Server version	5.5.37
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -52,8 +39,7 @@ CREATE TABLE `npc_trainer` (
 
 LOCK TABLES `npc_trainer` WRITE;
 /*!40000 ALTER TABLE `npc_trainer` DISABLE KEYS */;
-INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillvalue`, `reqlevel`) VALUES
-(198,116,284,0,0,7),
+INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillvalue`, `reqlevel`) VALUES (198,116,284,0,0,7),
 (198,587,100,0,0,6),
 (198,1459,27000,0,0,58),
 (198,2136,142,0,0,5),
@@ -36995,8 +36981,7 @@ INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillv
 (5511,61009,120000,164,420,0),
 (5511,55058,45000,164,415,0),
 (5511,55057,40000,164,405,0);
-INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillvalue`, `reqlevel`) VALUES
-(5511,59438,40000,164,400,0),
+INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillvalue`, `reqlevel`) VALUES (5511,59438,40000,164,400,0),
 (5511,76433,50000,164,460,0),
 (5511,55656,50000,164,415,0),
 (5511,59440,40000,164,405,0),
@@ -72835,8 +72820,7 @@ INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillv
 (26904,76259,65000,164,490,0),
 (514,76259,65000,164,490,0),
 (1241,76259,65000,164,490,0);
-INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillvalue`, `reqlevel`) VALUES
-(33609,76260,65000,164,490,0),
+INSERT INTO `npc_trainer` (`entry`, `spell`, `spellcost`, `reqskill`, `reqskillvalue`, `reqlevel`) VALUES (33609,76260,65000,164,490,0),
 (26564,76260,65000,164,490,0),
 (2836,76260,65000,164,490,0),
 (3136,76260,65000,164,490,0),
@@ -84495,3 +84479,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+-- Dump completed on 2015-01-24 21:54:24

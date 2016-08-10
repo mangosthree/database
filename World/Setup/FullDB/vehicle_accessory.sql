@@ -1,27 +1,14 @@
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
---
--- This program is free software; you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation; either version 2 of the License, or
--- (at your option) any later version.
---
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY; without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--- GNU General Public License for more details.
---
--- You should have received a copy of the GNU General Public License
--- along with this program; if not, write to the Free Software
--- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
---
+-- Host: localhost    Database: mangos3
+-- ------------------------------------------------------
+-- Server version	5.5.37
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -50,8 +37,7 @@ CREATE TABLE `vehicle_accessory` (
 
 LOCK TABLES `vehicle_accessory` WRITE;
 /*!40000 ALTER TABLE `vehicle_accessory` DISABLE KEYS */;
-INSERT INTO `vehicle_accessory` (`vehicle_entry`, `seat`, `accessory_entry`, `comment`) VALUES
-(27241,0,27268,'Risen Gryphon'),
+INSERT INTO `vehicle_accessory` (`vehicle_entry`, `seat`, `accessory_entry`, `comment`) VALUES (27241,0,27268,'Risen Gryphon'),
 (27626,0,27627,'Tatjana\'s Horse'),
 (27661,0,27662,'Wintergarde Gryphon'),
 (28018,0,28006,'Thiassi the Light Bringer'),
@@ -69,8 +55,8 @@ INSERT INTO `vehicle_accessory` (`vehicle_entry`, `seat`, `accessory_entry`, `co
 (32633,2,32639,'Traveler Mammoth (A) - Vendor & Repairer'),
 (32640,1,32642,'Traveler Mammoth (H) - Vendor'),
 (32640,2,32641,'Traveler Mammoth (H) - Vendor & Repairer'),
-(34150,4,34137,'Winter Jormungar'),
-(34150,5,34137,'Winter Jormungar'),
+(34146,2,34137,'Winter Jormungar'),
+(34146,1,34137,'Winter Jormungar'),
 (33060,7,33067,'Salvaged Siege Engine'),
 (33109,1,33167,'Salvaged Demolisher'),
 (33109,2,33620,'Salvaged Demolisher'),
@@ -86,16 +72,27 @@ INSERT INTO `vehicle_accessory` (`vehicle_entry`, `seat`, `accessory_entry`, `co
 (33687,1,33695,'Chillmaw'),
 (33687,2,33695,'Chillmaw'),
 (33778,0,33780,'Tournament Hippogryph'),
+(34658,0,34657,'Jaelyne Evensong\'s Mount'),
 (34776,7,34777,'Isle of Conquest Siege Engine  - main turret (ally)'),
 (34776,1,36356,'Isle of Conquest Siege Engine  - flame turret 1 (ally)'),
 (34776,2,36356,'Isle of Conquest Siege Engine  - flame turret 2 (ally)'),
 (35069,7,36355,'Isle of Conquest Siege Engine - main turret (horde)'),
 (35069,1,34778,'Isle of Conquest Siege Engine - flame turret 1 (horde)'),
 (35069,2,34778,'Isle of Conquest Siege Engine - flame turret 2 (horde)'),
+(35633,0,34702,'Ambrose Boltspark\'s Mount'),
+(35634,0,35617,'Deathstalker Visceri\'s Mount'),
+(35635,0,35569,'Eressea Dawnsinger\'s Mount'),
+(35636,0,34703,'Lana Stouthammer\'s Mount'),
+(35637,0,34705,'Marshal Jacob Alerius\' Mount'),
+(35638,0,35572,'Mokra the Skullcrusher\'s Mount'),
+(35640,0,35571,'Runok Wildmane\'s Mount'),
+(35641,0,35570,'Zul\'tore\'s Mount'),
+(35768,0,34701,'Colosos\' Mount'),
 (36678,0,38309,'Professor Putricide - trigger'),
 (36678,1,38308,'Professor Putricide - trigger'),
 (36891,0,31260,'Iceborn Proto-Drake'),
 (42015,0,42017,'Gnomish Bomber'),
+(28782,0,28768,'Acherus Deathcharger - Dark Rider of Acherus'),
 (32823,0,34812,'Bountiful Table - The Turkey Chair'),
 (32823,1,34823,'Bountiful Table - The Cranberry Chair'),
 (32823,2,34819,'Bountiful Table - The Stuffing Chair'),
@@ -196,14 +193,14 @@ INSERT INTO `vehicle_accessory` (`vehicle_entry`, `seat`, `accessory_entry`, `co
 (37676,0,37680,'Hot Rod - Sassy Hardwrench'),
 (35995,0,36042,'Strangle Vine'),
 (36514,0,36403,'Sling Rocket'),
-(47204,7,47203,'Creeper Egg on Infested Bear'),
-(47204,6,47203,'Creeper Egg on Infested Bear'),
-(47204,5,47203,'Creeper Egg on Infested Bear'),
-(47204,4,47203,'Creeper Egg on Infested Bear'),
-(47204,3,47203,'Creeper Egg on Infested Bear'),
-(47204,2,47203,'Creeper Egg on Infested Bear'),
-(47204,1,47203,'Creeper Egg on Infested Bear'),
-(47204,0,47203,'Creeper Egg on Infested Bear'),
+(47204,0,47203,'Infested Bear'),
+(47204,1,47203,'Infested Bear'),
+(47204,2,47203,'Infested Bear'),
+(47204,3,47203,'Infested Bear'),
+(47204,4,47203,'Infested Bear'),
+(47204,5,47203,'Infested Bear'),
+(47204,6,47203,'Infested Bear'),
+(47204,7,47203,'Infested Bear'),
 (46748,0,46749,'Stonard Kodo Beast'),
 (43561,0,43560,'Smilin\' Timmy Sticks'),
 (46840,0,46841,'Marshtide Steed'),
@@ -212,14 +209,14 @@ INSERT INTO `vehicle_accessory` (`vehicle_entry`, `seat`, `accessory_entry`, `co
 (33108,1,33212,'Hodir\'s Fury Targetting Reticle'),
 (33366,1,33367,'Freya\'s Ward Targetting Reticle'),
 (34161,1,33216,'Mechanostriker 54-A'),
-(34150,3,34137,'Winter Jormungar'),
-(34150,2,34137,'Winter Jormungar'),
-(34150,1,34137,'Winter Jormungar'),
-(34150,0,34137,'Winter Jormungar'),
 (34146,3,34137,'Winter Jormungar'),
-(34146,2,34137,'Winter Jormungar'),
-(34146,1,34137,'Winter Jormungar'),
-(34146,0,34137,'Winter Jormungar'),
+(34146,4,34137,'Winter Jormungar'),
+(34150,1,34137,'Winter Jormungar'),
+(34150,2,34137,'Winter Jormungar'),
+(34150,3,34137,'Winter Jormungar'),
+(34150,4,34137,'Winter Jormungar'),
+(34150,5,34137,'Winter Jormungar'),
+(34150,6,34137,'Winter Jormungar'),
 (34151,1,34137,'Winter Jormungar'),
 (34151,2,34137,'Winter Jormungar'),
 (34151,3,34137,'Winter Jormungar'),
@@ -246,11 +243,7 @@ INSERT INTO `vehicle_accessory` (`vehicle_entry`, `seat`, `accessory_entry`, `co
 (55305,0,55306,'Balloon Cart Mounted in Carl Goodup'),
 (55306,0,55307,'Balloon Cart Bunny Mounted in Balloon Cart'),
 (34832,0,40942,'Warsong War Rider'),
-(29854,0,29730,'Stormcrest Eagle'),
-(47186,0,46321,'Thundermar War Gryphon'),
-(39833,0,39835,'Twilight Buzzard'),
-(29500,0,29498,'Brunnhildar Warmaiden'),
-(30174,0,30175,'Hyldsmeet Bear Rider');
+(29854,0,29730,'Stormcrest Eagle');
 /*!40000 ALTER TABLE `vehicle_accessory` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -263,3 +256,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+-- Dump completed on 2015-01-24 21:55:23

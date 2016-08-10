@@ -1,27 +1,14 @@
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
---
--- This program is free software; you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation; either version 2 of the License, or
--- (at your option) any later version.
---
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY; without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--- GNU General Public License for more details.
---
--- You should have received a copy of the GNU General Public License
--- along with this program; if not, write to the Free Software
--- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
---
+-- Host: localhost    Database: mangos3
+-- ------------------------------------------------------
+-- Server version	5.5.37
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -53,8 +40,7 @@ CREATE TABLE `game_event` (
 
 LOCK TABLES `game_event` WRITE;
 /*!40000 ALTER TABLE `game_event` DISABLE KEYS */;
-INSERT INTO `game_event` (`entry`, `start_time`, `end_time`, `occurence`, `length`, `holiday`, `description`) VALUES
-(1,'2013-06-20 20:00:00','2020-12-29 21:00:00',525600,20160,341,'Midsummer Fire Festival'),
+INSERT INTO `game_event` (`entry`, `start_time`, `end_time`, `occurence`, `length`, `holiday`, `description`) VALUES (1,'2013-06-20 20:00:00','2020-12-29 21:00:00',525600,20160,341,'Midsummer Fire Festival'),
 (2,'2013-12-15 03:00:00','2020-12-30 17:00:00',525600,25920,141,'Feast of Winter Veil'),
 (3,'2013-08-31 18:01:00','2012-12-30 14:00:00',131040,8639,376,'Darkmoon Faire (Terokkar Forest)'),
 (4,'2013-10-05 18:01:00','2012-12-30 14:00:00',131040,8639,374,'Darkmoon Faire (Elwynn Forest)'),
@@ -69,9 +55,9 @@ INSERT INTO `game_event` (`entry`, `start_time`, `end_time`, `occurence`, `lengt
 (22,'0000-00-00 00:00:00','0000-00-00 00:00:00',482400,43200,0,'AQ War Effort'),
 (17,'0000-00-00 00:00:00','0000-00-00 00:00:00',525600,28800,0,'Scourge Invasion'),
 (13,'0000-00-00 00:00:00','0000-00-00 00:00:00',525600,28800,0,'Elemental Invasions'),
-(14,'2010-12-19 13:50:00','2020-12-30 11:00:00',10080,130,0,'Fishing Extravaganza Announce'),
+(14,'2010-12-19 11:50:00','2020-12-30 11:00:00',10080,130,0,'Fishing Extravaganza Announce'),
 (16,'2010-11-30 19:00:00','2020-12-30 14:00:00',180,120,0,'Gurubashi Arena Booty Run'),
-(15,'2010-12-19 14:00:00','2020-12-27 11:00:00',10080,120,301,'Fishing Extravaganza'),
+(15,'2010-12-19 12:00:00','2020-12-27 11:00:00',10080,120,301,'Fishing Extravaganza'),
 (18,'2012-11-15 19:01:00','2020-11-19 17:00:00',60480,5758,283,'Call to Arms: Alterac Valley!'),
 (19,'2012-11-22 19:01:00','2020-11-26 17:00:00',60480,5758,284,'Call to Arms: Warsong Gulch!'),
 (20,'2012-11-26 19:01:00','2020-11-30 17:00:00',60480,5758,285,'Call to Arms: Arathi Basin!'),
@@ -148,3 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+-- Dump completed on 2015-01-24 21:53:35

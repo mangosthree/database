@@ -44,11 +44,16 @@ creature_onkill_reputation \
 creature_questrelation \
 creature_template \
 creature_template_addon \
-creature_template_classlevelstats \
 creature_template_spells \
-custom_texts \
 db_script_string \
 db_version \
+dbdocsfields \
+dbdocsfields_localised \
+dbdocsprogressquests \
+dbdocssubtables \
+dbdocssubtables_localised \
+dbdocstable \
+dbdocstable_localised \
 dbscripts_on_creature_death \
 dbscripts_on_creature_movement \
 dbscripts_on_event \
@@ -59,6 +64,8 @@ dbscripts_on_quest_end \
 dbscripts_on_quest_start \
 dbscripts_on_spell \
 disenchant_loot_template \
+exploration_basexp \
+fishing_loot_template \
 exploration_basexp \
 fishing_loot_template \
 game_event \
@@ -79,7 +86,6 @@ gameobject_questrelation \
 gameobject_template \
 gossip_menu \
 gossip_menu_option \
-gossip_texts \
 hotfix_data \
 instance_encounters \
 instance_template \
@@ -139,6 +145,7 @@ script_texts \
 script_waypoint \
 scripted_areatrigger \
 scripted_event_id \
+sd2_db_version \
 skill_discovery_template \
 skill_extra_item_template \
 skill_fishing_base_level \
