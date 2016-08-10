@@ -1,27 +1,14 @@
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
---
--- This program is free software; you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation; either version 2 of the License, or
--- (at your option) any later version.
---
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY; without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--- GNU General Public License for more details.
---
--- You should have received a copy of the GNU General Public License
--- along with this program; if not, write to the Free Software
--- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
---
+-- Host: localhost    Database: mangos3
+-- ------------------------------------------------------
+-- Server version	5.5.37
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -56,8 +43,7 @@ CREATE TABLE `spell_area` (
 
 LOCK TABLES `spell_area` WRITE;
 /*!40000 ALTER TABLE `spell_area` DISABLE KEYS */;
-INSERT INTO `spell_area` (`spell`, `area`, `quest_start`, `quest_start_active`, `quest_end`, `condition_id`, `aura_spell`, `racemask`, `gender`, `autocast`) VALUES
-(54056,4306,12536,1,12536,0,0,0,2,1),
+INSERT INTO `spell_area` (`spell`, `area`, `quest_start`, `quest_start_active`, `quest_end`, `condition_id`, `aura_spell`, `racemask`, `gender`, `autocast`) VALUES (54056,4306,12536,1,12536,0,0,0,2,1),
 (53405,4298,12779,0,0,0,0,0,2,1),
 (51915,4298,0,0,0,0,0,0,2,1),
 (54119,4028,0,0,0,0,0,0,2,1),
@@ -150,7 +136,7 @@ INSERT INTO `spell_area` (`spell`, `area`, `quest_start`, `quest_start_active`, 
 (52707,4298,12716,0,0,0,0,0,2,1),
 (52950,4298,12727,0,0,0,0,0,2,1),
 (52598,4298,12706,0,0,0,0,0,2,1),
-(53081,4298,12755,1,12756,0,0,0,2,1),
+(53081,4298,12755,1,12757,0,0,0,2,1),
 (51721,4342,12657,0,0,0,0,0,2,1),
 (51721,4281,12657,0,0,0,0,0,2,1),
 (58551,0,13165,0,13189,0,-58354,690,2,1),
@@ -490,7 +476,7 @@ INSERT INTO `spell_area` (`spell`, `area`, `quest_start`, `quest_start_active`, 
 (32098,3713,0,0,0,0,0,0,2,0),
 (32098,3714,0,0,0,0,0,0,2,0),
 (32098,3836,0,0,0,0,0,0,2,0),
-(52217,4306,12574,1,12574,0,0,0,2,1),
+(52217,4306,12574,0,0,0,0,0,2,1),
 (96591,33,29157,0,0,0,0,0,2,1),
 (96591,33,29158,0,0,0,0,0,2,1),
 (98069,4024,29239,0,29269,0,0,0,2,1),
@@ -559,19 +545,7 @@ INSERT INTO `spell_area` (`spell`, `area`, `quest_start`, `quest_start_active`, 
 (72002,4720,24868,1,24868,0,0,0,2,1),
 (73616,4720,25110,0,25184,0,0,0,2,1),
 (73756,4720,25184,0,25251,0,0,0,2,1),
-(74025,4720,25251,0,0,0,0,0,2,1),
-(43889,3999,11390,1,0,0,0,0,2,1),
-(71313,4862,24461,1,24522,0,0,0,2,1),
-(60963,4466,13285,1,13285,0,0,0,2,1),
-(40817,3784,0,0,0,0,0,0,2,0),
-(40817,3785,0,0,0,0,0,0,2,0),
-(71314,4862,24559,1,24562,0,0,0,2,1),
-(49416,4521,13403,1,13403,0,0,0,2,1),
-(49416,4521,13364,1,13364,0,0,0,2,1),
-(54504,4543,13047,1,13047,0,0,0,2,1),
-(54504,4445,13047,1,13047,0,0,0,2,1),
-(40214,3967,11013,0,0,0,0,0,2,1),
-(40214,3967,11013,1,0,0,0,0,2,1);
+(74025,4720,25251,0,0,0,0,0,2,1);
 /*!40000 ALTER TABLE `spell_area` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -584,3 +558,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+-- Dump completed on 2015-01-24 21:55:07

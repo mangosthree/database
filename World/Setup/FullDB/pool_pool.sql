@@ -1,27 +1,14 @@
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
---
--- This program is free software; you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation; either version 2 of the License, or
--- (at your option) any later version.
---
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY; without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--- GNU General Public License for more details.
---
--- You should have received a copy of the GNU General Public License
--- along with this program; if not, write to the Free Software
--- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
---
+-- Host: localhost    Database: mangos3
+-- ------------------------------------------------------
+-- Server version	5.5.37
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -51,8 +38,7 @@ CREATE TABLE `pool_pool` (
 
 LOCK TABLES `pool_pool` WRITE;
 /*!40000 ALTER TABLE `pool_pool` DISABLE KEYS */;
-INSERT INTO `pool_pool` (`pool_id`, `mother_pool`, `chance`, `description`) VALUES
-(100,102,12,'4 elite_rare'),
+INSERT INTO `pool_pool` (`pool_id`, `mother_pool`, `chance`, `description`) VALUES (100,102,12,'4 elite_rare'),
 (101,102,0,'null for 4 elite_rare'),
 (1244,5649,0,''),
 (1245,5649,0,''),
@@ -8106,53 +8092,7 @@ INSERT INTO `pool_pool` (`pool_id`, `mother_pool`, `chance`, `description`) VALU
 (14582,14586,0,'GO 181768 & 181848 & 181845 & 181846 & 181847'),
 (14583,14586,0,'GO 181768 & 181848 & 181845 & 181846 & 181847'),
 (14584,14586,0,'GO 181768 & 181848 & 181845 & 181846 & 181847'),
-(14585,14586,0,'GO 181768 & 181848 & 181845 & 181846 & 181847'),
-(205,14641,0,'NPC 10405 & 10393'),
-(14640,14641,0,'NPC 10405 & 10393'),
-(14648,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 1'),
-(14649,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 2'),
-(14650,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 3'),
-(14651,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 4'),
-(14652,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 5'),
-(14653,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 6'),
-(14654,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 7'),
-(14655,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 8'),
-(14656,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 9'),
-(14657,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 10'),
-(14658,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 11'),
-(14659,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 12'),
-(14660,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 13'),
-(14661,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 14'),
-(14662,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 15'),
-(14663,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 16'),
-(14664,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 17'),
-(14665,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 18'),
-(14666,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 19'),
-(14667,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 20'),
-(14668,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 21'),
-(14669,14647,0,'Arcatraz - Warder/Defender Corpses - Pool 22'),
-(14744,14749,0,'Fizzcrank Spare Parts'),
-(14745,14749,0,'Fizzcrank Spare Parts'),
-(14746,14749,0,'Fizzcrank Spare Parts'),
-(14747,14749,0,'Fizzcrank Spare Parts'),
-(14748,14749,0,'Fizzcrank Spare Parts'),
-(14752,14755,0,'Warsong Munitions'),
-(14753,14755,0,'Warsong Munitions'),
-(14754,14755,0,'Warsong Munitions'),
-(14757,14759,0,'Missing Journal Page'),
-(14758,14759,0,'Missing Journal Page'),
-(14770,14771,0,'Ethereal Technology'),
-(14769,14771,0,'Ethereal Technology'),
-(14786,14788,0,'Lumber Pile'),
-(14787,14788,0,'Lumber Pile'),
-(14794,14796,0,'Eagle Egg'),
-(14795,14796,0,'Eagle Egg'),
-(14813,14815,0,'Wyrmskull Tablet'),
-(14814,14815,0,'Wyrmskull Tablet'),
-(14827,14831,0,'BRD - Ragereaver Golem/Wrath Hammer Construct'),
-(14828,14831,0,'BRD - Ragereaver Golem/Wrath Hammer Construct'),
-(14829,14832,0,'BRD - Ragereaver Golem/Wrath Hammer Construct'),
-(14830,14832,0,'BRD - Ragereaver Golem/Wrath Hammer Construct');
+(14585,14586,0,'GO 181768 & 181848 & 181845 & 181846 & 181847');
 /*!40000 ALTER TABLE `pool_pool` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -8165,3 +8105,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+-- Dump completed on 2015-01-24 21:54:45

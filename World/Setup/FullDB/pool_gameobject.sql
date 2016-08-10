@@ -1,27 +1,14 @@
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
---
--- This program is free software; you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation; either version 2 of the License, or
--- (at your option) any later version.
---
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY; without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--- GNU General Public License for more details.
---
--- You should have received a copy of the GNU General Public License
--- along with this program; if not, write to the Free Software
--- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
---
+-- Host: localhost    Database: mangos3
+-- ------------------------------------------------------
+-- Server version	5.5.37
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -51,8 +38,7 @@ CREATE TABLE `pool_gameobject` (
 
 LOCK TABLES `pool_gameobject` WRITE;
 /*!40000 ALTER TABLE `pool_gameobject` DISABLE KEYS */;
-INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VALUES
-(2,13433,0,'GO 1618,[1617,1619,1620,1621,2044,1628,142144],map=1'),
+INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VALUES (2,13433,0,'GO 1618,[1617,1619,1620,1621,2044,1628,142144],map=1'),
 (27,1127,0,''),
 (29,8678,80,'GO 175404,[2047,2040],map=1'),
 (30,7700,70,'GO 1735,[1733,1734,1732],map=0'),
@@ -13071,8 +13057,7 @@ INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VA
 (76937,3541,10,'GO 189980,189981,191133'),
 (76938,3542,10,'GO 189980,189981,191133'),
 (76939,3543,10,'GO 189980,189981,191133');
-INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VALUES
-(76940,3544,10,'GO 189980,189981,191133'),
+INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VALUES (76940,3544,10,'GO 189980,189981,191133'),
 (76941,3545,10,'GO 189980,189981,191133'),
 (76942,3546,10,'GO 189980,189981,191133'),
 (76943,3547,10,'GO 189980,189981,191133'),
@@ -27291,8 +27276,7 @@ INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VA
 (93553,12509,0,'GO 2045,[1622,1623,1624,2041,2042,2046,2043,2866,142141,142142,142143,142145,176583,176584,176586,176587,176588,181270,190173,181271,181277,181279,191303,181280,181281,190169,190170,191019],map=0'),
 (93554,10817,0,'GO 2045,[1622,1623,1624,2041,2042,2046,2043,2866,142141,142142,142143,142145,176583,176584,176586,176587,176588,181270,190173,181271,181277,181279,191303,181280,181281,190169,190170,191019],map=0'),
 (93555,10911,0,'GO 2045,[1622,1623,1624,2041,2042,2046,2043,2866,142141,142142,142143,142145,176583,176584,176586,176587,176588,181270,190173,181271,181277,181279,191303,181280,181281,190169,190170,191019],map=0');
-INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VALUES
-(93556,11008,0,'GO 2045,[1622,1623,1624,2041,2042,2046,2043,2866,142141,142142,142143,142145,176583,176584,176586,176587,176588,181270,190173,181271,181277,181279,191303,181280,181281,190169,190170,191019],map=0'),
+INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VALUES (93556,11008,0,'GO 2045,[1622,1623,1624,2041,2042,2046,2043,2866,142141,142142,142143,142145,176583,176584,176586,176587,176588,181270,190173,181271,181277,181279,191303,181280,181281,190169,190170,191019],map=0'),
 (93557,11103,0,'GO 2045,[1622,1623,1624,2041,2042,2046,2043,2866,142141,142142,142143,142145,176583,176584,176586,176587,176588,181270,190173,181271,181277,181279,191303,181280,181281,190169,190170,191019],map=0'),
 (93558,11199,0,'GO 2045,[1622,1623,1624,2041,2042,2046,2043,2866,142141,142142,142143,142145,176583,176584,176586,176587,176588,181270,190173,181271,181277,181279,191303,181280,181281,190169,190170,191019],map=0'),
 (93559,11292,0,'GO 2045,[1622,1623,1624,2041,2042,2046,2043,2866,142141,142142,142143,142145,176583,176584,176586,176587,176588,181270,190173,181271,181277,181279,191303,181280,181281,190169,190170,191019],map=0'),
@@ -35820,101 +35804,7 @@ INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VA
 (8627,14585,0,'GO=181847'),
 (9621,14585,0,'GO=181845'),
 (8551,14585,0,'GO=181846'),
-(8689,14585,0,'GO=181848'),
-(8163,14642,0,'Enchanted Earth'),
-(46650,14642,0,'Enchanted Earth'),
-(9760,14642,0,'Enchanted Earth'),
-(23468,14642,0,'Enchanted Earth'),
-(23469,14642,0,'Enchanted Earth'),
-(9401,14642,0,'Enchanted Earth'),
-(9402,14642,0,'Enchanted Earth'),
-(9404,14642,0,'Enchanted Earth'),
-(9408,14642,0,'Enchanted Earth'),
-(9413,14642,0,'Enchanted Earth'),
-(9414,14642,0,'Enchanted Earth'),
-(9422,14642,0,'Enchanted Earth'),
-(9423,14642,0,'Enchanted Earth'),
-(9424,14642,0,'Enchanted Earth'),
-(9426,14642,0,'Enchanted Earth'),
-(9427,14642,0,'Enchanted Earth'),
-(9432,14642,0,'Enchanted Earth'),
-(9433,14642,0,'Enchanted Earth'),
-(9437,14642,0,'Enchanted Earth'),
-(9440,14642,0,'Enchanted Earth'),
-(9441,14642,0,'Enchanted Earth'),
-(9442,14642,0,'Enchanted Earth'),
-(9444,14642,0,'Enchanted Earth'),
-(9449,14642,0,'Enchanted Earth'),
-(9450,14642,0,'Enchanted Earth'),
-(9451,14642,0,'Enchanted Earth'),
-(9452,14642,0,'Enchanted Earth'),
-(9455,14642,0,'Enchanted Earth'),
-(9456,14642,0,'Enchanted Earth'),
-(9457,14642,0,'Enchanted Earth'),
-(9458,14642,0,'Enchanted Earth'),
-(9459,14642,0,'Enchanted Earth'),
-(9463,14642,0,'Enchanted Earth'),
-(9465,14642,0,'Enchanted Earth'),
-(9468,14642,0,'Enchanted Earth'),
-(9469,14642,0,'Enchanted Earth'),
-(9471,14642,0,'Enchanted Earth'),
-(9472,14642,0,'Enchanted Earth'),
-(9473,14642,0,'Enchanted Earth'),
-(12477,14346,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 1'),
-(8922,14674,0,'Dark Keeper Portrait'),
-(8926,14674,0,'Dark Keeper Portrait'),
-(8927,14674,0,'Dark Keeper Portrait'),
-(8928,14674,0,'Dark Keeper Portrait'),
-(8930,14674,0,'Dark Keeper Portrait'),
-(12723,14733,0,'Jaron\'\'s Supplies'),
-(8460,14733,0,'Jaron\'\'s Supplies'),
-(66092,14804,0,'Magenta Cap Clusters'),
-(71171,14804,0,'Magenta Cap Clusters'),
-(12021,14804,0,'Magenta Cap Clusters'),
-(12027,14804,0,'Magenta Cap Clusters'),
-(12019,14804,0,'Magenta Cap Clusters'),
-(12020,14804,0,'Magenta Cap Clusters'),
-(12017,14804,0,'Magenta Cap Clusters'),
-(12018,14804,0,'Magenta Cap Clusters'),
-(71724,14804,0,'Magenta Cap Clusters'),
-(71727,14804,0,'Magenta Cap Clusters'),
-(12028,14804,0,'Magenta Cap Clusters'),
-(12029,14804,0,'Magenta Cap Clusters'),
-(1875,14804,0,'Magenta Cap Clusters'),
-(2925,14804,0,'Magenta Cap Clusters'),
-(3752,14804,0,'Magenta Cap Clusters'),
-(5197,14804,0,'Magenta Cap Clusters'),
-(6965,14804,0,'Magenta Cap Clusters'),
-(7099,14804,0,'Magenta Cap Clusters'),
-(11441,14804,0,'Magenta Cap Clusters'),
-(25785,14804,0,'Magenta Cap Clusters'),
-(25786,14804,0,'Magenta Cap Clusters'),
-(25787,14804,0,'Magenta Cap Clusters'),
-(25788,14804,0,'Magenta Cap Clusters'),
-(25789,14804,0,'Magenta Cap Clusters'),
-(12492,14346,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 1'),
-(43964,262,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 2'),
-(12484,262,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 2'),
-(12502,262,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 2'),
-(12465,263,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 3'),
-(12494,263,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 3'),
-(12491,263,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 3'),
-(12472,264,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 4'),
-(43966,264,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 4'),
-(43960,264,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 4'),
-(12488,264,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 4'),
-(43962,265,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 5'),
-(12482,265,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 5'),
-(43961,265,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 5'),
-(12499,265,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 5'),
-(12486,266,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 6'),
-(43965,266,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 6'),
-(12487,266,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 6'),
-(12489,266,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 6'),
-(12467,267,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 7'),
-(43963,267,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 7'),
-(12496,267,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 7'),
-(12490,267,0,'2846 - Bloodmyst Isle - Tattered Chest - Pool 7');
+(8689,14585,0,'GO=181848');
 /*!40000 ALTER TABLE `pool_gameobject` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -35927,3 +35817,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+-- Dump completed on 2015-01-24 21:54:43

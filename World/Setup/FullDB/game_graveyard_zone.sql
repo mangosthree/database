@@ -1,27 +1,14 @@
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
---
--- This program is free software; you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation; either version 2 of the License, or
--- (at your option) any later version.
---
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY; without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--- GNU General Public License for more details.
---
--- You should have received a copy of the GNU General Public License
--- along with this program; if not, write to the Free Software
--- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
---
+-- Host: localhost    Database: mangos3
+-- ------------------------------------------------------
+-- Server version	5.5.37
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -49,8 +36,7 @@ CREATE TABLE `game_graveyard_zone` (
 
 LOCK TABLES `game_graveyard_zone` WRITE;
 /*!40000 ALTER TABLE `game_graveyard_zone` DISABLE KEYS */;
-INSERT INTO `game_graveyard_zone` (`id`, `ghost_zone`, `faction`) VALUES
-(5,1,469),
+INSERT INTO `game_graveyard_zone` (`id`, `ghost_zone`, `faction`) VALUES (5,1,469),
 (7,1,67),
 (100,1,0),
 (101,1,0),
@@ -126,7 +112,8 @@ INSERT INTO `game_graveyard_zone` (`id`, `ghost_zone`, `faction`) VALUES
 (4,214,469),
 (97,214,67),
 (34,215,67),
-(89,215,0),
+(89,215,67),
+(249,215,469),
 (851,215,67),
 (98,267,67),
 (149,267,469),
@@ -180,8 +167,9 @@ INSERT INTO `game_graveyard_zone` (`id`, `ghost_zone`, `faction`) VALUES
 (389,1581,0),
 (39,1637,469),
 (850,1637,0),
-(89,1638,469),
-(851,1638,67),
+(39,1638,469),
+(89,1638,67),
+(851,1638,0),
 (90,1657,0),
 (512,1657,67),
 (209,1941,0),
@@ -947,13 +935,7 @@ INSERT INTO `game_graveyard_zone` (`id`, `ghost_zone`, `faction`) VALUES
 (3136,5733,0),
 (3138,5733,0),
 (3096,5733,0),
-(3098,5733,0),
-(1750,5031,67),
-(1749,5031,469),
-(1726,5031,469),
-(1727,5031,67),
-(1729,5031,469),
-(1728,5031,67);
+(3098,5733,0);
 /*!40000 ALTER TABLE `game_graveyard_zone` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -966,3 +948,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+-- Dump completed on 2015-01-24 21:53:41
