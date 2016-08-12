@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# if this does not run in Linux, then run the removeCR.sh file - edit its script with the name of this file
+
 USERNAME=
 PASSWORD=
 DDUMPDIR=./mangos
@@ -44,7 +46,9 @@ creature_onkill_reputation \
 creature_questrelation \
 creature_template \
 creature_template_addon \
+creature_template_classlevelstats \
 creature_template_spells \
+custom_texts \
 db_script_string \
 db_version \
 dbdocsfields \
@@ -64,8 +68,9 @@ dbscripts_on_quest_end \
 dbscripts_on_quest_start \
 dbscripts_on_spell \
 disenchant_loot_template \
-exploration_basexp \
-fishing_loot_template \
+dungeonfinder_item_rewards \
+dungeonfinder_requirements \
+dungeonfinder_rewards \
 exploration_basexp \
 fishing_loot_template \
 game_event \
@@ -86,6 +91,7 @@ gameobject_questrelation \
 gameobject_template \
 gossip_menu \
 gossip_menu_option \
+gossip_texts \
 hotfix_data \
 instance_encounters \
 instance_template \
