@@ -2528,6 +2528,20 @@ LOCK TABLES `saved_variables` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `warden_action`
+--
+
+DROP TABLE IF EXISTS `warden_action`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `warden_action` (
+  `wardenId` SMALLINT(5) UNSIGNED NOT NULL,
+  `action` TINYINT(3) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`wardenId`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `world`
 --
 

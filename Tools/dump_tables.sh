@@ -171,6 +171,8 @@ spell_template \
 spell_threat \
 transports \
 vehicle_accessory \
+warden_build_specific \
+warden_checks \
 world_template \
 ; do
 
