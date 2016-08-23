@@ -1,14 +1,27 @@
--- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos3
--- ------------------------------------------------------
--- Server version	5.5.37
+-- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+--
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -50,7 +63,8 @@ CREATE TABLE `spell_template` (
 
 LOCK TABLES `spell_template` WRITE;
 /*!40000 ALTER TABLE `spell_template` DISABLE KEYS */;
-INSERT INTO `spell_template` (`id`, `attr`, `attr_ex`, `attr_ex2`, `attr_ex3`, `proc_flags`, `proc_chance`, `duration_index`, `effect0`, `effect0_implicit_target_a`, `effect0_implicit_target_b`, `effect0_radius_idx`, `effect0_apply_aura_name`, `effect0_misc_value`, `effect0_misc_value_b`, `effect0_trigger_spell`, `comments`) VALUES (37365,384,0,4,0,0,101,21,28,18,0,1,0,21757,64,0,'Power Converters: Summon Big Flavor Electromental (from cata)'),
+INSERT INTO `spell_template` (`id`, `attr`, `attr_ex`, `attr_ex2`, `attr_ex3`, `proc_flags`, `proc_chance`, `duration_index`, `effect0`, `effect0_implicit_target_a`, `effect0_implicit_target_b`, `effect0_radius_idx`, `effect0_apply_aura_name`, `effect0_misc_value`, `effect0_misc_value_b`, `effect0_trigger_spell`, `comments`) VALUES
+(37365,384,0,4,0,0,101,21,28,18,0,1,0,21757,64,0,'Power Converters: Summon Big Flavor Electromental (from cata)'),
 (62388,0,0,0,0,0,101,21,6,1,0,0,4,0,0,0,'Aura required for Demonic Circle 48020'),
 (37278,384,0,4,0,0,101,21,28,18,0,1,0,21737,64,0,'Power Converters: Summon Mini-Electromental (from cata)'),
 (37264,384,0,4,0,0,101,21,28,18,0,7,0,21729,64,0,'Power Converters: Summon Electromental (from cata)'),
@@ -96,7 +110,10 @@ INSERT INTO `spell_template` (`id`, `attr`, `attr_ex`, `attr_ex2`, `attr_ex3`, `
 (89691,0,0,0,0,0,1,0,5,25,17,12,0,0,0,0,'Ajamon\'s Portal to the Southsea Holdfast serverside spell'),
 (86761,0,0,0,0,0,1,0,77,25,0,12,0,0,0,0,'Thundermar Ale Keg serverside spell'),
 (81358,0,0,0,0,0,1,0,77,25,0,12,0,0,0,0,'Swabbie\'s Mop serverside spell'),
-(96364,0,0,0,0,0,1,0,77,25,0,12,0,0,0,0,'Extra Parachutes serverside spell');
+(96364,0,0,0,0,0,1,0,77,25,0,12,0,0,0,0,'Extra Parachutes serverside spell'),
+(21883,0,0,0,0,0,101,225,76,22,0,0,0,178904,0,0,'Summon Healed Celebrian Vine'),
+(11756,384,268435456,0,0,0,101,4,76,47,0,15,0,144064,0,0,'Summon Gordunni chest (COBALT)'),
+(19394,384,268435456,0,0,0,101,4,76,47,0,15,0,177681,0,0,'Summon Gordunni chest (JUNK)');
 /*!40000 ALTER TABLE `spell_template` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -109,4 +126,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-24 21:55:21

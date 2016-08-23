@@ -150,7 +150,7 @@ reserved_name \
 script_texts \
 script_waypoint \
 scripted_areatrigger \
-scripted_event_id \
+scripted_event \
 sd2_db_version \
 skill_discovery_template \
 skill_extra_item_template \

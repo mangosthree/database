@@ -1,14 +1,27 @@
--- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos3
--- ------------------------------------------------------
--- Server version	5.5.37
+-- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+--
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -56,7 +69,8 @@ CREATE TABLE `creature_ai_scripts` (
 
 LOCK TABLES `creature_ai_scripts` WRITE;
 /*!40000 ALTER TABLE `creature_ai_scripts` DISABLE KEYS */;
-INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES (224001,2240,9,0,100,1,0,5,1800,9800,11,7159,1,0,0,0,0,0,0,0,0,0,'Syndicate Footpad - Cast Backstab'),
+INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES
+(224001,2240,9,0,100,1,0,5,1800,9800,11,7159,1,0,0,0,0,0,0,0,0,0,'Syndicate Footpad - Cast Backstab'),
 (224002,2240,2,0,100,0,15,0,0,0,25,0,0,0,1,-47,0,0,0,0,0,0,'Syndicate Footpad - Flee at 15% HP'),
 (224101,2241,11,0,100,0,0,0,0,0,11,3616,0,1,0,0,0,0,0,0,0,0,'Syndicate Thief - Cast Poison Proc on Spawn'),
 (224102,2241,0,0,100,1,2000,12000,36200,46300,11,6713,1,1,0,0,0,0,0,0,0,0,'Syndicate Thief - Cast Disarm'),
@@ -8711,7 +8725,8 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (2484202,24842,9,5,100,1,0,45,2300,3900,11,23337,1,0,40,2,0,0,0,0,0,0,'Marine Anderson - Cast Shoot and Set Ranged Weapon Model (Phase 1)'),
 (2484203,24842,9,5,100,1,45,80,0,0,21,1,1,0,20,1,0,0,0,0,0,0,'Marine Anderson - Start Combat Movement and Start Melee at 45 Yards (Phase 1)'),
 (2484204,24842,9,5,100,1,0,10,0,0,21,1,0,0,40,1,0,0,20,1,0,0,'Marine Anderson - Start Combat Movement and Set Melee Weapon Model and Start Melee Below 10 Yards (Phase 1)');
-INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES (2484205,24842,9,5,100,1,11,35,0,0,21,0,1,0,20,0,0,0,0,0,0,0,'Marine Anderson - Prevent Combat Movement and Prevent Melee at 35 Yards (Phase 1)'),
+INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES
+(2484205,24842,9,5,100,1,11,35,0,0,21,0,1,0,20,0,0,0,0,0,0,0,'Marine Anderson - Prevent Combat Movement and Prevent Melee at 35 Yards (Phase 1)'),
 (2484206,24842,9,0,100,1,0,20,7000,9000,11,12024,1,1,0,0,0,0,0,0,0,0,'Marine Anderson - Cast Net'),
 (2484207,24842,2,0,100,0,15,0,0,0,23,1,0,0,0,0,0,0,0,0,0,0,'Marine Anderson - Set Phase 2 at 15% HP'),
 (2484208,24842,2,3,100,0,15,0,0,0,21,1,0,0,25,0,0,0,1,-47,0,0,'Marine Anderson - Start Combat Movement and Flee at 15% HP (Phase 2)'),
@@ -17139,7 +17154,8 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (2034431,20344,1,0,100,7,1080000,1080000,2340000,2340000,1,-590,0,0,0,0,0,0,0,0,0,0,'Nat Pagle - Conversation Sequence 7'),
 (2034432,20344,1,0,100,7,1087000,1087000,2347000,2347000,1,-592,0,0,0,0,0,0,0,0,0,0,'Nat Pagle - Conversation Sequence 7'),
 (2034433,20344,1,0,100,7,1097000,1097000,2357000,2357000,1,-614,0,0,0,0,0,0,0,0,0,0,'Nat Pagle - Conversation Sequence 7');
-INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES (2034434,20344,1,0,100,7,1107000,1107000,2367000,2367000,1,-615,0,0,0,0,0,0,0,0,0,0,'Nat Pagle - Conversation Sequence 7'),
+INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES
+(2034434,20344,1,0,100,7,1107000,1107000,2367000,2367000,1,-615,0,0,0,0,0,0,0,0,0,0,'Nat Pagle - Conversation Sequence 7'),
 (2034435,20344,1,0,100,7,1117000,1117000,2377000,2377000,1,-616,0,0,0,0,0,0,0,0,0,0,'Nat Pagle - Conversation Sequence 7'),
 (2035001,20350,1,0,100,7,60000,60000,300000,300000,1,-620,0,0,0,0,0,0,0,0,0,0,'Kel\'Thuzad - Conversation Sequence 1'),
 (2035002,20350,1,0,100,7,75000,75000,315000,315000,1,-621,0,0,0,0,0,0,0,0,0,0,'Kel\'Thuzad - Conversation Sequence 1'),
@@ -25665,7 +25681,8 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (3824802,38248,6,0,100,30,0,0,0,0,28,1,71443,0,0,0,0,0,0,0,0,0,'Impaling Spear - Remove Impaling Spear on Death'),
 (3842201,38422,11,0,100,30,0,0,0,0,11,72633,0,0,0,0,0,0,0,0,0,0,'Shock Vortex - Cast Shock Vortex on Spawn'),
 (3842202,38422,1,0,100,30,7000,7000,0,0,11,71945,0,0,0,0,0,0,0,0,0,0,'Shock Vortex - Cast Shock Vortex');
-INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES (3849001,38490,0,0,100,31,10000,13000,10000,13000,11,64652,0,0,0,0,0,0,0,0,0,0,'Rotting Frost Giant - Cast Stomp'),
+INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES
+(3849001,38490,0,0,100,31,10000,13000,10000,13000,11,64652,0,0,0,0,0,0,0,0,0,0,'Rotting Frost Giant - Cast Stomp'),
 (3849002,38490,0,0,100,31,20000,30000,20000,30000,11,72865,8,33,0,0,0,0,0,0,0,0,'Rotting Frost Giant - Cast Death Plague'),
 (3849003,38490,2,0,100,30,10,0,0,0,11,47008,0,1,0,0,0,0,0,0,0,0,'Rotting Frost Giant - Cast Enrage at 10% HP'),
 (3849401,38494,0,0,100,31,10000,13000,10000,13000,11,64652,0,0,0,0,0,0,0,0,0,0,'Rotting Frost Giant - Cast Stomp'),
@@ -26500,4 +26517,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-24 21:52:51

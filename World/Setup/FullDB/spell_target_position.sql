@@ -1,14 +1,27 @@
--- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos3
--- ------------------------------------------------------
--- Server version	5.5.37
+-- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+--
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -39,7 +52,8 @@ CREATE TABLE `spell_target_position` (
 
 LOCK TABLES `spell_target_position` WRITE;
 /*!40000 ALTER TABLE `spell_target_position` DISABLE KEYS */;
-INSERT INTO `spell_target_position` (`id`, `target_map`, `target_position_x`, `target_position_y`, `target_position_z`, `target_orientation`) VALUES (8195,531,-8344.97,2081.36,125.649,0),
+INSERT INTO `spell_target_position` (`id`, `target_map`, `target_position_x`, `target_position_y`, `target_position_z`, `target_orientation`) VALUES
+(8195,531,-8344.97,2081.36,125.649,0),
 (11362,0,-5096.24,755.33,260.5,4.62),
 (11409,0,-14466,453.47,15.35,2),
 (23442,1,6755.33,-4658.09,724.8,3.4049),
@@ -617,7 +631,6 @@ INSERT INTO `spell_target_position` (`id`, `target_map`, `target_position_x`, `t
 (71413,631,4380.43,3206.55,389.398,0),
 (71414,631,4335,3206.75,389.399,0),
 (73040,616,755,1301,280,0),
-(70860,631,529.302,-2124.49,840.857,3.1765),
 (72546,631,514,-2523,1050.99,3.1765),
 (73655,631,495.708,-2523.76,1050.99,3.1765),
 (25182,1,-8124.41,1525.13,16.368,3.05),
@@ -646,16 +659,8 @@ INSERT INTO `spell_target_position` (`id`, `target_map`, `target_position_x`, `t
 (86587,1,7806.58,-2429.7,487.557,3.3682),
 (92160,0,-7554.72,-1307.73,249.202,3.47749),
 (92247,1,5380.82,-2744.06,1517.74,0.20785),
-(84506,1,2049.2,-4376.8,98.8446,0.785398),
-(84505,0,-8208.25,429.244,118.11,3.4775),
 (36459,548,-347.518,-350.367,1.07459,4.48),
 (49995,571,5848.87,602.181,651.144,2.54714),
-(70781,631,-17.0711,2211.47,30.0546,3.14159),
-(70856,631,-503.593,2211.47,62.7621,3.14159),
-(70857,631,-615.146,2211.47,199.909,0),
-(70858,631,-549.073,2211.29,539.223,0),
-(70859,631,4199.48,2769.32,351.372,3.12414),
-(70861,631,4356.58,2565.75,220.402,4.71238),
 (73519,1,5534.08,-3624.69,1567.04,5.20932),
 (74391,0,-5675.52,5287.93,-989,2.05),
 (75704,670,-641.515,-827.8,235.5,3.069),
@@ -666,14 +671,10 @@ INSERT INTO `spell_target_position` (`id`, `target_map`, `target_position_x`, `t
 (82712,671,-1090.24,-799.2,836,3.07),
 (82713,671,-1231.97,-799.29,836,6.16),
 (82916,644,-536.462,193.262,80.25,6.28),
-(84463,730,852.306,1038.92,-5.3136,4.88692),
 (85040,0,-6101.31,4286.25,-351.63,2.15),
 (88220,0,-6896.1,-1856.05,250.638,0.922333),
 (88342,732,-344.6,1043.8,21.5,1.5),
 (88344,732,-601.4,1382.03,21.9,1.5),
-(88345,732,-344.6,1043.8,21.5,1.5),
-(88346,732,-601.4,1382.03,21.9,1.5),
-(88775,657,-907,-185,665,2),
 (88776,657,-907,-185,665,2),
 (89157,0,-8209.8,454.12,117.5,5),
 (89597,732,-344.6,1043.8,21.5,1.5),
@@ -703,8 +704,6 @@ INSERT INTO `spell_target_position` (`id`, `target_map`, `target_position_x`, `t
 (88339,732,-369.208,1058.73,21.7719,0.679201),
 (96177,1,2032.8,-4335.14,95.4723,5.00017),
 (96178,0,-8207.63,447.787,117.651,4.67086),
-(90244,0,-6561.97,6140.03,-671.06,1.14835),
-(90245,0,-6884.06,5963.37,-765.385,2.85659),
 (84699,646,2338.16,143.69,179.19,0.975125),
 (84700,646,1076.78,537.665,-44.5984,3.38237),
 (103582,1,-1444.41,215.34,-7.75,3.74306),
@@ -723,16 +722,6 @@ INSERT INTO `spell_target_position` (`id`, `target_map`, `target_position_x`, `t
 (113213,974,-4328.6,6437,16,0.0785398),
 (108919,974,-4300.6,6406.6,16,1.53589),
 (58013,571,6418.42,422.97,511.11,0),
-(26373,1,7991.88,-2679.84,512.1,0.034183),
-(65042,603,1855.07,-11.4879,334.559,5.53269),
-(64032,603,131.139,-35.3681,410.187,0),
-(64031,603,926.292,-11.4444,418.978,0.0174533),
-(64030,603,1497.99,-24.1616,421.625,0.0349066),
-(64029,603,1859.56,-24.8377,449.194,6.23082),
-(64028,603,553.243,-12.309,410.543,0),
-(64025,603,2518.13,2569.34,412.682,0),
-(64024,603,2086.22,-24.0538,422.289,0),
-(64014,603,-705.971,-92.5573,430.819,0),
 (94689,730,529.838,842.595,36.1126,1.5708),
 (84073,646,1040.91,544.689,681.86,3.97935),
 (110966,974,-4008.5,6270.1,11.68,0.746128),
@@ -1561,4 +1550,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-24 21:55:18

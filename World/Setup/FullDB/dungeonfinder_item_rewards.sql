@@ -1,14 +1,27 @@
--- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: 192.168.1.3    Database: mangos2
--- ------------------------------------------------------
--- Server version	5.5.34
+-- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+--
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -22,15 +35,16 @@
 DROP TABLE IF EXISTS `dungeonfinder_item_rewards`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXISTS `dungeonfinder_item_rewards` (
-  `id` INT(10) UNSIGNED NOT NULL,
-  `min_level` SMALLINT(3) UNSIGNED NOT NULL COMMENT 'dbc value',
-  `max_level` SMALLINT(3) UNSIGNED NOT NULL COMMENT 'dbc value',
-  `item_reward` MEDIUMINT(8) UNSIGNED NOT NULL,
-  `item_amount` MEDIUMINT(4) UNSIGNED NOT NULL,
-  `dungeon_type` SMALLINT(4) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE `dungeonfinder_item_rewards` (
+  `id` int(10) unsigned NOT NULL,
+  `min_level` smallint(3) unsigned NOT NULL COMMENT 'dbc value',
+  `max_level` smallint(3) unsigned NOT NULL COMMENT 'dbc value',
+  `item_reward` mediumint(8) unsigned NOT NULL,
+  `item_amount` mediumint(4) unsigned NOT NULL,
+  `dungeon_type` smallint(4) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MYISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `dungeonfinder_item_rewards`
@@ -39,16 +53,16 @@ CREATE TABLE IF NOT EXISTS `dungeonfinder_item_rewards` (
 LOCK TABLES `dungeonfinder_item_rewards` WRITE;
 /*!40000 ALTER TABLE `dungeonfinder_item_rewards` DISABLE KEYS */;
 INSERT INTO `dungeonfinder_item_rewards` (`id`, `min_level`, `max_level`, `item_reward`, `item_amount`, `dungeon_type`) VALUES
-(1, 15, 25, 51999, 1, 0),
-(2, 26, 35, 52000, 1, 0),
-(3, 36, 45, 52001, 1, 0),
-(4, 46, 55, 52002, 1, 0),
-(5, 56, 60, 52003, 1, 0),
-(6, 61, 64, 52004, 1, 1),
-(7, 65, 68, 52005, 1, 1),
-(8, 69, 80, 29434, 12, 3),
-(9, 80, 82, 49426, 2, 4),
-(10, 70, 75, 0, 0, 2);
+(1,15,25,51999,1,0),
+(2,26,35,52000,1,0),
+(3,36,45,52001,1,0),
+(4,46,55,52002,1,0),
+(5,56,60,52003,1,0),
+(6,61,64,52004,1,1),
+(7,65,68,52005,1,1),
+(8,69,80,29434,12,3),
+(9,80,82,49426,2,4),
+(10,70,75,0,0,2);
 /*!40000 ALTER TABLE `dungeonfinder_item_rewards` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
