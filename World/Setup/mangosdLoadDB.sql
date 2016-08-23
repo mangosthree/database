@@ -1216,6 +1216,7 @@ CREATE TABLE `creature_template` (
   `RacialLeader` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `NpcFlags` int(10) unsigned NOT NULL DEFAULT '0',
   `UnitFlags` int(10) unsigned NOT NULL DEFAULT '0',
+  `UnitFlags2` int(10) unsigned NOT NULL DEFAULT '0',
   `DynamicFlags` int(10) unsigned NOT NULL DEFAULT '0',
   `ExtraFlags` int(10) unsigned NOT NULL DEFAULT '0',
   `CreatureTypeFlags` int(10) unsigned NOT NULL DEFAULT '0',

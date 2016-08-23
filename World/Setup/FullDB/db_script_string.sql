@@ -1,14 +1,27 @@
--- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: mangos3
--- ------------------------------------------------------
--- Server version	5.5.37
+-- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+--
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -48,7 +61,8 @@ CREATE TABLE `db_script_string` (
 
 LOCK TABLES `db_script_string` WRITE;
 /*!40000 ALTER TABLE `db_script_string` DISABLE KEYS */;
-INSERT INTO `db_script_string` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`, `sound`, `type`, `language`, `emote`, `comment`) VALUES (2000001072,'How could you kill poor old Joe? And why did you bring the meat back?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Как ты мог убить старого бедного Джо? И почему ты принес мясо назад?',0,0,0,0,NULL),
+INSERT INTO `db_script_string` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`, `sound`, `type`, `language`, `emote`, `comment`) VALUES
+(2000001072,'How could you kill poor old Joe? And why did you bring the meat back?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Как ты мог убить старого бедного Джо? И почему ты принес мясо назад?',0,0,0,0,NULL),
 (2000001073,'You - a riddle, yes, a real mystery ... Here are ... I\'m not very fond of riddles.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Ты - загадка, да, настоящая загадка... Вот только... я не очень-то люблю загадки.',0,0,0,0,NULL),
 (2000001074,'You better go away, while Griselda not wished you a dessert ...',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Ты лучше иди отсюда, пока Гризельда не возжелала тебя на десерт...',0,0,0,0,NULL),
 (2000001070,'Well, if you had come to kill me, you could at least wait until I feed Griselda? Poor girl had not eaten for several days.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Ну если ты тоже пришел убить меня, можешь хотя бы подождать, пока я накормлю Гризельду? Бедная девочка не ела несколько дней.',0,0,0,0,NULL),
@@ -1329,4 +1343,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-24 21:53:13

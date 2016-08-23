@@ -8,4 +8,4 @@
 #
 # filename - replace with the name of your file
 
-sed -e -e 's/\r$//' filename
+sed -i -e 's/\r$//' dump_tables.sh 
