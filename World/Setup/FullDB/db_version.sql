@@ -52,9 +52,7 @@ CREATE TABLE `db_version` (
 LOCK TABLES `db_version` WRITE;
 /*!40000 ALTER TABLE `db_version` DISABLE KEYS */;
 INSERT INTO `db_version` (`version`, `structure`, `content`, `description`, `comment`) VALUES
-(21,1,0,'revision_refactor',''),
-(21,2,0,'script refactoring','Major script system refactoring'),
-(21,2,1,'script_binding populated','script_binding table populated with data up to and including WOTLK (Two)');
+(21,2,1,'script_binding populated','');
 /*!40000 ALTER TABLE `db_version` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
