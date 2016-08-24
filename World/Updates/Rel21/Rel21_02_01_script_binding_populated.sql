@@ -18,13 +18,13 @@ BEGIN
 
     -- Expected Values
     SET @cOldVersion = '21'; 
-    SET @cOldStructure = '2'; 
-    SET @cOldContent = '0'; 
+    SET @cOldStructure = '02'; 
+    SET @cOldContent = '00'; 
 
     -- New Values
     SET @cNewVersion = '21';
-    SET @cNewStructure = '2';
-    SET @cNewContent = '1';
+    SET @cNewStructure = '02';
+    SET @cNewContent = '01';
                             -- DESCRIPTION IS 30 Characters MAX    
     SET @cNewDescription = 'script_binding populated';
 
