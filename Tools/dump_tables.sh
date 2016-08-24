@@ -147,6 +147,7 @@ reference_loot_template \
 reputation_reward_rate \
 reputation_spillover_template \
 reserved_name \
+script_binding \
 script_texts \
 script_waypoint \
 scripted_areatrigger \
