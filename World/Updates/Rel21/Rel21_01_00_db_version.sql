@@ -16,4 +16,4 @@ CREATE TABLE `db_version` (
 -- ----------------------------
 -- Records of db_version
 -- ----------------------------
-INSERT INTO `db_version` VALUES ('21', '1', '0', 'revision_refactor', '');
+INSERT INTO `db_version` VALUES ('21', '01', '00', 'revision_refactor', '');

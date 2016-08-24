@@ -18,13 +18,13 @@ BEGIN
 
     -- Expected Values
     SET @cOldVersion = '21'; 
-    SET @cOldStructure = '1'; 
-    SET @cOldContent = '0'; 
+    SET @cOldStructure = '01'; 
+    SET @cOldContent = '00'; 
 
     -- New Values
     SET @cNewVersion = '21';
-    SET @cNewStructure = '2';
-    SET @cNewContent = '0';
+    SET @cNewStructure = '02';
+    SET @cNewContent = '00';
                             -- DESCRIPTION IS 30 Characters MAX    
     SET @cNewDescription = 'script refactoring';
 
