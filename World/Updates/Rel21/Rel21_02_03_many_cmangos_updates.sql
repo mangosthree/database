@@ -26,10 +26,10 @@ BEGIN
     SET @cNewStructure = '02';
     SET @cNewContent = '03';
                             -- DESCRIPTION IS 30 Characters MAX    
-    SET @cNewDescription = 'many cmangos updates';
+    SET @cNewDescription = 'start up error fixes';
 
                         -- COMMENT is 150 Characters MAX
-    SET @cNewComment = 'many cmangos updates';
+    SET @cNewComment = 'start up error fixes';
 
     -- Evaluate all settings
     SET @cCurResult := (SELECT description FROM db_version ORDER BY `version` DESC, STRUCTURE DESC, CONTENT DESC LIMIT 0,1);
@@ -48,186 +48,170 @@ BEGIN
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
         -- -- PLACE UPDATE SQL BELOW -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
- 
-
--- new spell
-DELETE FROM spell_template WHERE id = 21883;
-INSERT INTO spell_template VALUES 
-('21883', '0x00000180', '0x10000000', '0x00000000', '0x00000000', '0x00000000', '101', '225', '76', '22', '0', '0', '0', '178904', '0', '0', 'Summon Healed Celebrian Vine');
-
--- teleport quest to Dalaran
-UPDATE `dbscripts_on_gossip` SET `data_flags` = '2' WHERE `dbscripts_on_gossip`.`id` = 9511;
-
--- Implement spell effect 11756, 19394
-DELETE FROM spell_template WHERE id IN (11756,19394);
-INSERT INTO spell_template VALUES
-(11756, 0x00000180, 0x10000000, 0x00000000, 0x00000000, 0x00000000, 101,   4,  76,  47,    0,  15,   0, 144064,  0,    0,     'Summon Gordunni chest (COBALT)'),
-(19394, 0x00000180, 0x10000000, 0x00000000, 0x00000000, 0x00000000, 101,   4,  76,  47,    0,  15,   0, 177681,  0,    0,     'Summon Gordunni chest (JUNK)');
-
--- Add server side spells 68523 and 68620
-DELETE FROM spell_template WHERE id IN (68523,68620);
-INSERT INTO spell_template VALUES
-(68523, 0x00800180, 0x00000000, 0x00000005, 0x00000000, 0x00000000, 101,  37,   6,  22,    7,  28,   4, 0,       0,    0,     'Achievement check - Trial of the Crusader - Not One, But Two Jormungars'),
-(68620, 0x00800180, 0x00000000, 0x00000005, 0x00000000, 0x00000000, 101,  37,   6,  22,    7,  28,   4, 0,       0,    0,     'Achievement check - Trial of the Crusader - Resilience Will Fix It');
-
--- [c13058] Add missing achiev check spells for ToC5
-DELETE FROM spell_template WHERE id IN (68572,68574,68575);
-INSERT INTO spell_template VALUES
-(68572, 0x00800180, 0x00000000, 0x00000005, 0x00000000, 0x00000000, 101,  37,   6,  22,    7,  28,   4, 0,       0,    0,     'Achievement check - Grand Champions'),
-(68574, 0x00800180, 0x00000000, 0x00000005, 0x00000000, 0x00000000, 101,  37,   6,  22,    7,  28,   4, 0,       0,    0,     'Achievement check - Confessor Paletress'),
-(68575, 0x00800180, 0x00000000, 0x00000005, 0x00000000, 0x00000000, 101,  37,   6,  22,    7,  28,   4, 0,       0,    0,     'Achievement check - Eadric the Pure');
-
--- [c13027] Rewrite Waypoint related commands
--- Toggle the commands .wp add .wp modify and .wp show to be able to work with waypoints from creature_movement_template
-DELETE FROM command WHERE name='wp add' OR name='wp modify' OR name='wp show';
-INSERT INTO command VALUES
-('wp add',2,'Syntax: .wp add [Selected Creature or dbGuid] [pathId [wpOrigin] ]'),
-('wp modify',2,'Syntax: .wp modify command [dbGuid, id] [value]\r\nwhere command must be one of: waittime  | scriptid | orientation | del | move\r\nIf no waypoint was selected, one can be chosen with dbGuid and id.\r\nThe commands have the following meaning:\r\n waittime (Set the time the npc will wait at a point (in ms))\r\n scriptid (Set the DB-Script that will be executed when the wp is reached)\r\n orientation (Set the orientation of this point) \r\n del (Remove the waypoint from the path)\r\n move (Move the wayoint to the current position of the player)'),
-('wp show',2,'Syntax: .wp show command [dbGuid] [pathId [wpOrigin] ]\r\nwhere command can have one of the following values\r\non (to show all related wp)\r\nfirst (to see only first one)\r\nlast (to see only last one)\r\noff (to hide all related wp)\r\ninfo (to get more info about theses wp)\r\n\r\nFor using info you have to do first show on and than select a Visual-Waypoint and do the show info!\r\nwith pathId and wpOrigin you can specify which path to show (optional)');
-
-DELETE FROM mangos_string WHERE entry BETWEEN 220 AND 252;
-INSERT INTO mangos_string VALUES
-(220,'Cannot find waypoint id %u for %s (in path %i, loaded from %s)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(221,'Last Waypoint not found for %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(222,'%s has no path or path empty, path-id %i (loaded from %s)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(223,'Creature (GUID: %u) No waypoints found - This is a MaNGOS db problem (single float).',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(224,'Cannot access %s on map, maybe you are too far away from its spawn location',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(225,'Creature (GUID: %u) not found',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(226,'You must select a visual waypoint.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(227,'No visual waypoints found',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(228,'Could not create visual waypoint with creatureID: %d',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(229,'All visual waypoints removed',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(230,'Could not add waypoint %u to %s (pathId %i stored by %s)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(231,'No GUID provided.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(232,'No waypoint number provided.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(233,'Argument required for \'%s\'.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(234,'Added Waypoint %u to %s (PathId %i, path stored by %s)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(235,'UNUSED',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(236,'Waypoint changed.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(237,'Waypoint %s modified.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(238,'WP export successfull.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(239,'No waypoints found inside the database.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(240,'File imported.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(241,'Waypoint removed.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(242,'UNUSED',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(243,'UNUSED',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(244,'UNUSED',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(245,'UNUSED',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(246,'Waypoint %u for %s (from pathId %i, stored by %s)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(247,' Waittime: %d',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(248,' Orientation: %f',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(249,' ScriptId: %u',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(250,'ScriptID set to non-existing id %u, add it to DBScriptsEngine and reload the table.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(251,'UNUSED',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(252,'AIScriptName: %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-
--- (Cmangos) [c13034] Waypoint Commands: Improve export command, remove import command
-ALTER TABLE creature_movement DROP COLUMN wpguid;
-ALTER TABLE creature_movement_template DROP COLUMN wpguid;
-
--- New scripts
-
--- (Cmangos) Script for quest 11881
-DELETE FROM script_binding WHERE ScriptName = 'npc_jenny' AND bind = 25969;
-INSERT INTO script_binding VALUES (0, 'npc_jenny', 25969, 0);
-
--- (Cmangos) Implement script for creature 10498
-DELETE FROM script_binding WHERE ScriptName = 'npc_spectral_tutor' AND bind = 10498;
-INSERT INTO script_binding VALUES (0, 'npc_spectral_tutor', 10498, 0);
+      
+-- no record of these being game objects anywhere
+-- '207282', '22', '10361', 'Oasis flower', '', '', '', '0', '0', '1.5', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', ''
+-- '207283', '22', '10355', 'Feeler', '', '', '', '0', '0', '1.5', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', ''
+-- '207284', '22', '10354', 'Dryzgun', '', '', '', '0', '0', '3', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', ''
+-- '207285', '22', '10248', 'Thorns', '', '', '', '0', '0', '0.33', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', ''
+-- '207326', '22', '10262', 'Pumpkin bomb', '', '', '', '0', '0', '2', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', ''
+-- '207350', '22', '10356', 'Ledenyuka', '', '', '', '0', '0', '3', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', ''
+DELETE FROM gameobject_template WHERE ENTRY IN (207350, 207326, 207285, 207284, 207283, 207282);
 
 
--- (Cmangos) Implement script for burster worms in Outland
-DELETE FROM script_binding WHERE ScriptName = 'npc_burster_worm' AND bind IN (16844,16857,16968,21380,21849,22038,22466,22482,23285);
-INSERT INTO script_binding VALUES (0, 'npc_burster_worm', 16844, 0);
-INSERT INTO script_binding VALUES (0, 'npc_burster_worm', 16857, 0);
-INSERT INTO script_binding VALUES (0, 'npc_burster_worm', 16968, 0);
-INSERT INTO script_binding VALUES (0, 'npc_burster_worm', 21380, 0);
-INSERT INTO script_binding VALUES (0, 'npc_burster_worm', 21849, 0);
-INSERT INTO script_binding VALUES (0, 'npc_burster_worm', 22038, 0);
-INSERT INTO script_binding VALUES (0, 'npc_burster_worm', 22466, 0);
-INSERT INTO script_binding VALUES (0, 'npc_burster_worm', 22482, 0);
-INSERT INTO script_binding VALUES (0, 'npc_burster_worm', 23285, 0);
+-- 2016-08-09 20:08:50 Item (Entry: 70735) has wrong RandomSuffix (462)
+-- 2016-08-09 20:08:50 Item (Entry: 71030) has wrong RandomSuffix (464)
+-- 2016-08-09 20:08:50 Item (Entry: 71403) has wrong RandomSuffix (465)
+-- 2016-08-09 20:08:50 Item (Entry: 71421) has wrong RandomSuffix (457)
+-- 2016-08-09 20:08:50 Item (Entry: 71428) has wrong RandomSuffix (463)
+-- 2016-08-09 20:08:50 Item (Entry: 71450) has wrong RandomSuffix (461)
+-- 2016-08-09 20:08:50 Item (Entry: 71458) has wrong RandomSuffix (459)
+-- These do not exist in item_enchantment_template table
+UPDATE item_template SET `RandomSuffix`='0' WHERE `entry`='70735';
+UPDATE item_template SET `RandomSuffix`='0' WHERE `entry`='71030';
+UPDATE item_template SET `RandomSuffix`='0' WHERE `entry`='71403';
+UPDATE item_template SET `RandomSuffix`='0' WHERE `entry`='71421';
+UPDATE item_template SET `RandomSuffix`='0' WHERE `entry`='71428';
+UPDATE item_template SET `RandomSuffix`='0' WHERE `entry`='71450';
+UPDATE item_template SET `RandomSuffix`='0' WHERE `entry`='71458';
+UPDATE item_template SET `RandomSuffix`='0' WHERE `entry`='71011';
+UPDATE item_template SET `RandomSuffix`='0' WHERE `entry`='71025';
+UPDATE item_template SET `RandomSuffix`='0' WHERE `entry`='70917';
+
+-- wrong value for spellid_1
+-- spellid_1 109659
+UPDATE item_template SET `spellid_1`='483' WHERE `entry`='78342';
+
+-- creature guid does not exist
+DELETE FROM creature_addon WHERE `guid`='354064';
 
 
--- Script for quest 10218
--- ----------------------
+-- 2016-08-10 09:08:31 Creature (Entry: 9983) has gossip_menu_id = 10902 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 11948) has gossip_menu_id = 6268 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 23736) has gossip_menu_id = 13045 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 36730) has gossip_menu_id = 10844 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 36919) has gossip_menu_id = 10852 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 39594) has gossip_menu_id = 11236 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 40035) has gossip_menu_id = 11828 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 40344) has gossip_menu_id = 11371 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 42323) has gossip_menu_id = 11617 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 48735) has gossip_menu_id = 12677 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 50041) has gossip_menu_id = 12548 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 50502) has gossip_menu_id = 12882 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 51735) has gossip_menu_id = 12720 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 51944) has gossip_menu_id = 12718 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 52335) has gossip_menu_id = 12755 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 52636) has gossip_menu_id = 8517 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 55285) has gossip_menu_id = 13111 for nonexistent menu
+-- 2016-08-10 09:08:31 Creature (Entry: 56041) has gossip_menu_id = 13210 for nonexistent menu
 
-/* MANA TOMBS */
-DELETE FROM script_binding WHERE ScriptName = 'npc_shaheen' AND bind = 19671;
-INSERT INTO script_binding VALUES (0, 'npc_shaheen', 19671, 0);
+-- missing records found in SkyFire's 4.3.4 database
+-- Creature (Entry: 9983)
+UPDATE creature_template SET GossipMenuId = 9821 WHERE entry = 9983;
+UPDATE creature_template SET GossipMenuId = 0 WHERE entry IN (11948, 23736, 36730, 36919, 39594, 40035, 40344, 42323, 48735, 50041, 50502, 51735, 51944, 52335, 52636, 55285, 56041);
 
-DELETE FROM script_texts where entry IN (-1557015,-1557016,-1557017,-1557018,-1557019,-1557020,-1557021,-1557022,-1557023,-1557024,-1557025,-1557026,-1557027,-1557028,-1557029,-1557030,-1557031,-1557032,-1557033,-1557034,-1557035);
-INSERT INTO script_texts (entry,content_default,sound,type,language,emote,comment) VALUES
-(-1557015,'This should\'t take very long. Just watch my back as I empty these nether collectors.',0,0,0,0,'sha\'heen SAY_ESCORT_START'),
-(-1557016,'Fantastic! let\'s move on, shall we?',0,0,0,0,'sha\'heen SAY_START'),
-(-1557017,'Looking at these energy levels, Shaffar was set to make a killing!',0,0,0,28,'sha\'heen SAY_FIRST_STOP'),
-(-1557018,'That should do it...',0,0,0,0,'sha\'heen SAY_FIRST_STOP_COMPLETE'),
-(-1557019,'Hmm, now where is the next collector?',0,0,0,0,'sha\'heen SAY_COLLECTOR_SEARCH'),
-(-1557020,'Ah, there it is. Follow me, fleshling.',0,0,0,0,'sha\'heen SAY_COLLECTOR_FOUND'),
-(-1557021,'There can\'t be too many more of these collectors. Just keep me safe as I do my job.',0,0,0,28,'sha\'heen SAY_SECOND_STOP'),
-(-1557022,'What do we have here? I thought you said the area was secure? This is now the third attack? If we make it out of here, I will definitely be deducting this from your reward. Now don\'t just stand here, destroy them so I can get to that collector.',0,0,0,0,'sha\'heen SAY_THIRD_STOP'),
-(-1557023,'We\'re close to the exit. I\'ll let you rest for about thirty seconds, but then we\'re out of here.',0,0,0,0,'sha\'heen SAY_REST'),
-(-1557024,'Are you ready to go?',0,0,0,0,'sha\'heen SAY_READY_GO'),
-(-1557025,'Ok break time is OVER. Let\'s go!',0,0,0,0,'sha\'heen SAY_BREAK_OVER'),
-(-1557026,'Shadow Lord Xiraxis yells: Bravo! Bravo! Good show... I couldn\'t convince you to work for me, could I? No, I suppose the needless slaughter of my employees might negatively impact your employment application.',0,1,0,0,'xiraxis SAY_SPAWN'),
-(-1557027,'Your plan was a good one, Sha\'heen, and you would have gotten away with it if not for one thing...',0,0,0,1,'xiraxis SAY_FINAL_STOP_1'),
-(-1557028,'Oh really? And what might that be?',0,0,0,1,'sha\'heen SAY_FINAL_STOP_2'),
-(-1557029,'Never underestimate the other ethereal\'s greed!',0,0,0,0,'xiraxis SAY_FINAL_STOP_3'),
-(-1557030,'He was right, you know. I\'ll have to take that tag-line for my own... It\'s not like he\'ll have a use for it anymore!',0,0,0,1,'sha\'heen SAY_XIRAXIS_DEAD'),
-(-1557031,'Thanks and good luck!',0,0,0,1,'sha\'heen SAY_COMPLETE'),
-(-1557032,'%s checks to make sure his body is intact.',0,2,0,0,'sha\'heen EMOTE_TELEPORT'),
-(-1557033,'You made it! Well done, $r. Now if you\'ll excuse me, I have to get the rest of our crew inside.',0,0,0,1,'sha\'heen SAY_SPAWN'),
-(-1557034,'%s expertly manipulates the control panel.',0,2,0,28,'sha\'heen EMOTE_PANEL'),
-(-1557035,'Let\'s not waste any time! Take anything that isn\'t nailed down to the floor and teleport directly to Stormspire! Chop chop!',0,0,0,1,'sha\'heen SAY_ESCORT_READY');
-  
-DELETE FROM script_waypoint WHERE entry=19671;
-INSERT INTO script_waypoint VALUES
-(19671, 0, -362.876, -71.333, -0.960, 5000, 'SAY_ESCORT_START'),
-(19671, 1, -372.647, -88.728, -0.958, 0, ''),
-(19671, 2, -373.163, -114.959, -0.958, 0, ''),
-(19671, 3, -373.137, -138.439, -0.958, 0, ''),
-(19671, 4, -373.687, -152.964, -0.958, 0, ''),
-(19671, 5, -379.091, -158.089, -0.958, 0, ''),
-(19671, 6, -381.149, -164.796, -0.958, 0, ''),
-(19671, 7, -375.292, -164.111, 0.715, 0, 'SAY_FIRST_STOP - escort paused'),
-(19671, 8, -375.292, -164.111, 0.715, 1000, 'SAY_FIRST_STOP_COMPLETE'),
-(19671, 9, -381.149, -164.796, -0.958, 0, ''),
-(19671, 10, -374.292, -193.614, -0.967, 0, ''),
-(19671, 11, -370.799, -217.796, -0.959, 0, ''),
-(19671, 12, -344.132, -222.647, -0.959, 0, ''),
-(19671, 13, -310.880, -219.357, -0.945, 9000, 'SAY_COLLECTOR_SEARCH'),
-(19671, 14, -299.879, -201.809, -1.181, 0, ''),
-(19671, 15, -285.874, -187.791, -0.694, 0, ''),
-(19671, 16, -271.884, -164.856, -1.912, 0, ''),
-(19671, 17, -260.729, -159.094, -1.190, 0, 'SAY_SECOND_STOP - escort paused'),
-(19671, 18, -244.372, -163.136, -0.924, 0, ''),
-(19671, 19, -236.428, -185.952, -0.953, 0, ''),
-(19671, 20, -210.659, -206.710, 0.906, 0, ''),
-(19671, 21, -193.375, -219.378, -0.518, 0, ''),
-(19671, 22, -171.121, -223.043, -0.955, 0, ''),
-(19671, 23, -148.658, -221.031, -0.770, 0, ''),
-(19671, 24, -128.150, -215.657, -0.187, 0, ''),
-(19671, 25, -93.429, -219.264, -1.320, 0, ''),
-(19671, 26, -72.886, -222.278, -0.184, 0, 'SAY_THIRD_STOP - escort paused'),
-(19671, 27, -42.343, -224.004, -0.268, 0, ''),
-(19671, 28, -15.603, -223.780, 0.793, 0, ''),
-(19671, 29, -12.975, -223.157, 1.811, 42000, 'SAY_REST'),
-(19671, 30, -12.975, -223.157, 1.811, 5000, 'SAY_BREAK_OVER'),
-(19671, 31, -14.898, -222.906, 0.786, 0, ''),
-(19671, 32, -44.684, -221.592, -0.146, 0, ''),
-(19671, 33, -59.746, -211.847, 0.216, 0, ''),
-(19671, 34, -63.100, -195.288, -0.615, 0, ''),
-(19671, 35, -63.218, -191.959, -1.725, 0, ''),
-(19671, 36, -67.063, -160.281, -0.955, 0, ''),
-(19671, 37, -67.888, -128.704, -1.226, 0, ''),
-(19671, 38, -68.226, -107.766, -0.289, 0, ''),
-(19671, 39, -68.251, -105.624, -1.631, 0, ''),
-(19671, 40, -66.342, -88.147, -1.167, 0, 'SAY_XIRAXIS_SPAWN - escort paused'),
-(19671, 41, -67.831, -78.571, -2.114, 0, ''),
-(19671, 42, -67.692, -76.665, -0.941, 0, ''),
-(19671, 43, -67.624, -56.025, -0.844, 0, 'quest complete'),
-(19671, 44, -64.493, -15.776, -0.943, 0, '');
- 
+-- '26373', '1', '7991.88', '-2679.84', '512.1', '0.034183'
+-- '64014', '603', '-705.971', '-92.5573', '430.819', '0'
+-- '64025', '603', '2518.13', '2569.34', '412.682', '0'
+-- '64028', '603', '553.243', '-12.309', '410.543', '0'
+-- '64029', '603', '1859.56', '-24.8377', '449.194', '6.23082'
+-- '64030', '603', '1497.99', '-24.1616', '421.625', '0.0349066'
+-- '64031', '603', '926.292', '-11.4444', '418.978', '0.0174533'
+-- '64032', '603', '131.139', '-35.3681', '410.187', '0'
+-- '65042', '603', '1855.07', '-11.4879', '334.559', '5.53269'
+-- '70781', '631', '-17.0711', '2211.47', '30.0546', '3.14159'
+-- '70856', '631', '-503.593', '2211.47', '62.7621', '3.14159'
+-- '70857', '631', '-615.146', '2211.47', '199.909', '0'
+-- '70858', '631', '-549.073', '2211.29', '539.223', '0'
+-- '70859', '631', '4199.48', '2769.32', '351.372', '3.12414'
+-- '70860', '631', '529.302', '-2124.49', '840.857', '3.1765'
+-- '70861', '631', '4356.58', '2565.75', '220.402', '4.71238'
+-- '84463', '730', '852.306', '1038.92', '-5.3136', '4.88692'
+-- '84505', '0', '-8208.25', '429.244', '118.11', '3.4775'
+-- '84506', '1', '2049.2', '-4376.8', '98.8446', '0.785398'
+-- '88345', '732', '-344.6', '1043.8', '21.5', '1.5'
+-- '88346', '732', '-601.4', '1382.03', '21.9', '1.5'
+-- '88775', '657', '-907', '-185', '665', '2'
+-- '90244', '0', '-6561.97', '6140.03', '-671.06', '1.14835'
+-- '90245', '0', '-6884.06', '5963.37', '-765.385', '2.85659'
+DELETE FROM spell_target_position WHERE id IN (64024, 70860, 84506, 84505, 70781, 70856, 70857, 70858, 70859, 70861, 84463, 88345, 88346, 88775, 90244, 90245, 26373, 65042, 64032, 64031, 64030, 64029, 64028, 64028, 64025, 64014);
+
+-- '26678', '21816', '10', '0', '1', '1', '0'
+-- '26678', '21817', '10', '0', '1', '1', '0'
+-- '26678', '21818', '10', '0', '1', '1', '0'
+-- '26678', '21819', '10', '0', '1', '1', '0'
+-- '26678', '21820', '15', '0', '1', '1', '0'
+-- '26678', '21821', '15', '0', '1', '1', '0'
+-- '26678', '21822', '15', '0', '1', '1', '0'
+-- '26678', '21823', '15', '0', '1', '1', '0'
+-- spell id does not exist
+DELETE FROM spell_loot_template WHERE entry = 26678;
+
+-- duplicate instances of William
+-- '53074', '2533', '0', '1', '1', '0', '0', '-8739.04', '549.987', '100.173', '5.45979', '370', '0', '0', '42', '0', '0', '2'
+DELETE FROM creature WHERE `guid`='53074';
+-- '188982', '2533', '0', '1', '1', '262', '0', '-8747.63', '692.959', '99.827', '3.89866', '300', '0', '0', '42', '0', '0', '2'
+DELETE FROM creature WHERE `guid`='188982';
+
+-- '188982', '1', '-8742.19', '699.102', '99.1405', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'
+-- '188982', '2', '-8742.19', '698.102', '99.1405', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'
+-- '188982', '3', '-8747.27', '693.297', '99.7655', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'
+-- '188982', '4', '-8751.63', '689.178', '100.516', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'
+-- '188982', '5', '-8752.98', '687.911', '100.641', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'
+-- '188982', '6', '-8752.98', '687.911', '100.641', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'
+-- duplicate William
+DELETE FROM creature_movement WHERE `id`='188982' and`point`='1';
+DELETE FROM creature_movement WHERE `id`='188982' and`point`='2';
+DELETE FROM creature_movement WHERE `id`='188982' and`point`='3';
+DELETE FROM creature_movement WHERE `id`='188982' and`point`='4';
+DELETE FROM creature_movement WHERE `id`='188982' and`point`='5';
+DELETE FROM creature_movement WHERE `id`='188982' and`point`='6';
+
+-- 2016-08-11 18:16:29 Table `dbscripts_on_quest_start` has searchRadius = 0 in command 15 for script id 25141 for buddy 3155, skipping.
+-- '25141', '0', '15', '25141', '0', '3155', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'This should cause the NPC to cast the spell corresponding to combo points at the beginning of the eviscerate quest... #25141'
+-- does not exist
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM dbscripts_on_quest_start WHERE id = 25141;
+
+-- 2016-08-12 08:55:44 Table 'gameobject_loot_template' entry 17155 item 5397: item entry not listed in `item_template` - skipped
+-- 2016-08-12 08:55:44 Table 'gameobject_loot_template' entry 17155 (gameobject lootid) not exist but used as loot id in DB
+-- Defias Gunpowder removed in Cata
+-- '17155', '5397', '100', '0', '1', '1', '0'
+DELETE FROM gameobject_loot_template WHERE entry = 17155;
+DELETE FROM gameobject_template WHERE entry = 17155;
+DELETE FROM dbscripts_on_event WHERE id = 619;
+DELETE FROM gameobject_loot_template WHERE entry = 208430;
+-- Defias gunpowder was removed in patch 4.0.3
+DELETE FROM item_template WHERE entry = 5397;
+
+-- 82175 does not exist
+-- deleted records: 
+-- '84425', '82175', '425', '100'
+-- '84424', '82175', '425', '100'
+-- '82177', '82175', '425', '100'
+-- '82200', '82175', '425', '100'
+-- '82201', '82175', '425', '100'
+-- '84427', '82175', '425', '100'
+-- '82180', '82175', '425', '100'
+-- '82175', '82175', '425', '100'
+DELETE FROM skill_discovery_template WHERE reqSpell = 82175;
+
+-- 81275 does not exist
+-- '82180', '81275', '425', '100'
+-- '84427', '81275', '425', '100'
+-- '82201', '81275', '425', '100'
+-- '82200', '81275', '425', '100'
+-- '82177', '81275', '425', '100'
+-- '84424', '81275', '425', '100'
+-- '84425', '81275', '425', '100'
+DELETE FROM skill_discovery_template WHERE reqSpell = 81275;
+
+-- spell_symbol_of_life removed in Cata
+-- '4', 'spell_symbol_of_life', '8593', '0'
+-- '4', 'spell_symbol_of_life', '31225', '0'
+DELETE FROM script_binding WHERE ScriptName = 'spell_symbol_of_life' and bind = 8593;
+DELETE FROM script_binding WHERE ScriptName = 'spell_symbol_of_life' and bind = 31225;
+
 
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
         -- -- PLACE UPDATE SQL ABOVE -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
@@ -264,4 +248,4 @@ DELIMITER ;
 CALL update_mangos();
 
 -- Drop the procedure
-DROP PROCEDURE IF EXISTS `update_mangos`;      
+DROP PROCEDURE IF EXISTS `update_mangos`;
