@@ -1,6 +1,6 @@
 --
--- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+-- Copyright (C) 2005-2016 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2016 MaNGOSZero <https://github.com/mangosthree>
 --
 -- This program is free software; you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -1413,7 +1413,8 @@ INSERT INTO `creature_ai_texts` (`entry`, `content_default`, `content_loc1`, `co
 (-428,'Your corpse will nourish the soil!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,15486,1,0,0,'32915'),
 (-641,'Matron, one has fallen!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,15487,1,0,0,'32915'),
 (-1047,'%s surrounds itself with a void barrier as a dark shadow coalesces nearby!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,2,0,0,'33772'),
-(-212,'%s fortifies nearby allies with runic might!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,3,0,0,'Ancient Rune Giant');
+(-212,'%s fortifies nearby allies with runic might!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,3,0,0,'Ancient Rune Giant'),
+(-746,'My time... has run out...',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,'32273');
 /*!40000 ALTER TABLE `creature_ai_texts` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

@@ -1,6 +1,6 @@
 --
--- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+-- Copyright (C) 2005-2016 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2016 MaNGOSZero <https://github.com/mangosthree>
 --
 -- This program is free software; you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -3874,7 +3874,28 @@ INSERT INTO `script_texts` (`entry`, `content_default`, `content_loc1`, `content
 (-1999922,'Normal select, guess you\'re not interested.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'example_gossip_codebox SAY_NOT_INTERESTED'),
 (-1999923,'Wrong!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'example_gossip_codebox SAY_WRONG'),
 (-1999924,'You\'re right, you are allowed to see my inner secrets.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'example_gossip_codebox SAY_CORRECT'),
-(-1999925,'Hi!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'example_areatrigger SAY_HI');
+(-1999925,'Hi!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'example_areatrigger SAY_HI'),
+(-1557015,'This should\'t take very long. Just watch my back as I empty these nether collectors.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'sha\'heen SAY_ESCORT_START'),
+(-1557016,'Fantastic! let\'s move on, shall we?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'sha\'heen SAY_START'),
+(-1557017,'Looking at these energy levels, Shaffar was set to make a killing!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,28,'sha\'heen SAY_FIRST_STOP'),
+(-1557018,'That should do it...',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'sha\'heen SAY_FIRST_STOP_COMPLETE'),
+(-1557019,'Hmm, now where is the next collector?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'sha\'heen SAY_COLLECTOR_SEARCH'),
+(-1557020,'Ah, there it is. Follow me, fleshling.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'sha\'heen SAY_COLLECTOR_FOUND'),
+(-1557021,'There can\'t be too many more of these collectors. Just keep me safe as I do my job.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,28,'sha\'heen SAY_SECOND_STOP'),
+(-1557022,'What do we have here? I thought you said the area was secure? This is now the third attack? If we make it out of here, I will definitely be deducting this from your reward. Now don\'t just stand here, destroy them so I can get to that collector.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'sha\'heen SAY_THIRD_STOP'),
+(-1557023,'We\'re close to the exit. I\'ll let you rest for about thirty seconds, but then we\'re out of here.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'sha\'heen SAY_REST'),
+(-1557024,'Are you ready to go?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'sha\'heen SAY_READY_GO'),
+(-1557025,'Ok break time is OVER. Let\'s go!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'sha\'heen SAY_BREAK_OVER'),
+(-1557026,'Shadow Lord Xiraxis yells: Bravo! Bravo! Good show... I couldn\'t convince you to work for me, could I? No, I suppose the needless slaughter of my employees might negatively impact your employment application.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,'xiraxis SAY_SPAWN'),
+(-1557027,'Your plan was a good one, Sha\'heen, and you would have gotten away with it if not for one thing...',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,1,'xiraxis SAY_FINAL_STOP_1'),
+(-1557028,'Oh really? And what might that be?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,1,'sha\'heen SAY_FINAL_STOP_2'),
+(-1557029,'Never underestimate the other ethereal\'s greed!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'xiraxis SAY_FINAL_STOP_3'),
+(-1557030,'He was right, you know. I\'ll have to take that tag-line for my own... It\'s not like he\'ll have a use for it anymore!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,1,'sha\'heen SAY_XIRAXIS_DEAD'),
+(-1557031,'Thanks and good luck!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,1,'sha\'heen SAY_COMPLETE'),
+(-1557032,'%s checks to make sure his body is intact.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,2,0,0,'sha\'heen EMOTE_TELEPORT'),
+(-1557033,'You made it! Well done, $r. Now if you\'ll excuse me, I have to get the rest of our crew inside.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,1,'sha\'heen SAY_SPAWN'),
+(-1557034,'%s expertly manipulates the control panel.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,2,0,28,'sha\'heen EMOTE_PANEL'),
+(-1557035,'Let\'s not waste any time! Take anything that isn\'t nailed down to the floor and teleport directly to Stormspire! Chop chop!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,1,'sha\'heen SAY_ESCORT_READY');
 /*!40000 ALTER TABLE `script_texts` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

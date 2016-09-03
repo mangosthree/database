@@ -1,6 +1,6 @@
 --
--- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+-- Copyright (C) 2005-2016 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2016 MaNGOSZero <https://github.com/mangosthree>
 --
 -- This program is free software; you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -1482,6 +1482,8 @@ INSERT INTO `script_binding` (`type`, `ScriptName`, `bind`, `data`) VALUES
 (4,'spell_summon_any_bot_trigger',64425,0),
 (4,'spell_summon_any_bot_trigger',64620,0),
 (4,'spell_summon_hakkar',12639,0),
+(0,'npc_shaheen',19671,0),
+(0,'npc_jenny',25969,0),
 (4,'spell_tag_murloc_proc',30875,0),
 (4,'spell_thad_lightning_visual',28136,0),
 (4,'spell_thekal_resurrection',24173,0),
@@ -1525,7 +1527,25 @@ INSERT INTO `script_binding` (`type`, `ScriptName`, `bind`, `data`) VALUES
 (0,'npc_prof_tailor',22213,0),
 (0,'npc_prof_tailor',22212,0),
 (0,'npc_prof_tailor',22208,0),
-(0,'npc_dimensius',19554,0);
+(0,'npc_dimensius',19554,0),
+(0,'npc_spectral_tutor',10498,0),
+(0,'npc_burster_worm',16844,0),
+(0,'npc_burster_worm',16857,0),
+(0,'npc_burster_worm',16968,0),
+(0,'npc_burster_worm',21380,0),
+(0,'npc_burster_worm',21849,0),
+(0,'npc_burster_worm',22038,0),
+(0,'npc_burster_worm',22466,0),
+(0,'npc_burster_worm',22482,0),
+(0,'npc_burster_worm',23285,0),
+(0,'npc_prince_liam_greymane_phase1',34850,0),
+(0,'npc_prince_liam_greymane_phase2',34913,0),
+(0,'rampaging_worgen',34884,0),
+(0,'rampaging_worgen',35660,0),
+(0,'frightened_citizen_quest',34981,0),
+(0,'frightened_citizen_quest',35836,0),
+(0,'npc_warlord_kromzar',9456,0),
+(0,'npc_kolkar_invader',9524,0);
 /*!40000 ALTER TABLE `script_binding` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
