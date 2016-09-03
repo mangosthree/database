@@ -1,6 +1,6 @@
 --
--- Copyright (C) 2005-2015 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2015 MaNGOSZero <https://github.com/mangoszero>
+-- Copyright (C) 2005-2016 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2009-2016 MaNGOSZero <https://github.com/mangosthree>
 --
 -- This program is free software; you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -111,9 +111,14 @@ INSERT INTO `spell_template` (`id`, `attr`, `attr_ex`, `attr_ex2`, `attr_ex3`, `
 (86761,0,0,0,0,0,1,0,77,25,0,12,0,0,0,0,'Thundermar Ale Keg serverside spell'),
 (81358,0,0,0,0,0,1,0,77,25,0,12,0,0,0,0,'Swabbie\'s Mop serverside spell'),
 (96364,0,0,0,0,0,1,0,77,25,0,12,0,0,0,0,'Extra Parachutes serverside spell'),
-(21883,0,0,0,0,0,101,225,76,22,0,0,0,178904,0,0,'Summon Healed Celebrian Vine'),
+(21883,0,268435456,0,0,0,101,225,76,22,0,0,0,178904,0,0,'Summon Healed Celebrian Vine'),
+(19394,384,268435456,0,0,0,101,4,76,47,0,15,0,177681,0,0,'Summon Gordunni chest (JUNK)'),
 (11756,384,268435456,0,0,0,101,4,76,47,0,15,0,144064,0,0,'Summon Gordunni chest (COBALT)'),
-(19394,384,268435456,0,0,0,101,4,76,47,0,15,0,177681,0,0,'Summon Gordunni chest (JUNK)');
+(68620,8388992,0,5,0,0,101,37,6,22,7,28,4,0,0,0,'Achievement check - Trial of the Crusader - Resilience Will Fix It'),
+(68523,8388992,0,5,0,0,101,37,6,22,7,28,4,0,0,0,'Achievement check - Trial of the Crusader - Not One, But Two Jormungars'),
+(68572,8388992,0,5,0,0,101,37,6,22,7,28,4,0,0,0,'Achievement check - Grand Champions'),
+(68574,8388992,0,5,0,0,101,37,6,22,7,28,4,0,0,0,'Achievement check - Confessor Paletress'),
+(68575,8388992,0,5,0,0,101,37,6,22,7,28,4,0,0,0,'Achievement check - Eadric the Pure');
 /*!40000 ALTER TABLE `spell_template` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
