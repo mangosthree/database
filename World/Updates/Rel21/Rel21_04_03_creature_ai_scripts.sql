@@ -7175,6 +7175,10 @@ UPDATE creature_ai_scripts SET action1_param2=1 WHERE id=1611152;
 UPDATE creature_ai_scripts SET event_type=4, event_flags=0, event_param2=0, event_param3=0, event_param4=0 WHERE id=4030151;
 UPDATE creature_ai_scripts SET action1_param2=0 WHERE id=3128201;
 
+-- these had non-existent spells
+UPDATE creature_ai_scripts SET action1_param1=90839 WHERE id=231911;
+UPDATE creature_ai_scripts SET action1_param1=69566 WHERE id=1321901;
+UPDATE creature_ai_scripts SET action1_param1=62582 WHERE id=3320301;
 
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
         -- -- PLACE UPDATE SQL ABOVE -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
