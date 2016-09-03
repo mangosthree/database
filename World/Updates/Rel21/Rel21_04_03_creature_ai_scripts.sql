@@ -7162,7 +7162,7 @@ INSERT  INTO `creature_ai_scripts`(`id`,`creature_id`,`event_type`,`event_invers
 -- Other fixes due to server start up errors
 UPDATE creature_ai_scripts SET event_type=4, event_param2=0 WHERE id IN (193701, 193801, 195201, 212101, 214001, 355101,
 355201, 355301, 355401, 355501, 355601, 355701, 588601, 638901, 838501, 955301, 997901, 1628801, 566101, 567901);
-UPDATE creature_ai_scripts SET event_type=10, event_inverse_phase_mask=, event_flags=1, 
+UPDATE creature_ai_scripts SET event_type=10, event_inverse_phase_mask=, event_flags=0, 
 event_param1=1, event_param2=5, event_param3=2000, event_param4=2000 WHERE id=2124151;
 UPDATE creature_ai_scripts SET event_param1=0, event_param2=4, event_param3=1000, event_param4=1000 WHERE id=3016353;
 UPDATE creature_ai_scripts SET event_type=10, event_param1=0, event_param2=4, event_param3=1000, event_param4=1000 WHERE id=3036651;
