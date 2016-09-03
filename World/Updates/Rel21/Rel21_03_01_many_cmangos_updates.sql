@@ -53,7 +53,7 @@ BEGIN
 -- new spell
 DELETE FROM spell_template WHERE id = 21883;
 INSERT INTO spell_template VALUES 
-('21883', '0x00000180', '0x10000000', '0x00000000', '0x00000000', '0x00000000', '101', '225', '76', '22', '0', '0', '0', '178904', '0', '0', 'Summon Healed Celebrian Vine');
+(21883, 0x00000180, 0x10000000, 0x00000000, 0x00000000, 0x00000000, 101, 225, 76, 22, 0, 0, 0, 178904, 0, 0, 'Summon Healed Celebrian Vine');
 
 -- teleport quest to Dalaran
 UPDATE `dbscripts_on_gossip` SET `data_flags` = '2' WHERE `dbscripts_on_gossip`.`id` = 9511;
