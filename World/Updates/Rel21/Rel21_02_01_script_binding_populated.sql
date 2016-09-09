@@ -61,7 +61,7 @@ CREATE TABLE `script_binding` (
  `data` TINYINT(2) UNSIGNED DEFAULT 0 COMMENT 'Misc data; Effect number for spellscripts',
  PRIMARY KEY(`ScriptName`,`bind`),
  KEY(`type`)
-) Engine=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='SD2 Script Names and Binding';
+) Engine=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='SD2 Script Names and Binding';
 
 insert  into `script_binding`(`type`,`ScriptName`,`bind`,`data`) values (3,'at_aldurthar_gate',5284,0);
 insert  into `script_binding`(`type`,`ScriptName`,`bind`,`data`) values (3,'at_aldurthar_gate',5285,0);

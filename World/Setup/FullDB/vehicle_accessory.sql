@@ -41,7 +41,7 @@ CREATE TABLE `vehicle_accessory` (
   `accessory_entry` int(10) unsigned NOT NULL COMMENT 'entry of the passenger that is to be boarded',
   `comment` varchar(255) NOT NULL,
   PRIMARY KEY (`vehicle_entry`,`seat`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Vehicle Accessory';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Vehicle Accessory';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

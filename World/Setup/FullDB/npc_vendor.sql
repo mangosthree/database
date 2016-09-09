@@ -43,7 +43,7 @@ CREATE TABLE `npc_vendor` (
   `ExtendedCost` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `condition_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`entry`,`item`,`ExtendedCost`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Npc System';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Npc System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

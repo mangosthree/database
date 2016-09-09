@@ -41,7 +41,7 @@ CREATE TABLE `mail_level_reward` (
   `mailTemplateId` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `senderEntry` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`level`,`raceMask`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Mail System';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Mail System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

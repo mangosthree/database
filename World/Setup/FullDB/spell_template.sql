@@ -54,7 +54,7 @@ CREATE TABLE `spell_template` (
   `effect0_trigger_spell` int(11) unsigned NOT NULL DEFAULT '0',
   `comments` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='MaNGOS server side spells';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='MaNGOS server side spells';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

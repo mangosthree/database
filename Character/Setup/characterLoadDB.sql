@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `character_db_version`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `character_db_version` (
   `required_12712_01_characters_characters` bit(1) default NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Last applied sql update to DB';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Last applied sql update to DB';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1822,7 +1822,7 @@ DROP TABLE IF EXISTS `game_event_status`;
 CREATE TABLE `game_event_status` (
   `event` smallint(6) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`event`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Game event system';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Game event system';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1898,7 +1898,7 @@ CREATE TABLE `group_member` (
   `subgroup` smallint(6) unsigned NOT NULL,
   PRIMARY KEY (`groupId`,`memberGuid`),
   KEY `Idx_memberGuid` (`memberGuid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Groups';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Groups';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1938,7 +1938,7 @@ CREATE TABLE `groups` (
   `raiddifficulty` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`groupId`),
   UNIQUE KEY `leaderGuid` (`leaderGuid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Groups';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Groups';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2157,7 +2157,7 @@ CREATE TABLE `guild_member` (
   UNIQUE KEY `guid_key` (`guid`),
   KEY `guildid_key` (`guildid`),
   KEY `guildid_rank_key` (`guildid`,`rank`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Guild System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Guild System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2515,7 +2515,7 @@ CREATE TABLE `saved_variables` (
   `NextMonthlyQuestResetTime` bigint(40) unsigned NOT NULL DEFAULT '0',
   `NextRandomBGResetTime` bigint(40) unsigned NOT NULL DEFAULT '0',
   `cleaning_flags` INT(11) UNSIGNED NOT NULL DEFAULT '0'
-) ENGINE=MYISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Variable Saves';
+) ENGINE=MYISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Variable Saves';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

@@ -44,7 +44,7 @@ CREATE TABLE `pickpocketing_loot_template` (
   `maxcount` smallint(5) unsigned NOT NULL DEFAULT '1',
   `condition_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`entry`,`item`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Loot System';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Loot System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

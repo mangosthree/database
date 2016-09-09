@@ -48,7 +48,7 @@ CREATE TABLE `creature_template_spells` (
   `spell9` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `spell10` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`entry`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Creature System (Spells used by creature)';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature System (Spells used by creature)';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

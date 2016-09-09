@@ -42,7 +42,7 @@ CREATE TABLE `gameobject_addon` (
   `path_rotation2` float NOT NULL DEFAULT '0',
   `path_rotation3` float NOT NULL DEFAULT '1',
   PRIMARY KEY (`guid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Gameobject System';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Gameobject System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

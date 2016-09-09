@@ -41,7 +41,7 @@ CREATE TABLE `achievement_criteria_requirement` (
   `value1` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `value2` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`criteria_id`,`type`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Achievment system';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Achievment system';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

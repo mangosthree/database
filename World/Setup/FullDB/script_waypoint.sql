@@ -44,7 +44,7 @@ CREATE TABLE `script_waypoint` (
   `waittime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'waittime in millisecs',
   `point_comment` text,
   PRIMARY KEY (`entry`,`pointid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Script Creature waypoints';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Script Creature waypoints';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

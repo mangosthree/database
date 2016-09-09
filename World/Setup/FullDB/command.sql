@@ -40,7 +40,7 @@ CREATE TABLE `command` (
   `security` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `help` longtext,
   PRIMARY KEY (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Chat System';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Chat System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

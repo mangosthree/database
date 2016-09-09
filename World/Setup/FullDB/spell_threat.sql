@@ -41,7 +41,7 @@ CREATE TABLE `spell_threat` (
   `multiplier` float NOT NULL DEFAULT '1' COMMENT 'threat multiplier for damage/healing',
   `ap_bonus` float NOT NULL DEFAULT '0' COMMENT 'additional threat bonus from attack power',
   PRIMARY KEY (`entry`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

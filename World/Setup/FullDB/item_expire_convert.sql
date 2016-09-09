@@ -39,7 +39,7 @@ CREATE TABLE `item_expire_convert` (
   `entry` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `item` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`entry`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Item Convert System';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Item Convert System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

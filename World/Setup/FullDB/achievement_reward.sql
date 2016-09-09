@@ -45,7 +45,7 @@ CREATE TABLE `achievement_reward` (
   `subject` varchar(255) DEFAULT NULL,
   `text` text,
   PRIMARY KEY (`entry`,`gender`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Achievment system';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Achievment system';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
