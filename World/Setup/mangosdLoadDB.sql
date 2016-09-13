@@ -1,33 +1,46 @@
--- MySQL dump 10.13  Distrib 5.5.34, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: mangos
--- ------------------------------------------------------
--- Server version	5.5.34-0ubuntu0.13.10.1
+-- Copyright (C) 2005-2015 MaNGOS <https://getmangos.eu/>
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+--
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Table structure for table `db_version`
---
-
+-- --------------------------------
+-- Table structure for `db_version`
+-- --------------------------------
 DROP TABLE IF EXISTS `db_version`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `db_version` (
-  `version` varchar(120) DEFAULT NULL,
-  `creature_ai_version` varchar(120) DEFAULT NULL,
-  `cache_id` int(10) DEFAULT '0',
-  `required_12752_01_mangos_reputation_spillover_template` bit(1) default NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Used DB version notes';
+  `version` int(3) NOT NULL,
+  `structure` int(3) NOT NULL,
+  `content` int(3) NOT NULL,
+  `description` varchar(30) NOT NULL DEFAULT '',
+  `comment` varchar(150) DEFAULT '',
+  PRIMARY KEY (`version`,`structure`,`content`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='Used DB version notes';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,8 +49,8 @@ CREATE TABLE `db_version` (
 
 LOCK TABLES `db_version` WRITE;
 /*!40000 ALTER TABLE `db_version` DISABLE KEYS */;
-INSERT INTO `db_version` (`version`, `creature_ai_version`, `cache_id`, `required_12752_01_mangos_reputation_spillover_template`) VALUES
-('Mangos default database.','Creature EventAI not provided.',0,NULL);
+INSERT INTO `db_version` (`version`, `structure`, `content`, `description`, `comment`) VALUES 
+(21,4,7,'Update_dbDocs','Base DB from Rel21.01.00 to Rel21.04.07');
 /*!40000 ALTER TABLE `db_version` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46,8 +59,6 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `achievement_criteria_requirement`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `achievement_criteria_requirement` (
   `criteria_id` mediumint(8) NOT NULL,
   `type` tinyint(3) unsigned NOT NULL DEFAULT '0',
@@ -55,24 +66,13 @@ CREATE TABLE `achievement_criteria_requirement` (
   `value2` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`criteria_id`,`type`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Achievment system';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `achievement_criteria_requirement`
---
-
-LOCK TABLES `achievement_criteria_requirement` WRITE;
-/*!40000 ALTER TABLE `achievement_criteria_requirement` DISABLE KEYS */;
-/*!40000 ALTER TABLE `achievement_criteria_requirement` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `achievement_reward`
 --
 
 DROP TABLE IF EXISTS `achievement_reward`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `achievement_reward` (
   `entry` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `gender` tinyint(3) NOT NULL DEFAULT '2',
@@ -82,41 +82,20 @@ CREATE TABLE `achievement_reward` (
   `sender` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `subject` varchar(255) DEFAULT NULL,
   `text` text,
-  PRIMARY KEY (`entry`,`gender`)
+  PRIMARY KEY  (`entry`,`gender`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Achievment system';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `achievement_reward`
---
-
-LOCK TABLES `achievement_reward` WRITE;
-/*!40000 ALTER TABLE `achievement_reward` DISABLE KEYS */;
-/*!40000 ALTER TABLE `achievement_reward` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `areatrigger_involvedrelation`
 --
 
 DROP TABLE IF EXISTS `areatrigger_involvedrelation`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `areatrigger_involvedrelation` (
   `id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'Identifier',
   `quest` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'Quest Identifier',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Trigger System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Trigger System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `areatrigger_involvedrelation`
---
-
-LOCK TABLES `areatrigger_involvedrelation` WRITE;
-/*!40000 ALTER TABLE `areatrigger_involvedrelation` DISABLE KEYS */;
-/*!40000 ALTER TABLE `areatrigger_involvedrelation` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `areatrigger_tavern`
@@ -129,17 +108,8 @@ CREATE TABLE `areatrigger_tavern` (
   `id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'Identifier',
   `name` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Trigger System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Trigger System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `areatrigger_tavern`
---
-
-LOCK TABLES `areatrigger_tavern` WRITE;
-/*!40000 ALTER TABLE `areatrigger_tavern` DISABLE KEYS */;
-/*!40000 ALTER TABLE `areatrigger_tavern` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `areatrigger_teleport`
@@ -164,17 +134,8 @@ CREATE TABLE `areatrigger_teleport` (
   `target_position_z` float NOT NULL DEFAULT '0',
   `target_orientation` float NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Trigger System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Trigger System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `areatrigger_teleport`
---
-
-LOCK TABLES `areatrigger_teleport` WRITE;
-/*!40000 ALTER TABLE `areatrigger_teleport` DISABLE KEYS */;
-/*!40000 ALTER TABLE `areatrigger_teleport` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `battleground_events`
@@ -189,17 +150,8 @@ CREATE TABLE `battleground_events` (
   `event2` tinyint(3) unsigned NOT NULL,
   `description` varchar(255) NOT NULL,
   PRIMARY KEY (`map`,`event1`,`event2`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `battleground_events`
---
-
-LOCK TABLES `battleground_events` WRITE;
-/*!40000 ALTER TABLE `battleground_events` DISABLE KEYS */;
-/*!40000 ALTER TABLE `battleground_events` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `battleground_template`
@@ -217,7 +169,7 @@ CREATE TABLE `battleground_template` (
   `HordeStartLoc` mediumint(8) unsigned NOT NULL,
   `HordeStartO` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -254,17 +206,8 @@ CREATE TABLE `battlemaster_entry` (
   `entry` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'Entry of a creature',
   `bg_template` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'Battleground template id',
   PRIMARY KEY (`entry`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `battlemaster_entry`
---
-
-LOCK TABLES `battlemaster_entry` WRITE;
-/*!40000 ALTER TABLE `battlemaster_entry` DISABLE KEYS */;
-/*!40000 ALTER TABLE `battlemaster_entry` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `command`
@@ -278,7 +221,7 @@ CREATE TABLE `command` (
   `security` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `help` longtext,
   PRIMARY KEY (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Chat System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Chat System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -635,17 +578,8 @@ CREATE TABLE `conditions` (
   `value2` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'data field two for the condition',
   PRIMARY KEY (`condition_entry`),
   UNIQUE KEY `unique_conditions` (`type`,`value1`,`value2`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Condition System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1734 ROW_FORMAT=DYNAMIC COMMENT='Condition System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `conditions`
---
-
-LOCK TABLES `conditions` WRITE;
-/*!40000 ALTER TABLE `conditions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `conditions` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature`
@@ -680,15 +614,6 @@ CREATE TABLE `creature` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `creature`
---
-
-LOCK TABLES `creature` WRITE;
-/*!40000 ALTER TABLE `creature` DISABLE KEYS */;
-/*!40000 ALTER TABLE `creature` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `creature_addon`
 --
 
@@ -705,25 +630,15 @@ CREATE TABLE `creature_addon` (
   `moveflags` int(10) unsigned NOT NULL DEFAULT '0',
   `auras` text,
   PRIMARY KEY (`guid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `creature_addon`
---
-
-LOCK TABLES `creature_addon` WRITE;
-/*!40000 ALTER TABLE `creature_addon` DISABLE KEYS */;
-/*!40000 ALTER TABLE `creature_addon` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature_ai_scripts`
 --
 
 DROP TABLE IF EXISTS `creature_ai_scripts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `creature_ai_scripts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identifier',
   `creature_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Creature Template Identifier',
@@ -750,24 +665,13 @@ CREATE TABLE `creature_ai_scripts` (
   `comment` varchar(255) NOT NULL DEFAULT '' COMMENT 'Event Comment',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='EventAI Scripts';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `creature_ai_scripts`
---
-
-LOCK TABLES `creature_ai_scripts` WRITE;
-/*!40000 ALTER TABLE `creature_ai_scripts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `creature_ai_scripts` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature_ai_summons`
 --
 
 DROP TABLE IF EXISTS `creature_ai_summons`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `creature_ai_summons` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Location Identifier',
   `position_x` float NOT NULL DEFAULT '0',
@@ -778,24 +682,13 @@ CREATE TABLE `creature_ai_summons` (
   `comment` varchar(255) NOT NULL DEFAULT '' COMMENT 'Summon Comment',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='EventAI Summoning Locations';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `creature_ai_summons`
---
-
-LOCK TABLES `creature_ai_summons` WRITE;
-/*!40000 ALTER TABLE `creature_ai_summons` DISABLE KEYS */;
-/*!40000 ALTER TABLE `creature_ai_summons` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature_ai_texts`
 --
 
 DROP TABLE IF EXISTS `creature_ai_texts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `creature_ai_texts` (
   `entry` mediumint(8) NOT NULL,
   `content_default` text NOT NULL,
@@ -814,16 +707,6 @@ CREATE TABLE `creature_ai_texts` (
   `comment` text,
   PRIMARY KEY (`entry`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Script Texts';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `creature_ai_texts`
---
-
-LOCK TABLES `creature_ai_texts` WRITE;
-/*!40000 ALTER TABLE `creature_ai_texts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `creature_ai_texts` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature_battleground`
@@ -833,21 +716,12 @@ DROP TABLE IF EXISTS `creature_battleground`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `creature_battleground` (
-  `guid` int(10) unsigned NOT NULL COMMENT 'Creature''s GUID',
+  `guid` int(10) unsigned NOT NULL COMMENT 'Creature\'s GUID',
   `event1` tinyint(3) unsigned NOT NULL COMMENT 'main event',
   `event2` tinyint(3) unsigned NOT NULL COMMENT 'sub event',
   PRIMARY KEY (`guid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature battleground indexing system';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature battleground indexing system';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `creature_battleground`
---
-
-LOCK TABLES `creature_battleground` WRITE;
-/*!40000 ALTER TABLE `creature_battleground` DISABLE KEYS */;
-/*!40000 ALTER TABLE `creature_battleground` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature_equip_template`
@@ -862,17 +736,8 @@ CREATE TABLE `creature_equip_template` (
   `equipentry2` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `equipentry3` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`entry`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Creature System (Equipment)';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Creature System (Equipment)';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `creature_equip_template`
---
-
-LOCK TABLES `creature_equip_template` WRITE;
-/*!40000 ALTER TABLE `creature_equip_template` DISABLE KEYS */;
-/*!40000 ALTER TABLE `creature_equip_template` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature_involvedrelation`
@@ -885,17 +750,8 @@ CREATE TABLE `creature_involvedrelation` (
   `id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'Identifier',
   `quest` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'Quest Identifier',
   PRIMARY KEY (`id`,`quest`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `creature_involvedrelation`
---
-
-LOCK TABLES `creature_involvedrelation` WRITE;
-/*!40000 ALTER TABLE `creature_involvedrelation` DISABLE KEYS */;
-/*!40000 ALTER TABLE `creature_involvedrelation` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature_linking`
@@ -909,17 +765,8 @@ CREATE TABLE `creature_linking` (
   `master_guid` int(10) unsigned NOT NULL COMMENT 'master to trigger events',
   `flag` mediumint(8) unsigned NOT NULL COMMENT 'flag - describing what should happen when',
   PRIMARY KEY (`guid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature Linking System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature Linking System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `creature_linking`
---
-
-LOCK TABLES `creature_linking` WRITE;
-/*!40000 ALTER TABLE `creature_linking` DISABLE KEYS */;
-/*!40000 ALTER TABLE `creature_linking` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature_linking_template`
@@ -935,17 +782,8 @@ CREATE TABLE `creature_linking_template` (
   `flag` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'flag - describing what should happen when',
   `search_range` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'search_range - describing in which range (spawn-coords) master and slave are linked together',
   PRIMARY KEY (`entry`,`map`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature Linking System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature Linking System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `creature_linking_template`
---
-
-LOCK TABLES `creature_linking_template` WRITE;
-/*!40000 ALTER TABLE `creature_linking_template` DISABLE KEYS */;
-/*!40000 ALTER TABLE `creature_linking_template` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature_loot_template`
@@ -963,17 +801,8 @@ CREATE TABLE `creature_loot_template` (
   `maxcount` smallint(5) unsigned NOT NULL DEFAULT '1',
   `condition_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`entry`,`item`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Loot System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Loot System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `creature_loot_template`
---
-
-LOCK TABLES `creature_loot_template` WRITE;
-/*!40000 ALTER TABLE `creature_loot_template` DISABLE KEYS */;
-/*!40000 ALTER TABLE `creature_loot_template` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature_model_info`
@@ -990,7 +819,7 @@ CREATE TABLE `creature_model_info` (
   `modelid_other_gender` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `modelid_alternative` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`modelid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Creature System (Model related info)';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Creature System (Model related info)';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1033,8 +862,7 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `creature_model_race`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `creature_model_race` (
   `modelid` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `racemask` mediumint(8) unsigned NOT NULL DEFAULT '0',
@@ -1042,24 +870,13 @@ CREATE TABLE `creature_model_race` (
   `modelid_racial` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'option 2, explicit modelid',
   PRIMARY KEY (`modelid`,`racemask`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Model system';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `creature_model_race`
---
-
-LOCK TABLES `creature_model_race` WRITE;
-/*!40000 ALTER TABLE `creature_model_race` DISABLE KEYS */;
-/*!40000 ALTER TABLE `creature_model_race` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature_movement`
 --
 
 DROP TABLE IF EXISTS `creature_movement`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `creature_movement` (
   `id` int(10) unsigned NOT NULL COMMENT 'Creature GUID',
   `point` mediumint(8) unsigned NOT NULL DEFAULT '0',
@@ -1080,17 +897,8 @@ CREATE TABLE `creature_movement` (
   `model1` mediumint(9) NOT NULL DEFAULT '0',
   `model2` mediumint(9) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`,`point`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `creature_movement`
---
-
-LOCK TABLES `creature_movement` WRITE;
-/*!40000 ALTER TABLE `creature_movement` DISABLE KEYS */;
-/*!40000 ALTER TABLE `creature_movement` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature_movement_template`
@@ -1119,17 +927,8 @@ CREATE TABLE `creature_movement_template` (
   `model1` mediumint(9) NOT NULL DEFAULT '0',
   `model2` mediumint(9) NOT NULL DEFAULT '0',
   PRIMARY KEY (`entry`,`point`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature waypoint system';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature waypoint system';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `creature_movement_template`
---
-
-LOCK TABLES `creature_movement_template` WRITE;
-/*!40000 ALTER TABLE `creature_movement_template` DISABLE KEYS */;
-/*!40000 ALTER TABLE `creature_movement_template` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature_onkill_reputation`
@@ -1150,17 +949,8 @@ CREATE TABLE `creature_onkill_reputation` (
   `RewOnKillRepValue2` mediumint(9) NOT NULL DEFAULT '0',
   `TeamDependent` tinyint(3) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`creature_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature OnKill Reputation gain';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature OnKill Reputation gain';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `creature_onkill_reputation`
---
-
-LOCK TABLES `creature_onkill_reputation` WRITE;
-/*!40000 ALTER TABLE `creature_onkill_reputation` DISABLE KEYS */;
-/*!40000 ALTER TABLE `creature_onkill_reputation` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature_questrelation`
@@ -1173,17 +963,8 @@ CREATE TABLE `creature_questrelation` (
   `id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'Identifier',
   `quest` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'Quest Identifier',
   PRIMARY KEY (`id`,`quest`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `creature_questrelation`
---
-
-LOCK TABLES `creature_questrelation` WRITE;
-/*!40000 ALTER TABLE `creature_questrelation` DISABLE KEYS */;
-/*!40000 ALTER TABLE `creature_questrelation` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature_template`
@@ -1280,18 +1061,7 @@ CREATE TABLE `creature_template` (
   `AIName` char(64) NOT NULL DEFAULT '',
   PRIMARY KEY (`Entry`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature System';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `creature_template`
---
-
-LOCK TABLES `creature_template` WRITE;
-/*!40000 ALTER TABLE `creature_template` DISABLE KEYS */;
-INSERT INTO `creature_template` (`entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, `KillCredit1`, `KillCredit2`, `modelid_1`, `modelid_2`, `modelid_3`, `modelid_4`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `minhealth`, `maxhealth`, `minmana`, `maxmana`, `armor`, `faction_A`, `faction_H`, `npcflag`, `speed_walk`, `speed_run`, `scale`, `rank`, `mindmg`, `maxdmg`, `dmgschool`, `attackpower`, `dmg_multiplier`, `baseattacktime`, `rangeattacktime`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `minrangedmg`, `maxrangedmg`, `rangedattackpower`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `resistance1`, `resistance2`, `resistance3`, `resistance4`, `resistance5`, `resistance6`, `PetSpellDataId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `InhabitType`, `unk16`, `unk17`, `RacialLeader`, `questItem1`, `questItem2`, `questItem3`, `questItem4`, `questItem5`, `questItem6`, `movementId`, `RegenHealth`, `vehicle_id`, `equipment_id`, `trainer_id`, `vendor_id`, `mechanic_immune_mask`, `flags_extra`, `ScriptName`) VALUES
-(1,0,0,0,0,0,10045,0,0,0,'Waypoint(Only GM can see it)','Visual',NULL,0,1,1,64,64,0,0,5,35,35,0,0.91,1.14286,1,0,2,3,0,10,1,2000,2200,8,4096,0,0,0,0,0,0,0,1,2,100,8,5242886,0,0,0,0,0,0,0,0,0,0,0,0,'',0,7,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,130,'');
-/*!40000 ALTER TABLE `creature_template` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `creature_template_addon`
@@ -1310,7 +1080,7 @@ CREATE TABLE `creature_template_addon` (
   `moveflags` int(10) unsigned NOT NULL DEFAULT '0',
   `auras` text,
   PRIMARY KEY (`entry`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1380,15 +1150,13 @@ CREATE TABLE `db_script_string` (
   PRIMARY KEY (`entry`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
 /*Table structure for table `dbdocsfields` */
 
 DROP TABLE IF EXISTS `dbdocsfields`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `dbdocsfields` (
   `fieldId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique Id for this field',
-  `languageId` int(11) NOT NULL DEFAULT '0' COMMENT 'dbdocsLanguageId to link to. (Normallu 0 = English)',
+  `languageId` int(11) NOT NULL DEFAULT '0' COMMENT 'dbdocsLanguageId to link to. (Normally 0 = English)',
   `tableName` varchar(80) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Name of the table to link to',
   `fieldName` varchar(80) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Name of the field to link the note to',
   `fieldComment` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Main field Note',
@@ -1396,33 +1164,22 @@ CREATE TABLE `dbdocsfields` (
   PRIMARY KEY (`fieldId`,`languageId`),
   KEY `fieldId` (`fieldId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1764 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
+/*Table structure for table `dbdocsfields_localised` */
 
---
--- Table structure for table `dbdocsfields_localised`
---
 DROP TABLE IF EXISTS `dbdocsfields_localised`;
 
 CREATE TABLE `dbdocsfields_localised` (
   `fieldId` int(11) NOT NULL COMMENT 'dbdocsfields.fieldId to link to.',
-  `languageId` int(11) NOT NULL COMMENT 'dbdocsLanguageId to link to. (Normallu 0 = English)',
+  `languageId` int(11) NOT NULL DEFAULT '0' COMMENT 'dbdocsLanguageId to link to. (Normally 0 = English)',
   `fieldNotes` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'Additional Field Notes',
   `fieldComment` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Main field Note',
   PRIMARY KEY (`fieldId`,`languageId`),
   KEY `fieldId` (`fieldId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*Data for the table `dbdocsfields_localised` */
-LOCK TABLES `dbdocsfields_localised` WRITE;
-/*!40000 ALTER TABLE `dbdocsfields_localised` DISABLE KEYS */;
+/*Table structure for table `dbdocslanguage` */
 
-/*!40000 ALTER TABLE `dbdocsfields_localised` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `dbdocslanguage`
---
 DROP TABLE IF EXISTS `dbdocslanguage`;
 
 CREATE TABLE `dbdocslanguage` (
@@ -1446,9 +1203,8 @@ insert  into `dbdocslanguage`(`LanguageId`,`LanguageName`) values (8,'Russian');
 /*!40000 ALTER TABLE `dbdocslanguage` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `dbdocsprogressquests`
---
+/*Table structure for table `dbdocsprogressquests` */
+
 DROP TABLE IF EXISTS `dbdocsprogressquests`;
 
 CREATE TABLE `dbdocsprogressquests` (
@@ -1458,10 +1214,8 @@ CREATE TABLE `dbdocsprogressquests` (
   PRIMARY KEY (`QuestID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `dbdocssubtables` */
 
---
--- Table structure for table `dbdocssubtables`
---
 DROP TABLE IF EXISTS `dbdocssubtables`;
 
 CREATE TABLE `dbdocssubtables` (
@@ -1473,32 +1227,22 @@ CREATE TABLE `dbdocssubtables` (
   PRIMARY KEY (`subTableId`,`languageId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `dbdocssubtables_localised` */
 
---
--- Table structure for table `dbdocssubtables_localised`
---
 DROP TABLE IF EXISTS `dbdocssubtables_localised`;
 
 CREATE TABLE `dbdocssubtables_localised` (
   `subTableId` int(11) NOT NULL COMMENT 'dbdocsSubtableId to link to',
-  `languageId` int(11) NOT NULL DEFAULT '2' COMMENT 'dbdocsLanguageId to link to.',
+  `languageId` int(11) NOT NULL DEFAULT '0' COMMENT 'dbdocsLanguageId to link to. (Normally 0 = English)',
   `subTableContent` text NOT NULL COMMENT 'The Sub Table Content',
   `subTableTemplate` text NOT NULL COMMENT 'The Sub Table Template',
   PRIMARY KEY (`subTableId`,`languageId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `dbdocssubtables_localised` */
-LOCK TABLES `dbdocssubtables_localised` WRITE;
-/*!40000 ALTER TABLE `dbdocssubtables_localised` DISABLE KEYS */;
-/*!40000 ALTER TABLE `dbdocssubtables_localised` ENABLE KEYS */;
-UNLOCK TABLES;
+/*Table structure for table `dbdocstable` */
 
---
--- Table structure for table `dbdocstable`
---
 DROP TABLE IF EXISTS `dbdocstable`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `dbdocstable` (
   `tableId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique ID of this entry',
   `languageId` int(11) NOT NULL DEFAULT '0' COMMENT 'The Language Id for the Notes (Normally 0 for English)',
@@ -1507,26 +1251,18 @@ CREATE TABLE `dbdocstable` (
   PRIMARY KEY (`tableId`,`languageId`,`tableName`),
   KEY `tableId` (`tableId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=186 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
+/*Table structure for table `dbdocstable_localised` */
 
---
--- Table structure for table `dbdocstable_localised`
---
 DROP TABLE IF EXISTS `dbdocstable_localised`;
 
 CREATE TABLE `dbdocstable_localised` (
   `tableId` int(11) NOT NULL COMMENT 'The dbdocsTableId to link to',
-  `languageId` int(11) NOT NULL DEFAULT '2' COMMENT 'The dbdocsLanguageId to link to',
+  `languageId` int(11) NOT NULL DEFAULT '0' COMMENT 'The dbdocsLanguageId to link to. (Normally 0 for English)',
   `tableNotes` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'The additional note to be added to the table',
   PRIMARY KEY (`tableId`,`languageId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*Data for the table `dbdocstable_localised` */
-LOCK TABLES `dbdocstable_localised` WRITE;
-/*!40000 ALTER TABLE `dbdocstable_localised` DISABLE KEYS */;
-/*!40000 ALTER TABLE `dbdocstable_localised` ENABLE KEYS */;
-UNLOCK TABLES;
 --
 -- Dumping data for table `db_script_string`
 --
@@ -1721,17 +1457,8 @@ CREATE TABLE `fishing_loot_template` (
   `maxcount` smallint(5) unsigned NOT NULL DEFAULT '1',
   `condition_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`entry`,`item`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Loot System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Loot System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `fishing_loot_template`
---
-
-LOCK TABLES `fishing_loot_template` WRITE;
-/*!40000 ALTER TABLE `fishing_loot_template` DISABLE KEYS */;
-/*!40000 ALTER TABLE `fishing_loot_template` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `game_event`
@@ -1749,17 +1476,8 @@ CREATE TABLE `game_event` (
   `holiday` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'Client side holiday id',
   `description` varchar(255) DEFAULT NULL COMMENT 'Description of the event displayed in console',
   PRIMARY KEY (`entry`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `game_event`
---
-
-LOCK TABLES `game_event` WRITE;
-/*!40000 ALTER TABLE `game_event` DISABLE KEYS */;
-/*!40000 ALTER TABLE `game_event` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `game_event_creature`
@@ -1772,17 +1490,8 @@ CREATE TABLE `game_event_creature` (
   `guid` int(10) unsigned NOT NULL,
   `event` smallint(6) NOT NULL DEFAULT '0' COMMENT 'Negatives value to remove during event and ignore pool grouping, positive value for spawn during event and if guid is part of pool then al pool memebers must be listed as part of event spawn.',
   PRIMARY KEY (`guid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `game_event_creature`
---
-
-LOCK TABLES `game_event_creature` WRITE;
-/*!40000 ALTER TABLE `game_event_creature` DISABLE KEYS */;
-/*!40000 ALTER TABLE `game_event_creature` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `game_event_creature_data`
@@ -1800,17 +1509,8 @@ CREATE TABLE `game_event_creature_data` (
   `spell_end` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `event` smallint(5) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`guid`,`event`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `game_event_creature_data`
---
-
-LOCK TABLES `game_event_creature_data` WRITE;
-/*!40000 ALTER TABLE `game_event_creature_data` DISABLE KEYS */;
-/*!40000 ALTER TABLE `game_event_creature_data` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `game_event_gameobject`
@@ -1823,17 +1523,8 @@ CREATE TABLE `game_event_gameobject` (
   `guid` int(10) unsigned NOT NULL,
   `event` smallint(6) NOT NULL DEFAULT '0' COMMENT 'Negatives value to remove during event and ignore pool grouping, positive value for spawn during event and if guid is part of pool then al pool memebers must be listed as part of event spawn.',
   PRIMARY KEY (`guid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `game_event_gameobject`
---
-
-LOCK TABLES `game_event_gameobject` WRITE;
-/*!40000 ALTER TABLE `game_event_gameobject` DISABLE KEYS */;
-/*!40000 ALTER TABLE `game_event_gameobject` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `game_event_mail`
@@ -1849,17 +1540,8 @@ CREATE TABLE `game_event_mail` (
   `mailTemplateId` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `senderEntry` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`event`,`raceMask`,`quest`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Game event system';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Game event system';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `game_event_mail`
---
-
-LOCK TABLES `game_event_mail` WRITE;
-/*!40000 ALTER TABLE `game_event_mail` DISABLE KEYS */;
-/*!40000 ALTER TABLE `game_event_mail` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `game_event_quest`
@@ -1872,17 +1554,8 @@ CREATE TABLE `game_event_quest` (
   `quest` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'entry from quest_template',
   `event` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT 'entry from game_event',
   PRIMARY KEY (`quest`,`event`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Game event system';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Game event system';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `game_event_quest`
---
-
-LOCK TABLES `game_event_quest` WRITE;
-/*!40000 ALTER TABLE `game_event_quest` DISABLE KEYS */;
-/*!40000 ALTER TABLE `game_event_quest` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `game_graveyard_zone`
@@ -1896,17 +1569,8 @@ CREATE TABLE `game_graveyard_zone` (
   `ghost_zone` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `faction` smallint(5) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`,`ghost_zone`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Trigger System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Trigger System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `game_graveyard_zone`
---
-
-LOCK TABLES `game_graveyard_zone` WRITE;
-/*!40000 ALTER TABLE `game_graveyard_zone` DISABLE KEYS */;
-/*!40000 ALTER TABLE `game_graveyard_zone` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `game_tele`
@@ -1924,17 +1588,8 @@ CREATE TABLE `game_tele` (
   `map` smallint(5) unsigned NOT NULL DEFAULT '0',
   `name` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Tele Command';
+) ENGINE=InnoDB AUTO_INCREMENT=1426 DEFAULT CHARSET=utf8 COMMENT='Tele Command';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `game_tele`
---
-
-LOCK TABLES `game_tele` WRITE;
-/*!40000 ALTER TABLE `game_tele` DISABLE KEYS */;
-/*!40000 ALTER TABLE `game_tele` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `game_weather`
@@ -1958,17 +1613,8 @@ CREATE TABLE `game_weather` (
   `winter_snow_chance` tinyint(3) unsigned NOT NULL DEFAULT '25',
   `winter_storm_chance` tinyint(3) unsigned NOT NULL DEFAULT '25',
   PRIMARY KEY (`zone`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Weather System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Weather System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `game_weather`
---
-
-LOCK TABLES `game_weather` WRITE;
-/*!40000 ALTER TABLE `game_weather` DISABLE KEYS */;
-/*!40000 ALTER TABLE `game_weather` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `gameobject`
@@ -1997,25 +1643,15 @@ CREATE TABLE `gameobject` (
   PRIMARY KEY (`guid`),
   KEY `idx_map` (`map`),
   KEY `idx_id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Gameobject System';
+) ENGINE=InnoDB AUTO_INCREMENT=300002 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Gameobject System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `gameobject`
---
-
-LOCK TABLES `gameobject` WRITE;
-/*!40000 ALTER TABLE `gameobject` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gameobject` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `gameobject_addon`
 --
 
 DROP TABLE IF EXISTS `gameobject_addon`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `gameobject_addon` (
   `guid` int(10) unsigned NOT NULL DEFAULT '0',
   `path_rotation0` float NOT NULL DEFAULT '0',
@@ -2024,40 +1660,20 @@ CREATE TABLE `gameobject_addon` (
   `path_rotation3` float NOT NULL DEFAULT '1',
   PRIMARY KEY (`guid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Gameobject System';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `gameobject_addon`
---
-
-LOCK TABLES `gameobject_addon` WRITE;
-/*!40000 ALTER TABLE `gameobject_addon` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gameobject_addon` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `gameobject_battleground`
 --
 
 DROP TABLE IF EXISTS `gameobject_battleground`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `gameobject_battleground` (
   `guid` int(10) unsigned NOT NULL COMMENT 'GameObject''s GUID',
   `event1` tinyint(3) unsigned NOT NULL COMMENT 'main event',
   `event2` tinyint(3) unsigned NOT NULL COMMENT 'sub event',
   PRIMARY KEY (`guid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='GameObject battleground indexing system';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='GameObject battleground indexing system';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `gameobject_battleground`
---
-
-LOCK TABLES `gameobject_battleground` WRITE;
-/*!40000 ALTER TABLE `gameobject_battleground` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gameobject_battleground` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `gameobject_involvedrelation`
@@ -2070,17 +1686,8 @@ CREATE TABLE `gameobject_involvedrelation` (
   `id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `quest` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'Quest Identifier',
   PRIMARY KEY (`id`,`quest`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `gameobject_involvedrelation`
---
-
-LOCK TABLES `gameobject_involvedrelation` WRITE;
-/*!40000 ALTER TABLE `gameobject_involvedrelation` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gameobject_involvedrelation` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `gameobject_loot_template`
@@ -2098,17 +1705,8 @@ CREATE TABLE `gameobject_loot_template` (
   `maxcount` smallint(5) unsigned NOT NULL DEFAULT '1',
   `condition_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`entry`,`item`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Loot System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Loot System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `gameobject_loot_template`
---
-
-LOCK TABLES `gameobject_loot_template` WRITE;
-/*!40000 ALTER TABLE `gameobject_loot_template` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gameobject_loot_template` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `gameobject_questrelation`
@@ -2121,17 +1719,8 @@ CREATE TABLE `gameobject_questrelation` (
   `id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `quest` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT 'Quest Identifier',
   PRIMARY KEY (`id`,`quest`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `gameobject_questrelation`
---
-
-LOCK TABLES `gameobject_questrelation` WRITE;
-/*!40000 ALTER TABLE `gameobject_questrelation` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gameobject_questrelation` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `gameobject_template`
@@ -2195,16 +1784,6 @@ CREATE TABLE `gameobject_template` (
   `ScriptName` varchar(64) NOT NULL DEFAULT '',
   PRIMARY KEY (`entry`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Gameobject System';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `gameobject_template`
---
-
-LOCK TABLES `gameobject_template` WRITE;
-/*!40000 ALTER TABLE `gameobject_template` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gameobject_template` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `gossip_menu`
@@ -2219,17 +1798,8 @@ CREATE TABLE `gossip_menu` (
   `script_id` mediumint(8) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'script in `dbscripts_on_gossip` - will be executed on GossipHello',
   `condition_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`entry`,`text_id`,`script_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `gossip_menu`
---
-
-LOCK TABLES `gossip_menu` WRITE;
-/*!40000 ALTER TABLE `gossip_menu` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gossip_menu` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `gossip_menu_option`
@@ -2253,7 +1823,7 @@ CREATE TABLE `gossip_menu_option` (
   `box_text` text,
   `condition_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`menu_id`,`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2342,8 +1912,7 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `instance_encounters`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `instance_encounters` (
   `entry` int(10) unsigned NOT NULL COMMENT 'Unique entry from DungeonEncounter.dbc',
   `creditType` tinyint(3) unsigned NOT NULL DEFAULT '0',
@@ -2351,16 +1920,6 @@ CREATE TABLE `instance_encounters` (
   `lastEncounterDungeon` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT 'If not 0, LfgDungeon.dbc entry for the instance it is last encounter in',
   PRIMARY KEY (`entry`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `instance_encounters`
---
-
-LOCK TABLES `instance_encounters` WRITE;
-/*!40000 ALTER TABLE `instance_encounters` DISABLE KEYS */;
-/*!40000 ALTER TABLE `instance_encounters` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `instance_template`
@@ -2376,95 +1935,53 @@ CREATE TABLE `instance_template` (
   `levelMax` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `ScriptName` varchar(128) NOT NULL DEFAULT '',
   PRIMARY KEY (`map`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `instance_template`
---
-
-LOCK TABLES `instance_template` WRITE;
-/*!40000 ALTER TABLE `instance_template` DISABLE KEYS */;
-/*!40000 ALTER TABLE `instance_template` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `item_convert`
 --
 
 DROP TABLE IF EXISTS `item_convert`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `item_convert` (
   `entry` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `item` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`entry`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Item Convert System';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `item_convert`
---
-
-LOCK TABLES `item_convert` WRITE;
-/*!40000 ALTER TABLE `item_convert` DISABLE KEYS */;
-/*!40000 ALTER TABLE `item_convert` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `item_enchantment_template`
 --
 
 DROP TABLE IF EXISTS `item_enchantment_template`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `item_enchantment_template` (
   `entry` mediumint(8) NOT NULL DEFAULT '0',
   `ench` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `chance` float unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`entry`,`ench`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Item Random Enchantment System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Item Random Enchantment System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `item_enchantment_template`
---
-
-LOCK TABLES `item_enchantment_template` WRITE;
-/*!40000 ALTER TABLE `item_enchantment_template` DISABLE KEYS */;
-/*!40000 ALTER TABLE `item_enchantment_template` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `item_expire_convert`
 --
 
 DROP TABLE IF EXISTS `item_expire_convert`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `item_expire_convert` (
   `entry` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `item` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`entry`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Item Convert System';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `item_expire_convert`
---
-
-LOCK TABLES `item_expire_convert` WRITE;
-/*!40000 ALTER TABLE `item_expire_convert` DISABLE KEYS */;
-/*!40000 ALTER TABLE `item_expire_convert` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `item_loot_template`
 --
 
 DROP TABLE IF EXISTS `item_loot_template`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `item_loot_template` (
   `entry` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `item` mediumint(8) NOT NULL DEFAULT '0',
@@ -2474,17 +1991,8 @@ CREATE TABLE `item_loot_template` (
   `maxcount` smallint(5) unsigned NOT NULL DEFAULT '1',
   `condition_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`entry`,`item`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Loot System';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Loot System';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `item_loot_template`
---
-
-LOCK TABLES `item_loot_template` WRITE;
-/*!40000 ALTER TABLE `item_loot_template` DISABLE KEYS */;
-/*!40000 ALTER TABLE `item_loot_template` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `item_required_target`
@@ -2498,17 +2006,8 @@ CREATE TABLE `item_required_target` (
   `type` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `targetEntry` mediumint(8) unsigned NOT NULL DEFAULT '0',
   UNIQUE KEY `entry_type_target` (`entry`,`type`,`targetEntry`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `item_required_target`
---
-
-LOCK TABLES `item_required_target` WRITE;
-/*!40000 ALTER TABLE `item_required_target` DISABLE KEYS */;
-/*!40000 ALTER TABLE `item_required_target` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `item_template`
@@ -2886,21 +2385,11 @@ CREATE TABLE `locales_achievement_reward` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `locales_achievement_reward`
---
-
-LOCK TABLES `locales_achievement_reward` WRITE;
-/*!40000 ALTER TABLE `locales_achievement_reward` DISABLE KEYS */;
-/*!40000 ALTER TABLE `locales_achievement_reward` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `locales_creature`
 --
 
 DROP TABLE IF EXISTS `locales_creature`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `locales_creature` (
   `entry` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `name_loc1` varchar(100) NOT NULL DEFAULT '',
@@ -2920,17 +2409,8 @@ CREATE TABLE `locales_creature` (
   `subname_loc7` varchar(100) DEFAULT NULL,
   `subname_loc8` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`entry`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `locales_creature`
---
-
-LOCK TABLES `locales_creature` WRITE;
-/*!40000 ALTER TABLE `locales_creature` DISABLE KEYS */;
-/*!40000 ALTER TABLE `locales_creature` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `locales_gameobject`
@@ -2958,17 +2438,8 @@ CREATE TABLE `locales_gameobject` (
   `castbarcaption_loc7` varchar(100) NOT NULL DEFAULT '',
   `castbarcaption_loc8` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`entry`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `locales_gameobject`
---
-
-LOCK TABLES `locales_gameobject` WRITE;
-/*!40000 ALTER TABLE `locales_gameobject` DISABLE KEYS */;
-/*!40000 ALTER TABLE `locales_gameobject` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `locales_gossip_menu_option`
@@ -2997,17 +2468,8 @@ CREATE TABLE `locales_gossip_menu_option` (
   `box_text_loc7` text,
   `box_text_loc8` text,
   PRIMARY KEY (`menu_id`,`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `locales_gossip_menu_option`
---
-
-LOCK TABLES `locales_gossip_menu_option` WRITE;
-/*!40000 ALTER TABLE `locales_gossip_menu_option` DISABLE KEYS */;
-/*!40000 ALTER TABLE `locales_gossip_menu_option` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `locales_item`
@@ -3037,15 +2499,6 @@ CREATE TABLE `locales_item` (
   PRIMARY KEY (`entry`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `locales_item`
---
-
-LOCK TABLES `locales_item` WRITE;
-/*!40000 ALTER TABLE `locales_item` DISABLE KEYS */;
-/*!40000 ALTER TABLE `locales_item` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `locales_npc_text`
@@ -21671,6 +21124,33 @@ LOCK TABLES `spell_target_position` WRITE;
 /*!40000 ALTER TABLE `spell_target_position` DISABLE KEYS */;
 /*!40000 ALTER TABLE `spell_target_position` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `spell_template` */
+--
+
+DROP TABLE IF EXISTS `spell_template`;
+
+CREATE TABLE `spell_template` (
+  `id` int(11) unsigned NOT NULL DEFAULT '0',
+  `attr` int(11) unsigned NOT NULL DEFAULT '0',
+  `attr_ex` int(11) unsigned NOT NULL DEFAULT '0',
+  `attr_ex2` int(11) unsigned NOT NULL DEFAULT '0',
+  `attr_ex3` int(11) unsigned NOT NULL DEFAULT '0',
+  `proc_flags` int(11) unsigned NOT NULL DEFAULT '0',
+  `proc_chance` int(11) unsigned NOT NULL DEFAULT '0',
+  `duration_index` int(11) unsigned NOT NULL DEFAULT '0',
+  `effect0` int(11) unsigned NOT NULL DEFAULT '0',
+  `effect0_implicit_target_a` int(11) unsigned NOT NULL DEFAULT '0',
+  `effect0_implicit_target_b` int(11) unsigned NOT NULL DEFAULT '0',
+  `effect0_radius_idx` int(11) unsigned NOT NULL DEFAULT '0',
+  `effect0_apply_aura_name` int(11) unsigned NOT NULL DEFAULT '0',
+  `effect0_misc_value` int(11) unsigned NOT NULL DEFAULT '0',
+  `effect0_misc_value_b` int(11) unsigned NOT NULL DEFAULT '0',
+  `effect0_trigger_spell` int(11) unsigned NOT NULL DEFAULT '0',
+  `comments` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='MaNGOS server side spells';
 
 --
 -- Table structure for table `spell_threat`

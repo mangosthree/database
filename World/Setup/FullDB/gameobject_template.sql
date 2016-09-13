@@ -1,27 +1,19 @@
+-- ---------------------------------------- 
+-- --        CLEAR DOWN THE TABLE        -- 
+-- ---------------------------------------- 
+TRUNCATE TABLE `gameobject_template`; 
+-- ---------------------------------------- 
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Copyright (C) 2005-2016 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2016 MaNGOSZero <https://github.com/mangosthree>
---
--- This program is free software; you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation; either version 2 of the License, or
--- (at your option) any later version.
---
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY; without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--- GNU General Public License for more details.
---
--- You should have received a copy of the GNU General Public License
--- along with this program; if not, write to the Free Software
--- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
---
+-- Host: localhost    Database: m3
+-- ------------------------------------------------------
+-- Server version	5.6.25-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -29,75 +21,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `gameobject_template`
---
-
-DROP TABLE IF EXISTS `gameobject_template`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `gameobject_template` (
-  `entry` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `type` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `displayId` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `name` varchar(100) NOT NULL DEFAULT '',
-  `IconName` varchar(100) NOT NULL DEFAULT '',
-  `castBarCaption` varchar(100) NOT NULL DEFAULT '',
-  `unk1` varchar(100) NOT NULL DEFAULT '',
-  `faction` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `flags` int(10) unsigned NOT NULL DEFAULT '0',
-  `size` float NOT NULL DEFAULT '1',
-  `questItem1` int(11) unsigned NOT NULL DEFAULT '0',
-  `questItem2` int(11) unsigned NOT NULL DEFAULT '0',
-  `questItem3` int(11) unsigned NOT NULL DEFAULT '0',
-  `questItem4` int(11) unsigned NOT NULL DEFAULT '0',
-  `questItem5` int(11) unsigned NOT NULL DEFAULT '0',
-  `questItem6` int(11) unsigned NOT NULL DEFAULT '0',
-  `data0` int(10) unsigned NOT NULL DEFAULT '0',
-  `data1` int(10) unsigned NOT NULL DEFAULT '0',
-  `data2` int(10) unsigned NOT NULL DEFAULT '0',
-  `data3` int(10) unsigned NOT NULL DEFAULT '0',
-  `data4` int(10) unsigned NOT NULL DEFAULT '0',
-  `data5` int(10) unsigned NOT NULL DEFAULT '0',
-  `data6` int(10) unsigned NOT NULL DEFAULT '0',
-  `data7` int(10) unsigned NOT NULL DEFAULT '0',
-  `data8` int(10) unsigned NOT NULL DEFAULT '0',
-  `data9` int(10) unsigned NOT NULL DEFAULT '0',
-  `data10` int(10) unsigned NOT NULL DEFAULT '0',
-  `data11` int(10) unsigned NOT NULL DEFAULT '0',
-  `data12` int(10) unsigned NOT NULL DEFAULT '0',
-  `data13` int(10) unsigned NOT NULL DEFAULT '0',
-  `data14` int(10) unsigned NOT NULL DEFAULT '0',
-  `data15` int(10) unsigned NOT NULL DEFAULT '0',
-  `data16` int(10) unsigned NOT NULL DEFAULT '0',
-  `data17` int(10) unsigned NOT NULL DEFAULT '0',
-  `data18` int(10) unsigned NOT NULL DEFAULT '0',
-  `data19` int(10) unsigned NOT NULL DEFAULT '0',
-  `data20` int(10) unsigned NOT NULL DEFAULT '0',
-  `data21` int(10) unsigned NOT NULL DEFAULT '0',
-  `data22` int(10) unsigned NOT NULL DEFAULT '0',
-  `data23` int(10) unsigned NOT NULL DEFAULT '0',
-  `data24` int(10) unsigned NOT NULL DEFAULT '0',
-  `data25` int(10) unsigned NOT NULL DEFAULT '0',
-  `data26` int(10) unsigned NOT NULL DEFAULT '0',
-  `data27` int(10) unsigned NOT NULL DEFAULT '0',
-  `data28` int(10) unsigned NOT NULL DEFAULT '0',
-  `data29` int(10) unsigned NOT NULL DEFAULT '0',
-  `data30` int(10) unsigned NOT NULL DEFAULT '0',
-  `data31` int(10) unsigned NOT NULL DEFAULT '0',
-  `unk2` int(10) unsigned NOT NULL DEFAULT '0',
-  `mingold` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `maxgold` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`entry`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Gameobject System';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `gameobject_template`
 --
 
 LOCK TABLES `gameobject_template` WRITE;
 /*!40000 ALTER TABLE `gameobject_template` DISABLE KEYS */;
-INSERT INTO `gameobject_template` (`entry`, `type`, `displayId`, `name`, `IconName`, `castBarCaption`, `unk1`, `faction`, `flags`, `size`, `questItem1`, `questItem2`, `questItem3`, `questItem4`, `questItem5`, `questItem6`, `data0`, `data1`, `data2`, `data3`, `data4`, `data5`, `data6`, `data7`, `data8`, `data9`, `data10`, `data11`, `data12`, `data13`, `data14`, `data15`, `data16`, `data17`, `data18`, `data19`, `data20`, `data21`, `data22`, `data23`, `data24`, `data25`, `data26`, `data27`, `data28`, `data29`, `data30`, `data31`, `unk2`, `mingold`, `maxgold`) VALUES
+INSERT INTO `gameobject_template` (`entry`, `type`, `displayId`, `name`, `IconName`, `castBarCaption`, `unk1`, `faction`, `flags`, `size`, `questItem1`, `questItem2`, `questItem3`, `questItem4`, `questItem5`, `questItem6`, `data0`, `data1`, `data2`, `data3`, `data4`, `data5`, `data6`, `data7`, `data8`, `data9`, `data10`, `data11`, `data12`, `data13`, `data14`, `data15`, `data16`, `data17`, `data18`, `data19`, `data20`, `data21`, `data22`, `data23`, `data24`, `data25`, `data26`, `data27`, `data28`, `data29`, `data30`, `data31`, `unk2`, `mingold`, `maxgold`) VALUES 
 (31,2,6,'Old Lion Statue','','','',84,0,0.63,0,0,0,0,0,0,43,73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 (32,3,10,'Sunken Chest','','','',12,4,1,1309,0,0,0,0,0,43,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 (33,2,1,'Locked Chest','','','',0,0,1.33,0,0,0,0,0,0,43,75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
@@ -7839,7 +7768,7 @@ INSERT INTO `gameobject_template` (`entry`, `type`, `displayId`, `name`, `IconNa
 (158552,7,990,'Bench','','','',0,0,1.35,0,0,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 (158553,7,990,'Bench','','','',0,0,1.35,0,0,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 (158554,7,990,'Bench','','','',0,0,1.35,0,0,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-INSERT INTO `gameobject_template` (`entry`, `type`, `displayId`, `name`, `IconName`, `castBarCaption`, `unk1`, `faction`, `flags`, `size`, `questItem1`, `questItem2`, `questItem3`, `questItem4`, `questItem5`, `questItem6`, `data0`, `data1`, `data2`, `data3`, `data4`, `data5`, `data6`, `data7`, `data8`, `data9`, `data10`, `data11`, `data12`, `data13`, `data14`, `data15`, `data16`, `data17`, `data18`, `data19`, `data20`, `data21`, `data22`, `data23`, `data24`, `data25`, `data26`, `data27`, `data28`, `data29`, `data30`, `data31`, `unk2`, `mingold`, `maxgold`) VALUES
+INSERT INTO `gameobject_template` (`entry`, `type`, `displayId`, `name`, `IconName`, `castBarCaption`, `unk1`, `faction`, `flags`, `size`, `questItem1`, `questItem2`, `questItem3`, `questItem4`, `questItem5`, `questItem6`, `data0`, `data1`, `data2`, `data3`, `data4`, `data5`, `data6`, `data7`, `data8`, `data9`, `data10`, `data11`, `data12`, `data13`, `data14`, `data15`, `data16`, `data17`, `data18`, `data19`, `data20`, `data21`, `data22`, `data23`, `data24`, `data25`, `data26`, `data27`, `data28`, `data29`, `data30`, `data31`, `unk2`, `mingold`, `maxgold`) VALUES 
 (158555,7,990,'Bench','','','',0,0,1.35,0,0,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 (158556,7,990,'Bench','','','',0,0,1.35,0,0,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 (158557,7,990,'Bench','','','',0,0,1.35,0,0,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
@@ -15729,7 +15658,7 @@ INSERT INTO `gameobject_template` (`entry`, `type`, `displayId`, `name`, `IconNa
 (192943,3,7075,'Shiny Bauble','','','',0,4,0.75,43239,0,0,0,0,0,1691,192943,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 (192944,3,8367,'Golden Goblet','','','',0,4,1,43240,0,0,0,0,0,1691,192944,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 (192945,3,8368,'Jade Statue','','','',0,4,1,43241,0,0,0,0,0,1691,192945,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-INSERT INTO `gameobject_template` (`entry`, `type`, `displayId`, `name`, `IconName`, `castBarCaption`, `unk1`, `faction`, `flags`, `size`, `questItem1`, `questItem2`, `questItem3`, `questItem4`, `questItem5`, `questItem6`, `data0`, `data1`, `data2`, `data3`, `data4`, `data5`, `data6`, `data7`, `data8`, `data9`, `data10`, `data11`, `data12`, `data13`, `data14`, `data15`, `data16`, `data17`, `data18`, `data19`, `data20`, `data21`, `data22`, `data23`, `data24`, `data25`, `data26`, `data27`, `data28`, `data29`, `data30`, `data31`, `unk2`, `mingold`, `maxgold`) VALUES
+INSERT INTO `gameobject_template` (`entry`, `type`, `displayId`, `name`, `IconName`, `castBarCaption`, `unk1`, `faction`, `flags`, `size`, `questItem1`, `questItem2`, `questItem3`, `questItem4`, `questItem5`, `questItem6`, `data0`, `data1`, `data2`, `data3`, `data4`, `data5`, `data6`, `data7`, `data8`, `data9`, `data10`, `data11`, `data12`, `data13`, `data14`, `data15`, `data16`, `data17`, `data18`, `data19`, `data20`, `data21`, `data22`, `data23`, `data24`, `data25`, `data26`, `data27`, `data28`, `data29`, `data30`, `data31`, `unk2`, `mingold`, `maxgold`) VALUES 
 (193024,10,1967,'Battlescar Signal Fire','','Lighting','',0,36,1.16,0,0,0,0,0,0,93,13137,20069,10000,0,0,0,0,0,0,0,0,0,1,28503,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 (193025,10,8380,'Metal Stake','','','',0,0,2.3,0,0,0,0,0,0,1691,0,20092,85000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 (193028,10,7352,'War Horn of Jotunheim','','Using','',0,52,1,0,0,0,0,0,0,93,13142,20108,20000000,0,0,0,0,0,0,0,0,0,1,19700,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
@@ -23405,7 +23334,7 @@ INSERT INTO `gameobject_template` (`entry`, `type`, `displayId`, `name`, `IconNa
 (207858,8,602,'Brazier','','','',0,0,1,0,0,0,0,0,0,4,10,2061,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 (207859,8,602,'Brazier','','','',0,0,1,0,0,0,0,0,0,4,10,2061,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 (207996,22,4393,'Portal to Darnassus','','','',1732,0,1,0,0,0,0,0,0,17608,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-INSERT INTO `gameobject_template` (`entry`, `type`, `displayId`, `name`, `IconName`, `castBarCaption`, `unk1`, `faction`, `flags`, `size`, `questItem1`, `questItem2`, `questItem3`, `questItem4`, `questItem5`, `questItem6`, `data0`, `data1`, `data2`, `data3`, `data4`, `data5`, `data6`, `data7`, `data8`, `data9`, `data10`, `data11`, `data12`, `data13`, `data14`, `data15`, `data16`, `data17`, `data18`, `data19`, `data20`, `data21`, `data22`, `data23`, `data24`, `data25`, `data26`, `data27`, `data28`, `data29`, `data30`, `data31`, `unk2`, `mingold`, `maxgold`) VALUES
+INSERT INTO `gameobject_template` (`entry`, `type`, `displayId`, `name`, `IconName`, `castBarCaption`, `unk1`, `faction`, `flags`, `size`, `questItem1`, `questItem2`, `questItem3`, `questItem4`, `questItem5`, `questItem6`, `data0`, `data1`, `data2`, `data3`, `data4`, `data5`, `data6`, `data7`, `data8`, `data9`, `data10`, `data11`, `data12`, `data13`, `data14`, `data15`, `data16`, `data17`, `data18`, `data19`, `data20`, `data21`, `data22`, `data23`, `data24`, `data25`, `data26`, `data27`, `data28`, `data29`, `data30`, `data31`, `unk2`, `mingold`, `maxgold`) VALUES 
 (195602,3,312,'Animate Besalt Chunk','','','',0,4,0.25,49036,0,0,0,0,0,43,195602,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 (200301,10,7362,'Impaling Spine','','','',0,0,6,0,0,0,0,0,0,1714,0,0,3000,0,1,0,0,0,0,69465,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
 (201578,2,9584,'Wrenchmen Recruitment Poster','','','',2159,0,1.5,0,0,0,0,0,0,0,14642,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
@@ -25143,3 +25072,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+-- Dump completed on 2016-09-13  1:04:45

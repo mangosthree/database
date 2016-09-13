@@ -1,27 +1,19 @@
+-- ---------------------------------------- 
+-- --        CLEAR DOWN THE TABLE        -- 
+-- ---------------------------------------- 
+TRUNCATE TABLE `pool_gameobject`; 
+-- ---------------------------------------- 
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Copyright (C) 2005-2016 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2016 MaNGOSZero <https://github.com/mangosthree>
---
--- This program is free software; you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation; either version 2 of the License, or
--- (at your option) any later version.
---
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY; without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--- GNU General Public License for more details.
---
--- You should have received a copy of the GNU General Public License
--- along with this program; if not, write to the Free Software
--- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
---
+-- Host: localhost    Database: m3
+-- ------------------------------------------------------
+-- Server version	5.6.25-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -29,29 +21,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `pool_gameobject`
---
-
-DROP TABLE IF EXISTS `pool_gameobject`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `pool_gameobject` (
-  `guid` int(10) unsigned NOT NULL DEFAULT '0',
-  `pool_entry` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `chance` float unsigned NOT NULL DEFAULT '0',
-  `description` varchar(255) CHARACTER SET latin1 NOT NULL,
-  PRIMARY KEY (`guid`),
-  KEY `pool_idx` (`pool_entry`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `pool_gameobject`
 --
 
 LOCK TABLES `pool_gameobject` WRITE;
 /*!40000 ALTER TABLE `pool_gameobject` DISABLE KEYS */;
-INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VALUES
+INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VALUES 
 (2,13433,0,'GO 1618,[1617,1619,1620,1621,2044,1628,142144],map=1'),
 (27,1127,0,''),
 (29,8678,80,'GO 175404,[2047,2040],map=1'),
@@ -13071,7 +13046,7 @@ INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VA
 (76937,3541,10,'GO 189980,189981,191133'),
 (76938,3542,10,'GO 189980,189981,191133'),
 (76939,3543,10,'GO 189980,189981,191133');
-INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VALUES
+INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VALUES 
 (76940,3544,10,'GO 189980,189981,191133'),
 (76941,3545,10,'GO 189980,189981,191133'),
 (76942,3546,10,'GO 189980,189981,191133'),
@@ -27291,7 +27266,7 @@ INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VA
 (93553,12509,0,'GO 2045,[1622,1623,1624,2041,2042,2046,2043,2866,142141,142142,142143,142145,176583,176584,176586,176587,176588,181270,190173,181271,181277,181279,191303,181280,181281,190169,190170,191019],map=0'),
 (93554,10817,0,'GO 2045,[1622,1623,1624,2041,2042,2046,2043,2866,142141,142142,142143,142145,176583,176584,176586,176587,176588,181270,190173,181271,181277,181279,191303,181280,181281,190169,190170,191019],map=0'),
 (93555,10911,0,'GO 2045,[1622,1623,1624,2041,2042,2046,2043,2866,142141,142142,142143,142145,176583,176584,176586,176587,176588,181270,190173,181271,181277,181279,191303,181280,181281,190169,190170,191019],map=0');
-INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VALUES
+INSERT INTO `pool_gameobject` (`guid`, `pool_entry`, `chance`, `description`) VALUES 
 (93556,11008,0,'GO 2045,[1622,1623,1624,2041,2042,2046,2043,2866,142141,142142,142143,142145,176583,176584,176586,176587,176588,181270,190173,181271,181277,181279,191303,181280,181281,190169,190170,191019],map=0'),
 (93557,11103,0,'GO 2045,[1622,1623,1624,2041,2042,2046,2043,2866,142141,142142,142143,142145,176583,176584,176586,176587,176588,181270,190173,181271,181277,181279,191303,181280,181281,190169,190170,191019],map=0'),
 (93558,11199,0,'GO 2045,[1622,1623,1624,2041,2042,2046,2043,2866,142141,142142,142143,142145,176583,176584,176586,176587,176588,181270,190173,181271,181277,181279,191303,181280,181281,190169,190170,191019],map=0'),
@@ -35833,3 +35808,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+-- Dump completed on 2016-09-13  1:04:58

@@ -1,27 +1,19 @@
+-- ---------------------------------------- 
+-- --        CLEAR DOWN THE TABLE        -- 
+-- ---------------------------------------- 
+TRUNCATE TABLE `creature_ai_scripts`; 
+-- ---------------------------------------- 
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Copyright (C) 2005-2016 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2016 MaNGOSZero <https://github.com/mangosthree>
---
--- This program is free software; you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation; either version 2 of the License, or
--- (at your option) any later version.
---
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY; without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--- GNU General Public License for more details.
---
--- You should have received a copy of the GNU General Public License
--- along with this program; if not, write to the Free Software
--- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
---
+-- Host: localhost    Database: m3
+-- ------------------------------------------------------
+-- Server version	5.6.25-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -29,47 +21,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `creature_ai_scripts`
---
-
-DROP TABLE IF EXISTS `creature_ai_scripts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `creature_ai_scripts` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identifier',
-  `creature_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Creature Template Identifier',
-  `event_type` tinyint(5) unsigned NOT NULL DEFAULT '0' COMMENT 'Event Type',
-  `event_inverse_phase_mask` int(11) NOT NULL DEFAULT '0' COMMENT 'Mask which phases this event will not trigger in',
-  `event_chance` int(3) unsigned NOT NULL DEFAULT '100',
-  `event_flags` int(3) unsigned NOT NULL DEFAULT '0',
-  `event_param1` int(11) NOT NULL DEFAULT '0',
-  `event_param2` int(11) NOT NULL DEFAULT '0',
-  `event_param3` int(11) NOT NULL DEFAULT '0',
-  `event_param4` int(11) NOT NULL DEFAULT '0',
-  `action1_type` tinyint(5) unsigned NOT NULL DEFAULT '0' COMMENT 'Action Type',
-  `action1_param1` int(11) NOT NULL DEFAULT '0',
-  `action1_param2` int(11) NOT NULL DEFAULT '0',
-  `action1_param3` int(11) NOT NULL DEFAULT '0',
-  `action2_type` tinyint(5) unsigned NOT NULL DEFAULT '0' COMMENT 'Action Type',
-  `action2_param1` int(11) NOT NULL DEFAULT '0',
-  `action2_param2` int(11) NOT NULL DEFAULT '0',
-  `action2_param3` int(11) NOT NULL DEFAULT '0',
-  `action3_type` tinyint(5) unsigned NOT NULL DEFAULT '0' COMMENT 'Action Type',
-  `action3_param1` int(11) NOT NULL DEFAULT '0',
-  `action3_param2` int(11) NOT NULL DEFAULT '0',
-  `action3_param3` int(11) NOT NULL DEFAULT '0',
-  `comment` varchar(255) NOT NULL DEFAULT '' COMMENT 'Event Comment',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=31039052 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='EventAI Scripts';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `creature_ai_scripts`
 --
 
 LOCK TABLES `creature_ai_scripts` WRITE;
 /*!40000 ALTER TABLE `creature_ai_scripts` DISABLE KEYS */;
-INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES
+INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES 
 (224001,2240,9,0,100,1,0,5,1800,9800,11,7159,1,0,0,0,0,0,0,0,0,0,'Syndicate Footpad - Cast Backstab'),
 (224002,2240,2,0,100,0,15,0,0,0,25,0,0,0,1,-47,0,0,0,0,0,0,'Syndicate Footpad - Flee at 15% HP'),
 (224101,2241,11,0,100,0,0,0,0,0,11,3616,0,1,0,0,0,0,0,0,0,0,'Syndicate Thief - Cast Poison Proc on Spawn'),
@@ -8698,7 +8655,7 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (2390004,23900,9,1,100,1,0,10,0,0,21,1,0,0,40,1,0,0,20,1,0,0,'Theramore Marksman - Start Combat Movement and Set Melee Weapon Model and Start Melee Below 10 Yards (Phase 1)'),
 (2390005,23900,9,1,100,1,11,80,0,0,21,0,1,0,20,0,0,0,0,0,0,0,'Theramore Marksman - Prevent Combat Movement and Prevent Melee at 80 Yards (Phase 1)'),
 (2390006,23900,7,0,100,0,0,0,0,0,22,1,0,0,40,1,0,0,0,0,0,0,'Theramore Marksman - Set Phase 1 and Set Melee Weapon Model on Evade');
-INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES
+INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES 
 (2394101,23941,2,0,100,0,20,0,0,0,1,-992,0,0,24,0,0,0,22,1,0,0,'Gavis Greyshield -  Say and Set Phase 1 at 20% HP'),
 (2394102,23941,21,5,100,0,0,0,0,0,11,42660,0,16,2,35,0,0,1,-993,0,0,'Gavis Greyshield - Cast Gavis Greyshield Credit and Become Friendly and Say on Reach Home (Phase 1)'),
 (2394103,23941,21,5,100,0,0,0,0,0,22,2,0,0,0,0,0,0,0,0,0,0,'Gavis Greyshield - Set Phase 2 on Reach Home (Phase 1)'),
@@ -17063,7 +17020,7 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (3712204,37122,4,0,100,4,0,0,0,0,11,71547,1,0,22,1,0,0,0,0,0,0,'Captain Arnath (25-Man Normal) - Cast Smite and Set Phase 1 on Aggro'),
 (3712203,37122,9,5,100,3,0,40,3400,4800,11,71546,4,0,0,0,0,0,0,0,0,0,'Captain Arnath (10-Man Normal) - Cast Smite (Phase 1)'),
 (1817001,18170,4,0,10,6,0,0,0,0,1,-1288,-1289,0,0,0,0,0,0,0,0,0,'Infinite Slayer - Random Say on Aggro');
-INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES
+INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES 
 (1817101,18171,1,0,100,6,0,0,0,0,21,0,0,0,22,0,0,0,0,0,0,0,'Infinite Defiler - Prevent Combat Movement and Set Phase to 0 on Spawn'),
 (1817102,18171,4,0,10,6,0,0,0,0,1,-1288,-1289,0,0,0,0,0,0,0,0,0,'Infinite Defiler - Random Say on Aggro'),
 (1817103,18171,4,0,100,2,0,0,0,0,11,15232,1,0,22,1,0,0,0,0,0,0,'Infinite Defiler (Normal) - Cast Shadow Bolt and Set Phase 1 on Aggro'),
@@ -25550,7 +25507,7 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (1043901,10439,0,0,100,3,3000,4000,7000,8000,11,5568,0,0,0,0,0,0,0,0,0,0,'Ramstein the Gorger - Cast Trample'),
 (1043902,10439,0,0,100,3,12000,12000,10000,10000,11,17307,1,0,0,0,0,0,0,0,0,0,'Ramstein the Gorger - Cast Trample'),
 (1080801,10808,11,0,100,2,0,0,0,0,1,-1197,0,0,0,0,0,0,0,0,0,0,'Timmy the Cruel - Yell on Spawn');
-INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES
+INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES 
 (1080802,10808,0,0,100,3,10000,10000,15000,15000,11,17470,1,0,0,0,0,0,0,0,0,0,'Timmy the Cruel - Cast Ravenous Claw'),
 (1080803,10808,2,0,100,2,20,0,0,0,11,8599,0,0,1,-106,0,0,0,0,0,0,'Timmy the Cruel - Cast Enrage at 20% Health'),
 (1114301,11143,4,0,100,2,0,0,0,0,1,-1195,0,0,0,0,0,0,0,0,0,0,'Postmaster Malown - Yell on Aggro'),
@@ -26517,3 +26474,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+-- Dump completed on 2016-09-13  1:04:30

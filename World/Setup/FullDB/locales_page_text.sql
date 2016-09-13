@@ -1,27 +1,19 @@
+-- ---------------------------------------- 
+-- --        CLEAR DOWN THE TABLE        -- 
+-- ---------------------------------------- 
+TRUNCATE TABLE `locales_page_text`; 
+-- ---------------------------------------- 
+-- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Copyright (C) 2005-2016 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2016 MaNGOSZero <https://github.com/mangosthree>
---
--- This program is free software; you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation; either version 2 of the License, or
--- (at your option) any later version.
---
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY; without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--- GNU General Public License for more details.
---
--- You should have received a copy of the GNU General Public License
--- along with this program; if not, write to the Free Software
--- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
---
+-- Host: localhost    Database: m3
+-- ------------------------------------------------------
+-- Server version	5.6.25-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET @OLD_TIME_ZONE=@@SESSION.TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -29,33 +21,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `locales_page_text`
---
-
-DROP TABLE IF EXISTS `locales_page_text`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `locales_page_text` (
-  `entry` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `Text_loc1` longtext,
-  `Text_loc2` longtext,
-  `Text_loc3` longtext,
-  `Text_loc4` longtext,
-  `Text_loc5` longtext,
-  `Text_loc6` longtext,
-  `Text_loc7` longtext,
-  `Text_loc8` longtext,
-  PRIMARY KEY (`entry`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `locales_page_text`
 --
 
 LOCK TABLES `locales_page_text` WRITE;
 /*!40000 ALTER TABLE `locales_page_text` DISABLE KEYS */;
-INSERT INTO `locales_page_text` (`entry`, `Text_loc1`, `Text_loc2`, `Text_loc3`, `Text_loc4`, `Text_loc5`, `Text_loc6`, `Text_loc7`, `Text_loc8`) VALUES
+INSERT INTO `locales_page_text` (`entry`, `Text_loc1`, `Text_loc2`, `Text_loc3`, `Text_loc4`, `Text_loc5`, `Text_loc6`, `Text_loc7`, `Text_loc8`) VALUES 
 (15,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Здравствуй, Морган!\r\n\r\nДела в Златоземье идут бойко, так бойко, что у меня не было времени отправить тебе товар! \r\n\r\nЯ нанял человека, который принесет эту записку, доставить тебе пачку больших восковых свечей (тех, что кобольды обычно носят на голове). \r\n\r\nБудь добр, отблагодари этого человека и заплати ему как следует.'),
 (16,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Досточтимый директор Криллиан!\r\n\r\nНаставник, я пишу вам затем, чтобы поведать о своей нынешней жизни. Прислушавшись к вашему совету, я покинул наш любимый Штормград в поисках знаний. Во время своих странствий я побывал во многих местах, но решил остановиться в славном городке Луноречье. С приближением жатвы поля Западного Края становятся особенно красивы...'),
 (17,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Прибыв в этот городок, я уже через несколько дней стал учить местных детишек с близлежащих ферм. Уроки проходили так успешно, что местный глава города поручил мне организацию школы, и строительство здания уже началось! Я прошел от Серебряного бора до Штормграда, и вот сейчас живу в Луноречье – кто бы мог подумать, что я обойду чуть ли не пол-Азерота?\r\n\r\nС наилучшими пожеланиями,\r\n\r\nСталван Мистмантл'),
@@ -1645,7 +1616,7 @@ INSERT INTO `locales_page_text` (`entry`, `Text_loc1`, `Text_loc2`, `Text_loc3`,
 (3535,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'<HTML>\r\n<BODY>\r\n<BR/>\r\n<P>Верховный лорд!<br /><br />&lt;имя&gt; успешно &lt;возглавил/возглавила&gt; поход против Плети Плетхольма и &lt;подготовил/подготовила&gt; наше войско к наступлению на Ледник Ледяной Короны.<br /><br />Также благодаря &lt;его/ее&gt; участию каменотесы получили необходимые материалы для возведения Крепости Справедливости в Лесу Хрустальной Песни.<br /><br />Нам осталось решить последнюю задачу – захватить Вершину Рыцарей, ибо именно оттуда я желаю начать наш последний поход. <br /><br />Мы ожидаем только вашего приказа.<br /><br />Да защитит вас Свет, сэр.<br /><br />-Густав'),
 (3602,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'День 214586:\r\nЗеленые привели какой-то другой народец, потом показали друг на друга, и вдруг все начали драться!\r\n\r\nСпасаю свою шкуру, присматриваю только за коридором, ну и еще утащил у этих немного погремушек, с ними будет не скучно.\r\n        -АРКАВОН\r\n\r\nДень 214620:\r\nСтало еще хуже. Я не знаю, чего от меня хотят Творцы. Не высовываюсь из коридора, но злая мелюзга набегает сюда по нескольку раз на дню. Отбирают погремушки.\r\n        -АРКАВОН'),
 (3603,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'День 214701:\r\nБратцы вернулись! Они, оказывается, спали в закрытых коридорах!\r\n\r\nЯ немножко зол, что они бросили меня одного присматривать за всем, но все равно отдал им немного блестящих погремушек, потому что я устал быть один и еще набегают постоянно.\r\n        -АРКАВОН\r\n\r\nДень 214760:\r\nЗлая мелюзга бьет моих братцев, это плохо. Теперь, правда, они не трогают меня, и это хорошо.\r\n\r\nНаверное, им нужны блестящие погремушки, которые я подарил братцам. Это все я виноват...\r\n        -АРКАВОН');
-INSERT INTO `locales_page_text` (`entry`, `Text_loc1`, `Text_loc2`, `Text_loc3`, `Text_loc4`, `Text_loc5`, `Text_loc6`, `Text_loc7`, `Text_loc8`) VALUES
+INSERT INTO `locales_page_text` (`entry`, `Text_loc1`, `Text_loc2`, `Text_loc3`, `Text_loc4`, `Text_loc5`, `Text_loc6`, `Text_loc7`, `Text_loc8`) VALUES 
 (3569,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Добрейший доктор Колер!$B$BЧерный Рыцарь еще не исполнил своего предназначения. Соберите его останки на Ристалище и используйте свое искусство, чтобы вернуть его к жизни. Мы обратим силу крестоносцев и их последователей против них самих.$B$BЗахватите пленных и вдохните их  души в моего верного слугу. Принесите рыцаря Кула, прозванного боевыми товарищами \"отчаянным\", в жертву на вашем алтаре. Его дух наделит Черного Рыцаря ужасающей силой и мощью. После этого доставьте Черного Рыцаря ко мне.'),
 (3539,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'<HTML>\r\n<BODY>\r\n<BR/>\r\n<P>О, великий вождь!<br /><br />да озарит Свет каждый ваш шаг, и да пребудет он вечно в вашем сердце. Я молю вас о пощаде для этого павшего рыцаря, и смиренно прошу выслушать меня до конца.<br /><br />Податель сего письма некогда &lt;был/была&gt; героем Орды. Хотя отныне чело &lt;его/ее&gt; отмечено печатью смерти и обликом Плети, душой &lt;он остался верен/она осталась верна&gt; нашему делу.'),
 (3540,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'<HTML>\r\n<BODY>\r\n<BR/>\r\n<P>&lt;имя&gt; &lt;был избран/была избрана&gt; мной в качестве представителя нового союза, сражающегося против Короля-лича. Этот орден носит имя Рыцарей Черного Клинка. Да, ваше величество, вы не ошибаетесь: рыцари смерти объединились против своего бывшего повелителя. Их возглавляет сын лорда Александроса Могрейна – сам Испепелитель, и жаждут они того же, что и все мы: положить конец Плети.<br /><br />Я не смею просить вас принять &lt;имя&gt; и всех Рыцарей Черного Клинка в Орду, но надеюсь, что вы проявите к ним снисхождение.'),
@@ -2035,3 +2006,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+-- Dump completed on 2016-09-13  1:04:52
