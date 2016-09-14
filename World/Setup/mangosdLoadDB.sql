@@ -1320,7 +1320,6 @@ CREATE TABLE `gameobject_questrelation` (
 
 --
 -- Table structure for table `gameobject_template`
---
 
 DROP TABLE IF EXISTS `gameobject_template`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -1377,9 +1376,9 @@ CREATE TABLE `gameobject_template` (
   `unk2` int(10) unsigned NOT NULL DEFAULT '0',
   `mingold` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `maxgold` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `ScriptName` varchar(64) NOT NULL DEFAULT '',
   PRIMARY KEY (`entry`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Gameobject System';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Gameobject System';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `gossip_menu`
@@ -1463,7 +1462,6 @@ CREATE TABLE `instance_template` (
   `parent` smallint(5) unsigned NOT NULL DEFAULT '0',
   `levelMin` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `levelMax` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `ScriptName` varchar(128) NOT NULL DEFAULT '',
   PRIMARY KEY (`map`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1686,7 +1684,6 @@ CREATE TABLE `item_template` (
   `Duration` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'Duration in seconds.',
   `ItemLimitCategory` smallint(6) NOT NULL DEFAULT '0',
   `HolidayId` int(11) unsigned NOT NULL DEFAULT '0',
-  `ScriptName` varchar(64) NOT NULL DEFAULT '',
   `DisenchantID` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `FoodType` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `StatScalingFactor` float NOT NULL,
@@ -1697,7 +1694,7 @@ CREATE TABLE `item_template` (
   `ExtraFlags` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`entry`),
   KEY `items_index` (`class`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Item System';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Item System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
