@@ -685,6 +685,32 @@ LOCK TABLES `creature_template_addon` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `creature_template_classlevelstats`
+--
+
+DROP TABLE IF EXISTS `creature_template_classlevelstats`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `creature_template_classlevelstats` (
+  `Level` tinyint(4) NOT NULL,
+  `Class` tinyint(4) NOT NULL,
+  `BaseHealthExp0` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `BaseHealthExp1` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `BaseHealthExp2` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `BaseHealthExp3` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `BaseMana` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `BaseDamageExp0` float NOT NULL DEFAULT '0',
+  `BaseDamageExp1` float NOT NULL DEFAULT '0',
+  `BaseDamageExp2` float NOT NULL DEFAULT '0',
+  `BaseDamageExp3` float NOT NULL DEFAULT '0',
+  `BaseMeleeAttackPower` float NOT NULL DEFAULT '0',
+  `BaseRangedAttackPower` float NOT NULL DEFAULT '0',
+  `BaseArmor` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Level`,`Class`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `creature_template_spells`
 --
 
@@ -714,6 +740,42 @@ CREATE TABLE `creature_template_spells` (
 LOCK TABLES `creature_template_spells` WRITE;
 /*!40000 ALTER TABLE `creature_template_spells` DISABLE KEYS */;
 /*!40000 ALTER TABLE `creature_template_spells` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `custom_texts`
+--
+
+DROP TABLE IF EXISTS `custom_texts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `custom_texts` (
+  `entry` mediumint(8) NOT NULL,
+  `content_default` text NOT NULL,
+  `content_loc1` text,
+  `content_loc2` text,
+  `content_loc3` text,
+  `content_loc4` text,
+  `content_loc5` text,
+  `content_loc6` text,
+  `content_loc7` text,
+  `content_loc8` text,
+  `sound` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `type` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `language` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `emote` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `comment` text,
+  PRIMARY KEY (`entry`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Custom Texts';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `custom_texts`
+--
+
+LOCK TABLES `custom_texts` WRITE;
+/*!40000 ALTER TABLE `custom_texts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `custom_texts` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -779,20 +841,6 @@ CREATE TABLE `dbdocslanguage` (
   `LanguageName` varchar(30) NOT NULL COMMENT 'The Language Name',
   PRIMARY KEY (`LanguageId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `dbdocslanguage` */
-LOCK TABLES `dbdocslanguage` WRITE;
-/*!40000 ALTER TABLE `dbdocslanguage` DISABLE KEYS */;
-insert  into `dbdocslanguage`(`LanguageId`,`LanguageName`) values (0,'English');
-insert  into `dbdocslanguage`(`LanguageId`,`LanguageName`) values (1,'Korean');
-insert  into `dbdocslanguage`(`LanguageId`,`LanguageName`) values (2,'French');
-insert  into `dbdocslanguage`(`LanguageId`,`LanguageName`) values (3,'German');
-insert  into `dbdocslanguage`(`LanguageId`,`LanguageName`) values (4,'Chinese');
-insert  into `dbdocslanguage`(`LanguageId`,`LanguageName`) values (5,'Taiwanese');
-insert  into `dbdocslanguage`(`LanguageId`,`LanguageName`) values (6,'Spanish (Spain)');
-insert  into `dbdocslanguage`(`LanguageId`,`LanguageName`) values (7,'Spanish (Latin America)');
-insert  into `dbdocslanguage`(`LanguageId`,`LanguageName`) values (8,'Russian');
-/*!40000 ALTER TABLE `dbdocslanguage` ENABLE KEYS */;
 UNLOCK TABLES;
 
 /*Table structure for table `dbdocsprogressquests` */
@@ -920,6 +968,61 @@ CREATE TABLE `disenchant_loot_template` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Loot System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `dungeonfinder_item_rewards`
+--
+
+DROP TABLE IF EXISTS `dungeonfinder_item_rewards`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dungeonfinder_item_rewards` (
+  `id` int(10) unsigned NOT NULL,
+  `min_level` smallint(3) unsigned NOT NULL COMMENT 'dbc value',
+  `max_level` smallint(3) unsigned NOT NULL COMMENT 'dbc value',
+  `item_reward` mediumint(8) unsigned NOT NULL,
+  `item_amount` mediumint(4) unsigned NOT NULL,
+  `dungeon_type` smallint(4) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `dungeonfinder_requirements`
+--
+
+DROP TABLE IF EXISTS `dungeonfinder_requirements`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dungeonfinder_requirements` (
+  `mapId` mediumint(8) unsigned NOT NULL,
+  `difficulty` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `min_item_level` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `item` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `item_2` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `alliance_quest` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `horde_quest` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `achievement` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `quest_incomplete_text` text,
+  `comment` text,
+  PRIMARY KEY (`mapId`,`difficulty`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Dungeon Finder Requirements';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `dungeonfinder_rewards`
+--
+
+DROP TABLE IF EXISTS `dungeonfinder_rewards`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dungeonfinder_rewards` (
+  `id` int(10) NOT NULL,
+  `level` mediumint(8) unsigned NOT NULL COMMENT 'uint32',
+  `base_xp_reward` mediumint(8) unsigned NOT NULL COMMENT 'uint32',
+  `base_monetary_reward` int(10) NOT NULL COMMENT 'int32',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `exploration_basexp`
@@ -1710,6 +1813,29 @@ CREATE TABLE `locales_gossip_menu_option` (
   `box_text_loc8` text,
   PRIMARY KEY (`menu_id`,`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `gossip_texts`
+--
+
+DROP TABLE IF EXISTS `gossip_texts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gossip_texts` (
+  `entry` mediumint(8) NOT NULL,
+  `content_default` text NOT NULL,
+  `content_loc1` text,
+  `content_loc2` text,
+  `content_loc3` text,
+  `content_loc4` text,
+  `content_loc5` text,
+  `content_loc6` text,
+  `content_loc7` text,
+  `content_loc8` text,
+  `comment` text,
+  PRIMARY KEY (`entry`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Gossip Texts';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3409,13 +3535,43 @@ CREATE TABLE `vehicle_accessory` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `vehicle_accessory`
+-- Table structure for table `warden_build_specific`
 --
 
-LOCK TABLES `vehicle_accessory` WRITE;
-/*!40000 ALTER TABLE `vehicle_accessory` DISABLE KEYS */;
-/*!40000 ALTER TABLE `vehicle_accessory` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `warden_build_specific`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `warden_build_specific` (
+  `id` smallint(5) unsigned NOT NULL COMMENT 'Check ID from warden_checks',
+  `build` smallint(5) unsigned NOT NULL COMMENT 'Client build',
+  `data` varchar(48) NOT NULL DEFAULT '',
+  `str` varchar(20) NOT NULL DEFAULT '',
+  `address` int(10) unsigned NOT NULL DEFAULT '0',
+  `length` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `result` varchar(24) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`,`build`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `warden_checks`
+--
+
+DROP TABLE IF EXISTS `warden_checks`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `warden_checks` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `type` tinyint(3) unsigned DEFAULT NULL,
+  `data` varchar(48) DEFAULT '',
+  `str` varchar(20) DEFAULT '',
+  `address` int(10) unsigned DEFAULT NULL,
+  `length` tinyint(3) unsigned DEFAULT NULL,
+  `result` varchar(24) DEFAULT '',
+  `comment` varchar(50) DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `world_template`
