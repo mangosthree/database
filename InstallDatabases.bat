@@ -31,7 +31,7 @@ set port=3306
 set wdb=mangos3
 set wdborig=mangos3
 set cdb=character3
-set cdborig=character23
+set cdborig=character3
 set rdb=realmd
 set rdborig=realmd
 
