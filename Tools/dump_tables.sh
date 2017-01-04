@@ -180,7 +180,7 @@ world_template \
 echo "Dumping ${i}/123 ${TABLE}..."
 
 echo "--
--- Copyright (C) 2005-2016 MaNGOS <http://getmangos.eu/>
+-- Copyright (C) 2005-2017 MaNGOS <http://getmangos.eu/>
 -- Copyright (C) 2009-2016 MaNGOSZero <https://github.com/mangosthree>
 --
 -- This program is free software; you can redistribute it and/or modify
