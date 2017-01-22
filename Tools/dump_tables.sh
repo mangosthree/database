@@ -53,6 +53,7 @@ db_script_string \
 db_version \
 dbdocsfields \
 dbdocsfields_localised \
+dbdocslanguage \
 dbdocsprogressquests \
 dbdocssubtables \
 dbdocssubtables_localised \
@@ -69,9 +70,9 @@ dbscripts_on_quest_start \
 dbscripts_on_spell \
 disenchant_loot_template \
 dungeonfinder_item_rewards \
-dungeonfinder_requirements \
 dungeonfinder_rewards \
 exploration_basexp \
+dungeonfinder_requirements \
 fishing_loot_template \
 game_event \
 game_event_creature \
@@ -152,7 +153,6 @@ script_texts \
 script_waypoint \
 scripted_areatrigger \
 scripted_event \
-sd2_db_version \
 skill_discovery_template \
 skill_extra_item_template \
 skill_fishing_base_level \
@@ -181,7 +181,7 @@ echo "Dumping ${i}/123 ${TABLE}..."
 
 echo "--
 -- Copyright (C) 2005-2017 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2016 MaNGOSZero <https://github.com/mangosthree>
+-- Copyright (C) 2009-2017 MaNGOSThree <https://github.com/mangosthree>
 --
 -- This program is free software; you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by

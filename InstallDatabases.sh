@@ -1,8 +1,8 @@
 #!/bin/sh
 ##############################################################################
-# This utility assist you in setting up your mangos database.				 #
-# This is a port of InstallDatabases.bat written by Antz for Windows		 #
-#																			 #
+# This utility assist you in setting up your mangos database.                #
+# This is a port of InstallDatabases.bat written by Antz for Windows         #
+#                                                                            #
 ##############################################################################
 
 RELEASE="Rel21"
@@ -215,6 +215,7 @@ do
 	printActivities
 	printf "Please select an activity : "
 	read activity
+	activity=$(echo ${activity} | tr '[:lower:]' '[:upper:]' )
 	case ${activity} in
 		"V")
 			if [ "${createcharDB}" = "YES" ]; then
