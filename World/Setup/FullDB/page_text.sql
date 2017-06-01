@@ -5,7 +5,7 @@ TRUNCATE TABLE `page_text`;
 -- ---------------------------------------- 
 -- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: m3
+-- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
 -- Server version	5.6.25-log
 
@@ -2112,7 +2112,8 @@ INSERT INTO `page_text` (`entry`, `text`, `next_page`) VALUES
 (3457,'Rule #3: Polymorphic debaucheries are to be disposed of in a timely and DISCRETE manner -The public need not bear witness to the horrendous abominations wrought from a botched polymorph. Accidents happen, and the Kirin Tor understands this. However public viewings of creatures like the were-whale, mur-elf, amphibious worgen, flying ooze, grypho-hippo-wyvern, Qiraji bunny, and the infamous \"blue-checkered cube\" give us all a bad reputation. \r\n',3458),
 (3458,'Rule #4: Do not polymorph a creature into another more powerful creature - While this looks like plain common sense, we feel obligated to quote Mildly Severe Claims Disaster Case 8761-e, labeled, \"Magus John Quint: Liquefied By Sickly Deer Turned Violently Confused Molten Giant.\"\r\n',3459),
 (3459,'Rule #5: Do not polymorph anything that is halfway through a portal - This has yet to not cause an explosion. This is also covered in \"Thinking with Portals: A Memorandum on Proper Portal Usage.\"\r\n',3460),
-(3460,'Rule #6: Do not polymorph inanimate objects! - We can\'t believe the Kirin Tor is receiving reports of this, but such a heinous act caused the development of the brand new Highly Severe Claims Disaster Case 1-a, \"My Kingdom For a Horse: The One Hundred and Fifty Reasons Why a Kingdom Should Not Be Turned Into a Horse.\"\r\n<This goes on for hundreds of pages>\r\n',0);
+(3460,'Rule #6: Do not polymorph inanimate objects! - We can\'t believe the Kirin Tor is receiving reports of this, but such a heinous act caused the development of the brand new Highly Severe Claims Disaster Case 1-a, \"My Kingdom For a Horse: The One Hundred and Fifty Reasons Why a Kingdom Should Not Be Turned Into a Horse.\"\r\n<This goes on for hundreds of pages>\r\n',0),
+(3780,'<HTML> <BODY> <IMG src=\"Interface\\Pictures\\Winterspring_Memento_256\"/> </BODY> </HTML> ',0);
 /*!40000 ALTER TABLE `page_text` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -2125,4 +2126,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-13  1:04:56
+-- Dump completed on 2017-06-01  0:58:25

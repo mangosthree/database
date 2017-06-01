@@ -804,6 +804,39 @@ CREATE TABLE `db_script_string` (
   PRIMARY KEY (`entry`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `db_scripts`
+--
+
+DROP TABLE IF EXISTS `db_scripts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db_scripts` (
+  `script_guid` MEDIUMINT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `script_type` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '0',
+  `id` MEDIUMINT(8) UNSIGNED NOT NULL DEFAULT '0',
+  `delay` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+  `command` MEDIUMINT(8) UNSIGNED NOT NULL DEFAULT '0',
+  `datalong` MEDIUMINT(8) UNSIGNED NOT NULL DEFAULT '0',
+  `datalong2` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+  `buddy_entry` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+  `search_radius` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+  `data_flags` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
+  `dataint` INT(11) NOT NULL DEFAULT '0',
+  `dataint2` INT(11) NOT NULL DEFAULT '0',
+  `dataint3` INT(11) NOT NULL DEFAULT '0',
+  `dataint4` INT(11) NOT NULL DEFAULT '0',
+  `x` FLOAT NOT NULL DEFAULT '0',
+  `y` FLOAT NOT NULL DEFAULT '0',
+  `z` FLOAT NOT NULL DEFAULT '0',
+  `o` FLOAT NOT NULL DEFAULT '0',
+  `comments` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`script_guid`)
+) ENGINE=MYISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
 /*Table structure for table `dbdocsfields` */
 
 DROP TABLE IF EXISTS `dbdocsfields`;
@@ -903,51 +936,6 @@ CREATE TABLE `dbdocstable_localised` (
   PRIMARY KEY (`tableId`,`languageId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Table structure for table `dbscripts_on_creature_movement`
---
-
-DROP TABLE IF EXISTS `dbscripts_on_creature_movement`;
-CREATE TABLE `dbscripts_on_creature_movement` (
-  `id` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `delay` int(10) unsigned NOT NULL DEFAULT '0',
-  `command` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `datalong` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `datalong2` int(10) unsigned NOT NULL DEFAULT '0',
-  `buddy_entry` int(10) unsigned NOT NULL DEFAULT '0',
-  `search_radius` int(10) unsigned NOT NULL DEFAULT '0',
-  `data_flags` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `dataint` int(11) NOT NULL DEFAULT '0',
-  `dataint2` int(11) NOT NULL DEFAULT '0',
-  `dataint3` int(11) NOT NULL DEFAULT '0',
-  `dataint4` int(11) NOT NULL DEFAULT '0',
-  `x` float NOT NULL DEFAULT '0',
-  `y` float NOT NULL DEFAULT '0',
-  `z` float NOT NULL DEFAULT '0',
-  `o` float NOT NULL DEFAULT '0',
-  `comments` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Table structure of `dbscripts_on_event`, `dbscripts_on_go_use`, `dbscripts_on_go_template_use`,
---                    `dbscripts_on_gossip`, `dbscripts_on_quest_end`, `dbscripts_on_quest_start`,
---                    `dbscripts_on_spell`, `dbscripts_on_creature_death`
-DROP TABLE IF EXISTS dbscripts_on_event;
-CREATE TABLE dbscripts_on_event LIKE dbscripts_on_creature_movement;
-DROP TABLE IF EXISTS dbscripts_on_go_use;
-CREATE TABLE dbscripts_on_go_use LIKE dbscripts_on_creature_movement;
-DROP TABLE IF EXISTS dbscripts_on_go_template_use;
-CREATE TABLE dbscripts_on_go_template_use LIKE dbscripts_on_creature_movement;
-DROP TABLE IF EXISTS dbscripts_on_gossip;
-CREATE TABLE dbscripts_on_gossip LIKE dbscripts_on_creature_movement;
-DROP TABLE IF EXISTS dbscripts_on_quest_end;
-CREATE TABLE dbscripts_on_quest_end LIKE dbscripts_on_creature_movement;
-DROP TABLE IF EXISTS dbscripts_on_quest_start;
-CREATE TABLE dbscripts_on_quest_start LIKE dbscripts_on_creature_movement;
-DROP TABLE IF EXISTS dbscripts_on_spell;
-CREATE TABLE dbscripts_on_spell LIKE dbscripts_on_creature_movement;
-DROP TABLE IF EXISTS dbscripts_on_creature_death;
-CREATE TABLE dbscripts_on_creature_death LIKE dbscripts_on_creature_movement;
 
 --
 -- Table structure for table `disenchant_loot_template`

@@ -5,7 +5,7 @@ TRUNCATE TABLE `mangos_string`;
 -- ---------------------------------------- 
 -- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: m3
+-- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
 -- Server version	5.6.25-log
 
@@ -885,7 +885,7 @@ INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `conten
 (1636,'|cffffff00The Alliance has collected 200 silithyst!|r',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'|cffffff00Альянс собрал 200 силитиста!|r'),
 (1701,'Currency %u has maxCount = 0, but for currencies maxCount = buyCount, so it can\'t be 0 or less than that\'s currency precision (%u).',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (1509,'Pool %u not found (Maximal pool entry is %u)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(1700,'Can\'t add item %u to vendor with unknown item type %u',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(1800,'|cffff0000[Server Announce]:|r%s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (818,'You can\'t enter Black Morass until you rescue Thrall from Durnholde Keep.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (167,'%s has changed your holy power to %i/%i.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (176,'You have changed holy power of %s to %i/%i.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -902,4 +902,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-13  1:04:54
+-- Dump completed on 2017-06-01  0:58:23

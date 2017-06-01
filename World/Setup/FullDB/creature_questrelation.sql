@@ -5,7 +5,7 @@ TRUNCATE TABLE `creature_questrelation`;
 -- ---------------------------------------- 
 -- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: m3
+-- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
 -- Server version	5.6.25-log
 
@@ -790,7 +790,6 @@ INSERT INTO `creature_questrelation` (`id`, `quest`) VALUES
 (3467,14046),
 (3467,14049),
 (3483,6361),
-(3489,6365),
 (3494,3635),
 (3514,28731),
 (3515,929),
@@ -1865,11 +1864,6 @@ INSERT INTO `creature_questrelation` (`id`, `quest`) VALUES
 (14983,8166),
 (14983,8167),
 (14983,8168),
-(14984,8081),
-(14984,8157),
-(14984,8158),
-(14984,8159),
-(14984,8298),
 (15011,8149),
 (15012,8150),
 (15021,8120),
@@ -1878,16 +1872,6 @@ INSERT INTO `creature_questrelation` (`id`, `quest`) VALUES
 (15021,8169),
 (15021,8170),
 (15021,8171),
-(15022,8123),
-(15022,8124),
-(15022,8160),
-(15022,8161),
-(15022,8162),
-(15022,8163),
-(15022,8164),
-(15022,8165),
-(15022,8299),
-(15022,8300),
 (15042,8184),
 (15042,8185),
 (15042,8186),
@@ -7860,7 +7844,6 @@ INSERT INTO `creature_questrelation` (`id`, `quest`) VALUES
 (41134,25680),
 (41134,25681),
 (41134,25682),
-(41140,6365),
 (41140,6384),
 (41140,26807),
 (41159,25689),
@@ -10468,4 +10451,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-13  1:04:36
+-- Dump completed on 2017-06-01  0:58:04

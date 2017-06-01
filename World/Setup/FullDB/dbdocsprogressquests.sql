@@ -5,7 +5,7 @@ TRUNCATE TABLE `dbdocsprogressquests`;
 -- ---------------------------------------- 
 -- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: m3
+-- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
 -- Server version	5.6.25-log
 
@@ -2509,8 +2509,6 @@ INSERT INTO `dbdocsprogressquests` (`QuestID`, `Progress`, `QuestNotes`) VALUES
 (7761,99,'Auto-Populated as Quest has been Completed'),
 (7785,99,'Auto-Populated as Quest has been Completed'),
 (7786,99,'Auto-Populated as Quest has been Completed'),
-(7788,99,'Auto-Populated as Quest has been Completed'),
-(7789,99,'Auto-Populated as Quest has been Completed'),
 (7799,99,'Auto-Populated as Quest has been Completed'),
 (7800,99,'Auto-Populated as Quest has been Completed'),
 (7801,99,'Auto-Populated as Quest has been Completed'),
@@ -2550,9 +2548,6 @@ INSERT INTO `dbdocsprogressquests` (`QuestID`, `Progress`, `QuestNotes`) VALUES
 (7850,99,'Auto-Populated as Quest has been Completed'),
 (7861,99,'Auto-Populated as Quest has been Completed'),
 (7862,99,'Auto-Populated as Quest has been Completed'),
-(7874,99,'Auto-Populated as Quest has been Completed'),
-(7875,99,'Auto-Populated as Quest has been Completed'),
-(7876,99,'Auto-Populated as Quest has been Completed'),
 (7902,99,'Auto-Populated as Quest has been Completed'),
 (7927,99,'Auto-Populated as Quest has been Completed'),
 (7928,99,'Auto-Populated as Quest has been Completed'),
@@ -2565,15 +2560,12 @@ INSERT INTO `dbdocsprogressquests` (`QuestID`, `Progress`, `QuestNotes`) VALUES
 (8058,99,'Auto-Populated as Quest has been Completed'),
 (8078,99,'Auto-Populated as Quest has been Completed'),
 (8079,99,'Auto-Populated as Quest has been Completed'),
-(8080,1,'Auto-Populated as Quest Exists'),
 (8105,99,'Auto-Populated as Quest has been Completed'),
 (8120,99,'Auto-Populated as Quest has been Completed'),
 (8121,99,'Auto-Populated as Quest has been Completed'),
 (8122,99,'Auto-Populated as Quest has been Completed'),
-(8123,99,'Auto-Populated as Quest has been Completed'),
 (8151,99,'Auto-Populated as Quest has been Completed'),
 (8153,99,'Auto-Populated as Quest has been Completed'),
-(8155,99,'Auto-Populated as Quest has been Completed'),
 (8162,99,'Auto-Populated as Quest has been Completed'),
 (8166,99,'Auto-Populated as Quest has been Completed'),
 (8167,99,'Auto-Populated as Quest has been Completed'),
@@ -2614,7 +2606,6 @@ INSERT INTO `dbdocsprogressquests` (`QuestID`, `Progress`, `QuestNotes`) VALUES
 (8286,99,'Auto-Populated as Quest has been Completed'),
 (8287,99,'Auto-Populated as Quest has been Completed'),
 (8288,99,'Auto-Populated as Quest has been Completed'),
-(8294,99,'Auto-Populated as Quest has been Completed'),
 (8304,99,'Auto-Populated as Quest has been Completed'),
 (8305,1,'Auto-Populated as Quest Exists'),
 (8306,99,'Auto-Populated as Quest has been Completed'),
@@ -2632,14 +2623,8 @@ INSERT INTO `dbdocsprogressquests` (`QuestID`, `Progress`, `QuestNotes`) VALUES
 (8361,99,'Auto-Populated as Quest has been Completed'),
 (8365,99,'Auto-Populated as Quest has been Completed'),
 (8366,99,'Auto-Populated as Quest has been Completed'),
-(8368,99,'Auto-Populated as Quest has been Completed'),
-(8370,99,'Auto-Populated as Quest has been Completed'),
 (8371,99,'Auto-Populated as Quest has been Completed'),
 (8372,99,'Auto-Populated as Quest has been Completed'),
-(8399,99,'Auto-Populated as Quest has been Completed'),
-(8400,99,'Auto-Populated as Quest has been Completed'),
-(8401,99,'Auto-Populated as Quest has been Completed'),
-(8402,99,'Auto-Populated as Quest has been Completed'),
 (8403,99,'Auto-Populated as Quest has been Completed'),
 (8410,99,'Auto-Populated as Quest has been Completed'),
 (8411,99,'Auto-Populated as Quest has been Completed'),
@@ -2654,13 +2639,6 @@ INSERT INTO `dbdocsprogressquests` (`QuestID`, `Progress`, `QuestNotes`) VALUES
 (8423,99,'Auto-Populated as Quest has been Completed'),
 (8424,99,'Auto-Populated as Quest has been Completed'),
 (8425,99,'Auto-Populated as Quest has been Completed'),
-(8426,99,'Auto-Populated as Quest has been Completed'),
-(8428,99,'Auto-Populated as Quest has been Completed'),
-(8429,99,'Auto-Populated as Quest has been Completed'),
-(8430,99,'Auto-Populated as Quest has been Completed'),
-(8435,99,'Auto-Populated as Quest has been Completed'),
-(8436,99,'Auto-Populated as Quest has been Completed'),
-(8439,99,'Auto-Populated as Quest has been Completed'),
 (8446,99,'Auto-Populated as Quest has been Completed'),
 (8447,1,'Auto-Populated as Quest Exists'),
 (8460,99,'Auto-Populated as Quest has been Completed'),
@@ -2815,4 +2793,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-13  1:04:39
+-- Dump completed on 2017-06-01  0:58:07

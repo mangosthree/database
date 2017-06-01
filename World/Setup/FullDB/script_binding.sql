@@ -5,7 +5,7 @@ TRUNCATE TABLE `script_binding`;
 -- ---------------------------------------- 
 -- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: m3
+-- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
 -- Server version	5.6.25-log
 
@@ -1523,12 +1523,14 @@ INSERT INTO `script_binding` (`type`, `ScriptName`, `bind`, `data`) VALUES
 (0,'npc_kolkar_invader',9524,0),
 (0,'npc_phalanx',9502,0),
 (0,'npc_hurley_blackbreath',9537,0),
-(0,'go_bar_beer_keg',164911,0),
+(1,'go_bar_beer_keg',164911,0),
 (0,'boss_plugger_spazzring',9499,0),
-(0,'go_bar_ale_mug',165738,0),
-(0,'go_bar_ale_mug',165739,0),
+(1,'go_bar_ale_mug',165738,0),
+(1,'go_bar_ale_mug',165739,0),
 (0,'npc_ironhand_guardian',8982,0),
-(0,'npc_mistress_nagmara',9500,0);
+(0,'npc_mistress_nagmara',9500,0),
+(0,'npc_cork_gizelton',11625,0),
+(0,'npc_rigger_gizelton',11626,0);
 /*!40000 ALTER TABLE `script_binding` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1541,4 +1543,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-13  1:05:02
+-- Dump completed on 2017-06-01  0:58:31

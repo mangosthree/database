@@ -5,7 +5,7 @@ TRUNCATE TABLE `script_texts`;
 -- ---------------------------------------- 
 -- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: m3
+-- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
 -- Server version	5.6.25-log
 
@@ -1203,16 +1203,15 @@ INSERT INTO `script_texts` (`entry`, `content_default`, `content_loc1`, `content
 (-1409000,'%s performs one last service for Ragnaros.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,2,0,0,'geddon EMOTE_SERVICE'),
 (-1409001,'REUSE ME',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'REUSE ME'),
 (-1409002,'%s refuses to die while its master is in trouble.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,2,0,0,'core rager EMOTE_LOWHP'),
-(-1409003,'Reckless mortals, none may challenge the sons of the living flame!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8035,1,0,0,'majordomo SAY_AGGRO'),
-(-1409004,'The runes of warding have been destroyed! Hunt down the infedels my bretheren.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8039,6,0,0,'majordomo SAY_SPAWN'),
+(-1409003,'Reckless mortals! None may challenge the Sons of the Living flame!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8035,1,0,0,'majordomo SAY_AGGRO'),
+(-1409004,'The runes of warding have been destroyed! Hunt down the infidels, my brethren!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8039,6,0,0,'majordomo SAY_SPAWN'),
 (-1409005,'Ashes to Ashes!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8037,1,0,0,'majordomo SAY_SLAY'),
 (-1409006,'Burn mortals! Burn for this transgression!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8036,1,0,0,'majordomo SAY_SPECIAL'),
-(-1409007,'Impossible! Stay your attack mortals! I submitt! I submitt!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8038,1,0,0,'majordomo SAY_DEFEAT_1'),
-(-1409008,'Behold Ragnaros, the Firelord! He who was ancient when this world was young! Bow before him, mortals! Bow before your ending!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8040,1,0,0,'ragnaros SAY_SUMMON_MAJ'),
-(-1409009,'TOO SOON! YOU HAVE AWAKENED ME TOO SOON, EXECUTUS! WHAT IS THE MEANING OF THIS INTRUSION?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8043,1,0,0,'ragnaros SAY_ARRIVAL1_RAG'),
-(-1409010,'These mortal infidels, my lord! They have invaded your sanctum, and seek to steal your secrets!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8041,1,0,0,'ragnaros SAY_ARRIVAL2_MAJ'),
-(-1409011,'FOOL! YOU ALLOWED THESE INSECTS TO RUN RAMPANT THROUGH THE HALLOWED CORE, AND NOW YOU LEAD THEM TO MY VERY LAIR? YOU HAVE FAILED ME, EXECUTUS! JUSTICE SHALL BE MET, INDEED!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8044,1,0,0,'ragnaros SAY_ARRIVAL3_RAG'),
-(-1409012,'NOW FOR YOU, INSECTS. BOLDLY YOU SAUGHT THE POWER OF RAGNAROS NOW YOU SHALL SEE IT FIRST HAND.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8045,1,0,0,'ragnaros SAY_ARRIVAL5_RAG'),
+(-1409007,'Impossible! Stay your attack, mortals... I submit! I submit!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8038,1,0,0,'majordomo SAY_DEFEAT_1'),
+(-1409008,'Behold Ragnaros - the Firelord! He who was ancient when this world was young! Bow before him, mortals! Bow before your ending!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8040,1,0,0,'ragnaros SAY_SUMMON_MAJ'),
+(-1409009,'TOO SOON! YOU HAVE AWAKENED ME TOO SOON, EXECUTUS! WHAT IS THE MEANING OF THIS INTRUSION???',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8043,1,0,0,'ragnaros SAY_ARRIVAL1_RAG'),
+(-1409010,'These mortal infidels, my lord! They have invaded your sanctum and seek to steal your secrets!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8041,1,0,0,'ragnaros SAY_ARRIVAL2_MAJ'),
+(-1409011,'FOOL! YOU ALLOWED THESE INSECTS TO RUN RAMPANT THROUGH THE HALLOWED CORE? AND NOW YOU LEAD THEM TO MY VERY LAIR? YOU HAVE FAILED ME, EXECUTUS! JUSTICE SHALL BE MET, INDEED!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8044,1,0,0,'ragnaros SAY_ARRIVAL3_RAG'),
 (-1409013,'COME FORTH, MY SERVANTS! DEFEND YOUR MASTER!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8049,1,0,0,'ragnaros SAY_REINFORCEMENTS1'),
 (-1409014,'YOU CANNOT DEFEAT THE LIVING FLAME! COME YOU MINIONS OF FIRE! COME FORTH YOU CREATURES OF HATE! YOUR MASTER CALLS!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8050,1,0,0,'ragnaros SAY_REINFORCEMENTS2'),
 (-1409015,'BY FIRE BE PURGED!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8046,1,0,0,'ragnaros SAY_HAND'),
@@ -1220,10 +1219,10 @@ INSERT INTO `script_texts` (`entry`, `content_default`, `content_loc1`, `content
 (-1409017,'DIE INSECT!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8051,1,0,0,'ragnaros SAY_KILL'),
 (-1409018,'MY PATIENCE IS DWINDILING! COME NATS TO YOUR DEATH!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8048,1,0,0,'ragnaros SAY_MAGMABURST'),
 (-1409019,'You think you\'ve won already? Perhaps you\'ll need another lesson in pain!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,'majordomo SAY_LAST_ADD'),
-(-1409020,'Brashly you have come to rest the secrets of the living flame. You will soon regret the recklessness of your quest.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,'majordomo SAY_DEFEAT_2'),
-(-1409021,'I go now to summon the lord whos house this is. Should you seek an audiance with him your paltry lives will surly be forfit. Nevertheless seek out his lair if you dare!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,'majordomo SAY_DEFEAT_3'),
+(-1409012,'NOW FOR YOU, INSECTS! BOLDLY, YOU SOUGHT THE POWER OF RAGNAROS. NOW YOU SHALL SEE IT FIRSTHAND!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8045,1,0,0,'ragnaros SAY_ARRIVAL5_RAG'),
+(-1409020,'Brashly, you have come to wrest the secrets of the Living Flame! You will soon regret the recklessness of your quest.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,'majordomo SAY_DEFEAT_2'),
+(-1409021,'I go now to summon the lord whose house this is. Should you seek an audience with him, your paltry lives will surely be forfeit! Nevertheless, seek out his lair, if you dare!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,'majordomo SAY_DEFEAT_3'),
 (-1409022,'My flame! Please don\'t take away my flame... ',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,8042,1,0,0,'ragnaros SAY_ARRIVAL4_MAJ'),
-(-1409023,'Very well, $N.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'majordomo SAY_SUMMON_0'),
 (-1409024,'Impudent whelps! You\'ve rushed headlong to your own deaths! See now, the master stirs!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,'majordomo SAY_SUMMON_1'),
 (-1429000,'The demon is loose! Quickly we must restrain him!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,6,0,0,'highborne summoner SAY_FREE_IMMOLTHAR'),
 (-1429001,'Who dares disrupt the sanctity of Eldre\'Thalas? Face me, cowards!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,6,0,0,'prince tortheldrin SAY_KILL_IMMOLTHAR'),
@@ -3894,7 +3893,8 @@ INSERT INTO `script_texts` (`entry`, `content_default`, `content_loc1`, `content
 (-1230049,'We...are...investigating.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,'Fireguard Destroyer YELL_PATROL_2'),
 (-1230059,'Hey, my pockets were picked!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,'Plugger Spazzring YELL_PICKPOCKETED'),
 (-1230065,'Prepare to meet your doom at the hands of Ragnaros\' most powerful servant!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,'Emperor Thaurissan YELL_AGGRO_3'),
-(-1230069,'%s kisses Mistress Nagmara',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,2,0,17,'Rocknot TEXTEMOTE_ROCKNOT');
+(-1230069,'%s kisses Mistress Nagmara',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,2,0,17,'Rocknot TEXTEMOTE_ROCKNOT'),
+(-1409023,'Very well, $n.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'majordomo SAY_SUMMON_0');
 /*!40000 ALTER TABLE `script_texts` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -3907,4 +3907,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-13  1:05:02
+-- Dump completed on 2017-06-01  0:58:31

@@ -5,7 +5,7 @@ TRUNCATE TABLE `db_version`;
 -- ---------------------------------------- 
 -- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: m3
+-- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
 -- Server version	5.6.25-log
 
@@ -27,7 +27,7 @@ TRUNCATE TABLE `db_version`;
 LOCK TABLES `db_version` WRITE;
 /*!40000 ALTER TABLE `db_version` DISABLE KEYS */;
 INSERT INTO `db_version` (`version`, `structure`, `content`, `description`, `comment`) VALUES 
-(21,4,7,'Update_dbDocs','Base DB from Rel21.01.00 to Rel21.04.07');
+(21,7,1,'db_scripts_refactor','Base DB from Rel21.01.00 to Rel21.07.01');
 /*!40000 ALTER TABLE `db_version` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -40,4 +40,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-13  1:04:39
+-- Dump completed on 2017-06-01  0:58:06

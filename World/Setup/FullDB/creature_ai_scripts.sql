@@ -5,7 +5,7 @@ TRUNCATE TABLE `creature_ai_scripts`;
 -- ---------------------------------------- 
 -- MySQL dump 10.13  Distrib 5.5.37, for Win32 (x86)
 --
--- Host: localhost    Database: m3
+-- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
 -- Server version	5.6.25-log
 
@@ -10189,7 +10189,7 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (327310,3273,2,7,100,0,15,0,0,0,21,1,0,0,25,0,0,0,1,-47,0,0,'Kolkar Stormer - Start Combat Movement and Flee at 15% HP (Phase 3)'),
 (327311,3273,7,0,100,0,0,0,0,0,22,0,0,0,0,0,0,0,0,0,0,0,'Kolkar Stormer - Set Phase to 0 on Evade'),
 (327401,3274,4,0,100,0,0,0,0,0,11,9128,0,0,0,0,0,0,0,0,0,0,'Kolkar Pack Runner - Cast Battle Shout on Aggro'),
-(327402,3274,6,0,3,0,0,0,0,0,1,-769,0,0,32,3395,1,8,0,0,0,0,'Kolkar Pack Runner - Chance Say and Summon Verog the Dervish on Death'),
+(327402,3274,6,0,20,0,0,0,0,0,1,-769,0,0,32,3395,1,8,0,0,0,0,'Kolkar Pack Runner - Chance Say and Summon Verog the Dervish on Death'),
 (327501,3275,4,0,100,0,0,0,0,0,11,6268,6,1,0,0,0,0,0,0,0,0,'Kolkar Marauder - Cast Charge on Aggro'),
 (327502,3275,0,0,100,1,5000,11000,7000,12000,11,11976,1,0,0,0,0,0,0,0,0,0,'Kolkar Marauder - Cast Strike'),
 (327701,3277,4,0,75,0,0,0,0,0,1,-494,0,0,0,0,0,0,0,0,0,0,'Witchwing Roguefeather - Say on Aggro'),
@@ -10234,7 +10234,7 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (339601,3396,2,0,70,1,60,0,7500,7500,11,6958,1,0,0,0,0,0,0,0,0,0,'Hezrul Bloodmark - Cast Blood Leech When Below 60% HP'),
 (339701,3397,0,0,100,1,35000,35000,10000,10000,11,6742,0,0,0,0,0,0,0,0,0,0,'Kolkar Bloodcharger - Cast Bloodlust'),
 (339702,3397,0,0,70,1,20000,20000,5000,5000,11,172,1,0,0,0,0,0,0,0,0,0,'Kolkar Bloodcharger - Cast Corruption'),
-(339703,3397,6,0,3,0,0,0,0,0,1,-769,0,0,32,3395,1,8,0,0,0,0,'Kolkar Bloodcharger - Chance Say and Summon Verog the Dervish on Death'),
+(339703,3397,6,0,20,0,0,0,0,0,1,-769,0,0,32,3395,1,8,0,0,0,0,'Kolkar Bloodcharger - Chance Say and Summon Verog the Dervish on Death'),
 (341601,3416,0,0,60,0,0,0,14000,14000,11,6598,1,0,0,0,0,0,0,0,0,0,'Savannah Matriarch - Cast Savannah Cub'),
 (342401,3424,0,0,80,1,32500,32500,15000,15000,11,8078,1,0,0,0,0,0,0,0,0,0,'Thunderhawk Cloudscraper - Cast Thunderclap'),
 (343001,3430,0,0,100,0,0,0,0,0,27,5043,17013,0,0,0,0,0,0,0,0,0,'Mangletooth - Cast Agamaggan\'s Agility on Quest Complete'),
@@ -20300,7 +20300,7 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (2170204,21702,0,0,100,5,7000,11000,18000,24000,11,34941,4,0,0,0,0,0,0,0,0,0,'Ethereum Life-Binder (Heroic) - Cast Shadow Word: Pain'),
 (2170205,21702,14,0,100,3,12000,40,25000,35000,11,37479,6,1,0,0,0,0,0,0,0,0,'Ethereum Life-Binder (Normal) - Cast Shadow Mend on Friendlies'),
 (2170206,21702,14,0,100,5,15000,40,25000,35000,11,38899,6,1,0,0,0,0,0,0,0,0,'Ethereum Life-Binder (Heroic) - Cast Shadow Mend on Friendlies'),
-(1797601,17976,4,0,100,6,0,0,0,0,1,-34,0,0,0,0,0,0,0,0,0,0,'Commander Sarannis - Yell on Aggro'),
+(1797601,17976,4,0,100,6,0,0,0,0,1,-344,0,0,0,0,0,0,0,0,0,0,'Commander Sarannis - Yell on Aggro'),
 (1797602,17976,9,0,100,3,0,10,3800,15300,11,34794,1,0,1,-37,0,0,0,0,0,0,'Commander Sarannis (Normal) - Cast Arcane Resonance and Yell'),
 (1797603,17976,9,0,100,5,0,10,2800,12900,11,34794,1,0,1,-37,0,0,0,0,0,0,'Commander Sarannis (Heroic) - Cast Arcane Resonance and Yell'),
 (1797604,17976,0,0,100,7,20400,20400,13300,37400,11,34799,1,1,1,-38,0,0,0,0,0,0,'Commander Sarannis - Cast Arcane Devastation on 3 Arcane Resonance Stack and Yell'),
@@ -26238,7 +26238,7 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (3072308,30723,3,3,100,1,100,15,1000,1000,22,1,0,0,0,0,0,0,0,0,0,0,'Xantili - Set Phase 1 when Mana is above 15% (Phase 2)'),
 (3072309,30723,7,0,100,0,0,0,0,0,22,0,0,0,0,0,0,0,0,0,0,0,'Xantili - Set Phase to 0 on Evade'),
 (327503,3275,0,0,100,1,7000,15000,9000,14000,11,8014,4,33,0,0,0,0,0,0,0,0,'Kolkar Marauder - Cast Tetanus'),
-(327504,3275,6,0,3,0,0,0,0,0,1,-769,0,0,32,3395,1,8,0,0,0,0,'Kolkar Marauder - Chance Say and Summon Verog the Dervish on Death'),
+(327504,3275,6,0,20,0,0,0,0,0,1,-769,0,0,32,3395,1,8,0,0,0,0,'Kolkar Marauder - Chance Say and Summon Verog the Dervish on Death'),
 (2187601,21876,1,0,75,1,5000,5000,15000,20000,11,37784,0,0,0,0,0,0,0,0,0,0,'Chain of Shadows - Cast Enforced Submission OOC'),
 (2187701,21877,11,0,100,0,0,0,0,0,11,37789,0,1,1,-1320,0,0,0,0,0,0,'Karsius - Cast Teron Freed and Say on Spawn'),
 (2187702,21877,6,0,100,0,0,0,0,0,1,-1321,0,0,32,21867,0,25,0,0,0,0,'Karsius - Yell on Death and Summon Teron Gorefiend'),
@@ -26474,4 +26474,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-13  1:04:30
+-- Dump completed on 2017-06-01  0:57:43
