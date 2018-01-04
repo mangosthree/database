@@ -50,24 +50,8 @@ creature_template_classlevelstats \
 creature_template_spells \
 custom_texts \
 db_script_string \
+db_scripts \
 db_version \
-dbdocsfields \
-dbdocsfields_localised \
-dbdocslanguage \
-dbdocsprogressquests \
-dbdocssubtables \
-dbdocssubtables_localised \
-dbdocstable \
-dbdocstable_localised \
-dbscripts_on_creature_death \
-dbscripts_on_creature_movement \
-dbscripts_on_event \
-dbscripts_on_go_template_use \
-dbscripts_on_go_use \
-dbscripts_on_gossip \
-dbscripts_on_quest_end \
-dbscripts_on_quest_start \
-dbscripts_on_spell \
 disenchant_loot_template \
 dungeonfinder_item_rewards \
 dungeonfinder_rewards \
@@ -151,8 +135,6 @@ reserved_name \
 script_binding \
 script_texts \
 script_waypoint \
-scripted_areatrigger \
-scripted_event \
 skill_discovery_template \
 skill_extra_item_template \
 skill_fishing_base_level \
@@ -174,7 +156,6 @@ transports \
 vehicle_accessory \
 warden_build_specific \
 warden_checks \
-world_template \
 ; do
 
 echo "Dumping ${i}/123 ${TABLE}..."
