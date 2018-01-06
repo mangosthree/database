@@ -99,7 +99,6 @@ mail_level_reward \
 mail_loot_template \
 mangos_string \
 milling_loot_template \
-npc_gossip \
 npc_spellclick_spells \
 npc_text \
 npc_trainer \
