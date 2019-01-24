@@ -16,8 +16,8 @@ BEGIN
     SET @cCurContent := (SELECT content FROM db_version ORDER BY `version` DESC, STRUCTURE DESC, CONTENT DESC LIMIT 0,1);
 
     -- Expected Values
-    SET @cOldVersion = '21'; 
-    SET @cOldStructure = '11'; 
+    SET @cOldVersion = '21';
+    SET @cOldStructure = '11';
     SET @cOldContent = '005';
 
     -- New Values
@@ -48,19 +48,19 @@ BEGIN
         -- -- PLACE UPDATE SQL BELOW -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
-ALTER TABLE npc_text CHANGE COLUMN em4_0 em4_0_delay SMALLINT(5);
-ALTER TABLE npc_text CHANGE COLUMN em4_1 em4_0 SMALLINT(5);
-ALTER TABLE npc_text CHANGE COLUMN em4_2 em4_1_delay SMALLINT(5);
-ALTER TABLE npc_text CHANGE COLUMN em4_3 em4_1 SMALLINT(5);
-ALTER TABLE npc_text CHANGE COLUMN em4_4 em4_2_delay SMALLINT(5);
-ALTER TABLE npc_text CHANGE COLUMN em4_5 em4_2 SMALLINT(5);
+ALTER TABLE npc_text CHANGE COLUMN em4_0 em4_0_delay SMALLINT(5) unsigned NOT NULL DEFAULT '0';
+ALTER TABLE npc_text CHANGE COLUMN em4_1 em4_0 SMALLINT(5) unsigned NOT NULL DEFAULT '0';
+ALTER TABLE npc_text CHANGE COLUMN em4_2 em4_1_delay SMALLINT(5) unsigned NOT NULL DEFAULT '0';
+ALTER TABLE npc_text CHANGE COLUMN em4_3 em4_1 SMALLINT(5) unsigned NOT NULL DEFAULT '0';
+ALTER TABLE npc_text CHANGE COLUMN em4_4 em4_2_delay SMALLINT(5) unsigned NOT NULL DEFAULT '0';
+ALTER TABLE npc_text CHANGE COLUMN em4_5 em4_2 SMALLINT(5) unsigned NOT NULL DEFAULT '0';
 
-ALTER TABLE npc_text CHANGE COLUMN em5_0 em5_0_delay SMALLINT(5);
-ALTER TABLE npc_text CHANGE COLUMN em5_1 em5_0 SMALLINT(5);
-ALTER TABLE npc_text CHANGE COLUMN em5_2 em5_1_delay SMALLINT(5);
-ALTER TABLE npc_text CHANGE COLUMN em5_3 em5_1 SMALLINT(5);
-ALTER TABLE npc_text CHANGE COLUMN em5_4 em5_2_delay SMALLINT(5);
-ALTER TABLE npc_text CHANGE COLUMN em5_5 em5_2 SMALLINT(5);
+ALTER TABLE npc_text CHANGE COLUMN em5_0 em5_0_delay SMALLINT(5) unsigned NOT NULL DEFAULT '0';
+ALTER TABLE npc_text CHANGE COLUMN em5_1 em5_0 SMALLINT(5) unsigned NOT NULL DEFAULT '0';
+ALTER TABLE npc_text CHANGE COLUMN em5_2 em5_1_delay SMALLINT(5) unsigned NOT NULL DEFAULT '0';
+ALTER TABLE npc_text CHANGE COLUMN em5_3 em5_1 SMALLINT(5) unsigned NOT NULL DEFAULT '0';
+ALTER TABLE npc_text CHANGE COLUMN em5_4 em5_2_delay SMALLINT(5) unsigned NOT NULL DEFAULT '0';
+ALTER TABLE npc_text CHANGE COLUMN em5_5 em5_2 SMALLINT(5) unsigned NOT NULL DEFAULT '0';
 
     
 
