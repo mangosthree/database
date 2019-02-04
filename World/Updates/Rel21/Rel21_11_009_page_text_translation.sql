@@ -1,14 +1,5 @@
--- ----------------------------------------
--- Added to prevent timeout's while loading
--- ----------------------------------------
-SET GLOBAL net_read_timeout=30;
-SET GLOBAL net_write_timeout=60;
-SET GLOBAL net_buffer_length=1000000; 
-SET GLOBAL max_allowed_packet=1000000000;
-SET GLOBAL connect_timeout=10000000;
-
 -- --------------------------------------------------------------------------------
--- This is an attempt to create a full transactional MaNGOS update (v1.3)
+-- This is an attempt to create a full transactional MaNGOS update (v1.4)
 -- --------------------------------------------------------------------------------
 DROP PROCEDURE IF EXISTS `update_mangos`; 
 
@@ -25,7 +16,7 @@ BEGIN
     SET @cCurContent := (SELECT content FROM db_version ORDER BY `version` DESC, STRUCTURE DESC, CONTENT DESC LIMIT 0,1);
 
     -- Expected Values
-    SET @cOldVersion = '21'; 
+    SET @cOldVersion = '21';
     SET @cOldStructure = '11'; 
     SET @cOldContent = '008';
 
@@ -47,17 +38,10 @@ BEGIN
     IF (@cCurResult = @cOldResult) THEN    -- Does the current version match the expected version
         -- APPLY UPDATE
         START TRANSACTION;
-
-        -- UPDATE THE DB VERSION
-        -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
-        INSERT INTO `db_version` VALUES (@cNewVersion, @cNewStructure, @cNewContent, @cNewDescription, @cNewComment);
-        SET @cNewResult := (SELECT description FROM db_version WHERE `version`=@cNewVersion AND `structure`=@cNewStructure AND `content`=@cNewContent);
-
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
         -- -- PLACE UPDATE SQL BELOW -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
-
-    -- Correct english text display.
+	-- Correct english text display.
 UPDATE `page_text` SET `text` = 'The topic of indulgences is a difficult one, but at times in our lives, it becomes a necessary evil. A lapse of judgment, a harsh word too quickly spoken, a punch or kick thrown in anger - all these things are failings of mortal men, and the Church must acknowledge that. 
 However, such acknowledgement does not come without a price. For sins of harsh words, a mere handful of silver will cleanse the soul. For sins of physical force, a handful of gold will expurgate the failings of mortal flesh. For those other sins, a full confession and a more generous contribution will be necessary. 
 ' WHERE `entry` = 3117;
@@ -68,7 +52,6 @@ UPDATE `page_text` SET `text` = 'Punching:
   
 <A detailed list of prices and sins continues for pages>' 
 WHERE `entry` = 3118;
-    
 
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
         -- -- PLACE UPDATE SQL ABOVE -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
@@ -79,11 +62,14 @@ WHERE `entry` = 3118;
             ROLLBACK;
             SHOW ERRORS;
             SELECT '* UPDATE FAILED *' AS `===== Status =====`,@cCurResult AS `===== DB is on Version: =====`;
-
-
-
         ELSE
             COMMIT;
+            -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+            -- UPDATE THE DB VERSION
+            -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+            INSERT INTO `db_version` VALUES (@cNewVersion, @cNewStructure, @cNewContent, @cNewDescription, @cNewComment);
+            SET @cNewResult := (SELECT description FROM db_version WHERE `version`=@cNewVersion AND `structure`=@cNewStructure AND `content`=@cNewContent);
+
             SELECT '* UPDATE COMPLETE *' AS `===== Status =====`,@cNewResult AS `===== DB is now on Version =====`;
         END IF;
     ELSE    -- Current version is not the expected version
