@@ -55,7 +55,7 @@ ALTER TABLE `locales_gossip_menu_option` ENGINE=MYISAM;
 
 /* Alter table in target */
 ALTER TABLE `locales_quest` 
-    CHANGE `ObjectiveText1_loc1` `ObjectiveText1_loc1` TEXT  COLLATE utf8_general_ci NULL COMMENT 'Korean localization of ObjectiveText1 in the quest_template table.' AFTER `ObjectiveText1_loc0`;
+    CHANGE `ObjectiveText1_loc1` `ObjectiveText1_loc1` TEXT  COLLATE utf8_general_ci NULL COMMENT 'Korean localization of ObjectiveText1 in the quest_template table.' AFTER `EndText_loc8`;
     
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 
