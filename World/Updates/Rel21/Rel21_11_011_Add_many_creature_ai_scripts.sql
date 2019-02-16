@@ -143,8 +143,7 @@ UPDATE `creature_template` SET `AIName` = 'EventAI' WHERE `Entry` IN (17158,1829
 
 -- Add Missing Fel Reaver Sound
 UPDATE `creature_template_addon` SET `auras`='34623' WHERE `entry` IN (18733);
--- Update comment to match rest of script.
-UPDATE `creature_ai_scripts` SET `comment` = 'Twilight Marauder Morna - Cast Piercing Howl';
+
 
 
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
