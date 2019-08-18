@@ -611,7 +611,7 @@ INSERT INTO `db_script_string` (`entry`, `content_default`, `content_loc1`, `con
 (2000000471,'DARKSHIRE...I HUNGER!!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,NULL),
 (2000000468,'\'We like trees, Fenrick. They provide cover.\' They won\'t let me chop them down, either.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
 (2000000469,'I wonder how many reinforcements need to suffer injury before they allows us to chop down these idiotic trees. They\'re costing us a fortune in bats. Maybe I\'ll rig a harness or two...',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
-(2000000466,'%s smells the meat, awakens from his slumber, and roars in anger!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,5,0,0,NULL),
+(2000000466,'%s smells the meat, awakens from his slumber, and roars in anger!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,2,0,0,'Shatterhorn whisper'),
 (2000000467,'What do they expect, making the bats come in at that angle? Broken necks and gamey bat stew, that\'s what they get.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
 (2000000465,'This is the last time I get caught! I promise! Bye!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
 (2000000464,'Thanks, $R! I\'m sure my dad will reward you greatly! Bye!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
@@ -762,17 +762,17 @@ INSERT INTO `db_script_string` (`entry`, `content_default`, `content_loc1`, `con
 (2000000328,'I should have a few extra coins from this sale. Maybe I\'ll buy myself some lunch...',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
 (2000000324,'Corbett, you there? Harlan needs another load of knitted goods. Can you take it to him?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Корбетт, ты тут? Харлану нужна еще одна партия вязаной одежды. Отнесешь ему?',0,0,0,0,NULL),
 (2000000325,'My pleasure, sugar drop. I\'ll be back soon:',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Разумеется, сладость моя. Я скоро вернусь...',0,0,0,0,NULL),
-(2000000320,'Speak to the commander at your post, lad, and persuade him to abandon Vor\'takh\'s foolish plan.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
+(2000000320,'Speak to the commander at your post, lad, and persuade him to abandon Vor\'takh\'s foolish plan.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,6,NULL),
 (2000000321,'If the Explorers\' League sent men, I didn\'t see any trace of them. I found your note buried in a camp overrun by iron dwarves.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
 (2000000322,'A scout found the remains of your journal in Thor Modan. We\'ve been looking for you ever since.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
 (2000000323,'Corbett, dear. Harlan needs a load of knitted shirts and pants as soon as we can manage.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
-(2000000317,'If you\'ve seen the journal, then you know what I\'ve been discovering. The titans\' own creations are at war with each other!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
-(2000000318,'Loken and his iron dwarf minions have ousted the Earthen from Ulduar and taken over the city.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
-(2000000319,'If we spend our time and strength fighting with each other, Loken will use Ulduar\'s resources to destroy both Horde and Alliance.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
-(2000000313,'I... I can understand you now! Well, now that we can talk to each other, you have some explaining to do!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
-(2000000314,'How did you get my communicator from the Explorers\' League?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
-(2000000315,'You have my thanks for dispatching the iron dwarves. But why would the Horde have an interest in me?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
-(2000000316,'That wouldn\'t be Scout Vor\'takh, would it? Even I know of his reputation for ruthlessness. He means to abduct me, then?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
+(2000000317,'If you\'ve seen the journal, then you know what I\'ve been discovering. The titans\' own creations are at war with each other!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,5,NULL),
+(2000000318,'Loken and his iron dwarf minions have ousted the Earthen from Ulduar and taken over the city.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,5,NULL),
+(2000000319,'If we spend our time and strength fighting with each other, Loken will use Ulduar\'s resources to destroy both Horde and Alliance.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,6,NULL),
+(2000000313,'I... I can understand you now! Well, now that we can talk to each other, you have some explaining to do!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,5,NULL),
+(2000000314,'How did you get my communicator from the Explorers\' League?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,5,NULL),
+(2000000315,'You have my thanks for dispatching the iron dwarves. But why would the Horde have an interest in me?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,6,NULL),
+(2000000316,'That wouldn\'t be Scout Vor\'takh, would it? Even I know of his reputation for ruthlessness. He means to abduct me, then?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,5,NULL),
 (2000000311,'But one thing is for certain: this plate\'s size, thickness, and bolt holes point to a use as armor for a colossal structure.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
 (2000000312,'Directive completed. Returning to standby mode.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
 (2000000309,'Access denied?!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,NULL),
@@ -1308,4 +1308,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-13  1:04:38
+-- Dump completed on 2019-08-18  0:15:04

@@ -1379,7 +1379,8 @@ INSERT INTO `creature_ai_texts` (`entry`, `content_default`, `content_loc1`, `co
 (-641,'Matron, one has fallen!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,15487,1,0,0,'32915'),
 (-1047,'%s surrounds itself with a void barrier as a dark shadow coalesces nearby!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,2,0,0,'33772'),
 (-212,'%s fortifies nearby allies with runic might!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,3,0,0,'Ancient Rune Giant'),
-(-746,'My time... has run out...',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,'32273');
+(-746,'My time... has run out...',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,'32273'),
+(-351273,'%s raises his shield in a vigorous defense!','0','0','0','0','0','0','0','0',0,2,0,0,'Coilskar Sorceress');
 /*!40000 ALTER TABLE `creature_ai_texts` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1392,4 +1393,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-13  1:04:30
+-- Dump completed on 2019-08-18  0:14:58

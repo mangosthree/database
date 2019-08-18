@@ -9393,7 +9393,7 @@ INSERT INTO `creature_template_addon` (`entry`, `mount`, `bytes1`, `b2_0_sheath`
 (18730,0,0,1,0,0,0,NULL),
 (18731,0,0,1,0,0,0,'30231 18950'),
 (18732,0,0,1,0,0,0,NULL),
-(18733,0,0,1,0,0,100663296,'19818 34623'),
+(18733,0,0,1,0,0,100663296,'34623'),
 (18739,0,0,1,0,0,0,NULL),
 (18743,0,0,1,0,0,0,NULL),
 (18744,0,0,1,0,0,0,NULL),
@@ -13592,7 +13592,6 @@ INSERT INTO `creature_template_addon` (`entry`, `mount`, `bytes1`, `b2_0_sheath`
 (25249,0,5,1,0,0,0,NULL),
 (25250,0,0,1,1,0,0,NULL),
 (25251,0,0,1,1,0,0,NULL),
-(25253,0,7,1,1,0,0,NULL),
 (25256,0,0,0,1,0,0,NULL),
 (25257,0,65536,1,1,0,0,'46998'),
 (25258,0,0,1,1,0,0,NULL),
@@ -31273,4 +31272,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-01  0:58:06
+-- Dump completed on 2019-08-18  0:15:04
