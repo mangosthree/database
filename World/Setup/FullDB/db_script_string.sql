@@ -1295,7 +1295,11 @@ INSERT INTO `db_script_string` (`entry`, `content_default`, `content_loc1`, `con
 (2000001158,'I wasn\'t even supposed to be here today!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,5,'Bartleby Battson - say_bartelby_3'),
 (2000001159,'Well, guess I should load everything back into the cart.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'Bartleby Battson - say_bartelby_4'),
 (2000001160,'Oh, come on! My cart broke, my horse lost a shoe, and now the cargo goes bad!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,5,'Bartleby Battson - say_bartelby_5'),
-(2000001161,'I guess I\'ll go find the athorities. If I\'m lucky they\'ll tell me it\'s the plague and that we\'re all going to die.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,1,'Bartleby Battson - say_bartelby_6');
+(2000001161,'I guess I\'ll go find the athorities. If I\'m lucky they\'ll tell me it\'s the plague and that we\'re all going to die.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,1,'Bartleby Battson - say_bartelby_6'),
+(2000005281,'You\'ve saved me, fleshling! Ameer will hear of this noble act.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'Captain Tyralius say on prison release'),
+(2000001489,'Yarrrr!  If it\'s me treasure yer lookin\' for... yer gonna have to fight for it!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,1,'Black Conrad\'s Ghost'),
+(2000001490,'Yer dead, landlubber!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'Spectral Sailor'),
+(2000001491,'Yarrrrr... dead again!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'Black Conrad\'s Ghost');
 /*!40000 ALTER TABLE `db_script_string` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1308,4 +1312,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-18  0:15:04
+-- Dump completed on 2020-05-16  1:12:06

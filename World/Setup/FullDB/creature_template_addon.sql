@@ -13637,7 +13637,7 @@ INSERT INTO `creature_template_addon` (`entry`, `mount`, `bytes1`, `b2_0_sheath`
 (25308,0,0,1,0,0,0,NULL),
 (25309,0,0,1,0,0,0,NULL),
 (25310,0,0,1,0,0,0,NULL),
-(25311,0,0,1,1,214,0,NULL),
+(25311,0,0,2,1,214,0,NULL),
 (25313,0,0,1,1,0,0,NULL),
 (25314,0,0,1,0,0,0,NULL),
 (25315,0,0,1,0,0,0,NULL),
@@ -31272,4 +31272,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-18  0:15:04
+-- Dump completed on 2020-05-16  1:12:06

@@ -52,7 +52,8 @@ INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `conten
 (22,'You are not mounted so you can\'t dismount.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Вы не можете слезть с ездового животного, так как вы не на нем.'),
 (23,'Cannot do that while fighting.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Не могу сделать это в бою.'),
 (24,'You used it recently.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Вы недавно использовали это.'),
-(25,'Password not changed (unknown error)!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Ваш пароль не может быть длиннее 16 знаков(ограничение клиента), пароль не изменен!'),
+(25,'Password not changed (unknown error)!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Ваш пароль не может быть длиннее 16 знаков(ограничение клиента),
+ пароль не изменен!'),
 (26,'The password was changed',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Пароль изменен'),
 (27,'The old password is wrong',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Старый пароль неверен'),
 (28,'Your account is now locked.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Ваша учетная запись сейчас заблокирована.'),
@@ -82,7 +83,9 @@ INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `conten
 (52,'Invaid item count (%u) for item %u',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Неверное количество (%u) для предмета %u'),
 (53,'Mail can\'t have more %u item stacks',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'У почты не может быть больше %u ячеек для предметов'),
 (54,'The new passwords do not match',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Новые пароли не совпадают'),
-(55,'Your password can\'t be longer than 16 characters (client limit), password not changed!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Ваш пароль не может быть длиннее 16 символов (предел клиента), пароль не изменен!'),
+(55,'Your password can\'t be longer than 16 characters (client limit),
+ password not changed!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Ваш пароль не может быть длиннее 16 символов (предел клиента),
+ пароль не изменен!'),
 (56,'Current Message of the day: \r\n%s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Текущее сообщение дня: %s'),
 (57,'Using World DB: %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Используемая База Данных: %s'),
 (58,'Using script library: %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Используемая библиотека скриптов: %s'),
@@ -424,7 +427,8 @@ INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `conten
 (482,'Character dump failed!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Дамп персонажа создать не удалось!'),
 (483,'Spell %u broken and not allowed to cast or learn!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Заклинание %u не работает и не доступно для применения или изучения!'),
 (484,'Skill %u (%s) for player %s set to %u and current maximum set to %u (without permanent (talent) bonuses).',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(485,'Player %s must have skill %u (%s) before using this command.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Игрок %s $gдолжен:должна; иметь навык %u (%s), прежде чем использовать эту команду.'),
+(485,'Player %s must have skill %u (%s) before using this command.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Игрок %s $gдолжен:должна; иметь навык %u (%s),
+ прежде чем использовать эту команду.'),
 (486,'Invalid skill id (%u)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Неверный ID навыка (%u)'),
 (487,'You learned default GM spells/skills.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Вы выучили стандартные ГМ заклинания и навыки.'),
 (488,'You already know that spell.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Вы уже знаете это заклинание.'),
@@ -686,7 +690,9 @@ INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `conten
 (1002,'Account %s NOT deleted (probably sql file format was updated)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Аккаунт %s не может быть удалён (возможно формат sql файла был обновлён)'),
 (1003,'Account %s NOT deleted (unknown error)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Аккаунт %s не может быть удалён (неизвестная ошибка)'),
 (1004,'Account created: %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Создана учетная запись:  %s'),
-(1005,'Account name cannot be longer than 16 characters (client limit), account not created!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Имя учетной записи не может содержать больше 16 символов (лимит клиента), учетная запись не создана!'),
+(1005,'Account name cannot be longer than 16 characters (client limit),
+ account not created!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Имя учетной записи не может содержать больше 16 символов (лимит клиента),
+ учетная запись не создана!'),
 (1006,'Account with this name already exist!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Аккаунт с таким именем уже существует!'),
 (1007,'Account %s NOT created (probably sql file format was updated)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Аккаунт %s не может быть удалён (возможно формат sql файла был обновлён)'),
 (1008,'Account %s NOT created (unknown error)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Аккаунт %s не создан (неизвестная ошибка)'),
@@ -902,4 +908,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-18  0:15:15
+-- Dump completed on 2020-05-16  1:12:19

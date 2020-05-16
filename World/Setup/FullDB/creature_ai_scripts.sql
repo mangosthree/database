@@ -12821,8 +12821,8 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (2561301,25613,4,0,100,0,0,0,0,0,11,45658,0,1,0,0,0,0,0,0,0,0,'Skadir Mistweaver - Cast Call of the Mist on Aggro'),
 (2561302,25613,0,0,100,1,6000,9000,13000,16000,11,49816,4,32,0,0,0,0,0,0,0,0,'Skadir Mistweaver - Cast Mist of Strangulation'),
 (2561501,25615,6,0,100,0,0,0,0,0,11,50366,0,7,0,0,0,0,0,0,0,0,'Plagued Magnataur - Cast Plague Cloud on Death'),
-(2561801,25618,0,0,100,1,5000,9000,10000,13000,11,32711,0,0,0,0,0,0,0,0,0,0,'Varidus the Flenser - Cast Shadow Nova'),
-(2561802,25618,0,0,100,1,9000,15000,20000,35000,11,50329,0,1,0,0,0,0,0,0,0,0,'Varidus the Flenser - Cast Shield of Suffering'),
+(2561804,25618,0,0,100,1,9000,15000,20000,35000,11,50329,0,1,0,0,0,0,0,0,0,0,'Varidus the Flenser - Cast Shield of Suffering'),
+(2561803,25618,0,0,100,1,5000,9000,10000,13000,11,32711,0,0,0,0,0,0,0,0,0,0,'Varidus the Flenser - Cast Shadow Nova'),
 (2561901,25619,9,0,100,1,8,25,11000,18000,11,50347,1,0,0,0,0,0,0,0,0,0,'Nerub\'ar Warrior - Cast Rush'),
 (2562201,25622,2,0,100,1,30,0,30000,35000,11,50364,0,0,0,0,0,0,0,0,0,0,'Nerub\'ar Tunneler - Cast Rock Shield at 30% HP'),
 (2562301,25623,9,0,100,1,0,5,5000,8000,11,54185,1,0,0,0,0,0,0,0,0,0,'Harvest Collector - Cast Claw Slash'),
@@ -12884,8 +12884,8 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (2572605,25726,9,1,100,1,11,30,0,0,21,0,1,0,20,0,0,0,0,0,0,0,'Chieftain Burblegobble - Prevent Combat Movement and Prevent Melee at 30 Yards (Phase 1)'),
 (2572606,25726,7,0,100,0,0,0,0,0,22,1,0,0,40,1,0,0,21,0,0,0,'Chieftain Burblegobble - Set Phase to 1 and Set Melee Weapon Model and Prevent Combat Movement on Evade'),
 (2572801,25728,0,0,100,1,5700,10800,22300,25700,11,50416,1,0,0,0,0,0,0,0,0,0,'Coldarra Wyrmkin - Cast Frostbite Weapon'),
-(2573001,25730,0,0,100,1,300,6300,14800,18100,11,50324,0,0,0,0,0,0,0,0,0,0,'En\'kilah Necrolord - Cast Bone Armor'),
-(2573002,25730,0,0,100,1,1100,9300,6300,7600,11,50323,1,0,0,0,0,0,0,0,0,0,'En\'kilah Necrolord - Cast Sharpened Bone'),
+(2561802,25618,1,0,100,1,2000,28000,240000,300000,1,-1435,-1436,0,0,0,0,0,0,0,0,0,'Varidus the Flenser - Random say on OOC'),
+(2561801,25618,11,0,100,0,0,0,0,0,11,45908,0,1,0,0,0,0,0,0,0,0,'Varidus the Flenser - cast Shield of Suffering on Spawn'),
 (2575201,25752,0,0,100,1,5000,10000,10000,15000,11,49945,1,0,0,0,0,0,0,0,0,0,'Scavenge-bot 004-A8 - Cast Cutting Laser'),
 (2575301,25753,0,0,30,0,2900,13200,0,0,11,6668,0,0,1,-536,-537,-538,0,0,0,0,'Sentry-bot 57-K - Cast Red Firework and Random Say'),
 (2575801,25758,0,0,100,1,9800,23100,18300,19200,11,49981,1,0,11,51504,1,0,0,0,0,0,'Defendo-tank 66D - Cast Machine Gun'),
@@ -26545,7 +26545,43 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (1822001,18220,0,0,100,1,5000,1000,10000,20000,11,30285,1,32,0,0,0,0,0,0,0,0,'Ravenous Windroc - Cast Eagle Claw'),
 (2369101,23691,9,0,100,1,0,5,18000,21000,11,32019,1,0,0,0,0,0,0,0,0,0,'Shoveltusk Stag - Cast Gore'),
 (2446401,24464,27,0,100,0,43874,1,700,1500,19,256,0,0,0,0,0,0,0,0,0,0,'Remove non target flag on debuff'),
-(27383152,24178,22,0,100,1,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'Make shatterhorn attackable on emote EMOTE_ONESHOT_BATTLEROAR');
+(27383152,24178,22,0,100,1,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'Make shatterhorn attackable on emote EMOTE_ONESHOT_BATTLEROAR'),
+(2531101,25311,1,0,100,1,1000,3000,9000,12000,11,45761,0,0,0,0,0,0,0,0,0,0,'Valiance Keep Rifleman - Cast Shoot Gun on OOC Timer.'),
+(2479001,24790,11,0,100,0,0,0,0,0,18,256,0,0,0,0,0,0,0,0,0,0,'Black Conrads Ghost - Set Unitflags on Spawn(q.11467)'),
+(2479002,24790,0,0,100,0,0,0,0,0,11,51211,0,1,0,0,0,0,0,0,0,0,'Black Conrads Ghost - Say and cast Blade Flurry on Aggro(q.11467)'),
+(2479003,24790,9,0,100,1,0,5,22000,28000,11,31022,1,0,0,0,0,0,0,0,0,0,'Black Conrads Ghost - Cast Ghostly Strike'),
+(2479601,24796,11,0,100,0,0,0,0,0,18,256,0,0,0,0,0,0,0,0,0,0,'Spectral Sailor - Set Unitflags on Spawn(q.11467)'),
+(2479602,24796,29,0,100,0,3000,3000,0,0,19,256,0,0,0,0,0,0,0,0,0,0,'Spectral Sailor - Remove Unitflags on OOC Timer(q.11467)'),
+(1873301,18733,6,0,100,0,0,0,0,0,28,0,34623,0,0,0,0,0,0,0,0,0,'Fel Reaver - Remove Fel Reaver Warning Aura on Death'),
+(1873302,18733,9,0,100,1,0,15,8000,12000,11,41534,0,0,0,0,0,0,0,0,0,0,'Fel Reaver - Cast War Stomp'),
+(3352402,33524,11,0,100,6,0,0,0,0,11,37816,0,0,0,0,0,0,0,0,0,0,'Saronite Animus - Cast Shadowform on Spawned'),
+(2286001,22860,0,0,100,1,2000,4000,4000,7000,11,32202,1,0,0,0,0,0,0,0,0,0,'Illidari Succubus - Cast Lash of Pain'),
+(2286002,22860,0,0,100,1,5000,11000,12000,18000,11,31865,5,1,0,0,0,0,0,0,0,0,'Illidari Succubus - Cast Seduction'),
+(2561805,25618,6,0,100,0,0,0,0,0,26,11705,1,0,0,0,0,0,0,0,0,0,'Varidus the Flenser - quest credit on Death'),
+(2573001,25730,9,0,100,1,0,5,6000,8000,11,16044,4,0,0,0,0,0,0,0,0,0,'En\'kilah Necrolord - Cast Cleave'),
+(2573002,25730,9,0,100,1,0,5,16000,21000,11,26339,1,1,44,33,-1433,0,0,0,0,0,'En\'kilah Necrolord - Say and Cast Saurfang\'s Rage'),
+(2573003,25730,0,0,100,1,6000,11000,6000,12000,11,24573,4,0,0,0,0,0,0,0,0,0,'En\'kilah Necrolord - Cast Mortal Strike'),
+(2573004,25730,0,0,100,1,2000,4000,36000,51000,11,41097,0,1,0,0,0,0,0,0,0,0,'En\'kilah Necrolord - Cast Whirlwind'),
+(2573005,25730,0,0,75,1,7000,15000,28000,43000,1,-1434,0,0,0,0,0,0,0,0,0,0,'En\'kilah Necrolord - 75% chance to say text'),
+(2246201,22462,0,0,100,1,3000,7000,8500,10000,11,12024,1,0,0,0,0,0,0,0,0,0,'Vindicator Haylen - Cast Net'),
+(1696701,16967,9,0,100,1,15,40,10000,20000,11,32720,0,0,0,0,0,0,0,0,0,0,'Haal\'eshi Talonguard - Cast Sprint'),
+(2079501,20795,0,0,100,1,0,1000,2500,4700,11,32011,1,0,0,0,0,0,0,0,0,0,'Keeper of the Cistern - Cast Water Bolt'),
+(2079502,20795,9,0,100,1,0,10,12000,16500,11,11831,0,0,0,0,0,0,0,0,0,0,'Keeper of the Cistern - Cast Frost Nova'),
+(2669901,26699,11,0,100,0,0,0,0,0,11,47315,0,0,41,1000,0,0,0,0,0,0,'Jormungar Meat - Cast Summon Jormungar Meat on Spawn and Despawn'),
+(1212501,12125,1,0,100,0,1000,1000,0,0,11,12787,0,32,0,0,0,0,0,0,0,0,'Mammoth Shark - Cast Thrash OOC'),
+(1890901,18909,0,0,100,1,5000,7000,7000,10000,11,12169,0,0,0,0,0,0,0,0,0,0,'Zabra\'jin Guard - Cast Shield Block'),
+(1890902,18909,0,0,100,1,7000,8500,8000,12000,11,12170,1,0,0,0,0,0,0,0,0,0,'Zabra\'jin Guard - Cast Revenge'),
+(1891001,18910,0,0,100,1,5000,7000,7000,10000,11,12169,0,0,0,0,0,0,0,0,0,0,'Swamprat Guard - Cast Shield Block'),
+(1891002,18910,0,0,100,1,7000,8500,8000,12000,11,12170,1,0,0,0,0,0,0,0,0,0,'Swamprat Guard - Cast Revenge'),
+(1892201,18922,0,0,100,1,5000,7000,7000,10000,11,12169,0,0,0,0,0,0,0,0,0,0,'Telredor Guard - Cast Shield Block'),
+(1892202,18922,0,0,100,1,7000,8500,8000,12000,11,12170,1,0,0,0,0,0,0,0,0,0,'Telredor Guard - Cast Revenge'),
+(1894301,18943,0,0,100,1,5000,7000,7000,10000,11,12169,0,0,0,0,0,0,0,0,0,0,'Orebor Harborage Defender - Cast Shield Block'),
+(1894302,18943,0,0,100,1,7000,8500,8000,12000,11,12170,1,0,0,0,0,0,0,0,0,0,'Orebor Harborage Defender - Cast Revenge'),
+(2285701,22857,0,0,100,1,4000,7000,9500,12000,11,15496,1,0,0,0,0,0,0,0,0,0,'Illidari Ravager - Cast Cleave'),
+(2285702,22857,0,0,100,1,6000,6000,14000,16000,11,32009,1,0,0,0,0,0,0,0,0,0,'Illidari Ravager - Cast Cutdown'),
+(2285703,22857,0,0,100,1,8000,8000,15000,18000,11,16244,0,0,0,0,0,0,0,0,0,0,'Illidari Ravager - Cast Demoralizing Shout'),
+(1565001,15650,1,0,100,0,1000,1000,0,0,11,29119,0,32,0,0,0,0,0,0,0,0,'Crazed Dragonhawk - Cast Feather Burst OOC'),
+(1564901,15649,1,0,100,0,1000,1000,0,0,11,29119,0,32,0,0,0,0,0,0,0,0,'Feral Dragonhawk Hatchling - Cast Feather Burst OOC');
 /*!40000 ALTER TABLE `creature_ai_scripts` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -26558,4 +26594,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-18  0:14:58
+-- Dump completed on 2020-05-16  1:12:00

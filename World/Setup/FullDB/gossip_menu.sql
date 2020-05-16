@@ -4197,7 +4197,7 @@ INSERT INTO `gossip_menu` (`entry`, `text_id`, `script_id`, `condition_id`) VALU
 (9186,12477,0,0),
 (9187,12478,0,0),
 (9188,12485,0,331),
-(9188,12511,0,0),
+(9188,12511,0,6001),
 (9190,12489,0,0),
 (9191,12494,0,0),
 (9192,12494,0,0),
@@ -7705,4 +7705,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-18  0:15:09
+-- Dump completed on 2020-05-16  1:12:11

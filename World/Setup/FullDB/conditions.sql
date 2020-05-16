@@ -2392,7 +2392,8 @@ INSERT INTO `conditions` (`condition_entry`, `type`, `value1`, `value2`, `commen
 (2087,33,22,0,NULL),
 (2088,33,28,0,NULL),
 (2074,34,0,0,NULL),
-(2073,34,1,0,NULL);
+(2073,34,1,0,NULL),
+(6001,8,11892,0,'Arch Druid Lathorius - Gossip');
 /*!40000 ALTER TABLE `conditions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -2405,4 +2406,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-18  0:14:56
+-- Dump completed on 2020-05-16  1:11:57
