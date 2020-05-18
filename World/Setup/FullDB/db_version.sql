@@ -27,7 +27,7 @@ TRUNCATE TABLE `db_version`;
 LOCK TABLES `db_version` WRITE;
 /*!40000 ALTER TABLE `db_version` DISABLE KEYS */;
 INSERT INTO `db_version` (`version`, `structure`, `content`, `description`, `comment`) VALUES 
-(21,12,1,'Warden_Refactor','Base DB from Rel21.01.00 to Rel21.12,001');
+(21,11,57,'Warden_Refactor','Base DB from Rel21.01.00 to Rel21.12,001');
 /*!40000 ALTER TABLE `db_version` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
