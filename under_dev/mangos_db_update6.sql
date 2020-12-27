@@ -1,3 +1,7 @@
+
+-- cata zone portals (alliance)
+UPDATE `gameobject_template` SET `data0` = '85040' , `data5` = '0' WHERE `entry` = '207691'; -- teleport to vashj'ir
+
 -- Human start zone - Stormwind Infantry attack blackrock battle worgs
 INSERT INTO dbscripts_on_creature_movement VALUES (49869,0,26,1,0,49871,8,0,0,0,0,0,0,0,0,0,'Stormwind Infantry - Looking for Blackrock Battle Worg to Attack');
 

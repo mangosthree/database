@@ -1,7 +1,3 @@
-# Y2kCat
-/*ALTER TABLE db_version_ytdb CHANGE COLUMN 725_FIX_12849 726_FIX_12849 bit;
-REPLACE INTO `db_version_ytdb` (`version`) VALUES ('726_FIX_12849');
-*/
 # Transport_Sniff
 # DELETE FROM transports WHERE entry=204423;
 # INSERT INTO `transports` VALUES ('204423', 'Orc Gunship', '8016');
@@ -15271,6 +15267,3 @@ UPDATE `gameobject_template` SET `flags`=`flags`&~4 WHERE `type` IN (2,19,17);
 # DELETE FROM `creature_onkill_reputation` WHERE `creature_id` NOT IN (SELECT `entry` FROM `creature_template`);
 UPDATE `creature_template` SET `ScriptName` = '' WHERE `AIName` = 'EventAI' AND `ScriptName` = 'generic_creature';
 UPDATE quest_template SET SpecialFlags=SpecialFlags|1 WHERE SpecialFlags=4;
-
-UPDATE db_version SET `cache_id`= '726';
-UPDATE db_version SET `version`= 'YTDB_0.16.9_R726_MaNGOS4_R12849_SD2_R3000_ACID_R320_RuDB_R64';

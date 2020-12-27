@@ -1,6 +1,3 @@
-# Y2kCat
-/*ALTER TABLE db_version_ytdb CHANGE COLUMN 722_FIX_12773 723_FIX_12773 bit;
-REPLACE INTO `db_version_ytdb` (`version`) VALUES ('723_FIX_12773');*/
 
 # Transport_Sniff
 # DELETE FROM transports WHERE entry=204423;
@@ -200,7 +197,6 @@ UPDATE `dbscripts_on_gossip` SET `id`='9687' WHERE `id`=28401;
 UPDATE `gossip_menu_option` SET `action_script_id`='9687' WHERE `menu_id`=9687 AND `id`=0;
 
 # ACID 3.2.0 - NeatElves
-UPDATE db_version SET `creature_ai_version` = 'ACID 3.2.0 \'Let The Show Carry On!\' - Full Release for CMaNGOS-WOTLK (3.3.5a Client)';
 REPLACE INTO `creature_ai_scripts` (`id`,`creature_id`,`event_type`,`event_inverse_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`action1_type`,`action1_param1`,`action1_param2`,`action1_param3`,`action2_type`,`action2_param1`,`action2_param2`,`action2_param3`,`action3_type`,`action3_param1`,`action3_param2`,`action3_param3`,`comment`) VALUES
 # ('258301','2583','0','0','100','1','2000','5000','19000','23000','11','2767','1','0','0','0','0','0','0','0','0','0','Stromgarde Troll Hunter - Cast Shadow Word: Pain'),
 ('598201','5982','12','0','100','1','20','0','30000','35000','11','7160','1','0','0','0','0','0','0','0','0','0','Black Slayer - Cast Execute at 20% Target HP'),
@@ -9183,6 +9179,4 @@ UPDATE `creature_template` SET `ScriptName` = '' WHERE `AIName` = 'EventAI' AND 
 UPDATE `creature_template` SET npcflag = npcflag|1 WHERE `gossip_menu_id` > 0;
 UPDATE quest_template SET SpecialFlags=SpecialFlags|1 WHERE SpecialFlags=4;
 
-UPDATE db_version SET `cache_id`= '724';
-UPDATE db_version SET `version`= 'YTDB_0.16.9_R724_cMaNGOS4_R12803_SD2_R2984_ACID_R320_RuDB_R64';
 

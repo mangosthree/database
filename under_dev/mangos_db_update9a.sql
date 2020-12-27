@@ -1,7 +1,3 @@
-# Y2kCat
-/*ALTER TABLE db_version_ytdb CHANGE COLUMN 724_FIX_12803 725_FIX_12849 bit;
-REPLACE INTO `db_version_ytdb` (`version`) VALUES ('725_FIX_12849');*/
-
 # Transport_Sniff
 # DELETE FROM transports WHERE entry=204423;
 # INSERT INTO `transports` VALUES ('204423', 'Orc Gunship', '8016');
@@ -451,5 +447,3 @@ UPDATE `creature` SET `spawndist` = 0, `MovementType` = 0 WHERE `guid` = 276442;
 UPDATE `creature` SET `spawndist` = 0, `MovementType` = 0 WHERE `id` IN (51166);
 UPDATE `creature_template` SET `InhabitType` = 5 WHERE `entry` = 45239;
 
-UPDATE db_version SET `cache_id`= '725';
-UPDATE db_version SET `version`= 'YTDB_0.16.9_R725_cMaNGOS4_R12849_SD2_R3000_ACID_R320_RuDB_R64';
