@@ -90,7 +90,7 @@ echo %colWhiteBold%_____________________________________________________________
 echo %colWhiteDarkBlue%^|    __  __      _  _  ___  ___  ___                                          ^|
 echo ^|   ^|  \/  ^|__ _^| \^| ^|/ __^|/ _ \/ __^|                                         ^|
 echo ^|   ^| ^|\/^| / _` ^| .` ^| (_ ^| (_) \__ \                                         ^|
-echo ^|   ^|_^|  ^|_\__,_^|_^|\_^|\___^|\___/^|___/ %colYellowBold%Database Setup and World Loader v2.0%colWhiteBold%    ^|
+echo ^|   ^|_^|  ^|_\__,_^|_^|\_^|\___^|\___/^|___/ %colYellowBold%Database Setup and World Loader v2.1%colWhiteBold%    ^|
 echo ^|_____________________________________________________________________________^|
 echo %colWhiteLightBlue%^|                                                                             ^|
 echo ^|   Website / Forum / Wiki / Support: https://getmangos.eu                    ^|
@@ -455,6 +455,7 @@ REM if %defaultsused% == YES goto done:
 
 :WorldDB
 REM ##### IF createworlddb = YES then create the DB
+
 if %createworldDB% == YES goto WorldDB1:
 
 :WorldDB2
@@ -813,6 +814,7 @@ echo ^| Applying World DB updates                                               
 echo ^|                                                                             ^|
 echo ^|_____________________________________________________________________________^|%colReset%
 for %%i in (World\Updates\Rel21\*.sql) do echo %%i & %mysql%mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% %wdb% < %%i
+for %%i in (World\Updates\Rel22\*.sql) do echo %%i & %mysql%mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% %wdb% < %%i
 goto done2
 
 :PatchRealm
@@ -823,6 +825,7 @@ echo ^| Applying Realmd DB updates                                              
 echo ^|                                                                             ^|
 echo ^|_____________________________________________________________________________^|%colReset%
 for %%i in (Realm\Updates\Rel21\*.sql) do echo %%i & %mysql%mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% %rdb% < %%i
+for %%i in (Realm\Updates\Rel22\*.sql) do echo %%i & %mysql%mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% %rdb% < %%i
 goto done3
 
 :patchCharacter
@@ -833,6 +836,7 @@ echo ^| Applying Character DB updates                                           
 echo ^|                                                                             ^|
 echo ^|_____________________________________________________________________________^|%colReset%
 for %%i in (Character\Updates\Rel21\*.sql) do echo %%i & %mysql%mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% %cdb% < %%i
+for %%i in (Character\Updates\Rel22\*.sql) do echo %%i & %mysql%mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% %cdb% < %%i
 goto done1
 
 :missingRecursive
@@ -886,6 +890,8 @@ if %WDBUpdate% == YES goto patchWorld:
 if %RDBUpdate% == YES goto PatchRealm:
 :done3
 
+if %LOCList% == YES goto PrepLoc:
+
 :LocWorldDB
 if %locFR% == YES goto LoadFR:
 
@@ -936,6 +942,19 @@ echo %colReset% Script has completed !
 echo %colReset% - Please review the messages above to ensure no errors occurred.
 echo.
 goto theend:
+
+:PrepLoc
+echo %colWhiteBold%_______________________________________________________________________________
+echo %colWhiteDarkYellow%^|                                                                             ^|
+echo ^|                                                                             ^|
+echo ^| Preparing Localisation files                                                ^|
+echo ^|                                                                             ^|
+echo ^|_____________________________________________________________________________^|%colReset%
+echo.
+
+%mysql%mysql -q -s -h %svr% --user=%user% --password=%pass% --port=%port% %wdb% < Translations\1_LocaleTablePrepare.sql
+goto LocWorldDB:
+
 
 :LoadFR
 echo %colWhiteBold%_______________________________________________________________________________

@@ -181,6 +181,7 @@ echo %colWhiteBold%^|                                                           
 echo %colWhiteBold%^|_____________________________________________________________________________^|%colReset%
 echo.
 
+
 set /p activity=. Please select an activity ? : 
 if %activity% == V goto ToggleCharDB:
 if %activity% == v goto ToggleCharDB:

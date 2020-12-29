@@ -160,8 +160,7 @@ for TABLE in \
 echo "Dumping ${i}/123 ${TABLE}..."
 
 echo "--
--- Copyright (C) 2005-2017 MaNGOS <http://getmangos.eu/>
--- Copyright (C) 2009-2020 MaNGOSThree <https://github.com/mangosthree>
+-- Copyright (C) 2005-2021 MaNGOS <http://getmangos.eu/> <https://github.com/mangosthree>
 --
 -- This program is free software; you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
