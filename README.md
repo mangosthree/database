@@ -9,7 +9,7 @@
 
 This is the database to support the MangosThree server.
 
-It aims to be 100% compatible with the final version of WOTLK [World of Warcraft][2]
+It aims to be 100% compatible with the final version of CATA [World of Warcraft][2]
 namely [patch 4.3.4a][4].
 
 
