@@ -47,7 +47,7 @@ BEGIN
     DELETE FROM `db_scripts` WHERE `id` IN (207414,207416);
     INSERT INTO `db_scripts` (`script_type`, `id`, `command`, `datalong`, `comments`) VALUES 
     (7,207414,8,50054,'Waters Kill credit -Q.28805'),
-    (7,207416,8,50054,'Waters Kill credit -Q.28826 ');
+    (7,207416,8,50054,'Waters Kill credit -Q.28826');
 
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
         -- -- PLACE UPDATE SQL ABOVE -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
