@@ -17,12 +17,12 @@ BEGIN
     SET @cCurContent := (SELECT `content` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
 
     -- Expected Values
-    SET @cOldVersion = '22'; 
+    SET @cOldVersion = '21'; 
     SET @cOldStructure = '14'; 
     SET @cOldContent = '014';
 
     -- New Values
-    SET @cNewVersion = '22';
+    SET @cNewVersion = '21';
     SET @cNewStructure = '14';
     SET @cNewContent = '015';
                             -- DESCRIPTION IS 30 Characters MAX    
