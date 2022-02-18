@@ -45,22 +45,23 @@ BEGIN
 		
 		/* Update help displayed for ".modify speed" command */
 		UPDATE `command` 
-		SET `help` = 'Syntax: .modify speed #rate.speed #rate Modify the running speed of the selected player to \r normal base run speed\"\"*rate. If no player is selected, modify your speed. #rate may range from 0.1 to GM.MaxSpeedFactor defined in mangosd.conf.\"' 
-		WHERE (`name` = 'modify speed');
+		SET `help_text` = 'Syntax: .modify speed #rate.speed #rate Modify the running speed of the selected player to \r normal base run speed\"\"*rate. If no player is selected, modify your speed. #rate may range from 0.1 to GM.MaxSpeedFactor defined in mangosd.conf.\"' 
+		WHERE (`command_text` = 'modify speed');
 
 		/* Update help displayed for ".modify swim" command */
 		UPDATE `command` 
-		SET `help` = 'Syntax: .modify swim #rate Modify the swim speed of the selected player to \r normal swim speed\"\"*rate. If no player is selected, modify your speed. #rate may range from 0.1 to GM.MaxSpeedFactor defined in mangosd.conf.\"' 
-		WHERE (`name` = 'modify swim');
+		SET `help_text` = 'Syntax: .modify swim #rate Modify the swim speed of the selected player to \r normal swim speed\"\"*rate. If no player is selected, modify your speed. #rate may range from 0.1 to GM.MaxSpeedFactor defined in mangosd.conf.\"' 
+		WHERE (`command_text` = 'modify swim');
 
 		/* Update help displayed for ".modify bwalk" command */
 		UPDATE `command` 
-		SET `help` = 'Syntax: .modify bwalk #rate Modify the speed of the selected player while running backwards to \r normal walk back speed\"\"*rate. If no player is selected, modify your speed. #rate may range from 0.1 to GM.MaxSpeedFactor defined in mangosd.conf.\"' 
-		WHERE (`name` = 'modify bwalk');
+		SET `help_text` = 'Syntax: .modify bwalk #rate Modify the speed of the selected player while running backwards to \r normal walk back speed\"\"*rate. If no player is selected, modify your speed. #rate may range from 0.1 to GM.MaxSpeedFactor defined in mangosd.conf.\"' 
+		WHERE (`command_text` = 'modify bwalk');
 
 		/* Update help displayed for ".modify aspeed" command */
-		UPDATE `command` SET `help` = 'Syntax: .modify aspeed #rate Modify all speeds -run,swim,run back,swim back- of the selected player to \r normal base speed for this move type\"\"*rate. If no player is selected, modify your speed. #rate may range from 0.1 to GM.MaxSpeedFactor defined in mangosd.conf.\"' 
-		WHERE (`name` = 'modify aspeed');
+		UPDATE `command`
+		SET `help_text` = 'Syntax: .modify aspeed #rate Modify all speeds -run,swim,run back,swim back- of the selected player to \r normal base speed for this move type\"\"*rate. If no player is selected, modify your speed. #rate may range from 0.1 to GM.MaxSpeedFactor defined in mangosd.conf.\"' 
+		WHERE (`command_text` = 'modify aspeed');
 
 
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
