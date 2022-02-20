@@ -26,7 +26,7 @@ BEGIN
     SET @cNewStructure = '15';
     SET @cNewContent = '014';
                             -- DESCRIPTION IS 30 Characters MAX    
-    SET @cNewDescription = 'Human_Starting_Zone_RequiredRaces';
+    SET @cNewDescription = 'Human_Start Zone Req. Races';
 
                         -- COMMENT is 150 Characters MAX
     SET @cNewComment = 'Human_Starting_Zone_RequiredRaces';
