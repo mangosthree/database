@@ -43,7 +43,7 @@ BEGIN
         -- -- PLACE UPDATE SQL BELOW -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
         
---Set the following quests (Encrypted Letter, The Deepest Cut, Beating Them Back!, Lions for Lambs, Join the Battle!, They Sent Assassins, and The Rear is Clear) to include all Alliance races in RequiredRaces.
+-- Set the following quests (Encrypted Letter, The Deepest Cut, Beating Them Back!, Lions for Lambs, Join the Battle!, They Sent Assassins, and The Rear is Clear) to include all Alliance races in RequiredRaces.
 UPDATE `quest_template` SET `RequiredRaces` = 2098253 WHERE `Entry` IN (3102, 26915, 28764, 28772, 28787, 28795, 28821);
 
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
