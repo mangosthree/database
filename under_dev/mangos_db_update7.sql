@@ -1,17 +1,11 @@
-# Fix
+/**
+-- The Following queries that are commented out need research.
+-- As the working file is prossessed any updates applied will be removed from this file. 
 INSERT IGNORE INTO `creature_template_spells` SET `spell1` = 66262, `spell2` = 61784, `spell3` = 61785, `spell4` = 61788, `spell5` = 61786, `spell6` = 61787, `entry` = 34824;
 INSERT IGNORE INTO `creature_template_spells` SET `spell1` = 66259, `spell2` = 61784, `spell3` = 61785, `spell4` = 61788, `spell5` = 61786, `spell6` = 61787, `entry` = 34819;
 INSERT IGNORE INTO `creature_template_spells` SET `spell1` = 66250, `spell2` = 61784, `spell3` = 61785, `spell4` = 61788, `spell5` = 61786, `spell6` = 61787, `entry` = 34812;
 INSERT IGNORE INTO `creature_template_spells` SET `spell1` = 66261, `spell2` = 61784, `spell3` = 61785, `spell4` = 61788, `spell5` = 61786, `spell6` = 61787, `entry` = 34823;
 INSERT IGNORE INTO `creature_template_spells` SET `spell1` = 66260, `spell2` = 61784, `spell3` = 61785, `spell4` = 61788, `spell5` = 61786, `spell6` = 61787, `entry` = 34822;
-
-DELETE FROM `spell_area` WHERE `spell`=43889;
-INSERT INTO `spell_area` (`spell`, `area`, `quest_start`, `quest_end`, `aura_spell`, `racemask`, `gender`, `autocast`, `quest_start_active`) VALUES 
-(43889, 3999, 11390, 0, 0, 0, 2, 1, 1);
-
-DELETE FROM `spell_area` WHERE `spell`=71313;
-INSERT INTO `spell_area` (`spell`, `area`, `quest_start`, `quest_end`, `aura_spell`, `racemask`, `gender`, `autocast`, `quest_start_active`) VALUES 
-(71313, 4862, 24461, 24522, 0, 0, 2, 1, 1);
 
 
 # NeatElves
@@ -79,83 +73,19 @@ INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`
 
 UPDATE `creature_template` SET `minlevel` =1, `maxlevel` =1, `minlevelhealth` =1, `maxlevelhealth` =1, `armor` =7, `factionAlliance` =114, `factionHorde` =114, `minmeleedmg` =2, `maxmeleedmg` =2, `meleeattackpower` =24, `damagemultiplier` =7.5, `meleebaseattacktime` =2000, `rangedbaseattacktime` =0, `minrangeddmg` =1, `maxrangeddmg` =1, `rangedattackpower` =0, `InhabitType` =1, `mechanicimmunemask` =0, `extraflags` =0 WHERE `entry` =25608;
 
-UPDATE `creature_template` SET `minlootgold` =2250000, `maxlootgold` =2750000, `InhabitType` =1 WHERE `entry` =25315;
-
-UPDATE `creature` SET `spawnMask` = 0 WHERE `id` = 25315;
-DELETE FROM `creature` WHERE `id`=25608;
-INSERT INTO `creature` (`guid`,`id`,`map`,`spawnMask`,`phaseMask`,`modelid`,`equipment_id`,`position_x`,`position_y`,`position_z`,`orientation`,`spawntimesecs`,`spawndist`,`currentwaypoint`,`curhealth`,`curmana`,`MovementType`) VALUES
-(81346, 25608, 580, 1, 1, 0, 0, 1699.42, 628.038, 27.5451, 3.84519, 604800, 0, 0, 8338871, 0, 0);
-
-DELETE FROM `creature` WHERE `guid` = 80778;
-DELETE FROM `creature_template_spells` WHERE `entry` = 24895;
-DELETE FROM `creature` WHERE `guid` = 102510;
-DELETE FROM `creature_template_spells` WHERE `entry` = 24850;
-DELETE FROM `creature` WHERE `guid` = 130052;
-DELETE FROM `creature_template_spells` WHERE `entry` = 25502;
-
-UPDATE `creature_involvedrelation` SET `id` = '38017' WHERE `id` =38589 AND `quest` =24880;
-
 DELETE FROM `creature_template_spells` WHERE `entry` = 25038;
 UPDATE `creature_template` SET `mechanicimmunemask` = '0' WHERE `entry` =25319;
-UPDATE `creature_template` SET `mingold` =2250000, `maxgold` =2750000, `InhabitType` =1 WHERE `entry` IN (25166,24882,24892,25038,25165,25166,25840);
-UPDATE `creature_loot_template` SET `ChanceOrQuestChance` =100 WHERE `item` IN (12335,12336,12337);
-UPDATE `creature_loot_template` SET `ChanceOrQuestChance` =10 WHERE `item` =12219;
+
 UPDATE `creature_template` SET `factionAlliance` = 22, `factionHorde` = 22 WHERE `entry` = 10596;
 UPDATE `creature_template` SET `factionAlliance` = 40, `factionHorde` = 40 WHERE `entry` = 10762;
-DELETE FROM `creature` WHERE `id` = 15261;
-DELETE FROM `creature` WHERE `id` = 15260;
-DELETE FROM `creature` WHERE `id` = 19226;
-DELETE FROM `creature` WHERE `id` = 19224;
-DELETE FROM `creature` WHERE `id` = 22459;
-DELETE FROM `creature` WHERE `id` = 18042;
-DELETE FROM `creature` WHERE `id` = 22466;
+**/
+
+
 UPDATE `quest_template` SET `RequiredRaces` = '690' WHERE `entry` IN (9864,9865,9866);
 UPDATE `quest_template` SET `RequiredRaces` = '1101' WHERE `entry` IN (9878);
 UPDATE `quest_template` SET `PrevQuestId` =0, `NextQuestInChain` =12529 WHERE `entry` =12528;
 UPDATE `gameobject_template` SET `flags` = 2 WHERE `entry` = 1721;
 UPDATE `gameobject_template` SET `flags` = 2 WHERE `entry` = 1722;
-DELETE FROM `creature` WHERE `id` = 2776;
-DELETE FROM `creature` WHERE `id` = 9522;
-DELETE FROM `creature` WHERE `id` = 9605;
-DELETE FROM `creature` WHERE `id` = 9538;
-DELETE FROM `creature` WHERE `id` = 9539;
-DELETE FROM `creature` WHERE `id` = 14484;
-DELETE FROM `creature` WHERE `id` = 14485;
-DELETE FROM `creature` WHERE `id` = 14489;
-DELETE FROM `creature` WHERE `id` = 7808;
-DELETE FROM `creature` WHERE `id` = 7809;
-DELETE FROM `creature` WHERE `id` = 2149;
-DELETE FROM `creature` WHERE `id` = 6390;
-DELETE FROM `creature` WHERE `id` = 21641;
-DELETE FROM `creature` WHERE `id` = 11075;
-DELETE FROM `creature` WHERE `id` = 11076;
-DELETE FROM `creature` WHERE `id` = 11077;
-DELETE FROM `creature` WHERE `id` = 11078;
-DELETE FROM `creature` WHERE `id` = 6180;
-DELETE FROM `creature` WHERE `id` = 12580;
-DELETE FROM `creature` WHERE `id` = 12860;
-DELETE FROM `creature` WHERE `id` = 3898;
-DELETE FROM `creature` WHERE `id` = 3899;
-DELETE FROM `creature` WHERE `id` = 3900;
-DELETE FROM `creature` WHERE `id` = 23002;
-DELETE FROM `creature` WHERE `id` = 2158;
-DELETE FROM `creature` WHERE `id` = 2159;
-DELETE FROM `creature` WHERE `id` = 2160;
-DELETE FROM `creature` WHERE `id` = 20427;
-DELETE FROM `creature` WHERE `id` = 12140;
-DELETE FROM `creature` WHERE `id` = 3451;
-DELETE FROM `creature` WHERE `id` = 7803;
-DELETE FROM `creature` WHERE `id` = 7805;
-DELETE FROM `creature` WHERE `id` = 15634;
-DELETE FROM `creature` WHERE `id` = 19919;
-DELETE FROM `creature` WHERE `id` = 19920;
-DELETE FROM `creature` WHERE `id` = 15633;
-DELETE FROM `creature` WHERE `id` = 7848;
-DELETE FROM `creature` WHERE `id` = 33016;
-DELETE FROM `creature` WHERE `id` = 33017;
-DELETE FROM `creature` WHERE `id` = 24213;
-DELETE FROM `creature` WHERE `id` = 24214;
-DELETE FROM `creature` WHERE `id` = 24215;
 DELETE FROM creature WHERE guid=68037;
 UPDATE `creature_template` SET `faction_A` = 35, `faction_H` = 35 WHERE `entry` IN (15421,18928);
 UPDATE creature_template SET flags_extra=64 WHERE entry IN (29219, 29206, 29186, 29200, 29199, 29204, 29190, 29180, 29179);
@@ -194,8 +124,7 @@ DELETE FROM `creature` WHERE `id` = 12422;
 DELETE FROM `creature` WHERE `id` = 9476;
 DELETE FROM `creature` WHERE `id` = 26764;
 DELETE FROM `creature` WHERE `id` = 26822;
-UPDATE `creature_template` SET `faction_A` =35, `faction_H` =35 WHERE `entry` =15117;
-UPDATE `creature_template` SET `faction_A` =14, `faction_H` =14 WHERE `entry` IN (26764,26822);
+
 UPDATE `dbscripts_on_gossip` SET `id`='9687' WHERE `id`=28401;
 UPDATE `gossip_menu_option` SET `action_script_id`='9687' WHERE `menu_id`=9687 AND `id`=0;
 
