@@ -92,7 +92,7 @@ echo %colWhiteBold%_____________________________________________________________
 echo %colWhiteDarkBlue%^|    __  __      _  _  ___  ___  ___                                          ^|
 echo ^|   ^|  \/  ^|__ _^| \^| ^|/ __^|/ _ \/ __^|                                         ^|
 echo ^|   ^| ^|\/^| / _` ^| .` ^| (_ ^| (_) \__ \                                         ^|
-echo ^|   ^|_^|  ^|_\__,_^|_^|\_^|\___^|\___/^|___/ %colYellowBold%Database Setup and World Loader v2.1%colWhiteBold%    ^|
+echo ^|   ^|_^|  ^|_\__,_^|_^|\_^|\___^|\___/^|___/ %colYellowBold%Database Setup and World Loader v2.2%colWhiteBold%    ^|
 echo ^|_____________________________________________________________________________^|
 echo %colWhiteLightBlue%^|                                                                             ^|
 echo ^|   Website / Forum / Wiki / Support: https://getmangos.eu                    ^|
@@ -112,10 +112,10 @@ if %updatesOnly% == YES echo %colWhiteBold%^|   %colWhiteBold%Character Database
 echo %colWhiteBold%^|                                                                             ^|
 if %createworldDB% == NO set PAD= 
 if %createworldDB% == YES set PAD=
-if %updatesOnly% == NO echo %colWhiteBold%^|       %colYellowBold%World Database : E  - %colYellow%Toggle Actually Create World DB (%colWhiteBold%%createworldDB%%colYellow%)%colReset%           %PAD%%colWhiteBold%^|
+if %updatesOnly% == NO echo %colWhiteBold%^|       %colYellowBold%World Database : E - %colYellow%Toggle Actually Create World DB (%colWhiteBold%%createworldDB%%colYellow%)%colReset%            %PAD%%colWhiteBold%^|
 if %loadworldDB% == NO set PAD= 
 if %loadworldDB% == YES set PAD=
-if %updatesOnly% == NO echo %colWhiteBold%^|                        %colYellowBold%W  - %colYellow%Toggle Create World DB Structure (%colWhiteBold%%loadworldDB%%colYellow%)%colReset%          %PAD%%colWhiteBold%^|
+if %updatesOnly% == NO echo %colWhiteBold%^|                        %colYellowBold%W - %colYellow%Toggle Create World DB Structure (%colWhiteBold%%loadworldDB%%colYellow%)%colReset%           %PAD%%colWhiteBold%^|
 if %DBType% == EMPTY set PAD=    
 if %DBType% == POPULATED set P=
 
