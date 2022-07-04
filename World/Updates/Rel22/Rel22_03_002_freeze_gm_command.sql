@@ -18,13 +18,13 @@ BEGIN
 
     -- Expected Values
     SET @cOldVersion = '22'; 
-    SET @cOldStructure = '02'; 
-    SET @cOldContent = '018';
+    SET @cOldStructure = '03'; 
+    SET @cOldContent = '001';
 
     -- New Values
     SET @cNewVersion = '22';
-    SET @cNewStructure = '02';
-    SET @cNewContent = '019';
+    SET @cNewStructure = '03';
+    SET @cNewContent = '002';
                             -- DESCRIPTION IS 30 Characters MAX    
     SET @cNewDescription = 'freeze_gm_command';
 
@@ -62,7 +62,7 @@ BEGIN
 		('808', 'freezeplayer', '2', 'Syntax: .freezeplayer #playerName - Freezes a player and prevent him to move, use any spell or even logout. If no #playerName is provided, will freeze current selected player.Command has no effect if #playerName is not found, or if no player is selected.'),
 		('809', 'unfreezeplayer', '2', 'Syntax: .unfreezeplayer #playerName - Unfreezes a player, allowing him to move, use spells and logout.');
 
-        UPDATE `mangos_string` SET entry=1700 WHERE entry=1800; // AUTOBROADCAST_TEXT
+        UPDATE `mangos_string` SET entry=1700 WHERE entry=1800; -- AUTOBROADCAST_TEXT
 
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
         -- -- PLACE UPDATE SQL ABOVE -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
