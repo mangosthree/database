@@ -7,7 +7,7 @@ TRUNCATE TABLE `item_loot_template`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.6.25-log
+-- Server version	5.5.5-10.5.8-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -2585,7 +2585,6 @@ INSERT INTO `item_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `group
 (43624,37760,30.4705,0,-37760,1,0),
 (43624,37769,32.72,0,-37769,1,0),
 (43624,41777,5.4071,0,-41777,1,0),
-(44113,0,75,0,1,1,0),
 (44113,33871,2,1,1,1,0),
 (44113,33925,2,1,1,1,0),
 (44113,34834,0.5,1,1,1,0),
@@ -2641,7 +2640,6 @@ INSERT INTO `item_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `group
 (45072,72145,0.0003,0,1,1,0),
 (45328,3181,100,0,1,2,0),
 (45328,45323,-100,0,1,1,0),
-(45724,0,100,0,1,1,0),
 (45875,45087,100,0,1,1,0),
 (45878,45087,100,0,1,2,0),
 (45878,45088,0,1,1,1,0),
@@ -2877,7 +2875,6 @@ INSERT INTO `item_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `group
 (54535,71332,10,0,1,1,0),
 (54536,53641,5,0,1,1,0),
 (54536,69771,8.7772,0,1,1,0),
-(54537,0,100,0,25,25,0),
 (54537,49715,30,0,1,1,0),
 (54537,49927,100,0,5,10,0),
 (54537,50250,1,0,1,1,0),
@@ -3516,4 +3513,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-16  1:12:12
+-- Dump completed on 2022-07-05 13:04:41

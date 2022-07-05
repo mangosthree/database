@@ -7,7 +7,7 @@ TRUNCATE TABLE `creature_addon`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.6.25-log
+-- Server version	5.5.5-10.5.8-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -1154,8 +1154,6 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pv
 (56349,0,0,1,16,0,0,NULL),
 (56350,0,0,1,16,0,0,NULL),
 (56351,0,0,1,16,0,0,NULL),
-(56352,0,16777216,1,16,0,0,NULL),
-(56353,0,16777216,1,16,0,0,NULL),
 (56354,0,0,1,16,0,0,NULL),
 (56355,0,0,1,16,0,0,NULL),
 (56356,0,0,1,16,0,0,NULL),
@@ -3057,7 +3055,6 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pv
 (60363,0,0,1,16,0,0,NULL),
 (60364,0,0,1,16,0,0,NULL),
 (60368,0,0,1,16,0,0,NULL),
-(60369,0,16777216,1,16,0,0,NULL),
 (60371,0,0,1,16,0,0,NULL),
 (60374,0,0,1,16,0,0,NULL),
 (60375,0,0,1,16,0,0,NULL),
@@ -3213,7 +3210,6 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pv
 (60698,0,0,1,16,0,0,NULL),
 (60701,0,0,1,16,0,0,NULL),
 (60703,0,0,1,16,0,0,NULL),
-(60706,0,16777216,1,16,0,0,NULL),
 (60719,0,0,1,16,0,0,NULL),
 (60726,0,0,1,16,0,0,NULL),
 (60727,0,0,1,16,0,0,NULL),
@@ -5702,7 +5698,6 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pv
 (66103,0,16777216,1,16,0,0,NULL),
 (66104,0,3,1,16,0,0,NULL),
 (66105,0,16777216,1,16,0,0,NULL),
-(66106,0,16777216,1,16,0,0,NULL),
 (66107,0,16777216,1,16,0,0,NULL),
 (66155,0,1,1,16,0,0,NULL),
 (66157,0,3,1,16,0,0,NULL),
@@ -7610,7 +7605,6 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pv
 (69144,0,16777216,1,16,0,0,NULL),
 (69145,0,16777216,1,16,0,0,NULL),
 (69146,0,16777216,1,16,0,0,NULL),
-(69147,0,16777216,1,16,0,0,NULL),
 (69148,0,16777216,1,16,0,0,NULL),
 (69149,0,16777216,1,16,0,0,NULL),
 (69150,0,0,1,16,0,0,NULL),
@@ -35446,8 +35440,7 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pv
 (249813,0,0,1,0,0,0,NULL),
 (249818,0,0,1,0,0,0,NULL),
 (249832,0,0,1,0,0,0,NULL),
-(249843,0,0,1,0,0,0,NULL);
-INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pvp_state`, `emote`, `moveflags`, `auras`) VALUES 
+(249843,0,0,1,0,0,0,NULL),
 (249847,0,0,1,0,0,0,NULL),
 (249849,0,0,1,0,0,0,NULL),
 (249854,0,0,1,0,0,0,NULL),
@@ -35455,7 +35448,8 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pv
 (249865,0,0,1,0,0,0,NULL),
 (249866,0,0,1,0,0,0,NULL),
 (249870,0,0,1,0,0,0,NULL),
-(249873,0,0,1,0,0,0,NULL),
+(249873,0,0,1,0,0,0,NULL);
+INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pvp_state`, `emote`, `moveflags`, `auras`) VALUES 
 (249875,0,0,1,0,0,0,NULL),
 (249881,0,0,1,0,0,0,NULL),
 (249883,0,0,1,0,0,0,NULL),
@@ -35799,8 +35793,6 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pv
 (251648,0,0,1,0,0,0,'29266'),
 (251651,0,0,1,0,0,0,'29266'),
 (251659,0,0,1,0,0,0,NULL),
-(251663,0,0,1,0,0,0,NULL),
-(251664,0,0,1,0,0,0,NULL),
 (251679,0,0,1,1,0,0,NULL),
 (251680,0,0,1,1,0,0,NULL),
 (251683,0,0,1,1,0,0,NULL),
@@ -35822,7 +35814,6 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pv
 (251753,0,0,1,0,0,0,'29266'),
 (251757,0,0,1,0,0,0,'29266'),
 (251759,0,0,1,0,0,0,'29266'),
-(251767,0,0,1,0,0,0,NULL),
 (251782,0,0,1,1,0,0,NULL),
 (251783,0,0,1,1,0,0,NULL),
 (251785,0,0,1,1,0,268959744,NULL),
@@ -69727,8 +69718,7 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pv
 (355653,0,0,1,0,0,0,NULL),
 (355654,0,0,1,1,0,0,NULL),
 (355660,0,0,1,0,0,0,NULL),
-(355661,0,0,1,0,0,0,NULL);
-INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pvp_state`, `emote`, `moveflags`, `auras`) VALUES 
+(355661,0,0,1,0,0,0,NULL),
 (355662,0,0,1,0,0,0,NULL),
 (355663,0,0,1,0,0,0,NULL),
 (355664,0,0,1,0,0,0,NULL),
@@ -69738,7 +69728,8 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pv
 (355668,0,0,1,0,0,0,NULL),
 (355669,0,0,1,0,0,0,NULL),
 (355670,0,0,1,0,0,0,'99201'),
-(355671,0,0,1,0,0,0,'99201'),
+(355671,0,0,1,0,0,0,'99201');
+INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pvp_state`, `emote`, `moveflags`, `auras`) VALUES 
 (355672,0,0,1,0,0,0,'99201'),
 (355673,0,0,1,0,0,0,NULL),
 (355674,0,0,1,0,0,0,NULL),
@@ -76722,4 +76713,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-16  1:12:00
+-- Dump completed on 2022-07-05 13:04:21

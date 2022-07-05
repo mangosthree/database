@@ -7,7 +7,7 @@ TRUNCATE TABLE `gossip_menu`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.6.25-log
+-- Server version	5.5.5-10.5.8-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -1974,9 +1974,9 @@ INSERT INTO `gossip_menu` (`entry`, `text_id`, `script_id`, `condition_id`) VALU
 (6567,7782,0,0),
 (6568,7783,0,0),
 (6569,7784,0,0),
-(6570,7785,0,0),
+(6570,7869,0,8335),
+(6570,7785,0,6007),
 (6570,7868,0,0),
-(6570,7869,0,439),
 (6573,7788,0,0),
 (6573,7821,0,1159),
 (6574,7790,0,0),
@@ -2266,9 +2266,9 @@ INSERT INTO `gossip_menu` (`entry`, `text_id`, `script_id`, `condition_id`) VALU
 (7158,8423,0,0),
 (7158,8428,0,434),
 (7159,8424,0,0),
+(7160,8495,0,8341),
+(7160,8493,0,8345),
 (7160,8429,0,0),
-(7160,8494,0,431),
-(7160,8495,0,0),
 (7162,8431,0,0),
 (7162,8432,0,433),
 (7163,8433,0,0),
@@ -7692,7 +7692,15 @@ INSERT INTO `gossip_menu` (`entry`, `text_id`, `script_id`, `condition_id`) VALU
 (53371,53371,0,0),
 (53466,53466,0,0),
 (56314,56314,0,0),
-(57800,57800,0,0);
+(57800,57800,0,0),
+(2405,3099,0,6002),
+(2405,3098,0,6003),
+(2406,3100,0,0),
+(2407,3101,0,0),
+(2408,3102,0,0),
+(57801,60004,0,0),
+(7160,8496,0,8344),
+(7160,8430,0,8338);
 /*!40000 ALTER TABLE `gossip_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -7705,4 +7713,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-16  1:12:11
+-- Dump completed on 2022-07-05 13:04:38

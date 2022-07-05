@@ -7,7 +7,7 @@ TRUNCATE TABLE `pool_creature_template`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.6.25-log
+-- Server version	5.5.5-10.5.8-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,9 +27,9 @@ TRUNCATE TABLE `pool_creature_template`;
 LOCK TABLES `pool_creature_template` WRITE;
 /*!40000 ALTER TABLE `pool_creature_template` DISABLE KEYS */;
 INSERT INTO `pool_creature_template` (`id`, `pool_entry`, `chance`, `description`) VALUES 
-(28362,334,0,'Glinting Dirt'),
 (832,335,0,'Dust Devil'),
 (23777,14361,0,'Proto-Drake Egg'),
+(28362,334,0,'Glinting Dirt'),
 (31887,255,0,'Ebon Blade Marker');
 /*!40000 ALTER TABLE `pool_creature_template` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -43,4 +43,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-16  1:12:22
+-- Dump completed on 2022-07-05 13:04:54

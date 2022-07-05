@@ -7,7 +7,7 @@ TRUNCATE TABLE `game_event_gameobject`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.6.25-log
+-- Server version	5.5.5-10.5.8-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28705,7 +28705,11 @@ INSERT INTO `game_event_gameobject` (`guid`, `event`) VALUES
 (217580,12),
 (217582,75),
 (217583,75),
-(217584,75);
+(217584,75),
+(205414,7),
+(205475,7),
+(205501,7),
+(205616,7);
 /*!40000 ALTER TABLE `game_event_gameobject` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -28718,4 +28722,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-16  1:12:08
+-- Dump completed on 2022-07-05 13:04:34

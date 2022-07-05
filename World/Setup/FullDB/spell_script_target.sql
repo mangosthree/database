@@ -7,7 +7,7 @@ TRUNCATE TABLE `spell_script_target`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.6.25-log
+-- Server version	5.5.5-10.5.8-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -3350,7 +3350,14 @@ INSERT INTO `spell_script_target` (`entry`, `type`, `targetEntry`, `inverseEffec
 (102882,1,55223,0),
 (102882,1,55225,0),
 (102882,1,55341,0),
-(46237,1,25861,0);
+(46237,1,25861,0),
+(86264,1,46268,0),
+(80208,1,42940,0),
+(69228,1,36727,0),
+(69228,1,37155,0),
+(69228,1,37156,0),
+(71898,0,202138,0),
+(71898,1,38438,0);
 /*!40000 ALTER TABLE `spell_script_target` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -3363,4 +3370,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-16  1:12:28
+-- Dump completed on 2022-07-05 13:05:05

@@ -7,7 +7,7 @@ TRUNCATE TABLE `mail_level_reward`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.6.25-log
+-- Server version	5.5.5-10.5.8-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,15 +28,15 @@ LOCK TABLES `mail_level_reward` WRITE;
 /*!40000 ALTER TABLE `mail_level_reward` DISABLE KEYS */;
 INSERT INTO `mail_level_reward` (`level`, `raceMask`, `mailTemplateId`, `senderEntry`) VALUES 
 (20,1,224,4732),
-(20,8,225,4753),
-(20,4,226,4772),
-(20,1024,227,20914),
-(20,64,228,7954),
-(20,32,229,3690),
-(20,128,230,7953),
 (20,2,231,4752),
-(20,512,232,16280),
+(20,4,226,4772),
+(20,8,225,4753),
 (20,16,233,4773),
+(20,32,229,3690),
+(20,64,228,7954),
+(20,128,230,7953),
+(20,512,232,16280),
+(20,1024,227,20914),
 (40,1,276,4732),
 (40,2,278,4752),
 (40,4,274,4772),
@@ -49,8 +49,8 @@ INSERT INTO `mail_level_reward` (`level`, `raceMask`, `mailTemplateId`, `senderE
 (40,1024,273,20914),
 (60,690,282,35093),
 (60,1101,283,35100),
-(70,1101,284,35133),
-(70,690,285,35135);
+(70,690,285,35135),
+(70,1101,284,35133);
 /*!40000 ALTER TABLE `mail_level_reward` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -63,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-16  1:12:18
+-- Dump completed on 2022-07-05 13:04:46

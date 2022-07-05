@@ -7,7 +7,7 @@ TRUNCATE TABLE `creature_template_addon`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.6.25-log
+-- Server version	5.5.5-10.5.8-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -22056,6 +22056,7 @@ INSERT INTO `creature_template_addon` (`entry`, `mount`, `bytes1`, `b2_0_sheath`
 (38880,0,0,1,0,0,0,NULL),
 (38881,0,0,1,0,0,0,NULL),
 (38884,0,0,1,0,0,0,NULL),
+(38895,0,0,0,0,431,0,NULL),
 (38896,0,0,1,0,0,0,NULL),
 (38898,0,0,1,1,0,0,'18950'),
 (38899,0,0,1,1,0,0,'18950'),
@@ -28353,6 +28354,7 @@ INSERT INTO `creature_template_addon` (`entry`, `mount`, `bytes1`, `b2_0_sheath`
 (49227,0,65536,1,0,0,0,'83080'),
 (49228,0,0,1,0,0,0,NULL),
 (49229,0,33554432,1,0,0,0,NULL),
+(49231,0,0,0,0,0,0,'68442'),
 (49233,0,0,1,0,0,0,NULL),
 (49235,0,0,1,0,0,0,'12556'),
 (49237,0,0,1,0,0,0,'79628'),
@@ -31272,4 +31274,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-16  1:12:06
+-- Dump completed on 2022-07-05 13:04:28

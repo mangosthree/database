@@ -7,7 +7,7 @@ TRUNCATE TABLE `exploration_basexp`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.6.25-log
+-- Server version	5.5.5-10.5.8-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,6 +29,14 @@ LOCK TABLES `exploration_basexp` WRITE;
 INSERT INTO `exploration_basexp` (`level`, `basexp`) VALUES 
 (0,0),
 (1,5),
+(2,15),
+(3,25),
+(4,35),
+(5,45),
+(6,55),
+(7,65),
+(8,70),
+(9,80),
 (10,85),
 (11,90),
 (12,90),
@@ -39,7 +47,6 @@ INSERT INTO `exploration_basexp` (`level`, `basexp`) VALUES
 (17,125),
 (18,135),
 (19,145),
-(2,15),
 (20,155),
 (21,165),
 (22,175),
@@ -50,7 +57,6 @@ INSERT INTO `exploration_basexp` (`level`, `basexp`) VALUES
 (27,220),
 (28,230),
 (29,240),
-(3,25),
 (30,245),
 (31,250),
 (32,255),
@@ -61,7 +67,6 @@ INSERT INTO `exploration_basexp` (`level`, `basexp`) VALUES
 (37,285),
 (38,285),
 (39,300),
-(4,35),
 (40,315),
 (41,330),
 (42,345),
@@ -72,7 +77,6 @@ INSERT INTO `exploration_basexp` (`level`, `basexp`) VALUES
 (47,420),
 (48,440),
 (49,455),
-(5,45),
 (50,470),
 (51,490),
 (52,510),
@@ -83,7 +87,6 @@ INSERT INTO `exploration_basexp` (`level`, `basexp`) VALUES
 (57,600),
 (58,620),
 (59,640),
-(6,55),
 (60,660),
 (61,970),
 (62,1000),
@@ -94,10 +97,7 @@ INSERT INTO `exploration_basexp` (`level`, `basexp`) VALUES
 (67,1160),
 (68,1200),
 (69,1230),
-(7,65),
 (70,1250),
-(8,70),
-(9,80),
 (71,1330),
 (72,1370),
 (73,1410),
@@ -124,4 +124,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-16  1:12:07
+-- Dump completed on 2022-07-05 13:04:32

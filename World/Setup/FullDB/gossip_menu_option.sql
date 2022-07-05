@@ -7,7 +7,7 @@ TRUNCATE TABLE `gossip_menu_option`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.6.25-log
+-- Server version	5.5.5-10.5.8-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -384,9 +384,9 @@ INSERT INTO `gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`,
 (1949,6,0,'Rogue',1,1,12654,0,0,0,0,NULL,0),
 (1949,7,0,'Warlock',1,1,1911,0,0,0,0,NULL,0),
 (1949,8,0,'Warrior',1,1,1912,1912,0,0,0,NULL,0),
-(1951,0,0,'|cFF0008E8NEW|r: Reforging',1,1,13029,0,0,0,0,NULL,0),
-(1951,1,0,'|cFF0008E8NEW|r: Transmogrification',1,1,13029,0,0,0,0,NULL,0),
-(1951,2,0,'|cFF0008E8NEW|r: Void Storage',1,1,13029,0,0,0,0,NULL,0),
+(1951,0,0,'|cFF0008E8NEW|r: Reforging',1,1,57801,0,0,0,0,NULL,0),
+(1951,1,0,'|cFF0008E8NEW|r: Transmogrification',1,1,57801,0,0,0,0,NULL,0),
+(1951,2,0,'|cFF0008E8NEW|r: Void Storage',1,1,57801,0,0,0,0,NULL,0),
 (1951,3,0,'The auction house',1,1,12639,0,0,0,0,NULL,0),
 (1951,4,0,'The bank',1,1,12638,0,0,0,0,NULL,0),
 (1951,5,0,'Barber',1,1,10018,10018,0,0,0,NULL,0),
@@ -493,6 +493,9 @@ INSERT INTO `gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`,
 (2385,2,0,'I wish to know about Dual Talent Specialization.',1,1,10371,0,0,0,0,NULL,1436),
 (2385,3,0,'I wish to unlearn my talents.',1,1,4461,0,0,0,0,NULL,303),
 (2404,0,6,'I would like to check my deposit box.',9,131072,0,0,0,0,0,NULL,0),
+(2405,0,0,'Is there a difference between ooze and slime?',1,1,2406,0,0,0,0,'',6005),
+(2406,0,0,'What do you mean by \"pure?\"',1,1,2407,0,0,0,0,'',6005),
+(2407,0,0,'Are there any areas you can think of that would be so untouched?',1,1,2408,0,0,0,0,'',6005),
 (2422,0,0,'What do you think of Dadanga?',1,1,0,0,0,0,0,NULL,0),
 (2441,0,0,'Where is the zeppelin now?',1,1,0,0,0,0,0,NULL,0),
 (2464,0,1,'Let me browse your goods.',3,128,0,0,0,0,0,NULL,0),
@@ -3433,8 +3436,8 @@ INSERT INTO `gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`,
 (9299,2,0,'Trick or Treat!',1,1,-1,0,342,0,0,NULL,1395),
 (9301,0,0,'Come on, Budd. Time to play with the ice trolls!',1,1,-1,0,9301,0,0,NULL,940),
 (9302,0,0,'Worry no more, taunka. The Horde will save and protect you and your people, but first you must swear allegiance to the Warchief by taking the blood oath of the Horde.',1,1,9305,0,0,0,0,NULL,1987),
-(9303,0,0,'For the Horde!\r\n\r\nArm yourself from the crates that surround us and report to Agmar\'s Hammer, east of here. Your first trial as a member of the Horde is to survive the journey.\r\n\r\nLok\'tar ogar!',1,1,-1,0,9303,0,0,NULL,0),
-(9304,0,0,'Then repeat after me: \"Lok\'tar ogar! Victory or death - it is these words that bind me to the Horde. For they are the most sacred and fundamental of truths to any warrior of the Horde.\r\n\r\nI give my flesh and blood freely to the Warchief. I am the instrument of my Warchief\'s desire. I am a weapon of my Warchief\'s command.\r\n\r\nFrom this moment until the end of days I live and die - For the Horde!\"',1,1,9303,0,0,0,0,NULL,0),
+(9303,0,0,'For the Horde!$B$B$B$BArm yourself from the crates that surround us and report to Agmar\'s Hammer, east of here. Your first trial as a member of the Horde is to survive the journey.$B$B$B$BLok\'tar ogar!',1,1,-1,0,9303,0,0,NULL,0),
+(9304,0,0,'Then repeat after me: \"Lok\'tar ogar! Victory or death - it is these words that bind me to the Horde. For they are the most sacred and fundamental of truths to any warrior of the Horde.$B$B$B$BI give my flesh and blood freely to the Warchief. I am the instrument of my Warchief\'s desire. I am a weapon of my Warchief\'s command.$B$B$B$BFrom this moment until the end of days I live and die - For the Horde!\"',1,1,9303,0,0,0,0,NULL,0),
 (9305,0,0,'Yes, taunka. Retribution is a given right of all members of the Horde.',1,1,9304,0,0,0,0,NULL,0),
 (9307,0,0,'I want to ask you something else.',1,1,9046,0,0,0,0,NULL,0),
 (9335,0,0,'Ummm... the frog says you\'re a traitor, \"matey.\"',1,1,0,0,0,0,0,NULL,0),
@@ -3851,7 +3854,7 @@ INSERT INTO `gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`,
 (9873,2,1,'May I browse your epic gem recipes?',3,128,0,0,0,0,0,NULL,0),
 (9874,0,0,'Miss warm-up, sister... or you afraid to fight with someone who is not half as you?',1,1,-1,0,9874,0,0,NULL,607),
 (9875,0,0,'Sorry, Tinky, but I can not afford to be distracted by you, yet do here what should be done',1,1,-1,0,30162,0,0,NULL,594),
-(9878,0,0,'I have bad news for you,\r\nOnu\'zun: I\'m going to put an end to your dreams!',1,1,-1,0,30180,0,0,NULL,594),
+(9878,0,0,'I have bad news for you,$B$BOnu\'zun: I\'m going to put an end to your dreams!',1,1,-1,0,30180,0,0,NULL,594),
 (9879,0,3,'Train me.',5,16,0,0,0,0,0,NULL,0),
 (9879,1,1,'Let me browse your goods.',3,128,0,0,0,0,0,NULL,0),
 (9880,0,0,'I found this strange armor plate. Can you tell me more about it?',1,1,-1,0,30190,0,0,NULL,1276),
@@ -5067,13 +5070,13 @@ INSERT INTO `gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`,
 (12460,0,2,'Show me where I can fly.',4,8192,0,0,0,0,0,NULL,0),
 (12462,0,2,'Show me where I can fly.',1,0,0,0,0,0,0,'',0),
 (12480,0,0,'I\'ll keep my eyes open, Grundy. Let the wedding commence!',1,0,0,0,0,0,0,'',0),
-(12483,0,0,'I\'m not an abomination, I\'m simply undead.  I just want to speak with you.',1,0,0,0,0,0,0,'',0),
-(12484,0,0,'Lilian, do you realize that you are undead yourself?',1,0,0,0,0,0,0,'',0),
-(12485,0,0,'I\'m not here to fight.  I\'ve only been asked to speak with you.',1,0,0,0,0,0,0,'',0),
-(12486,0,0,'You are free to do whatever you like.',1,0,0,0,0,0,0,'',0),
-(12487,0,0,'Don\'t you remember?  You died.',1,0,0,0,0,0,0,'',0),
-(12488,0,0,'Calm down, Valdred.  Undertaker Mordo probably sewed some new ones on for you.',1,0,0,0,0,0,0,'',0),
-(12489,0,0,'You talk to Undertaker Mordo.  He\'ll tell you what to do.  That\'s all I know.',1,0,0,0,0,0,0,'',0),
+(12483,0,0,'I\'m not an abomination, I\'m simply undead.  I just want to speak with you.',1,1,12484,0,0,0,0,'',6006),
+(12484,0,0,'Lilian, do you realize that you are undead yourself?',1,1,-1,0,12485,0,0,'',0),
+(12485,0,0,'I\'m not here to fight.  I\'ve only been asked to speak with you.',1,1,12486,0,0,0,0,'',6006),
+(12486,0,0,'You are free to do whatever you like.',1,1,-1,0,12486,0,0,'',0),
+(12487,0,0,'Don\'t you remember?  You died.',1,1,12488,0,0,0,0,'',6006),
+(12488,0,0,'Calm down, Valdred.  Undertaker Mordo probably sewed some new ones on for you.',1,1,12489,0,0,0,0,'',0),
+(12489,0,0,'You talk to Undertaker Mordo.  He\'ll tell you what to do.  That\'s all I know.',1,1,-1,0,12489,0,0,'',0),
 (12493,0,0,'Sassy, I\'am ready, Let\'s go.',1,1,0,0,0,0,0,NULL,0),
 (12499,0,1,'I wish to browse your wares, Yasmin.',1,0,0,0,0,0,0,'',0),
 (12499,1,5,'Make this inn your home.',1,0,0,0,0,0,0,'',0),
@@ -5295,4 +5298,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-16  1:12:11
+-- Dump completed on 2022-07-05 13:04:38
