@@ -23,13 +23,13 @@ BEGIN
 
     -- Expected Values
     SET @cOldVersion = '22'; 
-    SET @cOldStructure = '02'; 
-    SET @cOldContent = '026';
+    SET @cOldStructure = '03'; 
+    SET @cOldContent = '008';
 
     -- New Values
     SET @cNewVersion = '22';
-    SET @cNewStructure = '02';
-    SET @cNewContent = '027';
+    SET @cNewStructure = '03';
+    SET @cNewContent = '009';
                             -- DESCRIPTION IS 30 Characters MAX    
     SET @cNewDescription = 'Quest 12092 script';
 
