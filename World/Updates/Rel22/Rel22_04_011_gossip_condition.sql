@@ -47,7 +47,7 @@ BEGIN
 	INSERT INTO `conditions` VALUES
 	(@menu_id+1,2,74256,1,'Cryptomancer\'s Decoder Ring'),
 	(@menu_id+2,9,29802,0,'A hidden Message quest.'),
-	(@menu_id+3,-1,@menu_id,@menu_id,'Q.29802 and item 74256 check');
+	(@menu_id+3,-1,@menu_id+1,@menu_id+2,'Q.29802 and item 74256 check');
 	UPDATE `gossip_menu_option` SET `condition_id` = @menu_id+3 WHERE `menu_id` = 13348 AND `id` = 0;
 
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
