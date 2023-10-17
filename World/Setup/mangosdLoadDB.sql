@@ -142,7 +142,7 @@ CREATE TABLE `autobroadcast` (
   `content` text DEFAULT NULL COMMENT 'The message Text',
   `ratio` smallint(6) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Trigger System';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Trigger System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
@@ -209,7 +209,7 @@ CREATE TABLE `command` (
   `security` tinyint(3) unsigned NOT NULL DEFAULT 0 COMMENT 'The minimum security level to use the command (See account.gmlevel) in the realm',
   `help_text` longtext DEFAULT NULL COMMENT 'The help text for the command which explains it''s use and parameters.',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=810 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Chat System';
+) ENGINE=InnoDB AUTO_INCREMENT=814 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Chat System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
@@ -228,7 +228,7 @@ CREATE TABLE `conditions` (
   `comments` varchar(400) DEFAULT NULL,
   PRIMARY KEY (`condition_entry`),
   UNIQUE KEY `unique_conditions` (`type`,`value1`,`value2`)
-) ENGINE=InnoDB AUTO_INCREMENT=8346 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Condition System';
+) ENGINE=InnoDB AUTO_INCREMENT=57811 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Condition System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -260,7 +260,7 @@ CREATE TABLE `creature` (
   PRIMARY KEY (`guid`),
   KEY `idx_map` (`map`),
   KEY `idx_id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=400010 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature System';
+) ENGINE=InnoDB AUTO_INCREMENT=400035 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -315,7 +315,7 @@ CREATE TABLE `creature_ai_scripts` (
   `action3_param3` int(11) NOT NULL DEFAULT 0 COMMENT 'Parameter 3 of action3_type (See creature_ai_scripts.action3_type)',
   `comment` varchar(255) NOT NULL DEFAULT '' COMMENT 'Documents what an event script is supposed to do.',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27383153 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='EventAI Scripts';
+) ENGINE=InnoDB AUTO_INCREMENT=27383157 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='EventAI Scripts';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -334,7 +334,7 @@ CREATE TABLE `creature_ai_summons` (
   `spawntimesecs` int(11) unsigned NOT NULL DEFAULT 120 COMMENT 'The despawn timer for the summoned creature.',
   `comment` varchar(255) NOT NULL DEFAULT '' COMMENT 'Documents what kind of creature will be summoned.',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='EventAI Summoning Locations';
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='EventAI Summoning Locations';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -427,7 +427,7 @@ CREATE TABLE `creature_linking_template` (
   `flag` mediumint(8) unsigned NOT NULL DEFAULT 0 COMMENT 'This flag determines how a linked creature will act.',
   `search_range` mediumint(8) unsigned NOT NULL DEFAULT 0 COMMENT 'IF given != 0 only mobs with spawn-dist <= search_range around the master_entry ',
   PRIMARY KEY (`entry`,`map`)
-) ENGINE=MyISAM AUTO_INCREMENT=16810 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature Linking System';
+) ENGINE=MyISAM AUTO_INCREMENT=40688 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature Linking System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -510,7 +510,7 @@ CREATE TABLE `creature_movement` (
   `model1` mediumint(9) NOT NULL DEFAULT 0 COMMENT 'A display model identifier activated on the waypoint.',
   `model2` mediumint(9) NOT NULL DEFAULT 0 COMMENT 'An alternative display model identifier activated on the waypoint.',
   PRIMARY KEY (`id`,`point`)
-) ENGINE=MyISAM AUTO_INCREMENT=97109 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature System';
+) ENGINE=MyISAM AUTO_INCREMENT=375556 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Creature System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -817,7 +817,7 @@ CREATE TABLE `db_scripts` (
   `o` float NOT NULL DEFAULT 0 COMMENT 'Orientation angle (0 to 2*Pi).',
   `comments` varchar(255) NOT NULL COMMENT 'Textual comment.',
   PRIMARY KEY (`script_guid`)
-) ENGINE=InnoDB AUTO_INCREMENT=5814 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=7833712 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
@@ -871,7 +871,7 @@ CREATE TABLE `dungeonfinder_item_rewards` (
   `item_amount` mediumint(4) unsigned NOT NULL,
   `dungeon_type` smallint(4) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- Table structure for table `dungeonfinder_requirements`
@@ -905,7 +905,7 @@ CREATE TABLE `dungeonfinder_rewards` (
   `base_xp_reward` mediumint(8) unsigned NOT NULL COMMENT 'uint32',
   `base_monetary_reward` int(10) NOT NULL COMMENT 'int32',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
 
 --
 -- Table structure for table `exploration_basexp`
@@ -1069,7 +1069,7 @@ CREATE TABLE `game_tele` (
   `map` smallint(5) unsigned NOT NULL DEFAULT 0 COMMENT 'The map id of the teleport location (See map.dbc).',
   `name` varchar(100) NOT NULL DEFAULT '' COMMENT 'The name of the teleport location.',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1683 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Tele Command';
+) ENGINE=InnoDB AUTO_INCREMENT=1719 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Tele Command';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1124,7 +1124,7 @@ CREATE TABLE `gameobject` (
   PRIMARY KEY (`guid`),
   KEY `idx_map` (`map`),
   KEY `idx_id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=515631 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Gameobject System';
+) ENGINE=InnoDB AUTO_INCREMENT=301126 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Gameobject System';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2526,7 +2526,7 @@ CREATE TABLE `pet_name_generation` (
   `entry` mediumint(8) unsigned NOT NULL DEFAULT 0 COMMENT 'Creature ID (See creature_template.entry).',
   `half` tinyint(4) NOT NULL DEFAULT 0 COMMENT 'Type of the word.',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=314 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=318 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3545,7 +3545,7 @@ CREATE TABLE `warden` (
   `result` varchar(24) NOT NULL DEFAULT '',
   `comment` varchar(50) DEFAULT '' COMMENT 'Description of what the check is',
   PRIMARY KEY (`id`,`build`)
-) ENGINE=MyISAM AUTO_INCREMENT=790 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
