@@ -7,7 +7,7 @@ TRUNCATE TABLE `creature_template_spells`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.5.5-10.5.8-MariaDB
+-- Server version	5.5.5-10.11.1-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -9056,7 +9056,7 @@ INSERT INTO `creature_template_spells` (`entry`, `spell1`, `spell2`, `spell3`, `
 (34824,66262,61784,61785,61788,61786,61787,0,0,0,0),
 (34838,49922,0,0,0,0,0,0,0,0,0),
 (34839,45658,49816,0,0,0,0,0,0,0,0),
-(34840,66300,0,0,0,0,0,0,0,0,0),
+(34840,66300,0,66298,66299,0,0,0,0,0,0),
 (34846,9532,6535,0,0,0,0,0,0,0,0),
 (34865,32738,0,0,0,0,0,0,0,0,0),
 (34866,51322,0,0,0,0,0,0,0,0,0),
@@ -14294,4 +14294,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-05 13:04:28
+-- Dump completed on 2023-10-17 18:21:23

@@ -7,7 +7,7 @@ TRUNCATE TABLE `gossip_menu_option`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.5.5-10.5.8-MariaDB
+-- Server version	5.5.5-10.11.1-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -5237,7 +5237,7 @@ INSERT INTO `gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`,
 (13326,5,0,'Teleport to Azshara\'s Palace.',1,0,0,0,0,0,0,'',0),
 (13326,7,0,'Teleport to The Well of Eternity.',1,0,0,0,0,0,0,'',0),
 (13341,0,0,'We are the Alliance. We are always ready.',1,0,0,0,0,0,0,'',0),
-(13348,0,0,'Can you charge my cryptomancer\'s decoder ring?',1,1,57800,0,0,0,0,'',0),
+(13348,0,0,'Can you charge my cryptomancer\'s decoder ring?',1,1,57800,0,0,0,0,'',57803),
 (13352,0,0,'Teleport me to the cannon.',1,1,-1,0,13352,0,500,'Teleportation to the cannon will cost:',0),
 (13352,1,0,'I don\'t need a teleport.',1,1,-1,0,0,0,0,'',0),
 (13360,0,0,'I\'m ready to travel back in time - to the Well of Eternity.',1,0,0,0,0,0,0,'',0),
@@ -5298,4 +5298,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-05 13:04:38
+-- Dump completed on 2023-10-17 18:21:29

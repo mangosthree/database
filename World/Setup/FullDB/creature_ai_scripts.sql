@@ -7,7 +7,7 @@ TRUNCATE TABLE `creature_ai_scripts`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.5.5-10.5.8-MariaDB
+-- Server version	5.5.5-10.11.1-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -20863,6 +20863,7 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (2572206,25722,9,5,100,1,5,15,1000,1000,21,0,0,0,0,0,0,0,0,0,0,0,'Coldarra Spellweaver - Prevent Combat Movement at 15 Yards'),
 (2572207,25722,3,3,100,1,100,30,1000,1000,22,6,0,0,0,0,0,0,0,0,0,0,'Coldarra Spellweaver - Set Phase 1 when Mana is above 30% (Phase 2)'),
 (2572208,25722,7,0,100,0,0,0,0,0,22,0,0,0,0,0,0,0,0,0,0,0,'Coldarra Spellweaver - Set Phase to 0 on Evade'),
+(2572401,25724,8,0,100,1,45913,-1,0,0,37,0,0,0,11,42726,0,-1,0,0,0,0,'Kill/Cast on Spell Hit'),
 (2572501,25725,9,0,100,1,0,5,6000,9000,11,50533,1,0,0,0,0,0,0,0,0,0,'Chieftain Gurgleboggle - Cast Flip Attack'),
 (2572601,25726,1,0,100,0,0,0,0,0,21,0,0,0,20,0,0,0,22,1,0,0,'Chieftain Burblegobble - Prevent Combat Movement and Prevent Melee and Set Phase 1 on Spawn'),
 (2572602,25726,9,1,100,1,0,35,2300,3900,11,38556,1,0,40,2,0,0,0,0,0,0,'Chieftain Burblegobble - Cast Throw and Set Ranged Weapon Model (Phase 1)'),
@@ -24606,6 +24607,10 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (3018202,30182,0,0,100,1,6000,12000,15000,19000,11,15548,0,0,0,0,0,0,0,0,0,0,'Yorg Stormheart - Cast Thunderclap'),
 (3018401,30184,0,0,100,1,7000,13000,9000,16000,11,57480,4,0,0,0,0,0,0,0,0,0,'Scion of Storm - Cast Kinetic Beam'),
 (3018402,30184,6,0,100,0,0,0,0,0,11,50215,6,7,0,0,0,0,0,0,0,0,'Scion of Storm - Cast Zephyr on Death'),
+(3018601,30186,8,0,100,1,22096,-1,0,0,1,-351328,-351329,-351330,0,0,0,0,0,0,0,0,'Random say on spell hit.'),
+(3019401,30194,8,0,100,1,22096,-1,0,0,1,-351327,-351328,-351329,0,0,0,0,0,0,0,0,'Random say on spell hit.'),
+(3019501,30195,8,0,100,1,22096,-1,0,0,1,-351327,-351328,-351329,0,0,0,0,0,0,0,0,'Random say on spell hit.'),
+(3019601,30196,8,0,100,1,22096,-1,0,0,1,-351328,-351329,-351330,0,0,0,0,0,0,0,0,'Random say on spell hit.'),
 (3020251,30202,8,0,100,1,57806,-1,0,0,11,57808,7,22,41,0,0,0,0,0,0,0,'ytdb-q13110'),
 (3020951,30209,8,0,100,1,56275,-1,0,0,11,59687,0,6,33,30209,6,0,41,0,0,0,'ytdb-q12988'),
 (3021151,30211,8,0,100,1,56275,-1,0,0,11,59687,0,6,33,30211,6,0,41,0,0,0,'ytdb-q12988'),
@@ -25541,12 +25546,12 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (3290802,32908,0,0,100,7,7000,9000,15000,25000,11,62444,1,0,0,0,0,0,0,0,0,0,'Captured Mercenary Captain - Cast Heroic Strike'),
 (3290803,32908,0,0,100,7,5000,7000,20000,20000,11,57807,1,0,0,0,0,0,0,0,0,0,'Captured Mercenary Captain - Cast Sunder Armor'),
 (3291301,32913,4,0,100,6,0,0,0,0,1,-320,0,0,0,0,0,0,0,0,0,0,'Elder Ironbranch - Yell on Aggro'),
-(3291302,32913,5,0,100,7,0,0,0,0,1,-423,-424,0,0,0,0,0,0,0,0,0,'Elder Ironbranch - Random Yell'),
+(3291302,32913,5,0,100,7,0,0,0,0,1,-423,-424,0,0,0,0,0,0,0,0,0,'Elder Ironbranch - Random Yell');
+INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES 
 (3291303,32913,0,0,100,3,7000,10000,12000,15000,11,62310,4,0,0,0,0,0,0,0,0,0,'Elder Ironbranch (Normal) - Cast Impale'),
 (3291304,32913,0,0,100,5,7000,10000,12000,15000,11,62928,4,0,0,0,0,0,0,0,0,0,'Elder Ironbranch (Heroic) - Cast Impale'),
 (3291305,32913,0,0,100,3,15000,20000,30000,30000,11,62285,0,0,0,0,0,0,0,0,0,0,'Elder Ironbranch (Normal) - Cast Thorn Swarm'),
-(3291306,32913,0,0,100,5,15000,20000,30000,30000,11,62931,0,0,0,0,0,0,0,0,0,0,'Elder Ironbranch (Heroic) - Cast Thorn Swarm');
-INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inverse_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action1_type`, `action1_param1`, `action1_param2`, `action1_param3`, `action2_type`, `action2_param1`, `action2_param2`, `action2_param3`, `action3_type`, `action3_param1`, `action3_param2`, `action3_param3`, `comment`) VALUES 
+(3291306,32913,0,0,100,5,15000,20000,30000,30000,11,62931,0,0,0,0,0,0,0,0,0,0,'Elder Ironbranch (Heroic) - Cast Thorn Swarm'),
 (3291307,32913,0,0,100,3,10000,15000,20000,30000,11,62275,0,0,0,0,0,0,0,0,0,0,'Elder Ironbranch (Normal) - Cast Iron Roots'),
 (3291308,32913,0,0,100,5,10000,15000,20000,30000,11,62929,0,0,0,0,0,0,0,0,0,0,'Elder Ironbranch (Heroic) - Cast Iron Roots'),
 (3291309,32913,6,0,100,6,0,0,0,0,1,-425,0,0,0,0,0,0,0,0,0,0,'Elder Ironbranch - Yell on Death'),
@@ -25661,6 +25666,7 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (3324401,33244,11,0,100,6,0,0,0,0,11,62647,0,2,11,12980,0,2,0,0,0,0,'Mimiron - Cast Keeper Active and Simple Teleport on Spawned'),
 (3326401,33264,11,0,100,6,0,0,0,0,21,0,0,0,0,0,0,0,0,0,0,0,'Ironwork Cannon - Set Combat Movement false on Spawned'),
 (3326402,33264,0,0,100,7,5000,10000,20000,25000,11,62395,1,0,0,0,0,0,0,0,0,0,'Ironwork Cannon - Cast Flame Cannon'),
+(3326601,33266,8,0,100,0,62644,-1,0,0,33,33266,6,0,1,-351283,-351284,-351285,0,0,0,0,'Q.13613 credit'),
 (3330851,33308,8,0,100,0,62990,-1,5000,5000,11,62855,6,6,37,0,0,0,12,33947,6,300000,'ytdb'),
 (3332501,33325,11,0,100,6,0,0,0,0,11,61989,0,2,11,62795,0,2,21,0,0,0,'Eivi Nightfeather - Cast Flash Freeze Summon, Moonkin Form (Shapeshift) and Prevent Combat Movement on Spawned'),
 (3332502,33325,11,0,100,6,0,0,0,0,11,24905,0,2,11,24907,0,2,0,0,0,0,'Eivi Nightfeather - Cast Moonkin Form (Passive) (Passive) and Moonkin Aura on Spawned'),
@@ -26277,6 +26283,7 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (3672701,36727,8,0,100,0,69228,-1,0,0,33,36727,6,0,0,0,0,0,0,0,0,0,'First Trough - On Spellhit - Quest Credit- 14461'),
 (3672702,36727,8,0,100,0,69228,-1,0,0,11,42345,0,0,0,0,0,0,0,0,0,0,'First Trough - On Spellhit - Cast Cosmetic - Flame Patch'),
 (3673101,36731,1,0,100,6,3000,3000,0,0,11,69238,0,0,0,0,0,0,0,0,0,0,'Icy Blast - Cast Icy Blast on OOC Timer'),
+(3675601,36756,8,0,100,1,45801,-1,0,0,41,0,0,0,0,0,0,0,0,0,0,0,'Despawn Dead Soldier'),
 (3679101,36791,1,0,100,30,0,0,0,0,21,0,0,0,22,0,0,0,0,0,0,0,'Blazing Skeleton - Prevent Combat Movement and Set Phase to 0 on Spawn'),
 (3679102,36791,4,0,100,30,0,0,0,0,11,70754,1,0,22,1,0,0,0,0,0,0,'Blazing Skeleton - Cast Fireball and Set Phase 1 on Aggro'),
 (3679103,36791,9,5,100,31,0,60,46000,60000,11,70754,1,0,0,0,0,0,0,0,0,0,'Blazing Skeleton - Cast Fireball (Phase 1)'),
@@ -26631,6 +26638,7 @@ INSERT INTO `creature_ai_scripts` (`id`, `creature_id`, `event_type`, `event_inv
 (4042101,40421,0,0,100,31,3000,5000,3000,5000,11,15621,1,0,0,0,0,0,0,0,0,0,'Charscale Elite - Cast Skull Crack'),
 (4042301,40423,0,0,100,31,5000,8000,5000,8000,11,13737,1,0,0,0,0,0,0,0,0,0,'Charscale Commander - Cast Mortal Strike'),
 (4042302,40423,0,0,100,31,5000,8000,50000,60000,11,75414,0,0,0,0,0,0,0,0,0,0,'Charscale Commander - Cast Rallying Shout'),
+(4193601,41936,8,0,100,0,78141,-1,0,0,33,41936,6,0,0,0,0,0,0,0,0,0,'Northwatch Tent - On Spellhit - Quest Credit - 26010'),
 (4250101,42501,8,0,100,0,2061,-1,0,0,33,44175,6,0,0,0,0,0,0,0,0,0,'Q. 26200 - Heal kill credit'),
 (4294001,42940,8,0,100,0,80208,-1,0,0,33,42940,6,0,0,0,0,0,0,0,0,0,'q.26391 - Kill credit'),
 (4294002,42940,8,0,100,0,80208,-1,0,0,37,0,0,0,0,0,0,0,0,0,0,0,'Despawn on spell hit'),
@@ -26766,4 +26774,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-05 13:04:21
+-- Dump completed on 2023-10-17 18:21:18

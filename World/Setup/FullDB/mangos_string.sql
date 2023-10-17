@@ -7,7 +7,7 @@ TRUNCATE TABLE `mangos_string`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.5.5-10.5.8-MariaDB
+-- Server version	5.5.5-10.11.1-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -50,7 +50,7 @@ INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `conten
 (23,'Cannot do that while fighting.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Не могу сделать это в бою.','Language.h','MangosStrings','LANG_YOU_IN_COMBAT',NULL,NULL,NULL),
 (24,'You used it recently.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Вы недавно использовали это.','Language.h','MangosStrings','LANG_YOU_USED_IT_RECENTLY',NULL,NULL,NULL),
 (25,'Password not changed (unknown error)!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Ваш пароль не может быть длиннее 16 знаков(ограничение клиента),
-\n пароль не изменен!','Language.h','MangosStrings','LANG_COMMAND_NOTCHANGEPASSWORD',NULL,NULL,NULL),
+\n\n пароль не изменен!','Language.h','MangosStrings','LANG_COMMAND_NOTCHANGEPASSWORD',NULL,NULL,NULL),
 (26,'The password was changed',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Пароль изменен','Language.h','MangosStrings','LANG_COMMAND_PASSWORD',NULL,NULL,NULL),
 (27,'The old password is wrong',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Старый пароль неверен','Language.h','MangosStrings','LANG_COMMAND_WRONGOLDPASSWORD',NULL,NULL,NULL),
 (28,'Your account is now locked.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Ваша учетная запись сейчас заблокирована.','Language.h','MangosStrings','LANG_COMMAND_ACCLOCKLOCKED',NULL,NULL,NULL),
@@ -81,8 +81,8 @@ INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `conten
 (53,'Mail can\'t have more %u item stacks',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'У почты не может быть больше %u ячеек для предметов','Language.h','MangosStrings','LANG_COMMAND_MAIL_ITEMS_LIMIT',NULL,NULL,NULL),
 (54,'The new passwords do not match',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Новые пароли не совпадают','Language.h','MangosStrings','LANG_NEW_PASSWORDS_NOT_MATCH',NULL,NULL,NULL),
 (55,'Your password can\'t be longer than 16 characters (client limit),
-\n password not changed!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Ваш пароль не может быть длиннее 16 символов (предел клиента),
-\n пароль не изменен!','Language.h','MangosStrings','LANG_PASSWORD_TOO_LONG',NULL,NULL,NULL),
+\n\n password not changed!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Ваш пароль не может быть длиннее 16 символов (предел клиента),
+\n\n пароль не изменен!','Language.h','MangosStrings','LANG_PASSWORD_TOO_LONG',NULL,NULL,NULL),
 (56,'Current Message of the day: %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Текущее сообщение дня: %s','Language.h','MangosStrings','LANG_MOTD_CURRENT',NULL,NULL,NULL),
 (57,'Using World DB: %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Используемая База Данных: %s','Language.h','MangosStrings','LANG_USING_WORLD_DB',NULL,NULL,NULL),
 (58,'Using script library: %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Используемая библиотека скриптов: %s','Language.h','MangosStrings','LANG_USING_SCRIPT_LIB',NULL,NULL,NULL),
@@ -454,7 +454,7 @@ INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `conten
 (483,'Spell %u broken and not allowed to cast or learn!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Заклинание %u не работает и не доступно для применения или изучения!','Language.h','MangosStrings','LANG_COMMAND_SPELL_BROKEN',NULL,NULL,NULL),
 (484,'Skill %u (%s) for player %s set to %u and current maximum set to %u (without permanent (talent) bonuses).',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_SET_SKILL',NULL,NULL,NULL),
 (485,'Player %s must have skill %u (%s) before using this command.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Игрок %s $gдолжен:должна; иметь навык %u (%s),
-\n прежде чем использовать эту команду.','Language.h','MangosStrings','LANG_SET_SKILL_ERROR',NULL,NULL,NULL),
+\n\n прежде чем использовать эту команду.','Language.h','MangosStrings','LANG_SET_SKILL_ERROR',NULL,NULL,NULL),
 (486,'Invalid skill id (%u)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Неверный ID навыка (%u)','Language.h','MangosStrings','LANG_INVALID_SKILL_ID',NULL,NULL,NULL),
 (487,'You learned default GM spells/skills.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Вы выучили стандартные ГМ заклинания и навыки.','Language.h','MangosStrings','LANG_LEARNING_GM_SKILLS',NULL,NULL,NULL),
 (488,'You already know that spell.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Вы уже знаете это заклинание.','Language.h','MangosStrings','LANG_YOU_KNOWN_SPELL',NULL,NULL,NULL),
@@ -717,8 +717,8 @@ INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `conten
 (1003,'Account %s NOT deleted (unknown error)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Аккаунт %s не может быть удалён (неизвестная ошибка)','Language.h','MangosStrings','LANG_ACCOUNT_NOT_DELETED',NULL,NULL,NULL),
 (1004,'Account created: %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Создана учетная запись:  %s','Language.h','MangosStrings','LANG_ACCOUNT_CREATED',NULL,NULL,NULL),
 (1005,'Account name cannot be longer than 16 characters (client limit),
-\n account not created!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Имя учетной записи не может содержать больше 16 символов (лимит клиента),
-\n учетная запись не создана!','Language.h','MangosStrings','LANG_ACCOUNT_TOO_LONG',NULL,NULL,NULL),
+\n\n account not created!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Имя учетной записи не может содержать больше 16 символов (лимит клиента),
+\n\n учетная запись не создана!','Language.h','MangosStrings','LANG_ACCOUNT_TOO_LONG',NULL,NULL,NULL),
 (1006,'Account with this name already exist!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Аккаунт с таким именем уже существует!','Language.h','MangosStrings','LANG_ACCOUNT_ALREADY_EXIST',NULL,NULL,NULL),
 (1007,'Account %s NOT created (probably sql file format was updated)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Аккаунт %s не может быть удалён (возможно формат sql файла был обновлён)','Language.h','MangosStrings','LANG_ACCOUNT_NOT_CREATED_SQL_ERROR',NULL,NULL,NULL),
 (1008,'Account %s NOT created (unknown error)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Аккаунт %s не создан (неизвестная ошибка)','Language.h','MangosStrings','LANG_ACCOUNT_NOT_CREATED',NULL,NULL,NULL),
@@ -855,6 +855,32 @@ INSERT INTO `mangos_string` (`entry`, `content_default`, `content_loc1`, `conten
 (1507,'Combat-Movement is %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_NPC_EVENTAI_MOVE',NULL,NULL,NULL),
 (1508,'Melee attacking is %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_NPC_EVENTAI_COMBAT',NULL,NULL,NULL),
 (1509,'Pool %u not found (Maximal pool entry is %u)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_POOL_ENTRY_LOWER_MAX_POOL',NULL,NULL,NULL),
+(1510,'Ticket %u from %s has been closed by <GM>%s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_TICKETCLOSED_NAME',NULL,NULL,NULL),
+(1511,'Ticket system is globally on, accepting all tickets',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_TICKETS_SYSTEM_ON',NULL,NULL,NULL),
+(1512,'Ticket system is globally off, not accepting tickets at all',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_TICKETS_SYSTEM_OFF',NULL,NULL,NULL),
+(1513,'You cant close a ticket for offline players',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_TICKET_CANT_CLOSE',NULL,NULL,NULL),
+(1514,'ID %u from %s (%s),
+\n\n\n\n\n changed %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_TICKET_BRIEF_INFO',NULL,NULL,NULL),
+(1515,'= Shown %u tickets out of total %u from online players.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_TICKET_COUNT_ONLINE',NULL,NULL,NULL),
+(1516,'ID %u from GUID %u (%s),
+\n\n\n\n\n changed %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_TICKET_OFFLINE_INFO',NULL,NULL,NULL),
+(1517,'= Shown %u tickets of total %u.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_TICKET_COUNT_ALL',NULL,NULL,NULL),
+(1518,'Informing you about arriving tickets is %s.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_TICKET_ACCEPT_STATE',NULL,NULL,NULL),
+(1519,'Response to your ticket',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_TICKET_RESPOND_MAIL_SUBJECT',NULL,NULL,NULL),
+(1520,'$B$BBest regards, $B$B<GM>%s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_TICKET_RESPOND_MAIL_SIGNATURE',NULL,NULL,NULL),
+(1521,'Your ticket has been closed.@@It has been serviced by <GM>%s, please check your ingame mailbox to see the answer.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_TICKETCLOSED_PLAYER_NOTIF',NULL,NULL,NULL),
+(1522,'> %d Equiped items deleted for %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_RESET_ITEMS_EQUIPED',NULL,NULL,NULL),
+(1523,'> %d items in equiped bags deleted for %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_RESET_ITEMS_BAGS',NULL,NULL,NULL),
+(1524,'> %d items in bank deleted for %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_RESET_ITEMS_BANK',NULL,NULL,NULL),
+(1525,'> %d keys in keyring deleted for %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_RESET_ITEMS_KEYRING',NULL,NULL,NULL),
+(1526,'> %d items in vendors buyback deleted for %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_RESET_ITEMS_BUYBACK',NULL,NULL,NULL),
+(1527,'> All items were reset for %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_RESET_ITEMS_ALL',NULL,NULL,NULL),
+(1528,'> All items were reset (even bags : %d equiped & %d in bank) for %s',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_RESET_ITEMS_ALLBAGS',NULL,NULL,NULL),
+(1529,'> %d COD mails deleted for %s.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_RESET_MAIL_COD',NULL,NULL,NULL),
+(1530,'> %d GM mails deleted for %s.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_RESET_MAIL_GM',NULL,NULL,NULL),
+(1531,'> %d mails from %s deleted for %s.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_RESET_MAIL_FROM',NULL,NULL,NULL),
+(1532,'GM %s has deleted %d mails from your mailbox.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_RESET_MAIL_PLAYER_NOTIF',NULL,NULL,NULL),
+(1533,'> Total : %d mails deleted for %s (including normal mails).',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Language.h','MangosStrings','LANG_COMMAND_RESET_MAIL_RECAP',NULL,NULL,NULL),
 (1600,'|cffffff00Northpass Tower has been taken by the Horde!|r',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'|cffffff00Башня Северного перевала занята Ордой!|r','Language.h','MangosStrings','LANG_OPVP_EP_CAPTURE_NPT_H',NULL,NULL,NULL),
 (1601,'|cffffff00Northpass Tower has been taken by the Alliance!|r',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'|cffffff00Башня Северного перевала занята Альянсом!|r','Language.h','MangosStrings','LANG_OPVP_EP_CAPTURE_NPT_A',NULL,NULL,NULL),
 (1602,'|cffffff00Crown Guard Tower has been taken by the Horde!|r',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'|cffffff00Башня королевской стражи занята Ордой!|r','Language.h','MangosStrings','LANG_OPVP_EP_CAPTURE_CGT_H',NULL,NULL,NULL),
@@ -915,4 +941,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-05 13:04:47
+-- Dump completed on 2023-10-17 18:21:35

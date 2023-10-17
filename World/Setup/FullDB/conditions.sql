@@ -7,7 +7,7 @@ TRUNCATE TABLE `conditions`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.5.5-10.5.8-MariaDB
+-- Server version	5.5.5-10.11.1-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -2394,11 +2394,11 @@ INSERT INTO `conditions` (`condition_entry`, `type`, `value1`, `value2`, `commen
 (6000,24,71634,1,NULL),
 (6001,8,11892,0,'Arch Druid Lathorius - Gossip'),
 (6002,8,4512,0,'Show gossip text 3099 if quest, A Little Slime Goes a Long Way (Part 1),
- is rewarded'),
+\n is rewarded'),
 (6003,8,4513,0,'Show gossip text 3098 if quest, A Little Slime Goes a Long Way (Part 2),
- is rewarded'),
+\n is rewarded'),
 (6004,-3,6003,0,'Only show if quest, A Little Slime Goes a Long Way (Part 2),
- is NOT rewarded'),
+\n is NOT rewarded'),
 (6005,-1,6002,6004,'Condition Check for A Little Slime Goes a Long Way gossip'),
 (6006,9,24960,0,'Gossip Option check for q.24960'),
 (6007,8,8325,0,'NPC text display - check q.8325 completed'),
@@ -2414,7 +2414,13 @@ INSERT INTO `conditions` (`condition_entry`, `type`, `value1`, `value2`, `commen
 (8342,8,9215,0,'Quest ID 9215 Rewarded'),
 (8343,8,9214,0,'Quest ID 9214 Rewarded'),
 (8344,-1,8342,8343,'(Quest ID 9215 Rewarded AND Quest ID 9214 Rewarded)'),
-(8345,-1,8338,8344,'((Quest ID 9146,9212,9215,9214 Rewarded');
+(8345,-1,8338,8344,'((Quest ID 9146,9212,9215,9214 Rewarded'),
+(57801,2,74256,1,'Cryptomancer\'s Decoder Ring'),
+(57802,9,29802,0,'A hidden Message quest.'),
+(57803,-1,57801,57802,'Q.29802 and item 74256 check'),
+(57804,9,14469,0,'spellclick_spells Quest check'),
+(57805,16,49599,12,'Quest Item ammount check.'),
+(57806,-1,57804,57805,'q 14469 and Item. 49599');
 /*!40000 ALTER TABLE `conditions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -2427,4 +2433,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-05 13:04:19
+-- Dump completed on 2023-10-17 18:21:17

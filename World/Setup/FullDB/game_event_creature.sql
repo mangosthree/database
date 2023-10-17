@@ -7,7 +7,7 @@ TRUNCATE TABLE `game_event_creature`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.5.5-10.5.8-MariaDB
+-- Server version	5.5.5-10.11.1-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -9814,7 +9814,7 @@ INSERT INTO `game_event_creature` (`guid`, `event`) VALUES
 (353672,1),
 (353708,1),
 (353723,1),
-(353724,10),
+(315646,10),
 (353725,2),
 (353726,2),
 (353727,2),
@@ -10003,7 +10003,7 @@ INSERT INTO `game_event_creature` (`guid`, `event`) VALUES
 (354571,2),
 (354572,2),
 (354573,2),
-(354574,10),
+(315644,10),
 (354575,19),
 (354576,19),
 (354577,20),
@@ -10342,7 +10342,7 @@ INSERT INTO `game_event_creature` (`guid`, `event`) VALUES
 (357512,75),
 (357513,8),
 (357532,8),
-(357534,10),
+(315652,10),
 (357535,8),
 (357536,8),
 (357537,8),
@@ -10557,7 +10557,7 @@ INSERT INTO `game_event_creature` (`guid`, `event`) VALUES
 (369656,1),
 (369657,1),
 (369658,1),
-(369665,10),
+(315647,10),
 (369686,10),
 (369688,1),
 (369693,1),
@@ -12332,7 +12332,14 @@ INSERT INTO `game_event_creature` (`guid`, `event`) VALUES
 (375990,12),
 (375991,12),
 (375992,12),
-(375993,12);
+(375993,12),
+(315643,10),
+(315650,10),
+(315649,10),
+(315645,10),
+(315651,10),
+(315648,10),
+(315653,10);
 /*!40000 ALTER TABLE `game_event_creature` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -12345,4 +12352,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-05 13:04:33
+-- Dump completed on 2023-10-17 18:21:25

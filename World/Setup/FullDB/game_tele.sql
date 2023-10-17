@@ -7,7 +7,7 @@ TRUNCATE TABLE `game_tele`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.5.5-10.5.8-MariaDB
+-- Server version	5.5.5-10.11.1-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -1703,7 +1703,22 @@ INSERT INTO `game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orient
 (1679,3641.45,5582.95,32.937,4.20397,571,'ColdrockQuarry'),
 (1680,3269.62,5595.64,49.35,3.46962,571,'LakeKum\'uya'),
 (1681,3203.57,5292.06,47.384,3.90866,571,'DEHTAEncampment'),
-(1682,2838.35,5651.31,45.65,5.36949,571,'BloodsporePlains');
+(1682,2838.35,5651.31,45.65,5.36949,571,'BloodsporePlains'),
+(1700,875.226,665.215,133.967,4.03,648,'TheLostIsles'),
+(1701,724.053,1829.07,105.096,4.976,648,'OmmlotVillage'),
+(1702,436.738,2094.05,0.5674,4.9398,648,'RuinsofVashj\'elan'),
+(1703,543.929,2708.81,105.897,4.558,648,'HordeBaseCamp'),
+(1704,629.968,3134,1.3408,5.595,648,'ShipwreckShore'),
+(1705,902.122,3285.25,12.793,5.8997,648,'AllianceBeachhead'),
+(1706,861.145,2810.02,109.545,1.7764,648,'WildOverlook'),
+(1707,1580.19,2719.26,83.2589,0.9164,648,'Warchief\'sLookout'),
+(1708,2078.22,2553.34,4.3009,6.1078,648,'TheSlavePits'),
+(1709,2416.82,2428.03,12.115,3.9284,648,'GallywixDocks'),
+(1710,2327.18,2074.79,9.3874,0.292,648,'KTCOilPlatform'),
+(1711,2117.79,1963.28,107.504,5.878,648,'BilgwaterLumberYard'),
+(1712,1521.35,1857.1,264.692,6.2,648,'Oostan'),
+(1713,1295.07,1169.79,120.283,3.464,648,'Volcanoth\'sLair'),
+(1714,1594.68,1359.85,106.444,2.736,648,'LostCaldera');
 /*!40000 ALTER TABLE `game_tele` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1716,4 +1731,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-05 13:04:35
+-- Dump completed on 2023-10-17 18:21:26

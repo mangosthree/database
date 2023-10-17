@@ -1,6 +1,6 @@
 If your database is a version prior to:
 
-Rel22_03_002_freeze_gm_command
+Rel22_04_026_Null_Event_Elemental_Unrest.sql
 
 You need to run the appriopriate updates in folder:
 

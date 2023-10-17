@@ -7,7 +7,7 @@ TRUNCATE TABLE `creature_addon`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.5.5-10.5.8-MariaDB
+-- Server version	5.5.5-10.11.1-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -68374,7 +68374,6 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pv
 (353672,0,0,1,0,0,0,NULL),
 (353708,0,0,1,0,0,0,'46786'),
 (353723,0,0,1,0,0,0,NULL),
-(353724,0,0,1,0,0,0,NULL),
 (353725,0,0,1,1,0,0,NULL),
 (353726,0,0,1,1,0,0,NULL),
 (353727,0,0,1,1,0,0,NULL),
@@ -69054,7 +69053,6 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pv
 (354571,0,0,1,0,0,0,NULL),
 (354572,0,0,1,0,0,0,NULL),
 (354573,0,0,1,0,0,0,NULL),
-(354574,0,0,1,0,0,0,NULL),
 (354583,0,0,1,0,0,0,NULL),
 (354584,0,0,1,0,0,0,NULL),
 (354585,0,0,1,0,0,0,NULL),
@@ -69728,10 +69726,10 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pv
 (355668,0,0,1,0,0,0,NULL),
 (355669,0,0,1,0,0,0,NULL),
 (355670,0,0,1,0,0,0,'99201'),
-(355671,0,0,1,0,0,0,'99201');
-INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pvp_state`, `emote`, `moveflags`, `auras`) VALUES 
+(355671,0,0,1,0,0,0,'99201'),
 (355672,0,0,1,0,0,0,'99201'),
-(355673,0,0,1,0,0,0,NULL),
+(355673,0,0,1,0,0,0,NULL);
+INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pvp_state`, `emote`, `moveflags`, `auras`) VALUES 
 (355674,0,0,1,0,0,0,NULL),
 (355675,0,0,1,0,0,0,NULL),
 (355676,0,0,1,0,0,0,NULL),
@@ -70555,7 +70553,6 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pv
 (357530,0,0,1,0,0,6294016,NULL),
 (357531,0,0,1,0,0,0,NULL),
 (357532,0,0,1,1,0,0,NULL),
-(357534,0,0,1,0,0,0,NULL),
 (357535,0,0,1,1,0,0,NULL),
 (357536,0,0,1,0,0,0,NULL),
 (357537,0,0,1,0,0,0,NULL),
@@ -74931,7 +74928,6 @@ INSERT INTO `creature_addon` (`guid`, `mount`, `bytes1`, `b2_0_sheath`, `b2_1_pv
 (369658,0,0,1,0,0,0,NULL),
 (369659,0,0,1,0,0,0,NULL),
 (369662,0,0,1,0,0,0,'58951'),
-(369665,0,0,1,0,0,0,NULL),
 (369666,0,0,1,0,0,0,NULL),
 (369667,0,0,1,0,0,0,NULL),
 (369668,0,0,1,0,0,0,NULL),
@@ -76713,4 +76709,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-05 13:04:21
+-- Dump completed on 2023-10-17 18:21:18

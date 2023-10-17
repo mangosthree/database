@@ -7,7 +7,7 @@ TRUNCATE TABLE `script_binding`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.5.5-10.5.8-MariaDB
+-- Server version	5.5.5-10.11.1-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -1450,6 +1450,7 @@ INSERT INTO `script_binding` (`type`, `ScriptName`, `bind`, `data`) VALUES
 (4,'spell_conjure_flame_sphere',55931,0),
 (4,'spell_conjure_rift',25813,0),
 (4,'spell_cos_crusader_strike',50773,0),
+(4,'spell_create_bark_walkers',47550,0),
 (4,'spell_crystal_spike_aura',47941,0),
 (4,'spell_destroy_door_seal',58040,0),
 (4,'spell_drake_turn_in',46696,0),
@@ -1500,6 +1501,7 @@ INSERT INTO `script_binding` (`type`, `ScriptName`, `bind`, `data`) VALUES
 (4,'spell_simon_game_start',39993,0),
 (4,'spell_simon_game_start',40041,0),
 (4,'spell_spectral_realm_notify',44845,0),
+(4,'spell_strength_ancients',47575,0),
 (4,'spell_summon_any_bot_trigger',63820,0),
 (4,'spell_summon_any_bot_trigger',64425,0),
 (4,'spell_summon_any_bot_trigger',64620,0),
@@ -1552,4 +1554,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-05 13:04:59
+-- Dump completed on 2023-10-17 18:21:44

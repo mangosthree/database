@@ -7,7 +7,7 @@ TRUNCATE TABLE `db_script_string`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.5.5-10.5.8-MariaDB
+-- Server version	5.5.5-10.11.1-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -1311,7 +1311,15 @@ INSERT INTO `db_script_string` (`entry`, `content_default`, `content_loc1`, `con
 (2000005290,'For we are all born of you, and shall all return to you.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,1,'Chief Hawkwind'),
 (2000005291,'Who are you calling a monster? You\'re the monster! I\'m just a man who died.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'Marshal Redpath'),
 (2000005292,'No. You\'re lying! My father will protect me!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'Lilian Voss'),
-(2000005293,'I see. Well then, let\'s get to work $n! The Dark Lady needs us, right?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'Valdred Moray');
+(2000005293,'I see. Well then, let\'s get to work $n! The Dark Lady needs us, right?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'Valdred Moray'),
+(2000005294,'I thank you, friend of Dalaran.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'Evanor say 1'),
+(2000005295,'We mustn\'t tarry here... stay close - I\'ll take us somehwere safe',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'Evanor say 2'),
+(2000005296,'Mages! Take wing!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,'Warmage Anzim yell on Q.11681 start.'),
+(2000005297,'For Dalaran! Attack!!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,1,0,0,'Warmage Archus.'),
+(2000005298,'What I doin\' wrong? Don\'t I get a lunch and two breaks a day, mon?',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'Defiant Troll random say - 1'),
+(2000005299,'I report you to HR!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'Defiant Troll random say - 2'),
+(2000005300,'Don\'t tase me, mon!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'SDefiant Troll random say - 3'),
+(2000005301,'Ouch! Dat hurt!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'SDefiant Troll random say - 4');
 /*!40000 ALTER TABLE `db_script_string` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1324,4 +1332,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-05 13:04:29
+-- Dump completed on 2023-10-17 18:21:23

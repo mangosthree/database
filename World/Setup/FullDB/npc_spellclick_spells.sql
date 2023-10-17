@@ -7,7 +7,7 @@ TRUNCATE TABLE `npc_spellclick_spells`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.5.5-10.5.8-MariaDB
+-- Server version	5.5.5-10.11.1-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -203,7 +203,7 @@ INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `quest_start`, `qu
 (36440,68735,0,0,0,1,0),
 (36459,43689,0,0,0,1,0),
 (36540,68917,0,0,0,1,0),
-(36756,45801,0,0,0,1,0),
+(36756,69261,0,0,0,3,57806),
 (36559,90105,0,0,0,1,0),
 (37738,70442,0,0,0,1,0),
 (37807,69434,0,0,0,1,0),
@@ -567,7 +567,8 @@ INSERT INTO `npc_spellclick_spells` (`npc_entry`, `spell_id`, `quest_start`, `qu
 (52888,97773,0,0,0,1,0),
 (52889,97773,0,0,0,1,0),
 (52890,97773,0,0,0,1,0),
-(53887,97773,0,0,0,1,0);
+(53887,97773,0,0,0,1,0),
+(36756,45801,0,0,0,0,57806);
 /*!40000 ALTER TABLE `npc_spellclick_spells` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -580,4 +581,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-05 13:04:47
+-- Dump completed on 2023-10-17 18:21:35
