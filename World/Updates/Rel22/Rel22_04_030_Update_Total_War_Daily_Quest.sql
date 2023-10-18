@@ -19,12 +19,12 @@ BEGIN
     -- Expected Values
     SET @cOldVersion = '22'; 
     SET @cOldStructure = '04'; 
-    SET @cOldContent = '028';
+    SET @cOldContent = '029';
 
     -- New Values
     SET @cNewVersion = '22';
     SET @cNewStructure = '04';
-    SET @cNewContent = '0029';
+    SET @cNewContent = '030';
                             -- DESCRIPTION IS 30 Characters MAX    
     SET @cNewDescription = 'Update_Total_War_Daily_Quest';
 
