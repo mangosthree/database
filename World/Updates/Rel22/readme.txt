@@ -1,6 +1,6 @@
 If your database is a version prior to:
 
-Rel22_04_026_Null_Event_Elemental_Unrest.sql
+Rel22_04_062_Remove_Spell_From_Trainer.sql
 
 You need to run the appriopriate updates in folder:
 

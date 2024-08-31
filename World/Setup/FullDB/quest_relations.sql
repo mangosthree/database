@@ -7,7 +7,7 @@ TRUNCATE TABLE `quest_relations`;
 --
 -- Host: localhost    Database: mangos3
 -- ------------------------------------------------------
--- Server version	5.5.5-10.11.1-MariaDB
+-- Server version	11.5.2-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18231,10 +18231,8 @@ INSERT INTO `quest_relations` (`actor`, `entry`, `quest`, `role`) VALUES
 (0,45228,27195,0),
 (0,45244,27203,0),
 (0,45244,27399,1),
-(0,45244,27442,0),
 (0,45244,27442,1),
 (0,45244,27722,1),
-(0,45244,28790,0),
 (0,45244,28790,1),
 (0,45244,28805,0),
 (0,45244,28805,1),
@@ -22131,6 +22129,7 @@ INSERT INTO `quest_relations` (`actor`, `entry`, `quest`, `role`) VALUES
 (1,206109,28705,0),
 (1,206109,28711,0),
 (1,206109,28717,0),
+(1,206109,28790,0),
 (1,206109,29157,0),
 (1,206109,29388,0),
 (1,206109,29390,0),
@@ -22599,4 +22598,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-17 18:21:40
+-- Dump completed on 2024-08-31 20:17:04

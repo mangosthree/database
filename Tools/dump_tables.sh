@@ -88,6 +88,7 @@ for TABLE in \
 `item_required_target` \
 `item_template` \
 `locales_achievement_reward` \
+`locales_command` \
 `locales_creature` \
 `locales_gameobject` \
 `locales_gossip_menu_option` \
@@ -157,10 +158,10 @@ for TABLE in \
 `warden` \
 ; do
 
-echo "Dumping ${i}/123 ${TABLE}..."
+echo "Dumping ${i}/124 ${TABLE}..."
 
 echo "--
--- Copyright (C) 2005-2021 MaNGOS <http://getmangos.eu/> <https://github.com/mangosthree>
+-- Copyright (C) 2005-2024 MaNGOS <https://getmangos.eu/> <https://github.com/mangoszero>
 --
 -- This program is free software; you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
