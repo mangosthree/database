@@ -50,7 +50,7 @@ DELETE FROM `gameobject` WHERE `guid` = 42434;
 UPDATE `gameobject` SET `position_z` = 126.900192 WHERE `guid` = 80531;
 
 -- Move Copper Vein out of map "thorny vine" near Vendetta Point (Southern Barrens).
-UPDATE `gameobject` SET `position_x` = -2072.205566, `position_y` = -1736.550171, `position_z` = 110.99942 WHERE guid=80619;
+UPDATE `gameobject` SET `position_x` = -2072.205566, `position_y` = -1736.550171, `position_z` = 110.99942 WHERE `guid` = 80619;
 
 -- Bring down a floating Copper Vein near Desolation Hold (Southern Barrens).
 UPDATE `gameobject` SET `position_z` = 96.393372 WHERE `guid` = 6672;
