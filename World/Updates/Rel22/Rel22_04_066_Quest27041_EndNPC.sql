@@ -43,6 +43,9 @@ BEGIN
         -- -- PLACE UPDATE SQL BELOW -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
+    -- Delete possible broken entry for quest 27041 endpoint
+DELETE FROM `quest_relations` WHERE `quest` = 27041 AND `role` = 1;
+
     -- Add new db entry for entity that ends the quest with proper type, ID, QID and role 
 INSERT INTO `quest_relations` (`actor`, `entry`, `quest`, `role`) VALUES (0, 44823,  27041, 1);
 
