@@ -1,0 +1,116 @@
+-- ----------------------------------------------------------------
+-- This is an attempt to create a full transactional MaNGOS update
+-- Now compatible with newer MySql Databases (v1.5)
+-- ----------------------------------------------------------------
+DROP PROCEDURE IF EXISTS `update_mangos`;
+
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_mangos`()
+BEGIN
+    DECLARE bRollback BOOL  DEFAULT FALSE ;
+    DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET `bRollback` = TRUE;
+
+    -- Current Values (TODO - must be a better way to do this)
+    SET @cCurVersion := (SELECT `version` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
+    SET @cCurStructure := (SELECT `structure` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
+    SET @cCurContent := (SELECT `content` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
+
+    -- Expected Values
+    SET @cOldVersion = '22';
+    SET @cOldStructure = '04';
+    SET @cOldContent = '001';
+
+    -- New Values
+    SET @cNewVersion = '22';
+    SET @cNewStructure = '05';
+    SET @cNewContent = '001';
+                            -- DESCRIPTION IS 30 Characters MAX
+    SET @cNewDescription = 'ai_playerbot_guild_names';
+
+                        -- COMMENT is 150 Characters MAX
+    SET @cNewComment = 'ai_playerbot_guild_names';
+
+    -- Evaluate all settings
+    SET @cCurResult := (SELECT `description` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
+    SET @oldResult := (SELECT `description` FROM `db_version` WHERE `version`=@cOldVersion AND `structure`=@cOldStructure AND `content`=@cOldContent);
+    SET @newResult := (SELECT `description` FROM `db_version` WHERE `version`=@cNewVersion AND `structure`=@cNewStructure AND `content`=@cNewContent);
+
+    IF (@cCurResult = @oldResult) THEN    -- Does the current version match the expected version
+        -- APPLY UPDATE
+        START TRANSACTION;
+        -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+        -- -- PLACE UPDATE SQL BELOW -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+        -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
+-- ============================================================
+-- Table structure for table `ai_playerbot_guild_names`
+-- ============================================================
+
+DROP TABLE IF EXISTS `ai_playerbot_guild_names`;
+
+CREATE TABLE `ai_playerbot_guild_names` (
+  `name_id` mediumint(8) NOT NULL AUTO_INCREMENT,
+  `name` varchar(24) NOT NULL,
+  PRIMARY KEY (`name_id`),
+  UNIQUE KEY `name_id` (`name_id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=MyISAM AUTO_INCREMENT=642 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci ROW_FORMAT=FIXED COMMENT='PlayerbotAI guild names';
+
+/*Data for the table `ai_playerbot_guild_names` */
+
+insert  into `ai_playerbot_guild_names`(`name_id`,`name`) values 
+(1,'Black Guard'),(2,'Abyssal Kingdoms'),(3,'Acid Evil'),(4,'Addicts Muskateers'),(5,'Adventurers War'),(6,'Age of Red Water Clan'),(7,'Alivso Reason'),(8,'All Knights'),(9,'Allegiance of the Vile'),(10,'Alliance Clan'),(11,'Alliance of Defectives'),(12,'Alti Legions'),(13,'Anarchie Shi'),(14,'Anchors of the Nominal'),(15,'Ancients of Part Times'),(16,'Angelus Gods'),(17,'Angry Party'),(18,'Apocalyptic Lamont'),(19,'Architects of Green'),(20,'Army of Black Widows'),(21,'Army of Orgrimmar Minds'),(22,'Army of Three Horses'),(23,'Arrows of Midlight'),(24,'Artisans of Best Guild'),(25,'Assasins of the Pyrewood'),(26,'Assassins Bane'),(27,'Avatars of Warsong Stuff'),(28,'Axis of the Funky Night'),(29,'Azeroth Souls'),(30,'Azeroths Rabbits'),(31,'Bad Sentinels'),(32,'Banana Song'),(33,'Band of Tarantula Attack'),(34,'Band of the Dark Reveren'),(35,'Barcode Praised'),(36,'Basher Goats'),(37,'Basic Order'),(38,'Batman of Banished'),(39,'Betrayers of Lucky Child'),(40,'Blackwater Committee'),(41,'Blades of Lich Kings'),(42,'Blades of the Hive'),(43,'Blades of the Total'),(44,'Bleeding War'),(45,'Blessed Lair'),(46,'Blizzards of the Iron'),(47,'Blood Chaos'),(48,'Blood Intrigue'),(49,'Blood Samurai'),(50,'Bloodlust Good'),(51,'Bonds of Reported Ignore'),(52,'Booty Cry'),(53,'Border Knights'),(54,'Bossmans Targaryen'),(55,'Braveheart Heaven'),(56,'Brotherhood of Twilight'),(57,'Bruised Pain'),(58,'Burning Control'),(59,'Burning Oblivion'),(60,'Cabal of Kalimdor'),(61,'Cake Crusade'),(62,'Call of the Ironforge'),(63,'Carebears Thunder'),(64,'Carpe Heaven'),(65,'Carpe Regiment'),(66,'Children of Order'),(67,'Children of the Gods'),(68,'Circle of Amor E Bobby'),(69,'Clan of the Elven Toys'),(70,'Clan of the Strike Light'),(71,'Coalition of Super Best'),(72,'Collective Pimps'),(73,'Companions of the Gnome'),(74,'Company of the Vibe'),(75,'Conclave of the Triad'),(76,'Council of Final Demise'),(77,'Council of Hard Core Ord'),(78,'Craaweh Thrall'),(79,'Cradle Scourge'),(80,'Crimson Angels'),(81,'Crimson Saints'),(82,'Crusade of Oh'),(83,'Crusaders of Undead'),(84,'Cryptic Serenity'),(85,'Csa Rigged'),(86,'Cult of the Raging Raid'),(87,'Dalaran Fair'),(88,'Damage Inc'),(89,'Dark Alliance'),(90,'Dark Azeroth'),(91,'Dark Damage'),(92,'Dark Resistus'),(93,'Dark Samurai'),(94,'Dark Turtles'),(95,'Darken Mercenaries'),(96,'Darkened Malevolence'),(97,'Darkness of Sword Coast'),(98,'Dawn of Knights Society'),(99,'Dawn of Mad Sentry'),(100,'Dead Zug'),(101,'Death Darkness'),(102,'Death Knights'),(103,'Deathlike Goods'),(104,'Deaths Venoms'),(105,'Decree of the Phumpers'),(106,'Defenders of Da Raised'),(107,'Defenders of Hyuuga Dark'),(108,'Defenders of Sacred Harm'),(109,'Deths Lords'),(110,'Devil Circl'),(111,'Devils Klng'),(112,'Dharma Hand'),(113,'Dharma Thorn'),(114,'Dies Ravager'),(115,'Disciples of Dead Panda'),(116,'Disciples of the Rot'),(117,'Doomsday Youth'),(118,'Dorcha Knights'),(119,'Dots of Dead Skull'),(120,'Dragon Arms'),(121,'Dragonhawk Revolution'),(122,'Dragons Erythnul'),(123,'Dragons of the Black'),(124,'Drunken Thunder'),(125,'Drunks of Matoskan'),(126,'Dwarven Rock'),(127,'Dynasty of the Emerald'),(128,'Eastern Asylum'),(129,'Echo Sanctus'),(130,'Echoes of the Muphin'),(131,'Effreno Death'),(132,'Elite Guild'),(133,'Elite Legion'),(134,'Elite Veritas'),(135,'Elunes Meat'),(136,'Emerald Men'),(137,'Emerald Mjolnir'),(138,'Endless Defense'),(139,'Enemies of Bleeding'),(140,'Enternal Saber'),(141,'Evictors of the Returned'),(142,'Evil Guard'),(143,'Exalted Effect'),(144,'Eyes of a Night Elf'),(145,'Eyes of the Elton Souls'),(146,'Fallen Clan'),(147,'Fallen Milk'),(148,'Fenrir Seeker'),(149,'Final Army'),(150,'Flames of Ale Drinkers'),(151,'Flames of Antarian Chaos'),(152,'Forestt\'s Wrath'),(153,'Forgotten Within'),(154,'From Synergy'),(155,'Frozen Oblivion'),(156,'Gashlycrumb Rollers'),(157,'Giovannitwos Elune'),(158,'Glass Meridian'),(159,'Gnome Faction'),(160,'Gods Gold'),(161,'Gods of the Complete'),(162,'Gold Catchers'),(163,'Golden Legendz'),(164,'Golden Souls'),(165,'Goldshire Goats'),(166,'Good Azeroth'),(167,'Gotz Safety'),(168,'Grammaton Alliance'),(169,'Great Circle'),(170,'Guardians of Honor'),(171,'Guards of Frostmane'),(172,'Guild of La Mano Dragons'),(173,'Guild of the Puppet'),(174,'Haggles Brigade'),(175,'Hammer of the Moral'),(176,'Hand of the Iron'),(177,'Hands of Far Con Buddies'),(178,'Hearts Knights'),(179,'Hell Angels'),(180,'Hells Thorn'),(181,'Holy Darnassus'),(182,'Horde Abh'),(183,'Horde Dragons'),(184,'Horde Leaders'),(185,'Horde Squad'),(186,'Horde of Omnia'),(187,'Horde of Free Brigade'),(188,'Horde of Shadow Flush'),(189,'Hordes Buccaneers'),(190,'Hordes Marauders'),(191,'House Crusaders'),(192,'Immortality Honor'),(193,'Inside Poof'),(194,'Iron Boyz'),(195,'Iscariot Ginas'),(196,'Island Kimchi'),(197,'Jenovas Wild'),(198,'Kalimdor Darkness'),(199,'Keepers of Golden Misery'),(200,'Keggers of Alt Hand Aton'),(201,'Kill Mafia'),(202,'Killer Durotar'),(203,'Killer Force'),(204,'Kindred Yardies'),(205,'Kindred of King Assassin'),(206,'Kingdom of the Ordo Crew'),(207,'Kings Boys'),(208,'Kings Windstorm'),(209,'Kings of Blood Knuckle'),(210,'Kings of Dol Aegis'),(211,'Knight Combat'),(212,'Knight of Fuzzy Night'),(213,'Knights of Darkspear'),(214,'Knights of Heavens Grave'),(215,'Knights of Myrmidon Ivxx'),(216,'Knights of the Avenging'),(217,'Knights of the Ballpeen'),(218,'Knights of the Black'),(219,'Knights of the Bloodhoof'),(220,'Knights of the Sovereign'),(221,'Knights of the Storm'),(222,'Knights of the Zulian'),(223,'Last Ptesanwi'),(224,'League of Hate Crew Seek'),(225,'Legacy of Ninth Beard'),(226,'Legendary Sons'),(227,'Legion of Maple Syrup'),(228,'Legion of Public Works'),(229,'Legion of Three Course'),(230,'Legion of United Souls'),(231,'Legion of Westfall Gold'),(232,'Legion of the Dark'),(233,'Legionnaires of Skull'),(234,'Les Warriors'),(235,'Lifetakers Inc'),(236,'Light of Dark Spire'),(237,'Light of Jade Renegade'),(238,'Liquid Guild'),(239,'Lone Side'),(240,'Lords of Fallen Blood'),(241,'Los Frum'),(242,'Lost Boyz'),(243,'Lost Squad'),(244,'Mad Daggers'),(245,'Malice Fatale'),(246,'Mandate of Jade'),(247,'Marines of the Butt'),(248,'Mercenaries of the Death'),(249,'Midget Council'),(250,'Midgets of Dark Sexy'),(251,'Midnight Norrathians'),(252,'Midnight Slayer'),(253,'Midnight War'),(254,'Minions of the Shadow'),(255,'Ministry of the Allince'),(256,'Mithril Destiny'),(257,'Monarchs of Party Crew'),(258,'Money Call'),(259,'Moonwood Redeye'),(260,'Narrow Patrol'),(261,'New Clan'),(262,'Night Pack'),(263,'Nightmare Guild'),(264,'Ninja Pledge'),(265,'Nocturne of Totally Dead'),(266,'Obsidian Fish'),(267,'Old Cosa'),(268,'One Valor'),(269,'Opus Faithful'),(270,'Order of Alts oF Fate'),(271,'Order of Nagas Bike Hunt'),(272,'Order of Omega Wards'),(273,'Order of Pink'),(274,'Order of Shield Bed'),(275,'Order of the Alt Sheep'),(276,'Order of the Honor'),(277,'Order of the Divine Lord'),(278,'Ordo Force'),(279,'Orgrimmar Ones'),(280,'Out of Lw Downed Wrynn'),(281,'Out of Mithril Avengers'),(282,'Oxbloods Medivh'),(283,'Pally Guard'),(284,'Path of the Brain'),(285,'Peddlers of the Hidden'),(286,'Phantoms of Wicked'),(287,'Phoenix Keepers'),(288,'Pillowcase Azeroth'),(289,'Pillowcase Cats'),(290,'Pius Tribe'),(291,'Plague of Human Slayer'),(292,'Plan Hand'),(293,'Power of Tuatha De Blood'),(294,'Priest Guild'),(295,'Prophets of Fatima War'),(296,'Prophets of Outlaw'),(297,'Prophets of the Red Mean'),(298,'Protectors of Black Hand'),(299,'Pure Aequitas'),(300,'Question Thrall'),(301,'Quintessential Sister'),(302,'Rage of Prairie Black'),(303,'Rage of the Flame'),(304,'Raiders of Candy Heart'),(305,'Raiders of the Purple'),(306,'Raiders of the Sil'),(307,'Ram Runners'),(308,'Rangers Vengeance'),(309,'Rangers of Interitus'),(310,'Raven Clan'),(311,'Razzle Guardian'),(312,'Reapers of the Shadow'),(313,'Reckless Knights'),(314,'Red Byam'),(315,'Red Death'),(316,'Reign of Alliance Task'),(317,'Reign of Blazing Frell'),(318,'Reign of Pure Conway'),(319,'Restoration of Illegal'),(320,'Resurrection of Tenui'),(321,'Ronin Kalimdor'),(322,'Rotting Tears'),(323,'Ruins of Dark Azeroth'),(324,'Rulers of Devils'),(325,'Sacred Parts'),(326,'Sacred Society'),(327,'Sacrificial Brotherhood'),(328,'Sanguine Council'),(329,'Sapphic Exiles'),(330,'Savage Kalimdor'),(331,'Scourge of Eight Inches'),(332,'Scourge of Wow Knights'),(333,'Scythe Sauce'),(334,'Secret Clan'),(335,'Seki Council'),(336,'Seraph Legends'),(337,'Shaded Judgement'),(338,'Shadow America'),(339,'Shadow Boys'),(340,'Shadow Knights'),(341,'Shadowed Ghosts'),(342,'Shadowed Goat'),(343,'Shadows of Cole Trainz'),(344,'Shadows of Los Banditos'),(345,'Shattered Stormrage'),(346,'Silent Night'),(347,'Silver Fools'),(348,'Silversky Sun'),(349,'Sisters of Kalimdor'),(350,'Skulled Ironforge'),(351,'Slayers of the Primals'),(352,'Sleepy Steel'),(353,'Soldiers of Azeroth'),(354,'Soldiers of Stalker'),(355,'Sons of Lambent Virtue'),(356,'Sons of the Top Truth'),(357,'Soul Wish'),(358,'Souls of Elite Gnome'),(359,'Spanaway Metalheadz'),(360,'Spoony Demise'),(361,'Squires of Sacred Tribe'),(362,'Stagnant Jesters'),(363,'Stars of Gear Farming'),(364,'Stupid Crusaders'),(365,'Stop Guides'),(366,'Storm of the Mope\'s'),(367,'Stormrage Ferguson'),(368,'Stormtroopers of Fatima '),(369,'Stormwind Crew'),(370,'Straight Caedes'),(371,'Stronghold Angels'),(372,'Sturgeon Empire'),(373,'Survivors of Devil Club'),(374,'Sweet Bear'),(375,'Sword of Lost Evil'),(376,'Tainted Bunnies'),(377,'Talon of the Eclectic'),(378,'Team Kingdom'),(379,'Team United'),(380,'Tears of Eternal Kitties'),(381,'Tears of Phantom Druids'),(382,'Templar of Raid Dodgers'),(383,'Templars of Plagueware'),(384,'Terra Totem'),(385,'Terra War'),(386,'The Abiem'),(387,'The Aceofchaos'),(388,'The Afterlife'),(389,'The Aggression'),(390,'The Alliance of Dark'),(391,'The Altimate'),(392,'The Ancona Fire'),(393,'The Apocalypse'),(394,'The Arcane Monkey'),(395,'The Army of Spartans'),(396,'The Avalon'),(397,'The Avengers of Shining'),(398,'The Azure Gangstaz'),(399,'The Battlegnome'),(400,'The Black Hand Haven'),(401,'The Blackdraygon'),(402,'The Blackout'),(403,'The Blade'),(404,'The Blades of Caer Eel'),(405,'The Blades of Onyxia'),(406,'The Blood Red Violence'),(407,'The Blood of Red Powers'),(408,'The Bloodycrusaders'),(409,'The Blues Azeroth'),(410,'The Blues Grimfang'),(411,'The Bluethunder'),(412,'The Bonds of Arcane'),(413,'The Brimstone'),(414,'The Broken Chaos'),(415,'The Brood of Unknown'),(416,'The Burning Dog Firewall'),(417,'The Cabal'),(418,'The Cake Gankers'),(419,'The Cannabuddies'),(420,'The Circle of Shadow'),(421,'The Clan Blackwatch Few'),(422,'The Clan Cats'),(423,'The Clan Knights'),(424,'The Clean Combinations'),(425,'The Clean Up Guard'),(426,'The Council of Dark'),(427,'The Covenant'),(428,'The Crimson Guild'),(429,'The Crimson Marbock'),(430,'The Crusaders of Horde'),(431,'The Crusaders of Seksoni'),(432,'The Cult of Clan Brigade'),(433,'The Cult of the Pink'),(434,'The Daggers of the Vile'),(435,'The Dark'),(436,'The Dark Dogs'),(437,'The Dark Pain'),(438,'The Darkfall'),(439,'The Darkside Vanguard'),(440,'The Darkside of Initium'),(441,'The Daughters of the Eli'),(442,'The Daytripper'),(443,'The Deadfriends'),(444,'The Defiant'),(445,'The Dont Overwhelming'),(446,'The Doom Pasta'),(447,'The Dragon Redeye'),(448,'The Dragons Flame'),(449,'The Dreadlords'),(450,'The Dublainn Crown'),(451,'The Durban Protecters'),(452,'The Echoes of Goldshire'),(453,'The Elit of Dark Elune'),(454,'The Emissaries of Furiou'),(455,'The Eternal Chaos'),(456,'The Eternus'),(457,'The Exiie'),(458,'The Expendable Shadow'),(459,'The Faith of Desert'),(460,'The Family Misfits'),(461,'The Fere Darkness'),(462,'The Final Tears'),(463,'The Forsaken Boochies'),(464,'The Gates of the Bloody'),(465,'The Gnomes Lordaero'),(466,'The Gods of Blackscar'),(467,'The Gods of Twilight'),(468,'The Gold Fighters'),(469,'The Guardian Thieves'),(470,'The Guardians of Gnome'),(471,'The Hands of Redridge'),(472,'The Hawk'),(473,'The Hearts Images'),(474,'The Hellborn Die'),(475,'The Heroes Plague'),(476,'The Horde Farmer'),(477,'The Horde Honor'),(478,'The Hotpocket'),(479,'The Ignis Prophecy'),(480,'The Illuminatie'),(481,'The Immortal League'),(482,'The Independant'),(483,'The Infragilis Legion'),(484,'The Jag'),(485,'The Jookmaster'),(486,'The Kataclysm'),(487,'The Knight'),(488,'The Knightelf'),(489,'The Knights Thorn'),(490,'The Knights of Gods Fury'),(491,'The Knights of Lost Peon'),(492,'The Knights of Mortal'),(493,'The Knights of Samurai'),(494,'The Kobra'),(495,'The Leaders of Evil'),(496,'The Leaders of Life'),(497,'The League of Red Knight'),(498,'The Legacy Meathooks'),(499,'The Legion of the Blue'),(500,'The Legion of Death'),(501,'The Lemmings of Flaming'),(502,'The Let Blood Gamer'),(503,'The Light'),(504,'The Little Hunters'),(505,'The Lords of Vae Knight'),(506,'The Mercenaries'),(507,'The Midieval Vanguard'),(508,'The Might of Dark Tong'),(509,'The Mithril Justice'),(510,'The Mithril Pepsi'),(511,'The Mjollnir'),(512,'The Moo Licht'),(513,'The Morgantis'),(514,'The Mulletmen'),(515,'The Necrontyr of Eternal'),(516,'The Nedrage Kills'),(517,'The Night'),(518,'The Nightfall'),(519,'The Ninja Heroes'),(520,'The Order of Gold'),(521,'The Order of Warcraft'),(522,'The Order of Warsong'),(523,'The Over Louder'),(524,'The Overlord'),(525,'The Pants'),(526,'The Pie'),(527,'The Pretectors'),(528,'The Project Disease'),(529,'The Psychotics'),(530,'The Puggers'),(531,'The Pyreborne'),(532,'The Queen of Meow'),(533,'The Red Hood Thunder'),(534,'The Reign of Uber Enigma'),(535,'The Resurrection'),(536,'The Ring of Honor'),(537,'The Ropetown'),(538,'The Royal Militia Blanco'),(539,'The Samurai Banda'),(540,'The Sanity'),(541,'The Sauce'),(542,'The Schoolyard Reapers'),(543,'The Secrets of Hehog'),(544,'The Seers'),(545,'The Servants of Cyclone'),(546,'The Seven'),(547,'The Shadow Gate'),(548,'The Shadow Misfits'),(549,'The Shadow of Ninja Pain'),(550,'The Shadowborn'),(551,'The Shizam'),(552,'The Shockers'),(553,'The Shriek of Nightmare'),(554,'The Silent Grunts'),(555,'The Silent Legion'),(556,'The Skunkdesigns'),(557,'The Sorrow'),(558,'The Souls of Azeroth Old'),(559,'The Spazler'),(560,'The Squirrels'),(561,'The Stringville'),(562,'The Stronghold of Reds'),(563,'The Tha Handlers'),(564,'The Thieves of Moral'),(565,'The Thorium Claw'),(566,'The Thread'),(567,'The Thule'),(568,'The Thunderslayers'),(569,'The True Wow'),(570,'The Trusted Minions'),(571,'The Twilight Rangers'),(572,'The Tyraels Aggression'),(573,'The Ultimates'),(574,'The Unforgiven Heresy'),(575,'The Unholy Bards'),(576,'The Unsung Efficiency'),(577,'The Valley of the Demon'),(578,'The Valor'),(579,'The Violent Chaos'),(580,'The Virus Eternal'),(581,'The War'),(582,'The Warsong Gnomeregan'),(583,'The Westcoast'),(584,'The Wicked'),(585,'The Will of Chronicles'),(586,'The Windsword Nightmare'),(587,'The Wings of Oxy Claw'),(588,'The Wrath of Elton'),(589,'The Wut'),(590,'The Yoricks Assassins'),(591,'The Zeksonic Thieves'),(592,'Theramore Azeroth'),(593,'Thirstquencher Chaos'),(594,'Thralls Caribous'),(595,'Three Alive'),(596,'Titans of Blood Sun'),(597,'Torvus Dragons'),(598,'Tower of the Little'),(599,'True Team'),(600,'Tul Inc'),(601,'Twinks of Cold Club'),(602,'Twinks of Hidden Venture'),(603,'Ultimate Rules'),(604,'Undead Kingdom'),(605,'Unforgiven Destiny'),(606,'Unguilded War'),(607,'Unholy Cats'),(608,'Unholy Teeth'),(609,'Union of Burning Prz'),(610,'Unusual Guard'),(611,'Valiant Riderz'),(612,'Vanguard Omen'),(613,'Vanguard Redeemers'),(614,'Vanguard of Teutonic'),(615,'Vengeful Mayhem'),(616,'Verata Blackflame'),(617,'Vicious Renegade'),(618,'Vile Dead'),(619,'Voodoo Hearth'),(620,'War Legion'),(621,'Warlockian Tree'),(622,'Warlords of Kungfu Army'),(623,'Warriors of Happy Death'),(624,'Warriors of the Tundra'),(625,'Warsong Insanity'),(626,'Waste of Grey Death'),(627,'Wayfarers of Maple Leaf'),(628,'Wayward Agenda'),(629,'Web of Forgoten Warfare'),(630,'Wet Guard'),(631,'Wild Fire'),(632,'Will of the Forgotten'),(633,'Winds of Steve Irwin'),(634,'Wings of Emerald Minions'),(635,'Wintermane Good'),(636,'Witchhunters of Chaos'),(637,'With Sea'),(638,'Wrath of the Horde Troop'),(639,'Wtf Losers'),(640,'Xcalibur of Shogunz Depo'),(641,'Xelium Determination');
+
+        -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+        -- -- PLACE UPDATE SQL ABOVE -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+        -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+
+        -- If we get here ok, commit the changes
+        IF bRollback = TRUE THEN
+            ROLLBACK;
+            SHOW ERRORS;
+            SELECT '* UPDATE FAILED *' AS `===== Status =====`,@cCurResult AS `===== DB is on Version: =====`;
+        ELSE
+            COMMIT;
+            -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+            -- UPDATE THE DB VERSION
+            -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+            INSERT INTO `db_version` VALUES (@cNewVersion, @cNewStructure, @cNewContent, @cNewDescription, @cNewComment);
+            SET @newResult := (SELECT `description` FROM `db_version` WHERE `version`=@cNewVersion AND `structure`=@cNewStructure AND `content`=@cNewContent);
+
+            SELECT '* UPDATE COMPLETE *' AS `===== Status =====`,@newResult AS `===== DB is now on Version =====`;
+        END IF;
+    ELSE    -- Current version is not the expected version
+        IF (@cCurResult = @newResult) THEN    -- Does the current version match the new version
+            SELECT '* UPDATE SKIPPED *' AS `===== Status =====`,@cCurResult AS `===== DB is already on Version =====`;
+        ELSE    -- Current version is not one related to this update
+            IF(@cCurResult IS NULL) THEN    -- Something has gone wrong
+                SELECT '* UPDATE FAILED *' AS `===== Status =====`,'Unable to locate DB Version Information' AS `============= Error Message =============`;
+            ELSE
+                IF(@oldResult IS NULL) THEN    -- Something has gone wrong
+                    SET @cCurVersion := (SELECT `version` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
+                    SET @cCurStructure := (SELECT `STRUCTURE` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
+                    SET @cCurContent := (SELECT `Content` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
+                    SET @cCurOutput = CONCAT(@cCurVersion, '_', @cCurStructure, '_', @cCurContent, ' - ',@cCurResult);
+                    SET @oldResult = CONCAT('Rel',@cOldVersion, '_', @cOldStructure, '_', @cOldContent, ' - ','IS NOT APPLIED');
+                    SELECT '* UPDATE SKIPPED *' AS `===== Status =====`,@oldResult AS `=== Expected ===`,@cCurOutput AS `===== Found Version =====`;
+                ELSE
+                    SET @cCurVersion := (SELECT `version` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
+                    SET @cCurStructure := (SELECT `STRUCTURE` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
+                    SET @cCurContent := (SELECT `Content` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
+                    SET @cCurOutput = CONCAT(@cCurVersion, '_', @cCurStructure, '_', @cCurContent, ' - ',@cCurResult);
+                    SELECT '* UPDATE SKIPPED *' AS `===== Status =====`,@oldResult AS `=== Expected ===`,@cCurOutput AS `===== Found Version =====`;
+                END IF;
+            END IF;
+        END IF;
+    END IF;
+END $$
+
+DELIMITER ;
+
+-- Execute the procedure
+CALL update_mangos();
+
+-- Drop the procedure
+DROP PROCEDURE IF EXISTS `update_mangos`;
