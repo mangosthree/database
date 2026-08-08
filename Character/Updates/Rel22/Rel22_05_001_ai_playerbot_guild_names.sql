@@ -55,7 +55,7 @@ CREATE TABLE `ai_playerbot_guild_names` (
   PRIMARY KEY (`name_id`),
   UNIQUE KEY `name_id` (`name_id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=642 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci ROW_FORMAT=FIXED COMMENT='PlayerbotAI guild names';
+) ENGINE=MyISAM AUTO_INCREMENT=642 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_general_ci ROW_FORMAT=FIXED COMMENT='PlayerbotAI guild names';
 
 /*Data for the table `ai_playerbot_guild_names` */
 
