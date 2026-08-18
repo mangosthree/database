@@ -21,6 +21,8 @@
 from __future__ import annotations
 
 import re
+import shutil
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -42,7 +44,28 @@ def shell_function(script: str, name: str) -> str:
     return match.group("body")
 
 
+def bash_executable() -> str:
+    bash = shutil.which("bash")
+    if bash:
+        return bash
+    git = shutil.which("git")
+    if git:
+        candidate = Path(git).resolve().parents[1] / "bin" / "bash.exe"
+        if candidate.is_file():
+            return str(candidate)
+    raise AssertionError("bash is required to validate dump_tables.sh")
+
+
 class WardenTransitionWorkflowTests(unittest.TestCase):
+    def test_windows_backup_returns_failure_to_automation(self) -> None:
+        script = read_script("Tools/backupDB.cmd")
+        self.assertIn('set "BACKUPRESULT=0"', script)
+        self.assertEqual(script.count('set "BACKUPRESULT=1"'), 2)
+        self.assertRegex(
+            script,
+            r"(?ms)^:finish\s*$\s*pause\s*exit /b %BACKUPRESULT%\s*$",
+        )
+
     def test_update_only_dispatches_all_database_updates_once(self) -> None:
         script = read_script("InstallDatabases.sh")
         main_start = script.rfind('\nif [ "${createcharDB}" = "YES" ]; then')
@@ -84,18 +107,53 @@ class WardenTransitionWorkflowTests(unittest.TestCase):
             ("rdb", "_full_realmdb", "loadrealmdb", "warden_audit"),
         }
         self.assertEqual(calls, expected)
+        guarded_calls = re.findall(
+            r'(?im)^call :DumpOptionalTable .*?\s*\r?\n'
+            r'if errorlevel 1 goto error\s*$',
+            script,
+        )
+        self.assertEqual(len(guarded_calls), len(expected))
 
         helper_start = script.find("\n:DumpOptionalTable\n")
         helper_end = script.find("\n:patherror\n", helper_start)
         self.assertGreaterEqual(helper_start, 0, "optional-table helper is missing")
         self.assertGreater(helper_end, helper_start, "optional-table helper is unterminated")
         helper = script[helper_start:helper_end]
-        self.assertRegex(helper, r"(?i)mysqldump .*--no-data.*%OPTIONALDB%.*%TABLENAME%")
-        self.assertIn(
-            'if exist "%OPTIONALDIR%\\%TABLENAME%.sql" del /q '
-            '"%OPTIONALDIR%\\%TABLENAME%.sql"',
-            helper,
+        self.assertIn("information_schema.tables", helper)
+        self.assertIn('if not "%OPTIONALFOUND%" == "0" if not ', helper)
+        absent = helper[
+            helper.index('if "%OPTIONALFOUND%" == "0" (') :
+            helper.index('set "OPTIONALPARAMS="')
+        ]
+        self.assertRegex(
+            absent,
+            r'(?s)del /Q "%OPTIONALOUTPUT%"\s*'
+            r'if exist "%OPTIONALOUTPUT%" \(.*?exit /b 1',
         )
+
+        assembly = helper[
+            helper.index('if /I "%OPTIONALSTRUCTURE%" == "NO" (') :
+            helper.index('move /Y "%OPTIONALREADY%" "%OPTIONALOUTPUT%"')
+        ]
+        writes = [
+            '%ComSpec% /D /C echo -- ---------------------------------------- ^> "%OPTIONALREADY%"',
+            '%ComSpec% /D /C echo -- --        CLEAR DOWN THE TABLE        -- ^>^> "%OPTIONALREADY%"',
+            '%ComSpec% /D /C echo -- ---------------------------------------- ^>^> "%OPTIONALREADY%"',
+            '%ComSpec% /D /C echo TRUNCATE TABLE `%OPTIONALTABLE%`; ^>^> "%OPTIONALREADY%"',
+            '%ComSpec% /D /C type "%OPTIONALTEMP%" ^>^> "%OPTIONALREADY%"',
+        ]
+        for write in writes:
+            self.assertRegex(
+                assembly,
+                re.escape(write)
+                + r"\s*if errorlevel 1 goto DumpOptionalTableAssemblyFailed",
+            )
+        self.assertRegex(
+            assembly,
+            r'(?s)del /Q "%OPTIONALTEMP%"\s*'
+            r'if exist "%OPTIONALTEMP%" goto DumpOptionalTableAssemblyFailed',
+        )
+        self.assertIn(":DumpOptionalTableAssemblyFailed", script)
 
         configured = {call[3] for call in calls}
         pre_migration = {"warden", "warden_action", "warden_log"}
@@ -105,7 +163,7 @@ class WardenTransitionWorkflowTests(unittest.TestCase):
         self.assertEqual(configured & post_migration, post_migration)
         self.assertEqual(configured - post_migration, pre_migration)
 
-    def test_unix_dump_selects_existing_warden_tables_and_cleans_stale_files(self) -> None:
+    def test_unix_dump_replaces_warden_files_only_after_staging(self) -> None:
         script = read_script("Tools/dump_tables.sh")
         candidates = re.search(r"for WARDEN_TABLE in ([^;\n]+); do", script)
         self.assertIsNotNone(candidates, "Warden table probe loop is missing")
@@ -113,14 +171,54 @@ class WardenTransitionWorkflowTests(unittest.TestCase):
         self.assertRegex(
             script,
             r"(?s)for WARDEN_TABLE in warden warden_checks; do.*?"
-            r"mysqldump .*--no-data.*\$\{DB\}.*\$\{WARDEN_TABLE\}",
+            r"WARDEN_FOUND=.*?mysql .*information_schema\.tables",
         )
-        self.assertIn(
+        self.assertIn('case "${WARDEN_FOUND}" in', script)
+        self.assertIn('> "${WARDEN_READY}"', script)
+        stage = script.index('> "${WARDEN_READY}"')
+        publish = script.index(
+            'mv -f "${WARDEN_READY}" "${DUMPDIR}/${WARDEN_TABLE}.sql"'
+        )
+        stale_cleanup = script.index(
+            'rm -f "${DUMPDIR}/${WARDEN_TABLE}.sql"', publish
+        )
+        self.assertLess(stage, publish)
+        self.assertLess(publish, stale_cleanup)
+        self.assertIn('if ! mysqldump ', script)
+        self.assertIn('if ! mv -f "${WARDEN_READY}"', script)
+        self.assertNotIn(
             'rm -f "${DUMPDIR}/warden.sql" "${DUMPDIR}/warden_checks.sql"',
             script,
         )
-        self.assertIn("${WARDEN_TABLES} \\", script)
+        self.assertNotIn("${WARDEN_TABLES} \\", script)
+        self.assertRegex(
+            script,
+            r"(?ms)^dump_warden_tables\(\)\s*\{.*?^\}\s*$",
+        )
         self.assertNotRegex(script, r"(?m)^`warden(?:_checks)?` \\$")
+
+    def test_complete_unix_dump_script_parses_and_iterates_tables(self) -> None:
+        result = subprocess.run(
+            [bash_executable(), "-n", str(ROOT / "Tools" / "dump_tables.sh")],
+            capture_output=True,
+            check=False,
+            text=True,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+        loop = re.search(
+            r"(?ms)^for TABLE in [\\]\r?\n.*?^; do\s*$",
+            read_script("Tools/dump_tables.sh"),
+        )
+        self.assertIsNotNone(loop, "generic table loop is missing")
+        iteration = subprocess.run(
+            [bash_executable(), "-c", loop.group(0) + '\nprintf "%s\\n" "$TABLE"\ndone\n'],
+            capture_output=True,
+            check=False,
+            text=True,
+        )
+        self.assertEqual(iteration.returncode, 0, iteration.stderr)
+        self.assertGreater(len(iteration.stdout.splitlines()), 100)
 
 
 if __name__ == "__main__":

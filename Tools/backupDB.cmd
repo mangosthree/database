@@ -1,4 +1,5 @@
 @ECHO OFF
+set "BACKUPRESULT=0"
 rem -- set the main parameters
 set createcharDB=YES
 set createworldDB=YES
@@ -1665,7 +1666,9 @@ if %loadworldDB% == NO echo -- ---------------------------------------- >>  _ful
 mysqldump -Q -c -e -q %extraparams% -u%user% -p%pass% --port=%port% -h %svr% %wdb% %TABLENAME% >>  _full_worlddb\%TABLENAME%.sql
 
 call :DumpOptionalTable "%wdb%" "_full_worlddb" "%loadworldDB%" "warden"
+if errorlevel 1 goto error
 call :DumpOptionalTable "%wdb%" "_full_worlddb" "%loadworldDB%" "warden_checks"
+if errorlevel 1 goto error
 
 goto CharDB:
 
@@ -2349,6 +2352,7 @@ if %loadcharDB% == NO echo -- ---------------------------------------- >>  _full
 mysqldump -Q -c -e -q %extraparams% -u%user% -p%pass% --port=%port% -h %svr% %cdb% %TABLENAME% >>  _full_chardb\%TABLENAME%.sql
 
 call :DumpOptionalTable "%cdb%" "_full_chardb" "%loadcharDB%" "warden_action"
+if errorlevel 1 goto error
 
 SET TABLENAME=world
 echo             %TABLENAME%
@@ -2437,8 +2441,11 @@ if %loadrealmDB% == NO echo -- ---------------------------------------- >>  _ful
 mysqldump -Q -c -e -q %extraparams% -u%user% -p%pass% --port=%port% -h %svr% %rdb% %TABLENAME% >>  _full_realmdb\%TABLENAME%.sql
 
 call :DumpOptionalTable "%rdb%" "_full_realmdb" "%loadrealmDB%" "warden_log"
+if errorlevel 1 goto error
 call :DumpOptionalTable "%rdb%" "_full_realmdb" "%loadrealmDB%" "warden_incident"
+if errorlevel 1 goto error
 call :DumpOptionalTable "%rdb%" "_full_realmdb" "%loadrealmDB%" "warden_audit"
+if errorlevel 1 goto error
 
 goto done:
 
@@ -2446,30 +2453,100 @@ goto done:
 setlocal
 set "OPTIONALDB=%~1"
 set "OPTIONALDIR=%~2"
-set "OPTIONALSTRUCT=%~3"
-set "TABLENAME=%~4"
+set "OPTIONALSTRUCTURE=%~3"
+set "OPTIONALTABLE=%~4"
+set "OPTIONALOUTPUT=%OPTIONALDIR%\%OPTIONALTABLE%.sql"
+set "OPTIONALPROBE=%OPTIONALDIR%\%OPTIONALTABLE%.exists.tmp"
+set "OPTIONALTEMP=%OPTIONALDIR%\%OPTIONALTABLE%.dump.tmp"
+set "OPTIONALREADY=%OPTIONALDIR%\%OPTIONALTABLE%.sql.new"
 
-mysqldump -Q -q -u%user% -p%pass% --port=%port% -h %svr% --no-data "%OPTIONALDB%" "%TABLENAME%" >nul 2>&1
-if errorlevel 1 goto DumpOptionalTableAbsent
+if exist "%OPTIONALPROBE%" del /Q "%OPTIONALPROBE%"
+if exist "%OPTIONALTEMP%" del /Q "%OPTIONALTEMP%"
+if exist "%OPTIONALREADY%" del /Q "%OPTIONALREADY%"
 
-if exist "%OPTIONALDIR%\%TABLENAME%.sql" del /q "%OPTIONALDIR%\%TABLENAME%.sql"
-echo             %TABLENAME%
-if /I "%OPTIONALSTRUCT%"=="NO" echo -- ---------------------------------------- >  "%OPTIONALDIR%\%TABLENAME%.sql"
-if /I "%OPTIONALSTRUCT%"=="NO" echo -- --        CLEAR DOWN THE TABLE        -- >> "%OPTIONALDIR%\%TABLENAME%.sql"
-if /I "%OPTIONALSTRUCT%"=="NO" echo -- ---------------------------------------- >> "%OPTIONALDIR%\%TABLENAME%.sql"
-if /I "%OPTIONALSTRUCT%"=="NO" echo TRUNCATE TABLE `%TABLENAME%`; >> "%OPTIONALDIR%\%TABLENAME%.sql"
-if /I "%OPTIONALSTRUCT%"=="NO" echo -- ---------------------------------------- >> "%OPTIONALDIR%\%TABLENAME%.sql"
-mysqldump -Q -c -e -q %extraparams% -u%user% -p%pass% --port=%port% -h %svr% "%OPTIONALDB%" "%TABLENAME%" >> "%OPTIONALDIR%\%TABLENAME%.sql"
-set "DUMPRESULT=%ERRORLEVEL%"
-endlocal & exit /b %DUMPRESULT%
+"%mysql%mysql.exe" --batch --skip-column-names -u%user% -p%pass% --port=%port% -h %svr% -e "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = '%OPTIONALDB%' AND table_name = '%OPTIONALTABLE%';" > "%OPTIONALPROBE%" 2>nul
+if errorlevel 1 (
+    if exist "%OPTIONALPROBE%" del /Q "%OPTIONALPROBE%"
+    echo ERROR: Could not inspect %OPTIONALDB%.%OPTIONALTABLE%.
+    endlocal
+    exit /b 1
+)
 
-:DumpOptionalTableAbsent
-if exist "%OPTIONALDIR%\%TABLENAME%.sql" del /q "%OPTIONALDIR%\%TABLENAME%.sql"
-endlocal & exit /b 0
+set "OPTIONALFOUND="
+set /p OPTIONALFOUND=<"%OPTIONALPROBE%"
+del /Q "%OPTIONALPROBE%"
+
+if not "%OPTIONALFOUND%" == "0" if not "%OPTIONALFOUND%" == "1" (
+    echo ERROR: Invalid table probe result for %OPTIONALDB%.%OPTIONALTABLE%.
+    endlocal
+    exit /b 1
+)
+
+if "%OPTIONALFOUND%" == "0" (
+    if exist "%OPTIONALOUTPUT%" del /Q "%OPTIONALOUTPUT%"
+    if exist "%OPTIONALOUTPUT%" (
+        echo ERROR: Could not remove stale backup for %OPTIONALDB%.%OPTIONALTABLE%.
+        endlocal
+        exit /b 1
+    )
+    echo Skipping absent optional table %OPTIONALDB%.%OPTIONALTABLE%.
+    endlocal
+    exit /b 0
+)
+
+set "OPTIONALPARAMS="
+if /I "%OPTIONALSTRUCTURE%" == "NO" set "OPTIONALPARAMS=--add-drop-table=false --no-create-info"
+
+echo             %OPTIONALTABLE%
+"%mysql%mysqldump.exe" -Q -c -e -q %OPTIONALPARAMS% -u%user% -p%pass% --port=%port% -h %svr% %OPTIONALDB% %OPTIONALTABLE% > "%OPTIONALTEMP%"
+if errorlevel 1 (
+    if exist "%OPTIONALTEMP%" del /Q "%OPTIONALTEMP%"
+    echo ERROR: Could not dump %OPTIONALDB%.%OPTIONALTABLE%.
+    endlocal
+    exit /b 1
+)
+
+if /I "%OPTIONALSTRUCTURE%" == "NO" (
+    %ComSpec% /D /C echo -- ---------------------------------------- ^> "%OPTIONALREADY%"
+    if errorlevel 1 goto DumpOptionalTableAssemblyFailed
+    %ComSpec% /D /C echo -- --        CLEAR DOWN THE TABLE        -- ^>^> "%OPTIONALREADY%"
+    if errorlevel 1 goto DumpOptionalTableAssemblyFailed
+    %ComSpec% /D /C echo -- ---------------------------------------- ^>^> "%OPTIONALREADY%"
+    if errorlevel 1 goto DumpOptionalTableAssemblyFailed
+    %ComSpec% /D /C echo TRUNCATE TABLE `%OPTIONALTABLE%`; ^>^> "%OPTIONALREADY%"
+    if errorlevel 1 goto DumpOptionalTableAssemblyFailed
+    %ComSpec% /D /C echo -- ---------------------------------------- ^>^> "%OPTIONALREADY%"
+    if errorlevel 1 goto DumpOptionalTableAssemblyFailed
+    %ComSpec% /D /C type "%OPTIONALTEMP%" ^>^> "%OPTIONALREADY%"
+    if errorlevel 1 goto DumpOptionalTableAssemblyFailed
+    del /Q "%OPTIONALTEMP%"
+    if exist "%OPTIONALTEMP%" goto DumpOptionalTableAssemblyFailed
+) else (
+    move /Y "%OPTIONALTEMP%" "%OPTIONALREADY%" >nul
+    if errorlevel 1 goto DumpOptionalTableAssemblyFailed
+)
+
+move /Y "%OPTIONALREADY%" "%OPTIONALOUTPUT%" >nul
+if errorlevel 1 (
+    echo ERROR: Could not publish backup for %OPTIONALDB%.%OPTIONALTABLE%.
+    endlocal
+    exit /b 1
+)
+
+endlocal
+exit /b 0
+
+:DumpOptionalTableAssemblyFailed
+if exist "%OPTIONALTEMP%" del /Q "%OPTIONALTEMP%"
+if exist "%OPTIONALREADY%" del /Q "%OPTIONALREADY%"
+echo ERROR: Could not assemble backup for %OPTIONALDB%.%OPTIONALTABLE%.
+endlocal
+exit /b 1
 
 
 
 :patherror
+set "BACKUPRESULT=1"
 echo.
 echo _______________________________________________________________________________
 echo %colWhiteDarkRed%^|                                                                             ^|
@@ -2481,6 +2558,7 @@ echo.
 goto finish:
 
 :error
+set "BACKUPRESULT=1"
 echo.
 echo _______________________________________________________________________________
 echo %colWhiteDarkRed%^|                                                                             ^|
@@ -2509,3 +2587,4 @@ echo Done :)
 echo.
 :finish
 pause
+exit /b %BACKUPRESULT%
