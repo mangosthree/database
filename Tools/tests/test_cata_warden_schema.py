@@ -329,12 +329,12 @@ class WorldMigrationContract(unittest.TestCase):
             r"(?m)^\s*\(15595,0x783836,0x[0-9A-F]+,0x[0-9A-F]+,",
             self.sql,
         )
-        self.assertEqual(len(rows), 154)
+        self.assertEqual(len(rows), 126)
         self.assertNotRegex(
             self.sql,
             r"(?m)^\s*\(15595,0x783634,",
         )
-        self.assertIn("<> 154", self.sql)
+        self.assertIn("<> 126", self.sql)
         self.assertRegex(
             self.sql,
             r"COUNT\(DISTINCT `locale`\) FROM `warden_checks`\) <> 14",
@@ -342,6 +342,10 @@ class WorldMigrationContract(unittest.TestCase):
         self.assertRegex(
             self.sql,
             r"COUNT\(DISTINCT `variant`\) FROM `warden_checks`\) <> 3",
+        )
+        self.assertNotRegex(
+            self.sql,
+            r"(?m)^\s*\(15595,0x783836,0x[0-9A-F]+,0x[0-9A-F]+,2002,2,",
         )
 
     def test_probe_and_classified_phase_contracts_are_asserted(self) -> None:
@@ -503,12 +507,12 @@ class WorldMigrationIntegration(unittest.TestCase):
                   HAVING (`variant`=0x756E636C6173736966696564
                           AND `rows_in_profile`<>3)
                       OR (`variant` IN (0x73746F636B,0x6772756E74)
-                          AND `rows_in_profile`<>4)
+                          AND `rows_in_profile`<>3)
                 ) AS `bad_profiles`;
                 """,
                 schema,
             ).stdout.splitlines()
-            self.assertEqual(counts, ["1", "154", "14", "3", "1", "0", "0"])
+            self.assertEqual(counts, ["1", "126", "14", "3", "1", "0", "0"])
 
             columns = self.db.execute(
                 """
@@ -557,16 +561,12 @@ class WorldMigrationIntegration(unittest.TestCase):
                   FROM `warden_checks`
                   WHERE `locale`=0x656E5553 AND `variant`=0x6772756E74
                     AND `check_id`=2004;
-                SELECT HEX(`expected`) FROM `warden_checks`
-                  WHERE `locale`=0x7A685457 AND `variant`=0x73746F636B
-                    AND `check_id`=2002;
                 """,
                 schema,
             ).stdout.splitlines()
             self.assertEqual(samples, [
                 "ED9995EC9DB8",
-                "43C24E|576F772E657865|8B4D10890D9480D300538B5D",
-                "4706FF83D9B611644A87DE79C244B414612EF4F2",
+                "43C257|576F772E657865|538B5D08568BC3578D50018A",
             ])
 
             self.db.execute(self.update, schema)
@@ -574,7 +574,7 @@ class WorldMigrationIntegration(unittest.TestCase):
                 self.db.execute(
                     "SELECT COUNT(*) FROM `warden_checks`;", schema
                 ).stdout.strip(),
-                "154",
+                "126",
             )
 
     def test_nonempty_dormant_catalogue_is_never_discarded(self) -> None:
@@ -609,8 +609,8 @@ class WorldMigrationIntegration(unittest.TestCase):
         with self.db.schema("world") as schema:
             self.db.execute(WORLD_DORMANT_SCHEMA, schema)
             forced_failure = self.update.replace(
-                "COUNT(*) FROM `warden_checks`) <> 154",
-                "COUNT(*) FROM `warden_checks`) <> 155",
+                "COUNT(*) FROM `warden_checks`) <> 126",
+                "COUNT(*) FROM `warden_checks`) <> 127",
                 1,
             )
             failed = self.db.execute(
@@ -640,7 +640,7 @@ class WorldMigrationIntegration(unittest.TestCase):
                 """,
                 schema,
             ).stdout.splitlines()
-            self.assertEqual(values, ["154", "1"])
+            self.assertEqual(values, ["126", "1"])
 
     def test_wrong_predecessor_does_not_mutate(self) -> None:
         with self.db.schema("world") as schema:
