@@ -31,6 +31,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 BACKUP = (ROOT / "Tools" / "backupDB.cmd").read_text(encoding="utf-8")
+X64_CATALOGUE_UPDATE = (
+    ROOT / "World" / "Updates" / "Rel22"
+    / "Rel22_10_002_Cata_Warden_X64_Checks.sql"
+)
 
 
 def read_script(relative_path: str) -> str:
@@ -110,6 +114,38 @@ def bash_executable() -> str:
 
 
 class WardenTransitionWorkflowTests(unittest.TestCase):
+    def test_x64_catalogue_transition_preserves_x86_for_exact_rollback(self) -> None:
+        """Guard the forward half of the separately retained x64 rollback proof."""
+        sql = X64_CATALOGUE_UPDATE.read_text(encoding="utf-8")
+
+        for name, value in (
+            ("OldVersion", "22"),
+            ("OldStructure", "10"),
+            ("OldContent", "001"),
+            ("NewVersion", "22"),
+            ("NewStructure", "10"),
+            ("NewContent", "002"),
+        ):
+            self.assertRegex(sql, rf"SET\s+@c{name}\s*=\s*'{value}'")
+        self.assertRegex(
+            sql,
+            r"SET\s+@cNewDescription\s*=\s*'Cata_Warden_X64_Checks'",
+        )
+
+        self.assertIn("START TRANSACTION", sql.upper())
+        self.assertNotRegex(
+            sql,
+            r"(?i)\b(?:DROP|TRUNCATE)\s+(?:TABLE\s+)?`?warden_checks`?",
+        )
+        self.assertNotRegex(
+            sql,
+            r"(?i)DELETE\s+FROM\s+`?warden_checks`?",
+        )
+        self.assertRegex(
+            sql,
+            r"COUNT\(\*\)\s+FROM\s+`warden_checks`\)\s*<>\s*252",
+        )
+
     def run_update_failure(
         self, failed_database: str, populate_old_world: bool = False
     ) -> tuple[subprocess.CompletedProcess[str], list[str]]:

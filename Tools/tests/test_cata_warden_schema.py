@@ -40,6 +40,10 @@ WORLD_UPDATE = (
     ROOT / "World" / "Updates" / "Rel22"
     / "Rel22_10_001_Cata_Warden_Checks.sql"
 )
+WORLD_X64_UPDATE = (
+    ROOT / "World" / "Updates" / "Rel22"
+    / "Rel22_10_002_Cata_Warden_X64_Checks.sql"
+)
 INTEGRATION = "--integration" in sys.argv
 if INTEGRATION:
     sys.argv.remove("--integration")
@@ -362,6 +366,395 @@ class WorldMigrationContract(unittest.TestCase):
             self.sql,
         )
         self.assertEqual(len(probe_rows), 42)
+
+
+class WorldX64MigrationContract(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sql = WORLD_X64_UPDATE.read_text(encoding="utf-8")
+
+    def test_advances_the_published_catalogue_to_the_x64_marker(self) -> None:
+        for name, value in (
+            ("OldVersion", "22"),
+            ("OldStructure", "10"),
+            ("OldContent", "001"),
+            ("NewVersion", "22"),
+            ("NewStructure", "10"),
+            ("NewContent", "002"),
+        ):
+            self.assertRegex(
+                self.sql, rf"SET\s+@c{name}\s*=\s*'{value}'"
+            )
+        self.assertRegex(
+            self.sql,
+            r"SET\s+@cNewDescription\s*=\s*'Cata_Warden_X64_Checks'",
+        )
+
+    def test_x64_seed_contains_only_the_complete_profile_contract(self) -> None:
+        rows = re.findall(
+            r"(?m)^\s*\(15595,0x783634,0x([0-9A-F]+),"
+            r"0x([0-9A-F]+),(\d+),(\d+),1,(\d+),(\d+),"
+            r"0x([0-9A-F]+),(\d+),(X''|0x[0-9A-F]+),"
+            r"(0|0x[0-9A-F]+),(\d+),",
+            self.sql,
+        )
+        self.assertEqual(len(rows), 126)
+        self.assertNotRegex(self.sql, r"(?m)^\s*\(15595,0x783836,")
+
+        locales = {row[0] for row in rows}
+        self.assertEqual(len(locales), 14)
+        by_profile = {}
+        for row in rows:
+            by_profile.setdefault((row[0], row[1]), []).append(row)
+        self.assertEqual(len(by_profile), 42)
+        self.assertTrue(all(len(profile) == 3 for profile in by_profile.values()))
+        self.assertEqual(
+            {variant for _, variant in by_profile},
+            {
+                "756E636C6173736966696564",
+                "73746F636B",
+                "6772756E74",
+            },
+        )
+        for row in rows:
+            address_kind = int(row[7])
+            module, address, length = row[8:11]
+            if address_kind == 1:
+                self.assertEqual(module, "0x576F772D36342E657865")
+                self.assertNotEqual(address, "0")
+                self.assertGreater(int(length), 0)
+            else:
+                self.assertEqual(address_kind, 0)
+                self.assertEqual(module, "X''")
+                self.assertEqual(address, "0")
+                self.assertEqual(length, "0")
+
+
+@unittest.skipUnless(INTEGRATION, "pass --integration for disposable schemas")
+class WorldX64MigrationIntegration(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.db = MariaDbHarness()
+        cls.x86_update = WORLD_UPDATE.read_text(encoding="utf-8")
+        cls.x64_update = WORLD_X64_UPDATE.read_text(encoding="utf-8")
+
+    def apply_x86_catalogue(self, schema: str) -> None:
+        self.db.execute(WORLD_DORMANT_SCHEMA, schema)
+        self.db.execute(self.x86_update, schema)
+
+    def test_forward_and_replay_publish_the_exact_x64_catalogue(self) -> None:
+        with self.db.schema("world") as schema:
+            self.apply_x86_catalogue(schema)
+            self.db.execute(self.x64_update, schema)
+
+            values = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=1;
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=2
+                    AND `description`='Cata_Warden_X64_Checks';
+                SELECT COUNT(*) FROM `warden_checks` WHERE `enabled`=1;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783836 AND `enabled`=1;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783634 AND `enabled`=1;
+                SELECT COUNT(DISTINCT `locale`) FROM `warden_checks`;
+                SELECT COUNT(*) FROM (
+                  SELECT `architecture`,`locale`,`variant`,COUNT(*) AS `rows`
+                    FROM `warden_checks`
+                   GROUP BY `architecture`,`locale`,`variant`
+                  HAVING `rows`<>3
+                ) AS `bad_profiles`;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `variant`=0x6C65676163792D6772756E74;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(values, ["1", "1", "252", "126", "126", "14", "0", "0"])
+
+            x64_contract = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783634
+                    AND (`type` NOT IN (0,1,3)
+                         OR `phase_mask`=0 OR (`phase_mask` & ~0x0F)<>0
+                         OR `address_kind` NOT IN (0,1,2));
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783634
+                    AND ((`variant`=0x756E636C6173736966696564
+                          AND (`type`<>3 OR `evidence_class`<>3
+                               OR `phase_mask`<>0x01 OR `address_kind`<>1
+                               OR OCTET_LENGTH(`expected`)<>0))
+                         OR (`variant` IN (0x73746F636B,0x6772756E74)
+                             AND (`check_id` NOT IN (2001,2003,2004)
+                                  OR (`check_id`=2001
+                                      AND (`type`<>0 OR `evidence_class`<>0
+                                           OR `phase_mask`<>0x06
+                                           OR `address_kind`<>0))
+                                  OR (`check_id`=2003
+                                      AND (`type`<>1 OR `evidence_class`<>3
+                                           OR `phase_mask`<>0x06
+                                           OR `address_kind`<>0))
+                                  OR (`check_id`=2004
+                                      AND (`type`<>3 OR `evidence_class`<>1
+                                           OR `phase_mask`<>0x0E
+                                           OR `address_kind`<>1)))));
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783634 AND `address_kind`=1
+                    AND (`module`<>0x576F772D36342E657865 OR `address`=0
+                         OR `length`=0 OR `length`>255);
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783634 AND `address_kind`=0
+                    AND (OCTET_LENGTH(`module`)<>0 OR `address`<>0
+                         OR `length`<>0);
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783634
+                    AND `variant`=0x756E636C6173736966696564
+                    AND NOT ((`check_id`=1001
+                              AND `module`=0x576F772D36342E657865
+                              AND `address`=0x000AB76F AND `length`=5)
+                         OR (`check_id`=1002
+                             AND `module`=0x576F772D36342E657865
+                             AND `address`=0x000AABAB AND `length`=2)
+                         OR (`check_id`=1003
+                             AND `module`=0x576F772D36342E657865
+                             AND `address`=0x000AA6D3 AND `length`=2));
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783634 AND `check_id`=2004
+                    AND (`module`<>0x576F772D36342E657865
+                         OR `address`<>0x00566C13 OR `length`<>16
+                         OR `expected`<>0x4883C9FF33C0488BFDBAF0D8FFFFF2AE);
+                SELECT COUNT(*) FROM `warden_checks` AS `x64`
+                  JOIN `warden_checks` AS `x86`
+                    ON `x86`.`architecture`=0x783836
+                   AND `x86`.`locale`=`x64`.`locale`
+                   AND `x86`.`variant`=`x64`.`variant`
+                   AND `x86`.`check_id`=2003
+                 WHERE `x64`.`architecture`=0x783634
+                   AND `x64`.`check_id`=2003
+                   AND `x64`.`expected`<>`x86`.`expected`;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(x64_contract, [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+            ])
+
+            self.db.execute(self.x64_update, schema)
+            self.assertEqual(
+                self.db.execute(
+                    "SELECT COUNT(*) FROM `warden_checks`;", schema
+                ).stdout.strip(),
+                "252",
+            )
+
+    def test_modified_catalogue_is_rejected_atomically(self) -> None:
+        with self.db.schema("world") as schema:
+            self.apply_x86_catalogue(schema)
+            self.db.execute(
+                """
+                UPDATE `warden_checks` SET `length`=0
+                 WHERE `architecture`=0x783836
+                   AND `locale`=0x656E5553
+                   AND `variant`=0x73746F636B AND `check_id`=2004;
+                """,
+                schema,
+            )
+            failed = self.db.execute(
+                self.x64_update, schema, expect_success=False
+            )
+            self.assertNotEqual(failed.returncode, 0)
+            values = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=1;
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=2;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783634;
+                SELECT `length` FROM `warden_checks`
+                  WHERE `architecture`=0x783836
+                    AND `locale`=0x656E5553
+                    AND `variant`=0x73746F636B AND `check_id`=2004;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(values, ["1", "0", "0", "0"])
+
+    def test_modified_predecessor_comment_is_rejected_atomically(self) -> None:
+        with self.db.schema("world") as schema:
+            self.apply_x86_catalogue(schema)
+            self.db.execute(
+                """
+                UPDATE `warden_checks` SET `comment`='operator changed'
+                 WHERE `architecture`=0x783836
+                   AND `locale`=0x656E5553
+                   AND `variant`=0x756E636C6173736966696564
+                   AND `check_id`=1001;
+                """,
+                schema,
+            )
+            failed = self.db.execute(
+                self.x64_update, schema, expect_success=False
+            )
+            self.assertNotEqual(failed.returncode, 0)
+            values = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=1;
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=2;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783634;
+                SELECT `comment` FROM `warden_checks`
+                  WHERE `architecture`=0x783836
+                    AND `locale`=0x656E5553
+                    AND `variant`=0x756E636C6173736966696564
+                    AND `check_id`=1001;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(values, ["1", "0", "0", "operator changed"])
+
+    def test_modified_x64_comment_rolls_back_publication(self) -> None:
+        with self.db.schema("world") as schema:
+            self.apply_x86_catalogue(schema)
+            modified_update = self.x64_update.replace(
+                "'Exact x64 stock/grunt profile probe 1'",
+                "'operator changed'",
+                1,
+            )
+            self.assertNotEqual(modified_update, self.x64_update)
+            failed = self.db.execute(
+                modified_update, schema, expect_success=False
+            )
+            self.assertNotEqual(failed.returncode, 0)
+            values = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=1;
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=2;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783836;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783634;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(values, ["1", "0", "126", "0"])
+
+    def test_post_insert_validation_failure_rolls_back_and_retries(self) -> None:
+        with self.db.schema("world") as schema:
+            self.apply_x86_catalogue(schema)
+            forced_failure = self.x64_update.replace(
+                "COUNT(*) FROM `warden_checks`) <> 252",
+                "COUNT(*) FROM `warden_checks`) <> 253",
+                1,
+            )
+            self.assertNotEqual(forced_failure, self.x64_update)
+            failed = self.db.execute(
+                forced_failure, schema, expect_success=False
+            )
+            self.assertNotEqual(failed.returncode, 0)
+            rolled_back = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=1;
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=2;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783836;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783634;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(rolled_back, ["1", "0", "126", "0"])
+
+            self.db.execute(self.x64_update, schema)
+            retried = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=2;
+                SELECT COUNT(*) FROM `warden_checks`;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783634;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(retried, ["1", "252", "126"])
+
+    def test_committed_partial_x64_residue_is_rejected_without_x86_mutation(self) -> None:
+        with self.db.schema("world") as schema:
+            self.apply_x86_catalogue(schema)
+            self.db.execute(
+                """
+                INSERT INTO `warden_checks` VALUES
+                  (15595,0x783634,0x656E5553,
+                   0x756E636C6173736966696564,1001,3,1,10,3,0x01,1,
+                   0x576F772D36342E657865,0x000AB76F,5,X'',X'',
+                   'committed partial x64 residue');
+                """,
+                schema,
+            )
+            failed = self.db.execute(
+                self.x64_update, schema, expect_success=False
+            )
+            self.assertNotEqual(failed.returncode, 0)
+            values = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=1;
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=2;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783836;
+                SELECT HEX(`expected`) FROM `warden_checks`
+                  WHERE `architecture`=0x783836 AND `locale`=0x656E5553
+                    AND `variant`=0x73746F636B AND `check_id`=2003;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783634;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(values, ["1", "0", "126", "4F6B6179", "1"])
+
+    def test_rollback_removes_only_the_x64_publication(self) -> None:
+        with self.db.schema("world") as schema:
+            self.apply_x86_catalogue(schema)
+            self.db.execute(self.x64_update, schema)
+            self.db.execute(
+                """
+                START TRANSACTION;
+                DELETE FROM `warden_checks` WHERE `architecture` = 0x783634;
+                DELETE FROM `db_version`
+                 WHERE `version` = '22' AND `structure` = '10'
+                   AND `content` = '002'
+                   AND `description` = 'Cata_Warden_X64_Checks';
+                COMMIT;
+                """,
+                schema,
+            )
+            values = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=1;
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=2;
+                SELECT COUNT(*) FROM `warden_checks` WHERE `architecture`=0x783836;
+                SELECT COUNT(*) FROM `warden_checks` WHERE `architecture`=0x783634;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(values, ["1", "0", "126", "0"])
 
 
 @unittest.skipUnless(INTEGRATION, "pass --integration for disposable schemas")
