@@ -50,6 +50,10 @@ WORLD_X64_UPDATE = (
     ROOT / "World" / "Updates" / "Rel22"
     / "Rel22_10_002_Cata_Warden_X64_Checks.sql"
 )
+WORLD_MPQ_UPDATE = (
+    ROOT / "World" / "Updates" / "Rel22"
+    / "Rel22_10_003_Cata_Warden_MPQ_Checks.sql"
+)
 INTEGRATION = "--integration" in sys.argv
 if INTEGRATION:
     sys.argv.remove("--integration")
@@ -436,6 +440,72 @@ class WorldX64MigrationContract(unittest.TestCase):
                 self.assertEqual(length, "0")
 
 
+class WorldMpqMigrationContract(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.sql = WORLD_MPQ_UPDATE.read_text(encoding="utf-8")
+
+    def test_advances_the_exact_x64_predecessor_to_the_mpq_marker(self) -> None:
+        for name, value in (
+            ("OldVersion", "22"),
+            ("OldStructure", "10"),
+            ("OldContent", "002"),
+            ("NewVersion", "22"),
+            ("NewStructure", "10"),
+            ("NewContent", "003"),
+        ):
+            self.assertRegex(
+                self.sql, rf"SET\s+@c{name}\s*=\s*'{value}'"
+            )
+        self.assertRegex(
+            self.sql,
+            r"SET\s+@cNewDescription\s*=\s*'Cata_Warden_MPQ_Checks'",
+        )
+
+    def test_is_an_atomic_redesign_with_exact_cardinality_guards(self) -> None:
+        self.assertIn("START TRANSACTION", self.sql.upper())
+        self.assertNotRegex(
+            self.sql,
+            r"(?i)\b(?:DROP|TRUNCATE)\s+(?:TABLE\s+)?`?warden_checks`?",
+        )
+        self.assertNotRegex(self.sql, r"(?i)DELETE\s+FROM\s+`?warden_checks`?")
+        for fragment in (
+            "COUNT(*) FROM `warden_checks`) <> 252",
+            "COUNT(*) FROM `warden_checks`) <> 350",
+            "WHERE `architecture` = 0x783836) <> 196",
+            "WHERE `architecture` = 0x783634) <> 154",
+        ):
+            self.assertIn(fragment, self.sql)
+        self.assertRegex(
+            self.sql,
+            r"COUNT\(DISTINCT `locale`\)\s+FROM `warden_checks`\)\s*<> 14",
+        )
+
+    def test_versions_legacy_grunt_and_publishes_current_x86_contract(self) -> None:
+        for fragment in (
+            "0x6C65676163792D6772756E74",
+            "1004 AS `check_id`",
+            "40 AS `sort_order`",
+            "0x01 AS `phase_mask`",
+            "1 AS `address_kind`",
+            "0x576F772E657865 AS `module`",
+            "0x003BFF88 AS `address`",
+            "24 AS `length`",
+            "X'' AS `expected`",
+            "OCTET_LENGTH(`expected`) <> 0",
+            "2002 AS `check_id`",
+            "2 AS `type`",
+            "35 AS `sort_order`",
+            "3 AS `evidence_class`",
+            "0x06 AS `phase_mask`",
+            "0x444246696C6573436C69656E745C4974656D2E646232 AS `request`",
+            "0x4706FF83D9B611644A87DE79C244B414612EF4F2 AS `expected`",
+        ):
+            self.assertIn(fragment, self.sql)
+        self.assertIn("`architecture` = 0x783836", self.sql)
+        self.assertIn("`architecture` = 0x783634", self.sql)
+
+
 @unittest.skipUnless(INTEGRATION, "pass --integration for disposable schemas")
 class WorldX64MigrationIntegration(unittest.TestCase):
     @classmethod
@@ -761,6 +831,255 @@ class WorldX64MigrationIntegration(unittest.TestCase):
                 schema,
             ).stdout.splitlines()
             self.assertEqual(values, ["1", "0", "126", "0"])
+
+
+@unittest.skipUnless(INTEGRATION, "pass --integration for disposable schemas")
+class WorldMpqMigrationIntegration(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.db = MariaDbHarness()
+        cls.x86_update = WORLD_UPDATE.read_text(encoding="utf-8")
+        cls.x64_update = WORLD_X64_UPDATE.read_text(encoding="utf-8")
+        cls.mpq_update = WORLD_MPQ_UPDATE.read_text(encoding="utf-8")
+
+    def apply_predecessor(self, schema: str) -> None:
+        self.db.execute(WORLD_DORMANT_SCHEMA, schema)
+        self.db.execute(self.x86_update, schema)
+        self.db.execute(self.x64_update, schema)
+
+    def test_forward_and_replay_publish_the_exact_redesigned_catalogue(self) -> None:
+        with self.db.schema("world") as schema:
+            self.apply_predecessor(schema)
+            self.db.execute(self.mpq_update, schema)
+            values = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=3
+                    AND `description`='Cata_Warden_MPQ_Checks';
+                SELECT COUNT(*) FROM `warden_checks`;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783836;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783634;
+                SELECT COUNT(DISTINCT `locale`) FROM `warden_checks`;
+                SELECT COUNT(DISTINCT `variant`) FROM `warden_checks`
+                  WHERE `architecture`=0x783836;
+                SELECT COUNT(DISTINCT `variant`) FROM `warden_checks`
+                  WHERE `architecture`=0x783634;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `architecture`=0x783836
+                    AND `variant`=0x6C65676163792D6772756E74;
+                SELECT COUNT(*) FROM `warden_checks` WHERE `check_id`=1004;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `check_id`=1004 AND (
+                    `architecture`<>0x783836
+                    OR `variant`<>0x756E636C6173736966696564
+                    OR `type`<>3 OR `enabled`<>1 OR `sort_order`<>40
+                    OR `evidence_class`<>3 OR `phase_mask`<>0x01
+                    OR `address_kind`<>1 OR `module`<>0x576F772E657865
+                    OR `address`<>0x003BFF88 OR `length`<>24
+                    OR OCTET_LENGTH(`request`)<>0
+                    OR OCTET_LENGTH(`expected`)<>0);
+                SELECT COUNT(*)
+                  FROM `warden_checks` AS `legacy`
+                  LEFT JOIN `warden_checks` AS `grunt`
+                    ON `grunt`.`build`=`legacy`.`build`
+                   AND `grunt`.`architecture`=`legacy`.`architecture`
+                   AND `grunt`.`locale`=`legacy`.`locale`
+                   AND `grunt`.`variant`=0x6772756E74
+                   AND `grunt`.`check_id`=`legacy`.`check_id`
+                   AND `grunt`.`type`=`legacy`.`type`
+                   AND `grunt`.`enabled`=`legacy`.`enabled`
+                   AND `grunt`.`sort_order`=`legacy`.`sort_order`
+                   AND `grunt`.`evidence_class`=`legacy`.`evidence_class`
+                   AND `grunt`.`phase_mask`=`legacy`.`phase_mask`
+                   AND `grunt`.`address_kind`=`legacy`.`address_kind`
+                   AND `grunt`.`module`=`legacy`.`module`
+                   AND `grunt`.`address`=`legacy`.`address`
+                   AND `grunt`.`length`=`legacy`.`length`
+                   AND `grunt`.`request`=`legacy`.`request`
+                   AND `grunt`.`expected`=`legacy`.`expected`
+                   AND BINARY `grunt`.`comment`=BINARY `legacy`.`comment`
+                 WHERE `legacy`.`architecture`=0x783836
+                   AND `legacy`.`variant`=0x6C65676163792D6772756E74
+                   AND `grunt`.`check_id` IS NULL;
+                SELECT COUNT(*) FROM `warden_checks` WHERE `check_id`=2002;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `check_id`=2002 AND (`type`<>2 OR `enabled`<>1
+                    OR `sort_order`<>35 OR `evidence_class`<>3
+                    OR `phase_mask`<>0x06 OR `address_kind`<>0
+                    OR OCTET_LENGTH(`module`)<>0 OR `address`<>0 OR `length`<>0
+                    OR `request`<>0x444246696C6573436C69656E745C4974656D2E646232
+                    OR `expected`<>0x4706FF83D9B611644A87DE79C244B414612EF4F2
+                    OR BINARY `comment`<>BINARY
+                       'Item.db2 archive digest; corroboration only'
+                    OR (`architecture`=0x783836
+                        AND `variant`<>0x6772756E74)
+                    OR (`architecture`=0x783634
+                        AND `variant` NOT IN (0x73746F636B,0x6772756E74)));
+                SELECT COUNT(*) FROM (
+                  SELECT `architecture`,`locale`,`variant`,COUNT(*) AS `rows`
+                    FROM `warden_checks`
+                   GROUP BY `architecture`,`locale`,`variant`
+                  HAVING (`architecture`=0x783836 AND (
+                            (`variant`=0x756E636C6173736966696564
+                             AND `rows`<>4)
+                         OR (`variant` IN
+                               (0x73746F636B,0x6C65676163792D6772756E74)
+                             AND `rows`<>3)
+                         OR (`variant`=0x6772756E74 AND `rows`<>4)))
+                      OR (`architecture`=0x783634 AND (
+                            (`variant`=0x756E636C6173736966696564
+                             AND `rows`<>3)
+                         OR (`variant` IN (0x73746F636B,0x6772756E74)
+                             AND `rows`<>4)))
+                ) AS `bad_profiles`;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `check_id`=2002 AND (
+                    (`architecture`=0x783836
+                     AND `variant` IN
+                         (0x73746F636B,0x6C65676163792D6772756E74))
+                    OR (`architecture`=0x783634
+                        AND `variant`=0x6C65676163792D6772756E74));
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(
+                values,
+                [
+                    "1", "350", "196", "154", "14", "4", "3", "42",
+                    "14", "0", "0", "42", "0", "0", "0",
+                ],
+            )
+
+            self.db.execute(self.mpq_update, schema)
+            self.assertEqual(
+                self.db.execute(
+                    "SELECT COUNT(*) FROM `warden_checks`;", schema
+                ).stdout.strip(),
+                "350",
+            )
+
+    def test_wrong_predecessor_is_refused_without_mutation(self) -> None:
+        with self.db.schema("world") as schema:
+            self.db.execute(WORLD_DORMANT_SCHEMA, schema)
+            self.db.execute(self.x86_update, schema)
+            self.db.execute(self.mpq_update, schema)
+            values = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=1;
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=3;
+                SELECT COUNT(*) FROM `warden_checks`;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `variant`=0x6C65676163792D6772756E74;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(values, ["1", "0", "126", "0"])
+
+    def test_operator_modified_predecessor_is_rejected_atomically(self) -> None:
+        with self.db.schema("world") as schema:
+            self.apply_predecessor(schema)
+            self.db.execute(
+                """
+                UPDATE `warden_checks` SET `comment`='operator changed'
+                 WHERE `architecture`=0x783634 AND `locale`=0x656E5553
+                   AND `variant`=0x73746F636B AND `check_id`=2004;
+                """,
+                schema,
+            )
+            failed = self.db.execute(
+                self.mpq_update, schema, expect_success=False
+            )
+            self.assertNotEqual(failed.returncode, 0)
+            values = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=2;
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=3;
+                SELECT COUNT(*) FROM `warden_checks` WHERE `check_id`=2002;
+                SELECT `comment` FROM `warden_checks`
+                 WHERE `architecture`=0x783634 AND `locale`=0x656E5553
+                   AND `variant`=0x73746F636B AND `check_id`=2004;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(values, ["1", "0", "0", "operator changed"])
+
+    def test_post_insert_failure_rolls_back_and_clean_retry_succeeds(self) -> None:
+        with self.db.schema("world") as schema:
+            self.apply_predecessor(schema)
+            forced_failure = self.mpq_update.replace(
+                "COUNT(*) FROM `warden_checks`) <> 350",
+                "COUNT(*) FROM `warden_checks`) <> 351",
+                1,
+            )
+            self.assertNotEqual(forced_failure, self.mpq_update)
+            failed = self.db.execute(
+                forced_failure, schema, expect_success=False
+            )
+            self.assertNotEqual(failed.returncode, 0)
+            rolled_back = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=2;
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=3;
+                SELECT COUNT(*) FROM `warden_checks`;
+                SELECT COUNT(*) FROM `warden_checks` WHERE `check_id`=1004;
+                SELECT COUNT(*) FROM `warden_checks` WHERE `check_id`=2002;
+                SELECT COUNT(*) FROM `warden_checks`
+                  WHERE `variant`=0x6C65676163792D6772756E74;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(
+                rolled_back, ["1", "0", "252", "0", "0", "0"]
+            )
+
+            self.db.execute(self.mpq_update, schema)
+            retried = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=3;
+                SELECT COUNT(*) FROM `warden_checks`;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(retried, ["1", "350"])
+
+    def test_committed_partial_mpq_residue_is_rejected(self) -> None:
+        with self.db.schema("world") as schema:
+            self.apply_predecessor(schema)
+            self.db.execute(
+                """
+                INSERT INTO `warden_checks` VALUES
+                  (15595,0x783836,0x656E5553,0x73746F636B,
+                   2002,2,1,35,3,0x06,0,X'',0,0,
+                   0x444246696C6573436C69656E745C4974656D2E646232,
+                   0x4706FF83D9B611644A87DE79C244B414612EF4F2,
+                   'committed partial MPQ residue');
+                """,
+                schema,
+            )
+            failed = self.db.execute(
+                self.mpq_update, schema, expect_success=False
+            )
+            self.assertNotEqual(failed.returncode, 0)
+            values = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=2;
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=3;
+                SELECT COUNT(*) FROM `warden_checks`;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(values, ["1", "0", "253"])
 
 
 @unittest.skipUnless(INTEGRATION, "pass --integration for disposable schemas")

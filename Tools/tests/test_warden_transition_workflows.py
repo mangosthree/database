@@ -35,6 +35,10 @@ X64_CATALOGUE_UPDATE = (
     ROOT / "World" / "Updates" / "Rel22"
     / "Rel22_10_002_Cata_Warden_X64_Checks.sql"
 )
+MPQ_CATALOGUE_UPDATE = (
+    ROOT / "World" / "Updates" / "Rel22"
+    / "Rel22_10_003_Cata_Warden_MPQ_Checks.sql"
+)
 
 
 def read_script(relative_path: str) -> str:
@@ -114,6 +118,34 @@ def bash_executable() -> str:
 
 
 class WardenTransitionWorkflowTests(unittest.TestCase):
+    def test_mpq_catalogue_transition_is_atomic_and_exact(self) -> None:
+        sql = MPQ_CATALOGUE_UPDATE.read_text(encoding="utf-8")
+        for name, value in (
+            ("OldVersion", "22"),
+            ("OldStructure", "10"),
+            ("OldContent", "002"),
+            ("NewVersion", "22"),
+            ("NewStructure", "10"),
+            ("NewContent", "003"),
+        ):
+            self.assertRegex(sql, rf"SET\s+@c{name}\s*=\s*'{value}'")
+        self.assertIn("Cata_Warden_MPQ_Checks", sql)
+        self.assertIn("START TRANSACTION", sql.upper())
+        self.assertNotRegex(
+            sql,
+            r"(?i)\b(?:DROP|TRUNCATE)\s+(?:TABLE\s+)?`?warden_checks`?",
+        )
+        self.assertNotRegex(sql, r"(?i)DELETE\s+FROM\s+`?warden_checks`?")
+        self.assertIn("COUNT(*) FROM `warden_checks`) <> 252", sql)
+        self.assertIn("COUNT(*) FROM `warden_checks`) <> 350", sql)
+        self.assertIn("0x6C65676163792D6772756E74", sql)
+        self.assertIn("1004 AS `check_id`", sql)
+        self.assertIn("0x003BFF88 AS `address`", sql)
+        self.assertIn("X'' AS `expected`", sql)
+        self.assertIn("OCTET_LENGTH(`expected`) <> 0", sql)
+        self.assertIn("2002 AS `check_id`", sql)
+        self.assertIn("3 AS `evidence_class`", sql)
+
     def test_x64_catalogue_transition_preserves_x86_for_exact_rollback(self) -> None:
         """Guard the forward half of the separately retained x64 rollback proof."""
         sql = X64_CATALOGUE_UPDATE.read_text(encoding="utf-8")
