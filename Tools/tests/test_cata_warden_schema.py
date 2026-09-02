@@ -177,12 +177,12 @@ CREATE TABLE `warden_incident` (
 INSERT INTO `warden_audit`
   (`account_id`,`occurred_at`,`realm_id`,`client_build`,`client_platform`,
    `client_locale`,`check_id`,`check_type`,`evidence_class`,`outcome`)
-VALUES (1,2,3,15595,'Win','enUS',4,3,2,1);
+VALUES (1,2,3,15595,'x86','enUS',4,3,2,1);
 INSERT INTO `warden_incident`
   (`account_id`,`occurred_at`,`realm_id`,`client_build`,`client_platform`,
    `client_locale`,`check_id`,`check_type`,`evidence_class`,`outcome`,
    `ban_triggered`)
-VALUES (1,2,3,15595,'Win','enUS',4,3,2,1,0);
+VALUES (1,2,3,15595,'x64','enUS',4,3,2,1,0);
 """
 
 WORLD_DORMANT_SCHEMA = """
@@ -246,14 +246,18 @@ class RealmMigrationContract(unittest.TestCase):
         self.assertIn("SHOW ERRORS", handler.group("body").upper())
         self.assertIn("RESIGNAL", handler.group("body").upper())
 
-    def test_adds_exact_resumable_variant_columns_to_both_tables(self) -> None:
+    def test_adds_exact_resumable_identity_columns_to_both_tables(self) -> None:
         for table in ("warden_audit", "warden_incident"):
-            self.assertRegex(
-                self.sql,
-                rf"ALTER\s+TABLE\s+`{table}`\s+ADD\s+COLUMN\s+"
-                r"`client_variant`\s+VARBINARY\(16\)\s+NOT\s+NULL\s+"
-                r"DEFAULT\s+'unclassified'",
-            )
+            for column, width, default in (
+                ("client_architecture", 4, "unk"),
+                ("client_variant", 16, "unclassified"),
+            ):
+                self.assertRegex(
+                    self.sql,
+                    rf"(?s)ALTER\s+TABLE\s+`{table}`\s+ADD\s+COLUMN\s+"
+                    rf"`{column}`\s+VARBINARY\({width}\)\s+NOT\s+NULL\s+"
+                    rf"DEFAULT\s+'{default}'.*?COMMENT\s+'[^']+'",
+                )
             self.assertIsNotNone(re.search(
                 rf"`?INFORMATION_SCHEMA`?\.`?COLUMNS`?.*?"
                 rf"`?TABLE_NAME`?\s*=\s*'{table}'",
@@ -261,7 +265,7 @@ class RealmMigrationContract(unittest.TestCase):
                 flags=re.IGNORECASE | re.DOTALL,
             ))
 
-    def test_preserves_tables_and_verifies_backfilled_values(self) -> None:
+    def test_preserves_tables_and_validates_identity_column_shapes(self) -> None:
         self.assertNotRegex(
             self.sql,
             r"(?i)\b(?:DROP|TRUNCATE)\s+(?:TABLE\s+)?"
@@ -274,6 +278,11 @@ class RealmMigrationContract(unittest.TestCase):
         )
         self.assertGreaterEqual(
             len(re.findall(r"COLUMN_TYPE.*?varbinary\(16\)", self.sql,
+                           flags=re.IGNORECASE | re.DOTALL)),
+            2,
+        )
+        self.assertGreaterEqual(
+            len(re.findall(r"COLUMN_TYPE.*?varbinary\(4\)", self.sql,
                            flags=re.IGNORECASE | re.DOTALL)),
             2,
         )
@@ -1106,6 +1115,10 @@ class RealmMigrationIntegration(unittest.TestCase):
                   ORDER BY `TABLE_NAME`;
                 SELECT HEX(`client_variant`) FROM `warden_audit`;
                 SELECT HEX(`client_variant`) FROM `warden_incident`;
+                SELECT CONCAT(`client_platform`,'|',`client_architecture`)
+                  FROM `warden_audit`;
+                SELECT CONCAT(`client_platform`,'|',`client_architecture`)
+                  FROM `warden_incident`;
                 """,
                 schema,
             ).stdout.splitlines()
@@ -1118,6 +1131,7 @@ class RealmMigrationIntegration(unittest.TestCase):
                 values[3:5],
                 ["756E636C6173736966696564"] * 2,
             )
+            self.assertEqual(values[5:7], ["Win|x86", "Win|x64"])
 
             self.db.execute(self.update, schema)
             counts = self.db.execute(
@@ -1130,6 +1144,41 @@ class RealmMigrationIntegration(unittest.TestCase):
                 schema,
             ).stdout.splitlines()
             self.assertEqual(counts, ["1", "1", "1"])
+
+    def test_resume_preserves_existing_client_identity_evidence(self) -> None:
+        with self.db.schema("realm") as schema:
+            self.db.execute(REALM_SCHEMA_PREFIX, schema)
+            self.db.execute(
+                """
+                ALTER TABLE `warden_audit`
+                  ADD COLUMN `client_architecture` VARBINARY(4) NOT NULL
+                    DEFAULT 'unk' AFTER `client_platform`,
+                  ADD COLUMN `client_variant` VARBINARY(16) NOT NULL
+                    DEFAULT 'unclassified' AFTER `client_locale`;
+                ALTER TABLE `warden_incident`
+                  ADD COLUMN `client_architecture` VARBINARY(4) NOT NULL
+                    DEFAULT 'unk' AFTER `client_platform`,
+                  ADD COLUMN `client_variant` VARBINARY(16) NOT NULL
+                    DEFAULT 'unclassified' AFTER `client_locale`;
+                UPDATE `warden_audit`
+                   SET `client_architecture`='x86', `client_variant`='grunt';
+                UPDATE `warden_incident`
+                   SET `client_architecture`='x64', `client_variant`='stock';
+                """,
+                schema,
+            )
+
+            self.db.execute(self.update, schema)
+            values = self.db.execute(
+                """
+                SELECT CONCAT(`client_platform`,'|',`client_architecture`,'|',
+                              `client_variant`) FROM `warden_audit`;
+                SELECT CONCAT(`client_platform`,'|',`client_architecture`,'|',
+                              `client_variant`) FROM `warden_incident`;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(values, ["Win|x86|grunt", "Win|x64|stock"])
 
     def test_wrong_predecessor_does_not_mutate(self) -> None:
         with self.db.schema("realm") as schema:
@@ -1148,6 +1197,28 @@ class RealmMigrationIntegration(unittest.TestCase):
                 SELECT COUNT(*) FROM `INFORMATION_SCHEMA`.`COLUMNS`
                   WHERE `TABLE_SCHEMA`=DATABASE()
                     AND `COLUMN_NAME`='client_variant';
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(values, ["0", "0"])
+
+    def test_duplicate_old_description_on_newer_tuple_does_not_mutate(self) -> None:
+        with self.db.schema("realm") as schema:
+            self.db.execute(REALM_SCHEMA_PREFIX, schema)
+            self.db.execute(
+                "INSERT INTO `db_version` VALUES "
+                "(99,1,1,'Warden audit','duplicate description');",
+                schema,
+            )
+            self.db.execute(self.update, schema)
+            values = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=5 AND `content`=1;
+                SELECT COUNT(*) FROM `INFORMATION_SCHEMA`.`COLUMNS`
+                  WHERE `TABLE_SCHEMA`=DATABASE()
+                    AND `COLUMN_NAME` IN
+                      ('client_architecture','client_variant');
                 """,
                 schema,
             ).stdout.splitlines()
@@ -1251,6 +1322,29 @@ class WorldMigrationIntegration(unittest.TestCase):
                 "phase_mask|tinyint(3) unsigned|NO",
                 "address_kind|tinyint(3) unsigned|NO",
                 "address|bigint(20) unsigned|NO",
+            ])
+
+            comments = self.db.execute(
+                """
+                SELECT CONCAT(`COLUMN_NAME`,'|',`COLUMN_COMMENT`)
+                  FROM `INFORMATION_SCHEMA`.`COLUMNS`
+                  WHERE `TABLE_SCHEMA`=DATABASE()
+                    AND `TABLE_NAME`='warden_checks'
+                    AND `COLUMN_NAME` IN
+                      ('architecture','variant','type','evidence_class',
+                       'phase_mask','address_kind','expected')
+                  ORDER BY `ORDINAL_POSITION`;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(comments, [
+                "architecture|x86 or x64",
+                "variant|unclassified, stock, grunt, or legacy-grunt",
+                "type|0 timing, 1 Lua, 2 MPQ, 3 memory",
+                "evidence_class|0 health, 1 invariant, 2 threat, 3 corroboration",
+                "phase_mask|Bitmask: 1 probe, 2 initial, 4 recurring, 8 aggressive",
+                "address_kind|0 none, 1 module RVA, 2 absolute VA",
+                "expected|Expected bytes; empty probe memory captures identity",
             ])
 
             indexes = self.db.execute(
@@ -1360,6 +1454,43 @@ class WorldMigrationIntegration(unittest.TestCase):
             ).stdout.splitlines()
             self.assertEqual(values, ["126", "1"])
 
+    def test_nonempty_architecture_residue_is_never_discarded(self) -> None:
+        with self.db.schema("world") as schema:
+            self.db.execute(WORLD_DORMANT_SCHEMA, schema)
+            forced_failure = self.update.replace(
+                "COUNT(*) FROM `warden_checks`) <> 126",
+                "COUNT(*) FROM `warden_checks`) <> 127",
+                1,
+            )
+            failed = self.db.execute(
+                forced_failure, schema, expect_success=False
+            )
+            self.assertNotEqual(failed.returncode, 0)
+            self.db.execute(
+                """
+                INSERT INTO `warden_checks` VALUES
+                  (15595,0x783836,0x656E5553,
+                   0x756E636C6173736966696564,1001,3,1,10,3,0x01,1,
+                   0x576F772E657865,0x00007F7A,5,X'',X'',
+                   'operator architecture residue');
+                """,
+                schema,
+            )
+
+            retry = self.db.execute(
+                self.update, schema, expect_success=False
+            )
+            self.assertNotEqual(retry.returncode, 0)
+            values = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `warden_checks`;
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=1;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(values, ["1", "0"])
+
     def test_wrong_predecessor_does_not_mutate(self) -> None:
         with self.db.schema("world") as schema:
             self.db.execute(
@@ -1367,6 +1498,28 @@ class WorldMigrationIntegration(unittest.TestCase):
                     "(22,9,1,'Dormant_Warden_Checks','fixture')",
                     "(99,1,1,'Unrelated','fixture')",
                 ),
+                schema,
+            )
+            self.db.execute(self.update, schema)
+            values = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `INFORMATION_SCHEMA`.`COLUMNS`
+                  WHERE `TABLE_SCHEMA`=DATABASE()
+                    AND `TABLE_NAME`='warden_checks'
+                    AND `COLUMN_NAME`='platform';
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=1;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(values, ["1", "0"])
+
+    def test_duplicate_old_description_on_newer_tuple_does_not_mutate(self) -> None:
+        with self.db.schema("world") as schema:
+            self.db.execute(WORLD_DORMANT_SCHEMA, schema)
+            self.db.execute(
+                "INSERT INTO `db_version` VALUES "
+                "(99,1,1,'Dormant_Warden_Checks','duplicate description');",
                 schema,
             )
             self.db.execute(self.update, schema)

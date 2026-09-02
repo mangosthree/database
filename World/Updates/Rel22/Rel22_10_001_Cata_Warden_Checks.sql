@@ -58,7 +58,10 @@ BEGIN
     SET @cOldResult := (SELECT `description` FROM `db_version` WHERE `version` = @cOldVersion AND `structure` = @cOldStructure AND `content` = @cOldContent);
     SET @cNewResult := (SELECT `description` FROM `db_version` WHERE `version` = @cNewVersion AND `structure` = @cNewStructure AND `content` = @cNewContent);
 
-    IF (@cCurResult = @cOldResult) THEN
+    IF (@cCurVersion = @cOldVersion
+        AND @cCurStructure = @cOldStructure
+        AND @cCurContent = @cOldContent
+        AND @cCurResult = 'Dormant_Warden_Checks') THEN
         IF (SELECT COUNT(*) FROM `INFORMATION_SCHEMA`.`TABLES`
             WHERE `TABLE_SCHEMA` = DATABASE()
               AND `TABLE_NAME` = 'warden_checks'
@@ -79,7 +82,12 @@ BEGIN
                 SIGNAL SQLSTATE '45000'
                     SET MESSAGE_TEXT = 'Dormant warden_checks contains operator rows';
             END IF;
-        ELSEIF NOT (@cHasPlatform = 0 AND @cHasArchitecture = 1) THEN
+        ELSEIF @cHasPlatform = 0 AND @cHasArchitecture = 1 THEN
+            IF (SELECT COUNT(*) FROM `warden_checks`) <> 0 THEN
+                SIGNAL SQLSTATE '45000'
+                    SET MESSAGE_TEXT = 'Resumable warden_checks contains operator rows';
+            END IF;
+        ELSE
             SIGNAL SQLSTATE '45000'
                 SET MESSAGE_TEXT = 'warden_checks is neither dormant nor resumable';
         END IF;
@@ -88,23 +96,37 @@ BEGIN
         -- this update. Rebuild it deterministically; never discard old-schema rows.
         DROP TABLE IF EXISTS `warden_checks`;
         CREATE TABLE `warden_checks` (
-          `build` SMALLINT UNSIGNED NOT NULL,
-          `architecture` VARBINARY(4) NOT NULL,
-          `locale` BINARY(4) NOT NULL,
-          `variant` VARBINARY(16) NOT NULL,
-          `check_id` INT UNSIGNED NOT NULL,
-          `type` TINYINT UNSIGNED NOT NULL,
-          `enabled` TINYINT UNSIGNED NOT NULL,
-          `sort_order` SMALLINT UNSIGNED NOT NULL,
-          `evidence_class` TINYINT UNSIGNED NOT NULL,
-          `phase_mask` TINYINT UNSIGNED NOT NULL,
-          `address_kind` TINYINT UNSIGNED NOT NULL,
-          `module` VARBINARY(255) NOT NULL DEFAULT '',
-          `address` BIGINT UNSIGNED NOT NULL DEFAULT 0,
-          `length` SMALLINT UNSIGNED NOT NULL DEFAULT 0,
-          `request` VARBINARY(255) NOT NULL DEFAULT '',
-          `expected` VARBINARY(255) NOT NULL DEFAULT '',
-          `comment` VARCHAR(255) NOT NULL DEFAULT '',
+          `build` SMALLINT UNSIGNED NOT NULL COMMENT 'Client build number',
+          `architecture` VARBINARY(4) NOT NULL COMMENT 'x86 or x64',
+          `locale` BINARY(4) NOT NULL COMMENT 'Exact four-byte client locale',
+          `variant` VARBINARY(16) NOT NULL
+            COMMENT 'unclassified, stock, grunt, or legacy-grunt',
+          `check_id` INT UNSIGNED NOT NULL
+            COMMENT 'Stable check identifier within a profile',
+          `type` TINYINT UNSIGNED NOT NULL
+            COMMENT '0 timing, 1 Lua, 2 MPQ, 3 memory',
+          `enabled` TINYINT UNSIGNED NOT NULL
+            COMMENT '1 enabled; other values are rejected',
+          `sort_order` SMALLINT UNSIGNED NOT NULL
+            COMMENT 'Unique execution order within a profile',
+          `evidence_class` TINYINT UNSIGNED NOT NULL
+            COMMENT '0 health, 1 invariant, 2 threat, 3 corroboration',
+          `phase_mask` TINYINT UNSIGNED NOT NULL
+            COMMENT 'Bitmask: 1 probe, 2 initial, 4 recurring, 8 aggressive',
+          `address_kind` TINYINT UNSIGNED NOT NULL
+            COMMENT '0 none, 1 module RVA, 2 absolute VA',
+          `module` VARBINARY(255) NOT NULL DEFAULT ''
+            COMMENT 'Module name used by a module-relative address',
+          `address` BIGINT UNSIGNED NOT NULL DEFAULT 0
+            COMMENT 'RVA or absolute VA selected by address_kind',
+          `length` SMALLINT UNSIGNED NOT NULL DEFAULT 0
+            COMMENT 'Memory read length in bytes',
+          `request` VARBINARY(255) NOT NULL DEFAULT ''
+            COMMENT 'Lua text or MPQ path; empty for timing or memory',
+          `expected` VARBINARY(255) NOT NULL DEFAULT ''
+            COMMENT 'Expected bytes; empty probe memory captures identity',
+          `comment` VARCHAR(255) NOT NULL DEFAULT ''
+            COMMENT 'Operator-facing check provenance',
           PRIMARY KEY (`build`,`architecture`,`locale`,`variant`,`check_id`),
           UNIQUE KEY `uq_warden_checks_profile_order`
             (`build`,`architecture`,`locale`,`variant`,`sort_order`)
@@ -302,7 +324,10 @@ BEGIN
         SET @cNewResult := (SELECT `description` FROM `db_version` WHERE `version` = @cNewVersion AND `structure` = @cNewStructure AND `content` = @cNewContent);
         SELECT '* UPDATE COMPLETE *' AS `===== Status =====`,
                @cNewResult AS `===== DB is now on Version =====`;
-    ELSEIF (@cCurResult = @cNewResult) THEN
+    ELSEIF (@cCurVersion = @cNewVersion
+        AND @cCurStructure = @cNewStructure
+        AND @cCurContent = @cNewContent
+        AND @cCurResult = @cNewDescription) THEN
         SELECT '* UPDATE SKIPPED *' AS `===== Status =====`,
                @cCurResult AS `===== DB is already on Version =====`;
     ELSEIF (@cCurResult IS NULL) THEN

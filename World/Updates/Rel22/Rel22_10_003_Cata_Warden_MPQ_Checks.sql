@@ -248,6 +248,9 @@ BEGIN
                 SET MESSAGE_TEXT = 'Exact legacy x86 Grunt versioning failed';
         END IF;
 
+        -- The x86 archive callback needs the current Grunt adapter, so stock
+        -- and legacy-Grunt x86 profiles intentionally omit MPQ checks. The
+        -- native x64 callback supports both published executable variants.
         INSERT INTO `warden_checks`
         (`build`,`architecture`,`locale`,`variant`,`check_id`,`type`,
          `enabled`,`sort_order`,`evidence_class`,`phase_mask`,
