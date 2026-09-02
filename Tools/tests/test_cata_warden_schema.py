@@ -1472,6 +1472,22 @@ class WorldMigrationIntegration(unittest.TestCase):
             ).stdout.splitlines()
             self.assertEqual(values, ["126", "1"])
 
+    def test_absent_catalogue_after_committed_drop_is_rebuilt_on_retry(self) -> None:
+        with self.db.schema("world") as schema:
+            self.db.execute(WORLD_DORMANT_SCHEMA, schema)
+            self.db.execute("DROP TABLE `warden_checks`;", schema)
+
+            self.db.execute(self.update, schema)
+            values = self.db.execute(
+                """
+                SELECT COUNT(*) FROM `warden_checks`;
+                SELECT COUNT(*) FROM `db_version`
+                  WHERE `version`=22 AND `structure`=10 AND `content`=1;
+                """,
+                schema,
+            ).stdout.splitlines()
+            self.assertEqual(values, ["126", "1"])
+
     def test_nonempty_architecture_residue_is_never_discarded(self) -> None:
         with self.db.schema("world") as schema:
             self.db.execute(WORLD_DORMANT_SCHEMA, schema)

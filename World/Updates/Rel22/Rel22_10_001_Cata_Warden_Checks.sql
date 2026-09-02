@@ -62,34 +62,46 @@ BEGIN
         AND @cCurStructure = @cOldStructure
         AND @cCurContent = @cOldContent
         AND @cCurResult = 'Dormant_Warden_Checks') THEN
-        IF (SELECT COUNT(*) FROM `INFORMATION_SCHEMA`.`TABLES`
+        SET @cWardenTableCount := (SELECT COUNT(*)
+            FROM `INFORMATION_SCHEMA`.`TABLES`
+            WHERE `TABLE_SCHEMA` = DATABASE()
+              AND `TABLE_NAME` = 'warden_checks');
+        SET @cWardenBaseTableCount := (SELECT COUNT(*)
+            FROM `INFORMATION_SCHEMA`.`TABLES`
             WHERE `TABLE_SCHEMA` = DATABASE()
               AND `TABLE_NAME` = 'warden_checks'
-              AND `TABLE_TYPE` = 'BASE TABLE') <> 1 THEN
-            SIGNAL SQLSTATE '45000'
-                SET MESSAGE_TEXT = 'Required dormant warden_checks table is missing';
-        END IF;
+              AND `TABLE_TYPE` = 'BASE TABLE');
 
-        SET @cHasPlatform := (SELECT COUNT(*) FROM `INFORMATION_SCHEMA`.`COLUMNS`
-            WHERE `TABLE_SCHEMA` = DATABASE() AND `TABLE_NAME` = 'warden_checks'
-              AND `COLUMN_NAME` = 'platform');
-        SET @cHasArchitecture := (SELECT COUNT(*) FROM `INFORMATION_SCHEMA`.`COLUMNS`
-            WHERE `TABLE_SCHEMA` = DATABASE() AND `TABLE_NAME` = 'warden_checks'
-              AND `COLUMN_NAME` = 'architecture');
+        -- An absent object is the one safe residue after MariaDB committed the
+        -- DROP but failed the following CREATE. Any present object must still
+        -- be the expected empty dormant or empty resumable base table.
+        IF @cWardenTableCount <> 0 THEN
+            IF @cWardenBaseTableCount <> 1 THEN
+                SIGNAL SQLSTATE '45000'
+                    SET MESSAGE_TEXT = 'warden_checks is not a base table';
+            END IF;
 
-        IF @cHasPlatform = 1 AND @cHasArchitecture = 0 THEN
-            IF (SELECT COUNT(*) FROM `warden_checks`) <> 0 THEN
+            SET @cHasPlatform := (SELECT COUNT(*) FROM `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE `TABLE_SCHEMA` = DATABASE() AND `TABLE_NAME` = 'warden_checks'
+                  AND `COLUMN_NAME` = 'platform');
+            SET @cHasArchitecture := (SELECT COUNT(*) FROM `INFORMATION_SCHEMA`.`COLUMNS`
+                WHERE `TABLE_SCHEMA` = DATABASE() AND `TABLE_NAME` = 'warden_checks'
+                  AND `COLUMN_NAME` = 'architecture');
+
+            IF @cHasPlatform = 1 AND @cHasArchitecture = 0 THEN
+                IF (SELECT COUNT(*) FROM `warden_checks`) <> 0 THEN
+                    SIGNAL SQLSTATE '45000'
+                        SET MESSAGE_TEXT = 'Dormant warden_checks contains operator rows';
+                END IF;
+            ELSEIF @cHasPlatform = 0 AND @cHasArchitecture = 1 THEN
+                IF (SELECT COUNT(*) FROM `warden_checks`) <> 0 THEN
+                    SIGNAL SQLSTATE '45000'
+                        SET MESSAGE_TEXT = 'Resumable warden_checks contains operator rows';
+                END IF;
+            ELSE
                 SIGNAL SQLSTATE '45000'
-                    SET MESSAGE_TEXT = 'Dormant warden_checks contains operator rows';
+                    SET MESSAGE_TEXT = 'warden_checks is neither dormant nor resumable';
             END IF;
-        ELSEIF @cHasPlatform = 0 AND @cHasArchitecture = 1 THEN
-            IF (SELECT COUNT(*) FROM `warden_checks`) <> 0 THEN
-                SIGNAL SQLSTATE '45000'
-                    SET MESSAGE_TEXT = 'Resumable warden_checks contains operator rows';
-            END IF;
-        ELSE
-            SIGNAL SQLSTATE '45000'
-                SET MESSAGE_TEXT = 'warden_checks is neither dormant nor resumable';
         END IF;
 
         -- At the old marker an architecture-form table can only be residue from
