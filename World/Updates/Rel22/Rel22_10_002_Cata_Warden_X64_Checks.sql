@@ -21,45 +21,46 @@
 -- World of Warcraft, and all World of Warcraft or Warcraft art, images,
 -- and lore are copyrighted by Blizzard Entertainment, Inc.
 
--- -------------------------------------------------------------------------
--- Publish the exact Cataclysm 4.3.4.15595 x64 Warden check catalogue.
--- The x86 catalogue is an exact predecessor and remains available for rollback.
--- -------------------------------------------------------------------------
+-- ----------------------------------------------------------------
+-- This is an attempt to create a full transactional MaNGOS update
+-- Now compatible with newer MySql Databases (v1.5)
+-- ----------------------------------------------------------------
 DROP PROCEDURE IF EXISTS `update_mangos`;
 
 DELIMITER $$
 
-CREATE PROCEDURE `update_mangos`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_mangos`()
 BEGIN
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION
-    BEGIN
-        ROLLBACK;
-        SHOW ERRORS;
-        SELECT '* UPDATE FAILED *' AS `===== Status =====`,
-               @cCurResult AS `===== DB is on Version: =====`;
-        RESIGNAL;
-    END;
+    DECLARE bRollback BOOL  DEFAULT FALSE ;
+    DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET `bRollback` = TRUE;
 
+    -- Current Values (TODO - must be a better way to do this)
     SET @cCurVersion := (SELECT `version` FROM `db_version`
         ORDER BY `version` DESC, `structure` DESC, `content` DESC LIMIT 0,1);
     SET @cCurStructure := (SELECT `structure` FROM `db_version`
         ORDER BY `version` DESC, `structure` DESC, `content` DESC LIMIT 0,1);
     SET @cCurContent := (SELECT `content` FROM `db_version`
         ORDER BY `version` DESC, `structure` DESC, `content` DESC LIMIT 0,1);
-    SET @cCurResult := (SELECT `description` FROM `db_version`
-        ORDER BY `version` DESC, `structure` DESC, `content` DESC LIMIT 0,1);
 
+    -- Expected Values
     SET @cOldVersion = '22';
     SET @cOldStructure = '10';
     SET @cOldContent = '001';
     SET @cOldDescription = 'Cata_Warden_Checks';
 
+    -- New Values
     SET @cNewVersion = '22';
     SET @cNewStructure = '10';
     SET @cNewContent = '002';
+                            -- DESCRIPTION IS 30 Characters MAX
     SET @cNewDescription = 'Cata_Warden_X64_Checks';
+
+                        -- COMMENT is 150 Characters MAX
     SET @cNewComment = 'Publish exact Cata 4.3.4.15595 x64 Warden profiles';
 
+    -- Evaluate all settings
+    SET @cCurResult := (SELECT `description` FROM `db_version`
+        ORDER BY `version` DESC, `structure` DESC, `content` DESC LIMIT 0,1);
     SET @cOldResult := (SELECT `description` FROM `db_version`
         WHERE `version` = @cOldVersion
           AND `structure` = @cOldStructure
@@ -74,8 +75,14 @@ BEGIN
         AND @cCurContent = @cOldContent
         AND @cCurResult = @cOldResult
         AND @cOldResult = @cOldDescription) THEN
+        -- APPLY UPDATE
         START TRANSACTION;
+        -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+        -- -- PLACE UPDATE SQL BELOW -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+        -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
+        -- Publish the exact Cataclysm 4.3.4.15595 x64 catalogue while
+        -- retaining the x86 predecessor for exact rollback.
         -- Refuse partial, foreign, or operator-modified predecessor data.
         IF (SELECT COUNT(*) FROM `warden_checks`) <> 126
            OR (SELECT COUNT(*) FROM `warden_checks`
@@ -408,42 +415,61 @@ BEGIN
                 SET MESSAGE_TEXT = 'Expanded x64 Warden catalogue validation failed';
         END IF;
 
-        INSERT INTO `db_version`
-            (`version`,`structure`,`content`,`description`,`comment`)
-        VALUES
-            (@cNewVersion,@cNewStructure,@cNewContent,
-             @cNewDescription,@cNewComment);
-        COMMIT;
+        -- -- PLACE UPDATE SQL ABOVE -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+        -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
-        SET @cNewResult := (SELECT `description` FROM `db_version`
-            WHERE `version` = @cNewVersion
-              AND `structure` = @cNewStructure
-              AND `content` = @cNewContent);
-        SELECT '* UPDATE COMPLETE *' AS `===== Status =====`,
-               @cNewResult AS `===== DB is now on Version =====`;
-    ELSEIF (@cCurVersion = @cNewVersion
+        -- If we get here ok, commit the changes
+        IF bRollback = TRUE THEN
+            ROLLBACK;
+            SHOW ERRORS;
+            SELECT '* UPDATE FAILED *' AS `===== Status =====`,@cCurResult AS `===== DB is on Version: =====`;
+        ELSE
+            -- Keep catalogue publication and its version marker atomic.
+            INSERT INTO `db_version` VALUES (@cNewVersion, @cNewStructure, @cNewContent, @cNewDescription, @cNewComment);
+            IF bRollback = TRUE THEN
+                ROLLBACK;
+                SHOW ERRORS;
+                SELECT '* UPDATE FAILED *' AS `===== Status =====`,@cCurResult AS `===== DB is on Version: =====`;
+            ELSE
+                COMMIT;
+                SET @cNewResult := (SELECT `description` FROM `db_version` WHERE `version`=@cNewVersion AND `structure`=@cNewStructure AND `content`=@cNewContent);
+                SELECT '* UPDATE COMPLETE *' AS `===== Status =====`,@cNewResult AS `===== DB is now on Version =====`;
+            END IF;
+        END IF;
+    ELSE    -- Current version is not the expected version
+        IF (@cCurVersion = @cNewVersion
             AND @cCurStructure = @cNewStructure
             AND @cCurContent = @cNewContent
             AND @cCurResult = @cNewResult
-            AND @cNewResult = @cNewDescription) THEN
-        SELECT '* UPDATE SKIPPED *' AS `===== Status =====`,
-               @cCurResult AS `===== DB is already on Version =====`;
-    ELSEIF (@cCurResult IS NULL) THEN
-        SELECT '* UPDATE FAILED *' AS `===== Status =====`,
-               'Unable to locate DB Version Information'
-                   AS `============= Error Message =============`;
-    ELSE
-        SET @cCurOutput = CONCAT(@cCurVersion, '_', @cCurStructure, '_',
-            @cCurContent, ' - ', @cCurResult);
-        SET @cOldOutput = CONCAT('Rel', @cOldVersion, '_', @cOldStructure, '_',
-            @cOldContent, ' - IS NOT CURRENT');
-        SELECT '* UPDATE SKIPPED *' AS `===== Status =====`,
-               @cOldOutput AS `=== Expected ===`,
-               @cCurOutput AS `===== Found Version =====`;
+            AND @cNewResult = @cNewDescription) THEN    -- Does the current version match the new version
+            SELECT '* UPDATE SKIPPED *' AS `===== Status =====`,@cCurResult AS `===== DB is already on Version =====`;
+        ELSE    -- Current version is not one related to this update
+            IF(@cCurResult IS NULL) THEN    -- Something has gone wrong
+                SELECT '* UPDATE FAILED *' AS `===== Status =====`,'Unable to locate DB Version Information' AS `============= Error Message =============`;
+            ELSE
+                IF(@cOldResult IS NULL) THEN    -- Something has gone wrong
+                    SET @cCurVersion := (SELECT `version` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
+                    SET @cCurStructure := (SELECT `STRUCTURE` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
+                    SET @cCurContent := (SELECT `Content` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
+                    SET @cCurOutput = CONCAT(@cCurVersion, '_', @cCurStructure, '_', @cCurContent, ' - ',@cCurResult);
+                    SET @cOldResult = CONCAT('Rel',@cOldVersion, '_', @cOldStructure, '_', @cOldContent, ' - ','IS NOT APPLIED');
+                    SELECT '* UPDATE SKIPPED *' AS `===== Status =====`,@cOldResult AS `=== Expected ===`,@cCurOutput AS `===== Found Version =====`;
+                ELSE
+                    SET @cCurVersion := (SELECT `version` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
+                    SET @cCurStructure := (SELECT `STRUCTURE` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
+                    SET @cCurContent := (SELECT `Content` FROM `db_version` ORDER BY `version` DESC, `STRUCTURE` DESC, `CONTENT` DESC LIMIT 0,1);
+                    SET @cCurOutput = CONCAT(@cCurVersion, '_', @cCurStructure, '_', @cCurContent, ' - ',@cCurResult);
+                    SELECT '* UPDATE SKIPPED *' AS `===== Status =====`,@cOldResult AS `=== Expected ===`,@cCurOutput AS `===== Found Version =====`;
+                END IF;
+            END IF;
+        END IF;
     END IF;
 END $$
 
 DELIMITER ;
 
+-- Execute the procedure
 CALL update_mangos();
+
+-- Drop the procedure
 DROP PROCEDURE IF EXISTS `update_mangos`;

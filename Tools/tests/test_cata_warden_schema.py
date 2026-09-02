@@ -38,9 +38,21 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
+CHARACTER_REMOVE_UPDATE = (
+    ROOT / "Character" / "Updates" / "Rel22"
+    / "Rel22_09_001_Remove_Legacy_Warden.sql"
+)
 REALM_UPDATE = (
     ROOT / "Realm" / "Updates" / "Rel22"
     / "Rel22_05_001_Cata_Warden_Identity.sql"
+)
+WORLD_REMOVE_UPDATE = (
+    ROOT / "World" / "Updates" / "Rel22"
+    / "Rel22_08_001_Remove_Legacy_Warden.sql"
+)
+WORLD_DORMANT_UPDATE = (
+    ROOT / "World" / "Updates" / "Rel22"
+    / "Rel22_09_001_Dormant_Warden_Checks.sql"
 )
 WORLD_UPDATE = (
     ROOT / "World" / "Updates" / "Rel22"
@@ -53,6 +65,15 @@ WORLD_X64_UPDATE = (
 WORLD_MPQ_UPDATE = (
     ROOT / "World" / "Updates" / "Rel22"
     / "Rel22_10_003_Cata_Warden_MPQ_Checks.sql"
+)
+WARDEN_UPDATE_PATHS = (
+    CHARACTER_REMOVE_UPDATE,
+    REALM_UPDATE,
+    WORLD_REMOVE_UPDATE,
+    WORLD_DORMANT_UPDATE,
+    WORLD_UPDATE,
+    WORLD_X64_UPDATE,
+    WORLD_MPQ_UPDATE,
 )
 INTEGRATION = "--integration" in sys.argv
 if INTEGRATION:
@@ -217,6 +238,31 @@ CREATE TABLE `warden_checks` (
 """
 
 
+class WardenUpdateTemplateContract(unittest.TestCase):
+    def test_uses_standard_mangos_rollback_wrapper(self) -> None:
+        for path in WARDEN_UPDATE_PATHS:
+            with self.subTest(path=path.relative_to(ROOT)):
+                sql = path.read_text(encoding="utf-8")
+                self.assertRegex(
+                    sql,
+                    r"DECLARE\s+bRollback\s+BOOL\s+DEFAULT\s+FALSE\s*;",
+                )
+                self.assertRegex(
+                    sql,
+                    r"DECLARE\s+CONTINUE\s+HANDLER\s+FOR\s+"
+                    r"SQLEXCEPTION\s+SET\s+`bRollback`\s*=\s*TRUE\s*;",
+                )
+                self.assertRegex(
+                    sql,
+                    r"IF\s+bRollback\s*=\s*TRUE\s+THEN",
+                )
+                self.assertNotRegex(
+                    sql,
+                    r"DECLARE\s+EXIT\s+HANDLER\s+FOR\s+SQLEXCEPTION",
+                )
+                self.assertNotRegex(sql, r"(?i)\bRESIGNAL\b")
+
+
 class RealmMigrationContract(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -233,18 +279,6 @@ class RealmMigrationContract(unittest.TestCase):
             self.sql,
             r"SET\s+@cNewDescription\s*=\s*'Cata Warden identity'",
         )
-
-    def test_uses_resignalling_exit_handler(self) -> None:
-        handler = re.search(
-            r"DECLARE\s+EXIT\s+HANDLER\s+FOR\s+SQLEXCEPTION(?P<body>.*?)END;",
-            self.sql,
-            flags=re.IGNORECASE | re.DOTALL,
-        )
-        self.assertIsNotNone(handler)
-        assert handler is not None
-        self.assertIn("ROLLBACK", handler.group("body").upper())
-        self.assertIn("SHOW ERRORS", handler.group("body").upper())
-        self.assertIn("RESIGNAL", handler.group("body").upper())
 
     def test_adds_exact_resumable_identity_columns_to_both_tables(self) -> None:
         for table in ("warden_audit", "warden_incident"):
@@ -315,7 +349,6 @@ class WorldMigrationContract(unittest.TestCase):
         drop = self.sql.find("DROP TABLE IF EXISTS `warden_checks`")
         self.assertGreaterEqual(guard, 0)
         self.assertGreater(drop, guard)
-        self.assertIn("RESIGNAL", self.sql)
         self.assertNotIn("DELETE FROM `warden_checks`", self.sql)
 
     def test_schema_carries_exact_cata_identity_and_widths(self) -> None:
@@ -655,7 +688,8 @@ class WorldX64MigrationIntegration(unittest.TestCase):
             failed = self.db.execute(
                 self.x64_update, schema, expect_success=False
             )
-            self.assertNotEqual(failed.returncode, 0)
+            self.assertEqual(failed.returncode, 0)
+            self.assertIn("* UPDATE FAILED *", failed.stdout)
             values = self.db.execute(
                 """
                 SELECT COUNT(*) FROM `db_version`
@@ -689,7 +723,8 @@ class WorldX64MigrationIntegration(unittest.TestCase):
             failed = self.db.execute(
                 self.x64_update, schema, expect_success=False
             )
-            self.assertNotEqual(failed.returncode, 0)
+            self.assertEqual(failed.returncode, 0)
+            self.assertIn("* UPDATE FAILED *", failed.stdout)
             values = self.db.execute(
                 """
                 SELECT COUNT(*) FROM `db_version`
@@ -720,7 +755,8 @@ class WorldX64MigrationIntegration(unittest.TestCase):
             failed = self.db.execute(
                 modified_update, schema, expect_success=False
             )
-            self.assertNotEqual(failed.returncode, 0)
+            self.assertEqual(failed.returncode, 0)
+            self.assertIn("* UPDATE FAILED *", failed.stdout)
             values = self.db.execute(
                 """
                 SELECT COUNT(*) FROM `db_version`
@@ -748,7 +784,8 @@ class WorldX64MigrationIntegration(unittest.TestCase):
             failed = self.db.execute(
                 forced_failure, schema, expect_success=False
             )
-            self.assertNotEqual(failed.returncode, 0)
+            self.assertEqual(failed.returncode, 0)
+            self.assertIn("* UPDATE FAILED *", failed.stdout)
             rolled_back = self.db.execute(
                 """
                 SELECT COUNT(*) FROM `db_version`
@@ -793,7 +830,8 @@ class WorldX64MigrationIntegration(unittest.TestCase):
             failed = self.db.execute(
                 self.x64_update, schema, expect_success=False
             )
-            self.assertNotEqual(failed.returncode, 0)
+            self.assertEqual(failed.returncode, 0)
+            self.assertIn("* UPDATE FAILED *", failed.stdout)
             values = self.db.execute(
                 """
                 SELECT COUNT(*) FROM `db_version`
@@ -1002,7 +1040,8 @@ class WorldMpqMigrationIntegration(unittest.TestCase):
             failed = self.db.execute(
                 self.mpq_update, schema, expect_success=False
             )
-            self.assertNotEqual(failed.returncode, 0)
+            self.assertEqual(failed.returncode, 0)
+            self.assertIn("* UPDATE FAILED *", failed.stdout)
             values = self.db.execute(
                 """
                 SELECT COUNT(*) FROM `db_version`
@@ -1030,7 +1069,8 @@ class WorldMpqMigrationIntegration(unittest.TestCase):
             failed = self.db.execute(
                 forced_failure, schema, expect_success=False
             )
-            self.assertNotEqual(failed.returncode, 0)
+            self.assertEqual(failed.returncode, 0)
+            self.assertIn("* UPDATE FAILED *", failed.stdout)
             rolled_back = self.db.execute(
                 """
                 SELECT COUNT(*) FROM `db_version`
@@ -1077,7 +1117,8 @@ class WorldMpqMigrationIntegration(unittest.TestCase):
             failed = self.db.execute(
                 self.mpq_update, schema, expect_success=False
             )
-            self.assertNotEqual(failed.returncode, 0)
+            self.assertEqual(failed.returncode, 0)
+            self.assertIn("* UPDATE FAILED *", failed.stdout)
             values = self.db.execute(
                 """
                 SELECT COUNT(*) FROM `db_version`
@@ -1252,10 +1293,9 @@ class RealmMigrationIntegration(unittest.TestCase):
                 "CREATE VIEW `warden_incident` AS SELECT 1 AS `placeholder`;",
                 schema,
             )
-            failed = self.db.execute(
-                self.update, schema, expect_success=False
-            )
-            self.assertNotEqual(failed.returncode, 0)
+            failed = self.db.execute(self.update, schema)
+            self.assertEqual(failed.returncode, 0)
+            self.assertIn("* UPDATE FAILED *", failed.stdout)
             values = self.db.execute(
                 """
                 SELECT COUNT(*) FROM `db_version`
@@ -1420,7 +1460,8 @@ class WorldMigrationIntegration(unittest.TestCase):
             failed = self.db.execute(
                 self.update, schema, expect_success=False
             )
-            self.assertNotEqual(failed.returncode, 0)
+            self.assertEqual(failed.returncode, 0)
+            self.assertIn("* UPDATE FAILED *", failed.stdout)
             values = self.db.execute(
                 """
                 SELECT COUNT(*) FROM `warden_checks`;
@@ -1446,7 +1487,8 @@ class WorldMigrationIntegration(unittest.TestCase):
             failed = self.db.execute(
                 forced_failure, schema, expect_success=False
             )
-            self.assertNotEqual(failed.returncode, 0)
+            self.assertEqual(failed.returncode, 0)
+            self.assertIn("* UPDATE FAILED *", failed.stdout)
             values = self.db.execute(
                 """
                 SELECT COUNT(*) FROM `warden_checks`;
@@ -1499,7 +1541,8 @@ class WorldMigrationIntegration(unittest.TestCase):
             failed = self.db.execute(
                 forced_failure, schema, expect_success=False
             )
-            self.assertNotEqual(failed.returncode, 0)
+            self.assertEqual(failed.returncode, 0)
+            self.assertIn("* UPDATE FAILED *", failed.stdout)
             self.db.execute(
                 """
                 INSERT INTO `warden_checks` VALUES
@@ -1514,7 +1557,8 @@ class WorldMigrationIntegration(unittest.TestCase):
             retry = self.db.execute(
                 self.update, schema, expect_success=False
             )
-            self.assertNotEqual(retry.returncode, 0)
+            self.assertEqual(retry.returncode, 0)
+            self.assertIn("* UPDATE FAILED *", retry.stdout)
             values = self.db.execute(
                 """
                 SELECT COUNT(*) FROM `warden_checks`;
