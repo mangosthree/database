@@ -1161,9 +1161,11 @@ class RealmMigrationIntegration(unittest.TestCase):
                   ADD COLUMN `client_variant` VARBINARY(16) NOT NULL
                     DEFAULT 'unclassified' AFTER `client_locale`;
                 UPDATE `warden_audit`
-                   SET `client_architecture`='x86', `client_variant`='grunt';
+                   SET `client_platform`='Win',
+                       `client_architecture`='x64',
+                       `client_variant`='grunt';
                 UPDATE `warden_incident`
-                   SET `client_architecture`='x64', `client_variant`='stock';
+                   SET `client_architecture`='x86', `client_variant`='stock';
                 """,
                 schema,
             )
@@ -1178,7 +1180,23 @@ class RealmMigrationIntegration(unittest.TestCase):
                 """,
                 schema,
             ).stdout.splitlines()
-            self.assertEqual(values, ["Win|x86|grunt", "Win|x64|stock"])
+            self.assertEqual(values, ["Win|x64|grunt", "Win|x86|stock"])
+
+    def test_legacy_unknown_architecture_keeps_platform_unknown(self) -> None:
+        with self.db.schema("realm") as schema:
+            legacy_unknown = REALM_SCHEMA_PREFIX.replace(
+                "VALUES (1,2,3,15595,'x86','enUS',4,3,2,1);",
+                "VALUES (1,2,3,15595,'unk','enUS',4,3,2,1);",
+                1,
+            )
+            self.db.execute(legacy_unknown, schema)
+            self.db.execute(self.update, schema)
+            value = self.db.execute(
+                "SELECT CONCAT(`client_platform`,'|',"
+                "`client_architecture`) FROM `warden_audit`;",
+                schema,
+            ).stdout.strip()
+            self.assertEqual(value, "unk|unk")
 
     def test_wrong_predecessor_does_not_mutate(self) -> None:
         with self.db.schema("realm") as schema:
