@@ -1293,6 +1293,16 @@ class RealmMigrationIntegration(unittest.TestCase):
                 "CREATE VIEW `warden_incident` AS SELECT 1 AS `placeholder`;",
                 schema,
             )
+            self.db.execute(
+                """
+                INSERT INTO `warden_audit`
+                  (`account_id`,`occurred_at`,`realm_id`,`client_build`,
+                   `client_platform`,`client_locale`,`check_id`,`check_type`,
+                   `evidence_class`,`outcome`)
+                VALUES (1,2,3,15595,'x86','enUS',4,3,2,1);
+                """,
+                schema,
+            )
             failed = self.db.execute(self.update, schema)
             self.assertEqual(failed.returncode, 0)
             self.assertIn("* UPDATE FAILED *", failed.stdout)
@@ -1304,10 +1314,11 @@ class RealmMigrationIntegration(unittest.TestCase):
                   WHERE `TABLE_SCHEMA`=DATABASE()
                     AND `TABLE_NAME`='warden_audit'
                     AND `COLUMN_NAME`='client_variant';
+                SELECT `client_platform` FROM `warden_audit`;
                 """,
                 schema,
             ).stdout.splitlines()
-            self.assertEqual(values, ["0", "1"])
+            self.assertEqual(values, ["0", "1", "x86"])
 
             self.db.execute("DROP VIEW `warden_incident`;", schema)
             incident_ddl = "CREATE TABLE `warden_incident`" + \
